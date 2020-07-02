@@ -1,6 +1,7 @@
 *.pyc
 __pycache
 .DS_Store
+.idea
 .env.dev
 .env.prod
 .env.prod.db
