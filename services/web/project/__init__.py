@@ -12,6 +12,7 @@ app = Flask(__name__)
 app.config.from_object("project.config.Config")
 db = SQLAlchemy(app, model_class=BaseModel)
 user_manager = UserManager(app, db, User)
+user_manager.email_adapter = MailGunEmailAdapter(app)
 
 
 # The Home page is accessible to anyone
