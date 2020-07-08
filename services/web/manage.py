@@ -1,7 +1,8 @@
+from datetime import datetime
+
 from flask.cli import FlaskGroup
 
-from project import app, db, User
-
+from project import app, db, User, user_manager
 
 cli = FlaskGroup(app)
 
@@ -15,7 +16,12 @@ def create_db():
 
 @cli.command("seed_db")
 def seed_db():
-    db.session.add(User(email="michael@mherman.org"))
+    user = User(
+        email='member@example.com',
+        email_confirmed_at=datetime.utcnow(),
+        password=user_manager.hash_password('password'),
+    )
+    db.session.add(user)
     db.session.commit()
 
 
