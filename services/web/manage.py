@@ -8,18 +8,18 @@ cli = FlaskGroup(app)
 
 
 @cli.command("create_db")
-def create_db():
+def create_db() -> None:
     db.drop_all()
     db.create_all()
     db.session.commit()
 
 
 @cli.command("seed_db")
-def seed_db():
+def seed_db() -> None:
     user = User(
-        email='member@example.com',
+        email="member@example.com",
         email_confirmed_at=datetime.utcnow(),
-        password=user_manager.hash_password('password'),
+        password=user_manager.hash_password("password"),
     )
     db.session.add(user)
     db.session.commit()

@@ -1,5 +1,6 @@
 from flask import (
-    Flask, render_template_string,
+    Flask,
+    render_template_string,
 )
 from flask_sqlalchemy import SQLAlchemy
 from flask_user import UserManager, login_required
@@ -16,9 +17,10 @@ user_manager.email_adapter = MailGunEmailAdapter(app)
 
 
 # The Home page is accessible to anyone
-@app.route('/')
+@app.route("/")
 def home_page():
-    return render_template_string("""
+    return render_template_string(
+        """
             {% extends "flask_user_layout.html" %}
             {% block content %}
                 <h2>{%trans%}Home page{%endtrans%}</h2>
@@ -28,14 +30,16 @@ def home_page():
                 <p><a href={{ url_for('member_page') }}>{%trans%}Member Page{%endtrans%}</a> (login_required: member@example.com / password)</p>
                 <p><a href={{ url_for('user.logout') }}>{%trans%}Sign out{%endtrans%}</a></p>
             {% endblock %}
-            """)
+            """
+    )
 
 
 # The Members page is only accessible to authenticated users
-@app.route('/members')
+@app.route("/members")
 @login_required  # Use of @login_required decorator
 def member_page():
-    return render_template_string("""
+    return render_template_string(
+        """
             {% extends "flask_user_layout.html" %}
             {% block content %}
                 <h2>{%trans%}Members page{%endtrans%}</h2>
@@ -45,4 +49,5 @@ def member_page():
                 <p><a href={{ url_for('member_page') }}>{%trans%}Member Page{%endtrans%}</a> (login_required: member@example.com / password)</p>
                 <p><a href={{ url_for('user.logout') }}>{%trans%}Sign out{%endtrans%}</a></p>
             {% endblock %}
-            """)
+            """
+    )
