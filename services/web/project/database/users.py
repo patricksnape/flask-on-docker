@@ -11,9 +11,11 @@ class User(BaseModel, UserMixin):
     id = Column(Integer, primary_key=True)
     active = Column("is_active", Boolean, nullable=False, server_default="1")
 
-    email = Column(String, nullable=False, unique=True)
+    email = Column(String, nullable=False, unique=True, index=True)
     email_confirmed_at = Column(DateTime)
     password = Column(String, nullable=False)
+
+    party_id = Column(Integer, ForeignKey("party.id"), index=True)
 
     roles = relationship("Role", secondary="user_roles")
 
@@ -29,5 +31,5 @@ class UserRoles(BaseModel):
     __tablename__ = "user_roles"
 
     id = Column(Integer, primary_key=True)
-    user_id = Column(Integer, ForeignKey("users.id", ondelete="CASCADE"))
-    role_id = Column(Integer, ForeignKey("roles.id", ondelete="CASCADE"))
+    user_id = Column(Integer, ForeignKey("users.id", ondelete="CASCADE"), index=True)
+    role_id = Column(Integer, ForeignKey("roles.id", ondelete="CASCADE"), index=True)
