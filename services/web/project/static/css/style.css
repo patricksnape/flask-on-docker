@@ -1,0 +1,3264 @@
+@charset "utf-8";
+
+/*=========================================================== 
+	- Template Name: STORY - Responsive HTML Wedding Template
+	- Author: DoubleEight
+	- Version: 1.00
+	- Website: www.dethemes.com
+============================================================= */	
+
+/*---------------------- 
+	Stylesheet Guide
+------------------------
+00. PRELOADER
+
+01. GENERAL
+
+02. NAV BAR
+
+03. LOGO
+	
+04. NAV MENU
+	04.1 Parent Menu
+	04.2 Child Menu
+	04.3 Child Arrow
+	04.4 More Child
+	04.5 Mobile Navigation
+	
+05. SIDE NAV MENU
+	05.1 Sidebar
+	05.2 Sidebar Header
+	05.3 Parent Menu
+	05.4 Child Menu
+	05.5 Child Have Child Arrow Icon	
+	05.6 More Child Menu
+
+06. MAIN-SLIDER
+	06.1 Main Slider Height
+	06.2 Main Slider Flexslider
+		06.2.1 Main Slider Flexslider Control Nav & Paging
+	06.3 Main Slider Slide-Image
+	06.4 Main Slider Slide-Video
+	06.5 Main Slider Title
+		06.5.1 outer Wrapper
+		06.5.2 Inner Wrapper
+		06.5.3 Title Wrapper
+		06.5.4 Title Alignment
+		06.5.6 Save The Date Title
+	06.6 Each Slide Overlay
+	06.7 Each Slide Caption
+	06.8 Hack Flexslider Fade for Firefox & IE11
+	06.9 Loop Animation
+		06.9.1 Zoom
+		06.9.2 Left-Right
+	06.10 Video Audio Control
+	
+07. PAGE ELEMENT
+	07.1 Blurb
+	07.2 Image Wrapper
+	07.3 Section Padding
+	07.4 Align Middle Wrapper
+	07.5 Image & Video Divider
+	07.6 Heart Divider
+	07.7 Map
+	07.8 Feature List
+	07.9 Event
+	07.10 Timeline Story
+	07.11 Countdown
+	07.12 Popup Template
+	07.13 Autocrop Image
+	07.14 Loader Animation
+
+08. ICON
+	08.1 Size
+	08.2 Shape / Color
+		08.2.1 Default	
+		08.2.2 Default Reverse	
+		08.2.3 Light-1	
+		08.2.4 Light-1 Reverse
+		08.2.5 Light-2	
+		08.2.6 Light-2 Reverse
+		08.2.7 Circle, Rounded, Square
+	08.3 Effect Zoom 
+	08.4 Effect Rotate
+	08.5 Effect Square/Rounded To Circle
+	
+09. PHOTO ITEM
+	09.1 Image
+	09.2 Layer
+		09.2.1 Layer : Second Image
+		09.2.2 Layer : Black Overlay 
+		09.2.3 Layer : Photo Caption
+		09.2.4 Layer : Icon / Button Link  
+	09.3 on Hover Animation
+		09.3.1 on Hover Animation Duration
+		09.3.2 on Hover Animation Delay	
+		09.3.3 on Hover Zoom In	
+		09.3.4 on Hover Zoom In and Rotate
+		09.3.5 on Hover Fade Out
+		
+10. BUTTON
+	10.1 Color
+		10.1.1 Default
+		10.1.2 Reverse	
+		10.1.3 Light-1
+		10.1.4 Light-1 Reverse
+		10.1.5 Light-2
+		10.1.6 Light-2 Reverse
+	10.2 Size
+	10.1 Rounded
+	
+11. FORM
+	11.1 Form Group
+	11.2 Form Control
+	11.3 Input Group
+	11.4 Label
+	11.5 Button
+	11.6 Checkbox and Radio(Custom)
+	11.7 Select Option
+	11.8 Message
+	11.9 Validation		
+	
+12. GALLERY	
+	12.1 Full Gallery
+	12.2 Masonry Gallery
+	
+13. OTHER CUSTOM STYLE
+	13.1 Interest Place Title
+	13.2 Bridesmaid / Groomsmen Name & Duty
+	13.3 Accomodation List
+
+14. PLUGIN CUSTOM
+	14.1 Owl Carousel
+	14.2 Magnific Popup
+	
+99. MEDIA SCREEN
+	- @media screen and (max-width: 1366px)
+	- @media screen and (max-width: 1200px)
+	- @media screen and (max-width: 991px)
+	- @media screen and (max-width: 768px)
+	- @media screen and (max-width: 768px) and (orientation : landscape)
+	- @media screen and (max-width: 480px)
+*/
+
+
+
+/*===============================================*/
+/* 00. PRELOADER		 						 */
+/*===============================================*/
+/* See: */
+/* - preloader.css */
+/* - preloader-couple-name.css */
+/* - preloader-default.css */
+/* - pace/pace-theme-minimal.tmpl.css*/
+
+
+/*===============================================*/
+/* 01. GENERAL			 						 */
+/*===============================================*/
+
+/* All delay classes will take half the time to start */
+:root {
+  --animate-delay: 0.5s;
+}
+
+body{
+	font-family: 'Roboto Slab', serif;
+	color:#55555;
+	font-size:22px;
+	line-height:42px;
+	font-weight:300;
+	background-color:#fafafa;
+}
+
+h1,h2,h3,h4,h5,h6{
+	font-family: 'Roboto Slab', serif;
+	font-weight:400;
+}
+
+.font-oswald{
+	font-family: 'Oswald', sans-serif;
+	letter-spacing:5px;
+}
+
+
+h1, h2, h3, h4, h5, h6,
+h1 a, h2 a, h3 a, h4 a, h5 a, h6 a{
+	color:#363636;
+}
+
+h1 a:hover, h2 a:hover, h3 a:hover, 
+h4 a:hover, h5 a:hover, h6 a:hover{
+	color:#f08080;
+}
+
+/*h1, h2, h3,
+.h1, .h2, .h3{
+	 margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+h4, h5, h6
+.h4, .h5, .h6{
+	 margin-top: 10px;
+  margin-bottom: 10px;
+}*/
+
+h1, .h1{
+	font-size:84px;
+	line-height:100px;	
+}
+
+h2, .h2{
+	font-size:60px;
+	margin-bottom:40px;
+}
+
+h3, .h3{
+	font-size:48px;
+	/*line-height:60px;
+	margin-bottom:40px;*/
+	line-height:60px;
+	margin-bottom:30px;
+}
+
+h4, .h4{
+	font-size:36px;
+	margin-bottom:20px;
+}
+
+h5, .h5{
+  font-size: 24px;
+  margin-bottom:16px;
+}
+
+h6, .h6{
+  font-size: 16px;
+}
+
+h1.inline, h2.inline, h3.inline,
+h4.inline, h5.inline, h6.inline{
+	display:inline;
+	vertical-align:middle; 
+}
+
+p{
+	font-family: 'Roboto Slab', serif;
+	color:#55555;
+	font-size:22px;
+	line-height:42px;
+	margin-bottom:42px;
+}
+
+p.lead{
+	font-size:28px;
+	line-height:48px;
+	font-weight:400;
+}
+
+.bold400{
+	font-weight:400;
+}
+
+.bold500{
+	font-weight:500;
+}
+
+.bold700{
+	font-weight:700;
+}
+
+a{
+	text-decoration:none;
+	color:#363636;
+}
+
+a.reverse{
+	color:#f08080;
+}
+
+a.with-underline{
+	text-decoration:underline;
+}
+
+a:hover{
+	text-decoration:none;
+	color:#f08080;
+}
+
+a.reverse:hover{
+	color:#363636;
+}
+
+a.with-underline:hover {
+	text-decoration:underline;
+}
+
+.clearboth{
+	clear:both;
+}
+
+.no-padding{
+	padding:0;
+}
+
+.no-margin{
+	margin:0 !important;
+}
+
+img.fullwidth{
+	width:100%;
+}
+
+img.with-border{
+	border:1px solid #6a6a6a;
+}
+
+.theme-color{
+	color:#f08080;
+}
+
+
+/*===============================================*/
+/* 02. NAV BAR				 					 */
+/*===============================================*/
+#nav-header{
+	position:relative;
+}
+
+#nav-bar{
+	background-color: rgba(255, 255, 255, 1);
+	padding: 25px 80px;
+	position:absolute;  
+	z-index:2000; 
+	width:100%;	
+}
+
+#nav-bar.hide-first{
+	display:none;
+}
+
+#nav-bar.stick-it{
+	position:fixed;
+	top:0;
+	width:100%;
+	z-index:1500;
+	display:block;
+	/*-webkit-transform: translateZ(0);*/
+}
+
+#logo-wrapper{
+	float:left;
+}
+
+#menu-wrapper{
+	float:right;
+}
+
+
+/*===============================================*/
+/* 03. LOGO		 						 		 */
+/*===============================================*/
+#css-logo, a #css-logo,
+.css-logo, a .css-logo{
+	font-family: 'Roboto Slab', serif;
+	font-weight:700;
+	font-size:24px;
+	color:#363636;
+}
+
+#and-icon, .and-icon{
+	font-family: 'Roboto Slab', serif;
+	font-weight:700;
+	color:#f08080;
+}
+
+#img-logo img,
+.img-logo img{
+	width:100px;
+	height:auto;
+}
+
+
+/*===============================================*/
+/* 04. NAV MENU			 						 */
+/*===============================================*/
+
+/* ----------------------------------------------*/
+/* 04.1	Parent Menu								 */
+/* ----------------------------------------------*/
+#top-nav-menu{
+	position:relative;
+	list-style-type:none; 
+	padding:0;
+	font-family: 'Roboto Slab', sans-serif;
+	font-size:16px;
+	line-height:20px;
+	font-weight:400;
+	z-index:1000;
+	margin-bottom:0px;
+}
+
+#top-nav-menu > li{
+	position:relative;
+	display: inline-block;
+	margin-right:40px;
+	padding:10px 0;
+}
+
+#top-nav-menu > li:last-child{
+	margin-right:0;
+}
+
+#top-nav-menu > li a{
+	color:#363636;
+	text-decoration:none;
+}
+
+#top-nav-menu > li a:hover,
+#top-nav-menu li a.active{
+	color:#f08080;
+}
+
+
+
+/* ----------------------------------------------*/
+/* 04.2 Child Menu								 */
+/* ----------------------------------------------*/
+#top-nav-menu ul{
+	position:absolute;
+	display:none;
+	width:220px;	
+	left:-10px;
+	list-style-type:none;
+	padding:30px 4px 16px 4px;
+	text-align:left;
+}
+
+#top-nav-menu > li:last-child ul{
+	left:-90px;
+}
+
+#top-nav-menu li:hover > ul{
+	display:block;
+}
+
+#top-nav-menu ul li{
+	position:relative;
+	width:100%;
+	padding:10px 2px;
+	background-color:#FFF
+}
+
+#top-nav-menu ul li a{
+	display:block;
+	width:100%;
+	background-color:#FFF;
+	padding:12px 24px;
+}   
+
+#top-nav-menu ul li a:hover{
+	color:#f08080;
+}
+
+
+/* ----------------------------------------------*/
+/* 04.3 Child Arrow								 */
+/* ----------------------------------------------*/
+#top-nav-menu li > ul li a:after { 
+	font-family: "fontello";
+	content: '\e918'; 
+	position:absolute;
+	right:15px;
+} 
+
+#top-nav-menu li > ul li a:only-child:after { 
+	content: ''; 
+}
+
+/* ----------------------------------------------*/
+/* 04.4 More Child								 */
+/* ----------------------------------------------*/
+#top-nav-menu ul ul{
+	top:0px;
+	left:100%;
+	padding-top:0px;
+	border:none;
+}
+
+/* ----------------------------------------------*/
+/* 04.5 Mobile Navigation						 */
+/* ----------------------------------------------*/
+#mobile-nav{
+	display:none;
+}
+
+
+
+/*===============================================*/
+/* 05. SIDE NAV MENU			 				 */
+/*===============================================*/
+
+/* 05.1 Sidebar									 */
+/* ----------------------------------------------*/
+.sb-slidebar{
+	background-color:#fdfdfd;
+	width:480px;
+	border-left:1px solid #f4f2f2;
+	border-right:1px solid #f4f2f2;
+	z-index:2000;
+}
+
+#sb-site{
+	background-color:transparent;
+}
+
+/* 05.2 Sidebar Header 							 */
+/* ----------------------------------------------*/
+#side-navbar-header{
+	position:relative;
+	width:100%; 
+	display:block;
+	text-align:center;
+	padding:70px 0 0 0;
+}
+
+#logo-inner-wrapper{
+	margin-top:60px;
+}
+
+#close-button i{
+	color:#666;
+	font-size:36px;
+}
+
+#close-button:hover i{
+	color:#f08080;
+}
+
+/* 05.3 Parent Menu 							 */
+/* ----------------------------------------------*/
+#side-nav-menu{
+	position:relative;
+	list-style-type:none; 
+	margin: 20px 35px 100px 35px;
+	margin-bottom:100px;
+	padding:0;
+	font-family: 'Roboto Slab', sans-serif;
+	font-size:18px;
+	font-weight:400;
+	z-index:1000;
+	text-align:center;
+}
+
+/*#side-nav-menu > li > a:before{
+  	font-family: "fontello";
+  	font-style: normal;
+  	font-weight: normal;
+  	font-size:10px;
+	content: '\e9bd';
+	color:#f08080;
+	text-align:center;
+	vertical-align:middle;
+	padding-right:10px;
+}*/
+
+#side-nav-menu > li a{
+	display:block;
+	padding:12px 8px;
+	color:#363636;
+	text-decoration:none;
+}
+
+#side-nav-menu > li a:hover,
+#side-nav-menu > li a.active{
+	color:#f08080;
+}
+
+/* 05.4 Child Menu 								 */
+/* ----------------------------------------------*/
+#side-nav-menu ul{
+	display:none;
+	position:relative;
+	left:0;
+	list-style-type:none;
+	padding:0;
+	text-align:center;
+}
+
+#side-nav-menu ul.expand{
+	display:block
+}
+
+#side-nav-menu ul > li a{
+	color:#777777;
+}
+
+
+/* 05.5 Child Have Child Arrow Icon			 	 */
+/* ----------------------------------------------*/
+#side-nav-menu ul li a:after { 
+	content: '+'; 
+	position:absolute;
+	right:15px;
+} 
+
+#side-nav-menu li a.minus:after { 
+	content: '-'; 
+	position:absolute;
+	right:15px;
+} 
+
+#side-nav-menu li a:only-child:after { 
+	content: ''; 
+}
+
+/* 05.6 More Child Menu 						 */
+/* ----------------------------------------------*/
+#side-nav-menu ul ul{
+	display:none;
+	position:relative;
+	left:0;
+	list-style-type:none;
+	padding:0;
+	text-align:center;
+}
+
+#side-nav-menu ul ul > li a{
+	border-bottom:none;
+}
+
+
+/*===============================================*/
+/* 06. MAIN-SLIDER					 		 	 */
+/*===============================================*/
+#main-slider {
+	margin:0; 
+	padding:0;
+	position:relative;
+	overflow:hidden;	
+}
+
+/* ----------------------------------------------*/
+/* 06.1 Main Slider Height					     */
+/* ----------------------------------------------*/
+/* #main-slider.fullscreen - script.js			 */
+
+#main-slider.fixed-height{
+	position:relative;
+	height:625px;
+}
+
+/* ----------------------------------------------*/
+/* 06.2 Main Slider Flexslider			  		 */
+/* ----------------------------------------------*/
+#main-slider.flexslider { 
+	border: none; 
+}
+
+#main-slider .slides,
+#main-slider.flexslider .slides li{
+	position:relative;
+	/*height:inherit;*/
+	height:100%;
+	width:100%;
+	overflow:hidden;
+}
+
+#main-slider.flexslider .flex-viewport{
+	position:relative;
+	/*height:inherit;*/
+	height:100%;
+}
+
+/* 06.2.1 Main Slider Flexslider Control Nav & Paging */
+/* ----------------------------------------------*/
+#main-slider .flex-control-nav, .flex-control-paging{
+	 background-color:transparent !important;
+	 margin:auto;
+	 padding:0;
+	 position:absolute;
+	 right:0;
+	 bottom:80px;
+	 width:28px;
+	 z-index:4;
+	 height:auto;
+	 
+}
+
+#main-slider .flex-control-nav li{
+	display:block;
+	margin:7px 0;
+	
+}
+
+#main-slider .flex-control-nav li a{
+	background-color:#FFF;
+	width:8px;
+	height:8px;
+}
+
+#main-slider .flex-control-nav li a.flex-active,
+#main-slider .flex-control-nav li a:hover {
+	background-color:#f08080;
+}
+
+#main-slider.flexslider .flex-direction-nav .flex-prev { left: 0px; }
+#main-slider.flexslider .flex-direction-nav .flex-next { right: 0px; text-align: right; }
+#main-slider.flexslider:hover .flex-prev { opacity: 0.7; left: 100px; }
+#main-slider.flexslider:hover .flex-next { opacity: 0.7; right: 100px; }
+
+
+#main-slider .flex-direction-nav a {
+	z-index:4;
+	line-height: 40px;
+	color:#FFF;
+}
+
+#main-slider .flex-direction-nav a:hover {
+	color:#f08080;
+}
+
+/* ----------------------------------------------*/
+/* 06.3 Main Slider Slide Image and Video	 	 */
+/* ----------------------------------------------*/
+
+#main-slider .slide-image {
+	position:relative;
+	height:inherit;
+	width:100%;
+	background-size:cover; 
+	background-position:50% 50%;
+	background-color:#FFF;
+	-webkit-transform: translateZ(0);	
+}
+
+#main-slider .slide-image video{
+	position:absolute; 
+	margin:auto; 
+	top:0; 
+	left:0;
+}
+
+#main-slider .video-button-wrapper{
+	margin-top:30px;
+}
+
+/* ----------------------------------------------*/
+/* 06.4 Main Slider Slide-Video			  		 */
+/* ----------------------------------------------*/
+#main-slider .slide-video{
+	height: inherit; 
+	width:100%;
+	position:relative;	
+	
+}
+
+
+
+/* ----------------------------------------------*/
+/* 06.5 Main Slider Title					     */
+/* ----------------------------------------------*/
+
+/* 06.5.1 outer Wrapper */
+/* ----------------------------------------------*/
+.slide-title-outer-wrapper{
+	position:absolute; 
+	width:100%; 
+	/*height:inherit;*/
+	height:100%; 
+	left:0; 
+	z-index:3;
+	overflow:hidden;
+}
+
+/* 06.5.2 Inner Wrapper */
+/* ----------------------------------------------*/
+.slide-title-inner-wrapper{
+	width:1170px; 
+	height:inherit; 
+	margin:0 auto; 
+	display: table;
+}
+
+/* 06.5.3 Title Wrapper */
+/* ----------------------------------------------*/
+.slide-title{ 
+	display: table-cell;
+	text-align:center;	
+    color:#FFF;
+}
+
+.slide-title h1, .slide-title h2, .slide-title h3,
+.slide-title h4, .slide-title h5, .slide-title h6{
+	color:#FFF;
+}
+
+.slide-desc{
+	font-size:24px;
+	line-height:36px;
+	font-weight:300;
+	margin-top:34px;
+}
+
+
+/* 06.5.4 Slide Arrow */
+/* ----------------------------------------------*/
+#slide-arrow{
+	position:absolute; 
+	left:0; 
+	right:0; 
+	bottom:30px; 
+	margin:auto;
+	z-index:2000;
+	text-align:center;
+	width:100px;
+}
+
+#slide-arrow a{
+	color:#FFF;
+	font-size:24px;
+}
+
+@-webkit-keyframes bounce {
+ 0%, 20%, 50%, 80%, 100% {-webkit-transform: translateY(0);} 
+ 40% {-webkit-transform: translateY(-15px);}
+ 60% {-webkit-transform: translateY(-7px);}
+}
+ 
+@-moz-keyframes bounce {
+ 0%, 20%, 50%, 80%, 100% {-moz-transform: translateY(0);}
+ 40% {-moz-transform: translateY(-15px);}
+ 60% {-moz-transform: translateY(-7px);}
+}
+ 
+@-o-keyframes bounce {
+ 0%, 20%, 50%, 80%, 100% {-o-transform: translateY(0);}
+ 40% {-o-transform: translateY(-15px);}
+ 60% {-o-transform: translateY(-7px);}
+}
+@keyframes bounce {
+ 0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+ 40% {transform: translateY(-15px);}
+ 60% {transform: translateY(-7px);}
+}
+
+.bounceloop{
+	animation: bounce 2s infinite;
+ 	-webkit-animation: bounce 2s infinite;
+ 	-moz-animation: bounce 2s infinite;
+ 	-o-animation: bounce 2s infinite;
+}
+
+
+/* 06.5.5 Title Alignment */
+/* ----------------------------------------------*/
+.slide-title.align-middle{
+	vertical-align: middle;
+}
+.slide-title.align-top{
+	vertical-align: top;
+	/*padding-top:100px;*/
+}
+.slide-title.align-bottom{
+	vertical-align: bottom;
+	/*padding-bottom:0px;*/
+}
+
+
+/* ----------------------------------------------*/
+/* 06.6 Each Slide Overlay					     */
+
+/* ----------------------------------------------*/
+
+.slide-overlay{
+	position:absolute;
+	top:0;
+	display:block; 
+	width:inherit; 
+	height:inherit; 
+	background-color:#000; 
+	opacity:0.3;
+	-webkit-transform: translateZ(0);
+}
+
+/* ----------------------------------------------*/
+/* 06.7 Each Slide Caption					     */
+/* ----------------------------------------------*/
+.slide-caption{
+	position:absolute;
+	top:0;
+	display:block;
+	width:inherit; 
+	height:inherit; 
+	color:#fff;	
+}
+
+.use-animation{
+	visibility:hidden
+}
+
+/* ----------------------------------------------*/
+/* 06.8 Hack Flexslider Fade for Firefox & IE11	 */
+/* ----------------------------------------------*/
+.flexslider .slides.css-fade > li { 
+  	-webkit-transition: opacity 1s ease; 
+	-moz-transition: opacity 1s ease;
+ 	transition: opacity 1s ease; 
+}
+
+
+/* ----------------------------------------------*/
+/* 06.9 Loop Animation						     */
+/* ----------------------------------------------*/
+
+/* 06.9.1 Zoom									 */
+/* ----------------------------------------------*/
+@-webkit-keyframes zoom-in-out {
+   0% {-webkit-transform: scale(1); /* Chrome, Safari, Opera */
+    transform: scale(1);}
+	50% {-webkit-transform: scale(1.1); /* Chrome, Safari, Opera */
+    transform: scale(1.1);}
+	100%	{-webkit-transform: scale(1); /* Chrome, Safari, Opera */
+    transform: scale(1);}
+}
+
+@keyframes zoom-in-out {
+    0% {-webkit-transform: scale(1); /* Chrome, Safari, Opera */
+    transform: scale(1);}
+	50% {-webkit-transform: scale(1.1); /* Chrome, Safari, Opera */
+    transform: scale(1.1);}
+	100%	{-webkit-transform: scale(1); /* Chrome, Safari, Opera */
+    transform: scale(1);}
+}
+
+.zoom.animate{
+	-webkit-transform: scale(1); /* Chrome, Safari, Opera */
+    transform: scale(1);
+	-webkit-animation: zoom-in-out 30s; /* Chrome, Safari, Opera */
+    animation: zoom-in-out 30s;
+	animation-iteration-count: infinite;
+	-webkit-animation-iteration-count: infinite;
+}
+
+
+/* 06.9.2 Left-Right							 */
+/* ----------------------------------------------*/
+@-webkit-keyframes move-left-right {
+   0% { background-position: 50% 50%; }
+    25% { background-position: 100% 50%; }
+	50% { background-position: 50% 50%; }
+	75%	{ background-position: 0% 50%; }
+	100%	{ background-position: 50% 50%; }
+}
+
+@keyframes move-left-right {
+    0% { background-position: 50% 50%; }
+    25% { background-position: 100% 50%; }
+	50% { background-position: 50% 50%; }
+	75%	{ background-position: 0% 50%; }
+	100%	{ background-position: 50% 50%; }
+}
+
+.left-right.animate{
+	background-position:50% 50%;
+	-webkit-animation: move-left-right 240s; /* Chrome, Safari, Opera */
+    animation: move-left-right 240s;
+	animation-iteration-count: infinite;
+	-webkit-animation-iteration-count: infinite;
+}
+
+/* 06.10 Video Audio Control					 */
+/* ----------------------------------------------*/
+.video-audio-control{
+	height: 50px;
+	width: 100%;
+	position: absolute;
+	bottom: 0;
+	z-index: 2000;
+	padding-right:10px;
+	text-align:right;
+	color:#FFF;
+}
+
+.video-audio-control.fixed-position{
+	position:fixed;
+}
+
+.video-audio-control.mobile{
+	display:none;
+}
+
+#soundcloud-track{
+	position:absolute;
+	z-index:2000;
+	top:-200px;
+	right:20px;
+	width:200px;
+	opacity:0;
+	-webkit-transition: all 0.5s; 
+		-ms-transition: all 0.5s;
+		 -o-transition: all 0.5s;
+			transition: all 0.5s;
+	-webkit-transform: scale(0); 
+		-ms-transform: scale(0);
+		 -o-transform: scale(0);  
+			transform: scale(0);			
+	 transform-origin: bottom right;	
+	 
+}
+
+#soundcloud-track.open-window{
+	opacity:1;
+	-webkit-transform: scale(1); 
+		-ms-transform: scale(1);
+		 -o-transform: scale(1);  
+			transform: scale(1);		
+}
+
+
+
+/*===============================================*/
+/* 07. PAGE							 		 	 */
+/*===============================================*/
+
+/* 07.1  BLURB								 	 */
+/* ----------------------------------------------*/
+.blurb{
+	padding:0 90px;
+}
+
+/* 07.2  IMAGE WRAPPER						 	 */
+/* ----------------------------------------------*/
+.image-wrapper{
+	margin:42px 0 42px 0;
+}
+
+/* 07.3  SECTION PADDING						 */
+/* ----------------------------------------------*/
+.section-padding{
+	padding:180px 0;
+}
+
+/* 07.4  ALIGN MIDDLE WRAPPER					 */
+/* ----------------------------------------------*/
+.alignment{
+	position:absolute;
+	display:table;
+	height:100%;
+	width:100%;
+}
+
+.v-align{
+	display:table-cell;	
+}
+
+.center-middle{
+	vertical-align:middle;
+	text-align:center;
+}
+
+.center-top{
+	vertical-align:top;
+	text-align:center;
+}
+
+.center-bottom{
+	vertical-align:bottom;
+	text-align:center;
+}
+
+/* 07.5 IMAGE & VIDEO DIVIDER					 */
+/* ----------------------------------------------*/
+.divider-wrapper{
+	padding:130px 0;
+}
+
+.image-divider {
+	position:relative;
+	background-size:cover;
+	-webkit-background-size:cover;
+	background-attachment: scroll;
+	background-position:center center;
+	background-repeat:no-repeat;
+	color:#FFF;
+	overflow:hidden;
+	-webkit-backface-visibility: hidden;	
+}
+
+.image-divider.mobile{
+	background-attachment:scroll;
+}
+
+.image-divider video{
+	position:absolute; 
+	margin:auto; 
+	top:0; 
+	left:0;
+}
+
+.video-divider {
+	position:relative;
+	color:#FFF;
+	z-index:3;
+}
+
+.image-divider h1, .image-divider h2,
+.image-divider h3, .image-divider h4,
+.image-divider h5, .image-divider h6,
+.video-divider h1, .video-divider h2,
+.video-divider h3, .video-divider h4,
+.video-divider h5, .video-divider h6 {
+	color:#FFF;
+}
+
+.image-divider .divider-overlay,
+.video-divider .divider-overlay{
+	position:absolute; 
+	top:0; 
+	display:block; 
+	width:100%; 
+	height:100%; 
+	background-color:#000; 
+	opacity:0.3
+}
+
+.image-divider.auto-height,
+.video-divider.auto-height {
+	height:100%;
+	width:100%;
+	padding:150px 0;
+}
+
+.image-divider.fixed-height,
+.video-divider.fixed-height {
+	height:625px;
+	width:100%;
+	padding:0;
+}
+
+/* 07.6 HEART DIVIDER							 */
+/* ----------------------------------------------*/
+.heart-divider{
+	/*height:100%; 
+	width:100%;*/
+	margin:0 auto; 
+	margin-top:20px;
+	margin-bottom:20px;
+	text-align:center;
+}
+
+.pink-heart{
+	color:#f08080; 
+	font-size:30px; 
+	margin-left:-26px;
+	position:relative; 
+	z-index:2
+}
+
+.white-heart{
+	color:#FFF; 
+	font-size:30px; 
+	position:relative;
+	z-index:3
+}
+
+.grey-heart{
+	color: #e1dddd;
+	font-size:30px; 
+	position:relative;
+	z-index:3
+}
+
+/* 07.7 MAP										 */
+/* ----------------------------------------------*/
+#map-canvas{
+	height:750px; 
+	width:100%;
+}
+
+.main-icon-wrapper{
+	height:175px; 
+	width:175px; 
+	position:relative;
+}
+
+.big-circle{
+	position:relative;
+	height:175px; 
+	width:175px; 
+	border-radius:50%; 
+	background-color: rgba(240, 128, 128, 0.8); 	
+}
+
+.main-icon-text{
+	position:absolute;
+	font-size:20px;
+	line-height:24px;
+	font-family: 'Roboto Slab', serif;
+	color:#FFF;
+	text-align:center;
+	top:60px;
+	left:0;
+	right:0;
+	margin: auto;
+}
+
+.info-window-wrapper{
+	padding:5px;
+}
+
+.info-window-desc{
+	font-size:16px;
+	line-height:30px;
+}
+
+@-webkit-keyframes scale-animation {
+ 0%{-webkit-transform: scale(1, 1);} 
+ 50% {-webkit-transform: scale(0.85, 0.85);}
+}
+ 
+@-moz-keyframes scale-animation {
+ 0% {-moz-transform: scale(1, 1);}
+ 50% {-moz-transform: scale(0.85, 0.85);}
+}
+ 
+@-o-keyframes scale-animation {
+ 0%{-o-transform: scale(1, 1);}
+ 50% {-o-transform: scale(0.85, 0.85);}
+}
+@keyframes scale-animation {
+ 0% {transform: scale(1, 1);}
+ 50% {transform: scale(0.85, 0.85);}
+}
+
+.scale-animation{
+	animation: scale-animation 2s infinite;
+ 	-webkit-animation: scale-animation 2s infinite;
+ 	-moz-animation: scale-animation 2s infinite;
+ 	-o-animation: scale-animation 2s infinite;
+}
+
+#arrow-up-mobile{
+	position:absolute; 
+	bottom:10px; 
+	left:10px; 
+	z-index:2000;
+}
+
+#arrow-up-mobile a{
+	display:block;
+	padding:8px 14px;
+	background-color:#FFF;
+}
+
+#arrow-up-mobile a:hover{
+	background-color:#f08080;
+	color:#FFF;
+}
+
+/* 07.8 FEATURE LIST							 */
+/* ----------------------------------------------*/
+.feature-row-wrapper{
+	margin-top:30px;
+}
+
+.feature-wrapper{
+	padding:0 15px;
+}
+
+.icon-and-title{
+	position:relative; 
+	margin-bottom:18px; 
+	margin-left:68px
+}
+
+.the-icon{
+	position:absolute; 
+	color:#333333; 
+	left:-78px; 
+	font-size:42px;
+}
+
+.the-feature{
+	font-size:16px; 
+	line-height:30px;
+}
+
+
+/* 07.9 EVENT									 */
+/* ----------------------------------------------*/
+.event-wrapper{
+	padding-right:60px
+}
+
+.event-location{
+	position:relative; 
+	margin-bottom:18px; 
+	margin-left:40px
+}
+
+.location-icon{
+	color:#333333; 
+	position:absolute; 
+	left:-55px; 
+	font-size:36px
+}
+
+.event-desc{
+	font-size:20px; 
+	line-height:38px
+}
+
+
+/* 07.10 TIMELINE STORY							 */
+/* ----------------------------------------------*/
+#the-timeline{
+	margin:70px 0 70px 0;
+}
+
+.story-row.row {
+    display: table;
+	padding:40px 0;
+	position:relative;
+}
+
+.story-row.row [class*="col-"] {
+    float: none;
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.story-image, .story-desc{
+	padding:0 30px;
+}
+
+.story-desc p{
+	font-size:16px; 
+	line-height:30px
+}
+
+.story-date-wrapper{
+	z-index:1;
+	padding-top:20px;
+}
+
+.story-date{
+	float:left;
+	margin:0 auto;
+	height:100px; 
+	width:100px; 
+	background-color:#f08080; 
+	color:#FFF;	
+	border-radius:50%;
+}
+
+.story-date .date-only{
+	font-family: 'Roboto Slab', serif;
+	font-size:40px; 
+	line-height:22px;
+	padding-top:28px;
+	font-weight:400;
+}
+
+.story-date .month-year{
+	font-family: 'Roboto Slab', serif;
+	font-size:16px;
+	font-weight:400;
+}
+
+.arrow-right {
+	width: 0; 
+	height: 0; 
+	border-top: 13px solid transparent;
+	border-bottom: 13px solid transparent;
+	border-left: 13px solid #e1dddd;
+	float:right;
+	margin-top:40px;
+}
+
+.arrow-left {
+	width: 0; 
+	height: 0; 
+	border-top: 13px solid transparent;
+	border-bottom: 13px solid transparent; 
+	border-right:13px solid #e1dddd; 
+	float:left;
+	margin-right:20px;
+	margin-top:40px;
+}
+
+.vertical-line{
+	position:absolute; 
+	height:100%; 
+	width:1px; 
+	margin:auto; 
+	top:0; 
+	bottom:0; 
+	left:0; 
+	right:0; 
+	border-left:1px solid #e1dddd;
+}
+
+#end-of-story{
+	margin-top:130px;
+}
+
+
+/* 07.11 COUNTDOWN							 	 */
+/* ----------------------------------------------*/
+#countdown{
+	margin-top:20px;;
+	text-align:center;
+	width:80%; 
+	margin:0 auto; 
+}
+
+.countdown-section:last-child{
+	border-right:none;
+}
+
+.countdown-section{
+	border-right: 2px solid #CCC;
+	padding:10px 0;		
+}
+
+.is-countdown {
+	background-color:transparent;
+	border:none;
+}
+
+.countdown-amount {
+	font-weight:400;	
+	width:85px;
+	display:block;
+	/*font-size:30px;*/
+	margin:0 auto;
+	font-size: 42px;	
+}
+
+.countdown-period {
+	display:block;
+	text-align:center;
+	font-size:20px;    
+}
+
+/*-----------------------------------------------*/
+/* 07.12 Popup Template						 	 */
+/*-----------------------------------------------*/
+#popup-template{
+	width:900px;
+	margin:30px auto; 
+	background-color:#FFF;
+}
+
+#popup-template #main-image{
+	height:485px;
+	width:100%;
+	position:relative;
+}
+
+#popup-template-title-wrapper{
+	position:absolute; 
+	bottom:50px; 
+	color:#FFF; 
+	text-align:center; 
+	padding:0 50px;
+	margin:0 auto;
+	width:100%;
+}
+
+#popup-template #the-content{
+	padding:35px 75px;
+}
+
+#popup-template #the-content p{
+	font-size:18px;
+	line-height:36px;
+}
+
+#popup-template #the-content #socialnetwork-icon{
+	text-align:center; 
+	margin-bottom:40px;
+}
+
+#popup-template #the-content img{
+	width:100%;
+	margin:10px 0
+}
+
+/*-----------------------------------------------*/
+/* 07.13 Autocrop Image						 	 */
+/*-----------------------------------------------*/
+.autocrop-image{
+ 	display:block;
+	background-position:center center;
+	background-size:cover;
+	background-repeat:no-repeat;
+	overflow:hidden;
+}
+
+
+/*-----------------------------------------------*/
+/* 07.14 Loader Animation					 	 */
+/*-----------------------------------------------*/
+.loader {
+  position:absolute; 
+  left:0; 
+  right:0; 
+  top:0; 
+  bottom:0; 
+  margin: auto; 
+  width:100px;
+  height:100px;
+}
+
+.wrap {
+	position:absolute;
+	width:100px;
+	height:100px;
+	float:left;
+	
+	-webkit-animation-name: rotateThis;
+	-webkit-animation-duration:1s;
+	-webkit-animation-iteration-count:infinite;
+	-webkit-animation-timing-function:linear;
+	
+	-moz-transform:scale(0.3);
+	-o-transform:scale(0.3);
+}
+
+.wrap div
+{
+	width:10px;
+	height:30px;
+	background:#CCC;
+	position:absolute;
+	top:35px;
+	left:45px;
+	
+	border-radius: 50px;
+	-moz-border-radius-bottomleft:50px;
+	-moz-border-radius-bottomright:50px;
+	-moz-border-radius-topleft:50px;
+	-moz-border-radius-topright:50px;	
+}
+
+@-webkit-keyframes rotateThis {
+	from { -webkit-transform:scale(0.3) rotate(0deg); }
+  	to 	 { -webkit-transform:scale(0.3) rotate(360deg); }
+}
+
+
+.bar1 {
+	-o-transform:rotate(0deg) translate(0, -40px);opacity:0.1;
+	-moz-transform:rotate(0deg) translate(0, -40px);opacity:0.1;
+	-webkit-transform:rotate(0deg) translate(0, -40px);opacity:0.1;
+}
+.bar2 {
+	-o-transform:rotate(36deg) translate(0, -40px);opacity:0.2;
+	-moz-transform:rotate(36deg) translate(0, -40px);opacity:0.2;
+	-webkit-transform:rotate(36deg) translate(0, -40px);opacity:0.2;
+}
+.bar3 {
+	-o-transform:rotate(72deg) translate(0, -40px);opacity:0.3;
+	-moz-transform:rotate(72deg) translate(0, -40px);opacity:0.3;
+	-webkit-transform:rotate(72deg) translate(0, -40px);opacity:0.3;
+}
+.bar4 {
+	-o-transform:rotate(108deg) translate(0, -40px);opacity:0.4;
+	-moz-transform:rotate(108deg) translate(0, -40px);opacity:0.4;
+	-webkit-transform:rotate(108deg) translate(0, -40px);opacity:0.4;
+}
+.bar5 {
+	-o-transform:rotate(144deg) translate(0, -40px);opacity:0.5;
+	-moz-transform:rotate(144deg) translate(0, -40px);opacity:0.5;
+	-webkit-transform:rotate(144deg) translate(0, -40px);opacity:0.5;
+}
+.bar6 {
+	-o-transform:rotate(180deg) translate(0, -40px);opacity:0.6;
+	-moz-transform:rotate(180deg) translate(0, -40px);opacity:0.6;
+	-webkit-transform:rotate(180deg) translate(0, -40px);opacity:0.6;
+}
+.bar7 {
+	-o-transform:rotate(216deg) translate(0, -40px);opacity:0.7;
+	-moz-transform:rotate(216deg) translate(0, -40px);opacity:0.7;
+	-webkit-transform:rotate(216deg) translate(0, -40px);opacity:0.7;
+}
+.bar8 {
+	-o-transform:rotate(252deg) translate(0, -40px);opacity:0.8;
+	-moz-transform:rotate(252deg) translate(0, -40px);opacity:0.8;
+	-webkit-transform:rotate(252deg) translate(0, -40px);opacity:0.8;
+}
+.bar9 {
+	-o-transform:rotate(288deg) translate(0, -40px);opacity:0.9;
+	-moz-transform:rotate(288deg) translate(0, -40px);opacity:0.9;
+	-webkit-transform:rotate(288deg) translate(0, -40px);opacity:0.9;
+}
+.bar10 {
+	-o-transform:rotate(324deg) translate(0, -40px);opacity:1;
+	-moz-transform:rotate(324deg) translate(0, -40px);opacity:1;
+	-webkit-transform:rotate(324deg) translate(0, -40px);opacity:1;
+}
+
+
+
+
+/*===============================================*/
+/* 08. ICON										 */
+/*===============================================*/
+.de-icon{
+	/*width: 60px;
+	height: 60px;
+	line-height: 60px;
+	font-size:35px;*/
+	text-align: center;
+	vertical-align: middle;	
+	margin:8px 0px;
+	
+	-webkit-transition: 0.3s all ease;
+	-moz-transition: 0.3s all ease;
+	-o-transition: 0.3s all ease;
+	-ms-transition: 0.3s all ease;
+	transition: 0.3s all ease;
+	/*The transition will be disabled on script.js for tablet/mobile*/
+}
+
+.de-icon.aligncenter{
+	margin:0 auto;
+}
+
+.de-icon.inline{
+	display:inline-block;
+	vertical-align:middle;
+	margin-right:2px;
+}
+
+/*.de-icon.float{
+	float:left; 
+	margin-right:15px
+}*/
+
+.de-icon i{
+	-webkit-transition: 0.3s all ease;
+	-moz-transition: 0.3s all ease;
+	-o-transition: 0.3s all ease;
+	-ms-transition: 0.3s all ease;
+	transition: 0.3s all ease;
+	/*The transition will be disabled on script.js for tablet/mobile*/
+}
+
+/*------------------------------------------------*/
+/* 08.1	 Size 							   	  	  */
+/*------------------------------------------------*/
+.de-icon.large-size{
+	font-size:45px;
+	margin:15px 0;	
+}
+
+.de-icon.large-size.circle,
+.de-icon.large-size.square,
+.de-icon.large-size.rounded{
+	width: 100px;
+	height: 100px;
+	line-height: 94px;	
+}
+
+.de-icon.medium-size{
+	/*font-size:24px;*/
+	font-size:30px;
+	margin:10px 0;	
+}
+
+.de-icon.medium-size.circle,
+.de-icon.medium-size.square,
+.de-icon.medium-size.rounded{
+	width: 70px;
+	height: 70px;
+	line-height: 64px;
+}
+
+.de-icon.small-size{
+	/*font-size:18px;	*/
+	font-size:20px;
+	margin:5px 0;	
+}
+
+.de-icon.small-size.circle,
+.de-icon.small-size.square,
+.de-icon.small-size.rounded{
+	width: 40px;
+	height: 40px;
+	line-height: 34px;	
+}
+
+.de-icon.very-small-size{
+	font-size:11px;	
+}
+
+.de-icon.very-small-size.circle,
+.de-icon.very-small-size.square,
+.de-icon.very-small-size.rounded{
+	width: 25px;
+	height: 25px;
+	line-height: 18px;
+}
+
+/*------------------------------------------------*/
+/* 08.2 Shape / Color							  */
+/*------------------------------------------------*/
+
+/* 08.2.1 Default								  */
+/*------------------------------------------------*/
+.de-icon{
+	color:#f08080;
+}
+
+.de-icon.square, .de-icon.circle, .de-icon.rounded{
+	background-color:#f08080;
+	color:#FFF;
+	/*border:1px solid #f08080;*/
+}
+
+.de-icon.outline{
+	background-color:transparent;
+	color:#f08080;
+	border:1px solid;
+}
+
+a:hover .de-icon{
+	color:#444444;
+}
+
+a:hover .de-icon.square, a:hover .de-icon.circle, a:hover .de-icon.rounded, a:hover .de-icon.outline{
+	color:#FFF;
+	background-color:#444444;
+	border-color: #444444;
+}
+
+/* 08.2.2 Default Reverse						  */
+/*------------------------------------------------*/
+.de-icon.reverse{
+	color:#444444;
+}
+
+.de-icon.reverse.square, .de-icon.reverse.circle, .de-icon.reverse.rounded{
+	background-color:#444444;
+	color:#FFF;
+	border:1px solid #444444;
+}
+
+.de-icon.reverse.outline{
+	background-color:transparent;
+	color:#444444;
+	border:1px solid #444444;
+}
+
+a:hover .de-icon.reverse	{
+	color:#f08080;
+}
+
+a:hover .de-icon.reverse.square, a:hover .de-icon.reverse.circle, a:hover .de-icon.reverse.rounded, a:hover .de-icon.reverse.outline{
+	color:#FFF;
+	background-color:#f08080;
+	border-color: #f08080;
+}
+
+
+/* 08.2.3 Light-1						 		 */
+/*------------------------------------------------*/
+.de-icon.light-1{
+	color:#FFF;
+}
+
+.de-icon.light-1.square, .de-icon.light-1.circle, .de-icon.light-1.rounded{
+	background-color:#FFF;
+	color:#f08080;
+	border:1px solid #FFF;
+}
+
+.de-icon.light-1.outline{
+	background-color:transparent;
+	color:#FFF;
+	border:1px solid #FFF;
+}
+
+a:hover .de-icon.light-1	{
+	color:#f08080;
+}
+
+a:hover .de-icon.light-1.square, a:hover .de-icon.light-1.circle, a:hover .de-icon.light-1.rounded, a:hover .de-icon.light-1.outline{
+	color:#FFF;
+	background-color:#f08080;
+	border-color: #f08080;
+}
+
+/* 08.2.4 Light-1 Reverse						  */
+/*------------------------------------------------*/
+.de-icon.light-1.reverse{
+	color:#f08080;
+}
+
+.de-icon.light-1.reverse.square, .de-icon.light-1.reverse.circle, .de-icon.light-1.reverse.rounded{
+	background-color:#f08080;
+	color:#FFF;
+	border:1px solid #f08080;
+}
+
+.de-icon.light-1.reverse.outline{
+	background-color:transparent;
+	color:#f08080;
+	border:1px solid #f08080;
+}
+
+a:hover .de-icon.light-1.reverse	{
+	color:#FFF;
+}
+
+a:hover .de-icon.light-1.reverse.square, a:hover .de-icon.light-1.reverse.circle, a:hover .de-icon.light-1.reverse.rounded, a:hover .de-icon.light-1.reverse.outline{
+	color:#f08080;
+	background-color:#FFF;
+	border-color: #FFF;
+}
+
+/* 08.2.5 Light-2						  */
+/*------------------------------------------------*/
+.de-icon.light-2{
+	color:#FFF;
+}
+
+.de-icon.light-2.square, .de-icon.light-2.circle, .de-icon.light-2.rounded{
+	background-color:#FFF;
+	color:#444444;
+	border:1px solid #FFF;
+}
+
+.de-icon.light-2.outline{
+	background-color:transparent;
+	color:#FFF;
+	border:1px solid #FFF;
+}
+
+a:hover .de-icon.light-2	{
+	color:#444444;
+}
+
+a:hover .de-icon.light-2.square, a:hover .de-icon.light-2.circle, a:hover .de-icon.light-2.rounded, a:hover .de-icon.light-2.outline{
+	color:#FFF;
+	background-color:#444444;
+	border-color: #444444;
+}
+
+/* 08.2.6 Light-2 Reverse						  */
+/*------------------------------------------------*/
+.de-icon.light-2.reverse{
+	color:#444444;
+}
+
+.de-icon.light-2.reverse.square, .de-icon.light-2.reverse.circle, .de-icon.light-2.reverse.rounded{
+	background-color:#444444;
+	color:#FFF;
+	border:1px solid #444444;
+}
+
+.de-icon.light-2.reverse.outline{
+	background-color:transparent;
+	color:#444444;
+	border:1px solid #444444;
+}
+
+a:hover .de-icon.light-2.reverse	{
+	color:#FFF;
+}
+
+a:hover .de-icon.light-2.reverse.square, a:hover .de-icon.light-2.reverse.circle, a:hover .de-icon.light-2.reverse.rounded, a:hover .de-icon.light-2.reverse.outline{
+	color:#444444;
+	background-color:#FFF;
+	border-color: #FFF;
+}
+
+
+/* 08.2.7 Circle, Rounded, Square				  */
+/*------------------------------------------------*/
+.de-icon.circle{
+	border-radius: 50%;
+}
+
+.de-icon.rounded{
+	border-radius: 20%;
+}
+
+
+/*------------------------------------------------*/
+/* 08.3 Effect Zoom 						 	  */
+/*------------------------------------------------*/
+.de-icon.effect1{
+	-webkit-transform: scale(1);
+	   -moz-transform: scale(1);
+	     -o-transform: scale(1);
+	    -ms-transform: scale(1);
+	        transform: scale(1);	
+}
+
+a:hover .de-icon.effect1{
+	-webkit-transform: scale(1.2);
+	   -moz-transform: scale(1.2);
+	     -o-transform: scale(1.2);
+	    -ms-transform: scale(1.2);
+	        transform: scale(1.2);	
+}
+
+/*------------------------------------------------*/
+/* 08.4 Effect Rotate						  	  */
+/*------------------------------------------------*/
+.de-icon.effect2 i{
+	display:block;
+	-webkit-transform: rotate(0deg);
+	   -moz-transform: rotate(0deg);
+	     -o-transform: rotate(0deg);
+	    -ms-transform: rotate(0deg);
+	        transform: rotate(0deg);	
+}
+
+a:hover .de-icon.effect2 i{
+	-webkit-transform: rotate(360deg);
+	   -moz-transform: rotate(360deg);
+	     -o-transform: rotate(360deg);
+	    -ms-transform: rotate(360deg);
+	        transform: rotate(360deg);	
+}
+
+/*------------------------------------------------*/
+/* 08.5 Effect Square/Rounded To Circle 	  	  */
+/*------------------------------------------------*/
+a:hover .de-icon.effect3{
+	border-radius: 50%;
+}
+
+
+
+/*===============================================*/
+/* 09. PHOTO ITEM								 */
+/*===============================================*/
+.photo-item {
+	position:relative;
+	overflow:hidden;
+	margin-bottom:30px;
+}
+
+.photo-item.frame-border {
+	background-color:#FFF; 
+	border:18px solid #FFF;
+}
+
+/* ----------------------------------------------*/
+/* 09.1 Image 									 */
+/* ----------------------------------------------*/
+.photo-item img {
+	width:100%;
+}
+
+
+/* ----------------------------------------------*/
+/* 09.2 Layer 								 	 */
+/* ----------------------------------------------*/
+.photo-item .layer {
+	position: absolute; 
+	margin: auto;
+	top: 0; 
+	right: 0; 
+	bottom: 0;
+	left: 0;
+	width:100%;
+	height:100%;
+}
+
+.photo-item .layer.wh100{
+	width:100%;
+	height:100%; 
+}
+
+.photo-item .layer.wh95{
+	width:95%;
+	height:95%; 
+}
+
+
+/* 09.2.1 Layer : Second Image   				 */
+/* ----------------------------------------------*/
+.photo-item .layer.second-image{
+	opacity: 0; 
+}
+
+
+/* 09.2.2 Layer : Black Overlay  				 */
+/* ----------------------------------------------*/
+.photo-item .layer.opacity-black-overlay{
+	background-color: rgba(54, 54, 54, 0.4);
+	opacity: 0.3; 
+}
+
+.photo-item .layer.hidden-black-overlay{
+	background-color: rgba(54, 54, 54, 0.4);
+	opacity: 0; 
+}
+
+/* 09.2.3 Layer : Photo Caption  				 */
+/* ----------------------------------------------*/
+.photo-item .layer.photo-caption{
+	opacity: 1; 
+}
+
+.photo-item .layer.hidden-photo-caption{
+	opacity: 0; 
+}
+
+.photo-item .layer.border-photo-caption{
+	opacity: 1;
+	border:1px solid #FFF; 
+}
+
+.photo-item .layer.hidden-border-photo-caption{
+	opacity: 0;
+	border:1px solid #FFF; 
+}
+
+
+/* 09.2.4 Layer : Icon / Button Link		 	 */
+/* ----------------------------------------------*/
+.photo-item .layer.link{
+	opacity: 1;
+}
+
+.photo-item .layer.hidden-link{
+	opacity: 0;
+}
+
+.photo-item:hover .layer.hover-animation.fade-in{
+	opacity: 1; 
+}
+
+.photo-item:hover .layer.hover-animation.half-fade-in{
+	opacity: 0.3; 
+}
+
+.photo-item:hover .layer.hover-animation.fade-out{
+	opacity: 0; 
+}
+
+/* ----------------------------------------------*/
+/* 09.3 on Hover Animation					 	*/
+/* ----------------------------------------------*/
+.photo-item img.hover-animation, .photo-item:hover img.hover-animation{
+	-webkit-transition: all 0.5s; 
+		-ms-transition: all 0.5s;
+		 -o-transition: all 0.5s;
+			transition: all 0.5s;
+	/*The transition will be disabled on script.js for tablet/mobile*/		
+}
+
+.photo-item .layer.hover-animation, .photo-item:hover .layer.hover-animation {
+	-webkit-transition: all 0.5s; 
+		-ms-transition: all 0.5s;
+		 -o-transition: all 0.5s;
+			transition: all 0.5s;
+	/*The transition will be disabled on script.js for tablet/mobile*/	
+}
+
+/* 09.3.1 on Hover Animation Duration		 	 */
+/* ----------------------------------------------*/
+.photo-item:hover .layer.hover-animation.duration1,
+.photo-item:hover img.hover-animation.duration1{
+	transition-duration:0.5s;
+}
+
+.photo-item:hover .layer.hover-animation.duration2,
+.photo-item:hover img.hover-animation.duration12{
+	transition-duration:1s;
+}
+
+.photo-item:hover .layer.hover-animation.duration3,
+.photo-item:hover img.hover-animation.duration3{
+	transition-duration:1.5s;
+}
+
+.photo-item:hover .layer.hover-animation.duration4,
+.photo-item:hover img.hover-animation.duration4{
+	transition-duration:2s;
+}
+
+.photo-item:hover .layer.hover-animation.duration5,
+.photo-item:hover img.hover-animation.duration5{
+	transition-duration:2.5s;
+}
+
+/* 09.3.2 on Hover Animation Delay		 	 	 */
+/* ----------------------------------------------*/
+.photo-item:hover .layer.hover-animation.delay1,
+.photo-item:hover img.hover-animation.delay1{
+	transition-delay:0.5s;
+}
+
+.photo-item:hover .layer.hover-animation.delay2,
+.photo-item:hover img.hover-animation.delay2{
+	transition-delay:1s;
+}
+
+.photo-item:hover .layer.hover-animation.delay3,
+.photo-item:hover img.hover-animation.delay3{
+	transition-delay:1.5s;
+}
+
+.photo-item:hover .layer.hover-animation.delay4,
+.photo-item:hover img.hover-animation.delay4{
+	transition-delay:2s;
+}
+
+.photo-item:hover .layer.hover-animation.delay5,
+.photo-item:hover img.hover-animation.delay5{
+	transition-delay:2.5s;
+}
+
+
+/* 09.3.3 on Hover Zoom In					 	 */
+/* ----------------------------------------------*/
+.photo-item:hover img.hover-animation.image-zoom-in {
+	-webkit-transform: scale(1.1); 
+		-ms-transform: scale(1.1);
+		 -o-transform: scale(1.1);  
+			transform: scale(1.1);		
+}
+
+/* 09.3.4 on Hover Zoom In and Rotate	 	 	*/
+/* ----------------------------------------------*/
+.photo-item:hover img.hover-animation.image-zoom-rotate {
+	-webkit-transform: rotate(7deg) scale(1.1);
+		-ms-transform: rotate(7deg) scale(1.1);
+		 -o-transform: rotate(7deg) scale(1.1);  
+			transform: rotate(7deg) scale(1.1);			
+}
+
+/* 09.3.5 on Hover Fade Out				 		 */
+/* ----------------------------------------------*/
+.photo-item:hover img.hover-animation.image-fade-out {
+	opacity:0;
+}
+
+
+
+/*===============================================*/
+/* 10. BUTTON									 */
+/*===============================================*/
+
+/* ----------------------------------------------*/
+/* 10.1 Color			 					 	 */
+/* ----------------------------------------------*/
+
+/* 10.1.1 Default		 					 	 */
+/* ----------------------------------------------*/
+
+a.de-button, span.de-button, input[type=submit]{
+	display:inline-block; 	
+	margin:0 auto; 
+	margin-top:20px;
+	margin-right:10px; 
+	background-color:#f08080;
+	color:#FFF;
+	font-family: 'Roboto Slab', serif;
+	font-weight:400;
+	border:solid 1px #f08080;
+	text-decoration:none
+}
+
+a.de-button.outline, span.de-button.outline, input[type=submit].outline{
+	background-color:transparent; 
+	border:solid 1px #f08080;
+	color:#f08080;
+}
+
+a.de-button:hover, input[type=submit]:hover{
+	background-color:#444444;
+	border-color: #444444;
+	color:#FFF;
+	text-decoration:none;
+}
+
+/* 10.1.2 Reverse		 					 	 */
+/* ----------------------------------------------*/
+
+a.de-button.reverse, span.de-button.reverse, input[type=submit].reverse{
+	background-color:#444444; 
+	border-color: #444444;
+	color:#FFF;
+}
+
+a.de-button.outline.reverse, span.de-button.outline.reverse, input[type=submit].outline.reverse{
+	background-color:transparent; 
+	border:solid 1px #444444;
+	color:#444444;
+}
+
+a.de-button.reverse:hover, input[type=submit].reverse:hover{
+	background-color:#f08080;
+	border-color: #f08080;
+	color:#FFF;
+	text-decoration:none;
+}
+
+
+/* 10.1.3 Light-1		 					 	 */
+/* ----------------------------------------------*/
+
+a.de-button.light-1, span.de-button.light-1, input[type=submit].light-1{	
+	background-color:#FFF;
+	color:#f08080;
+	border:solid 1px #FFF;
+}
+
+a.de-button.outline.light-1, span.de-button.outline.light-1, input[type=submit].outline.light-1{
+	background-color:transparent; 
+	border:solid 1px #FFF;
+	color:#FFF;
+}
+
+a.de-button.light-1:hover, input[type=submit].light-1:hover{
+	background-color:#f08080;
+	border-color: #f08080;
+	color:#FFF;
+	text-decoration:none;
+}
+
+
+/* 10.1.4 Light-1 Reverse	 					 */
+/* ----------------------------------------------*/
+a.de-button.reverse.light-1, span.de-button.reverse.light-1, input[type=submit].reverse.light-1{
+	background-color:#f08080; 
+	border-color: #f08080;
+	color:#FFF;
+}
+
+a.de-button.reverse.outline.light-1, span.de-button.reverse.outline.light, input[type=submit].reverse.outline.light{
+	background-color:transparent; 
+	border:solid 1px #f08080;
+	color:#f08080;
+}
+
+a.de-button.reverse.light-1:hover, input[type=submit].reverse.light-1:hover{
+	background-color:#FFF;
+	border-color: #FFF;
+	color:#f08080;
+	text-decoration:none;
+}
+
+
+/* 10.1.5 Light-2			 					 */
+/* ----------------------------------------------*/
+a.de-button.light-2, span.de-button.light-2, input[type=submit].light-2{	
+	background-color:#FFF;
+	color:#444444;
+	border:solid 1px #FFF;
+}
+
+a.de-button.outline.light-2, span.de-button.outline.light-2, input[type=submit].outline.light-2{
+	background-color:transparent; 
+	border:solid 1px #FFF;
+	color:#FFF;
+}
+
+a.de-button.light-2:hover, input[type=submit].light-2:hover{
+	background-color:#444444;
+	border-color: #444444;
+	color:#FFF;
+	text-decoration:none;
+}
+
+
+/* 10.1.6 Light-2 Reverse	 					 */
+/* ----------------------------------------------*/
+a.de-button.reverse.light-2, span.de-button.reverse.light-2, input[type=submit].reverse.light-2{
+	background-color:#444444; 
+	border-color: #444444;
+	color:#FFF;
+}
+
+a.de-button.reverse.outline.light-2, span.de-button.reverse.outline.light, input[type=submit].reverse.outline.light{
+	background-color:transparent; 
+	border:solid 1px #444444;
+	color:#444444;
+}
+
+a.de-button.reverse.light-2:hover, input[type=submit].reverse.light-2:hover{
+	background-color:#FFF;
+	border-color: #FFF;
+	color:#444444;
+	text-decoration:none;
+}
+
+
+/* ----------------------------------------------*/
+/* 10.2 Size			 					 	 */
+/* ----------------------------------------------*/
+a.de-button.small, span.de-button.small, input[type=submit].small{
+	padding:10px 48px; 
+	font-size:16px; 
+}
+
+a.de-button.medium, span.de-button.medium, input[type=submit].medium{
+	padding:16px 54px; 
+	font-size:20px; 
+}
+
+a.de-button.large, span.de-button.large, input[type=submit].large{
+	padding:18px 60px; 
+	font-size:24px; 
+}
+
+
+/* ----------------------------------------------*/
+/* 10.3 Rounded			 					 	 */
+/* ----------------------------------------------*/
+a.de-button.small.rounded, span.de-button.small.rounded, input[type=submit].small.rounded{
+	border-radius:1px
+} 
+
+a.de-button.medium.rounded, span.de-button.medium.rounded, input[type=submit].medium.rounded{
+	border-radius:2px;
+}
+
+a.de-button.large.rounded, span.de-button.large.rounded, input[type=submit].large.rounded{
+	border-radius:3px;
+}
+
+
+/*===============================================*/
+/* 11. FORM										 */
+/*===============================================*/
+.form-wrapper{
+	margin:20px 0;
+}
+
+/*-----------------------------------------------*/
+/* 11.1 Form Group								 */
+/*-----------------------------------------------*/
+.form-group{
+	margin-bottom: 30px;
+}
+
+.form-group.submit-wrapper{
+	margin-top:30px;
+}
+
+/*-----------------------------------------------*/
+/* 11.2 Form Control							 */
+/*-----------------------------------------------*/
+.form-control {
+   	height:40px;
+	border-radius:0;
+	font-size:18px;
+}
+
+.form-control:focus {
+	border-color: #cccccc;
+	-webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 6px #cccccc;
+          box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 6px #cccccc;
+}
+
+/*-----------------------------------------------*/
+/* 11.3 Input Group								 */
+/*-----------------------------------------------*/
+.input-group-addon {
+	border-radius:0;
+}
+
+/*-----------------------------------------------*/
+/* 11.4 Label									 */
+/*-----------------------------------------------*/
+form label{
+	font-family: 'Roboto Slab', serif;
+	font-size:18px;
+	font-weight:normal;
+}
+
+.option-label{
+	font-family: 'Roboto Slab', serif;
+	color:#6a6a6a;
+	font-size:18px;
+	line-height:18px;
+}
+
+/*-----------------------------------------------*/
+/* 11.5 Button									 */
+/*-----------------------------------------------*/
+form .btn-primary 
+{
+    padding: 12px 18px;
+    margin: 0 15px 5px 15px; 
+    border-radius: 0;
+	font-family: 'Roboto Slab', serif;
+	color:#6a6a6a;
+	font-size:18px;
+  	background-color: #FFF;
+  	border-color: #cccccc;
+}
+
+form .btn-primary:hover,
+form .btn-primary:focus,
+form .btn-primary.focus,
+form .btn-primary:active,
+form .btn-primary.active,
+.open > .dropdown-toggle.btn-primary {
+	background-color:#f08080; 
+	border-color:#f08080;
+	color:#FFF;
+ 	border-color: #cccccc;
+}
+
+/*-----------------------------------------------*/
+/* 11.6 Checkbox and Radio (Custom)				 */
+/*-----------------------------------------------*/
+.ajax-checkbox .btn input[type=checkbox],
+.ajax-radio .btn input[type=radio]{
+	display:none;	
+}
+
+.ajax-checkbox .btn.custom-option-icon, .ajax-checkbox .btn.no-icon,
+.ajax-radio .btn.custom-option-icon, .ajax-radio .btn.no-icon{
+	margin-left:0;
+	text-align:left;
+}
+
+.ajax-checkbox .btn.custom-option-icon:before{
+	font-family:"fontello";
+	content:"\eab8";
+	margin-right:7px;
+}
+
+.ajax-checkbox .btn.active-icon.custom-option-icon:before{
+	font-family:"fontello";
+	content:"\eab7";
+	margin-right:7px;
+}
+
+.ajax-radio .btn.custom-option-icon:before{
+	font-family:"fontello";
+	content:"\f10c";
+	margin-right:7px;
+	font-size:18px;
+	font-weight:bold;
+}
+
+.ajax-radio .btn.active-icon.custom-option-icon:before{
+	font-family:"fontello";
+	content:"\f192";
+	margin-right:7px;
+	font-size:18px;
+	font-weight:bold;
+}
+
+/*-----------------------------------------------*/
+/* 11.7 Select Option							 */
+/*-----------------------------------------------*/
+
+select option{
+	padding:4px 0 !important;
+}
+
+option{
+	color:#747474;
+}
+
+/*-----------------------------------------------*/
+/* 11.8 Message									 */
+/*-----------------------------------------------*/
+.message{
+	margin-bottom:20px;
+	font-size:18px
+}
+
+.message .bg-danger, .message .bg-success{
+	padding:8px 14px;
+	color:#ffffff;
+}
+
+.message .bg-danger{
+	background-color:#f08080; 
+}
+
+.message .bg-success{
+	background-color:#6a6a6a;
+}
+
+
+/*-----------------------------------------------*/
+/* 11.9 Validation								 */
+/*-----------------------------------------------*/
+form .has-error .btn-primary{
+	border-color: #f397a1;
+}
+
+.has-error .form-control {
+  border-color: #f397a1;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+          box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+}
+
+.has-error .form-control:focus {
+  border-color: #f397a1;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 6px #f397a1;
+          box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 6px #f397a1;
+}
+
+
+/*===============================================*/
+/* 12. GALLERY  								 */
+/*===============================================*/
+
+/*-----------------------------------------------*/
+/* 12.1 Full Gallery							 */
+/*-----------------------------------------------*/
+#full-gallery{
+	padding-top:90px;
+}
+
+/*-----------------------------------------------*/
+/* 12.2 MASONRY GALLERY							 */
+/*-----------------------------------------------*/
+.masonry-col.w100{
+	width:100%;
+}
+
+/* 12.2.1 Three Column No Gutter		 		 */
+/* ----------------------------------------------*/
+.three-col .grid-sizer{
+	width:33.33%;
+}
+
+.three-col .gutter-sizer{
+	width:0;
+}
+
+.three-col .masonry-col.w33{
+	width:33.33%;
+}
+
+.three-col .masonry-col.w66{
+	width:66.67%;
+}
+
+
+/* 12.2.2 Three Column With Gutter	 			 */
+/* ----------------------------------------------*/
+.three-col.with-gutter .grid-sizer{
+	width:31%;
+}
+
+.three-col.with-gutter .gutter-sizer{
+	width:3.45%;
+}
+
+.three-col.with-gutter .masonry-col{
+	margin-bottom:40px;
+}
+
+
+.three-col.with-gutter .masonry-col.w33{
+	width:31%;
+}
+
+.three-col.with-gutter .masonry-col.w66{
+	width:62%;
+}
+
+
+/* 12.2.3 Four Column No Gutter		 			 */
+/* ----------------------------------------------*/
+.four-col .grid-sizer{
+	width:25%;
+}
+
+.four-col .gutter-sizer{
+	width:0;
+}
+
+.four-col .masonry-col.w25{
+	width:25%;
+}
+
+.four-col .masonry-col.w50{
+	width:50%;
+}
+
+.four-col .masonry-col.w75{
+	width:75%;
+}
+
+
+/* 12.2.4 Four Column With Gutter		 	     */
+/* ----------------------------------------------*/
+.four-col.with-gutter .grid-sizer{
+	width:23%;
+}
+
+.four-col.with-gutter .gutter-sizer{
+	width:2.666%;
+}
+
+.four-col.with-gutter .masonry-col{
+	margin-bottom:25px;
+}
+
+.four-col.with-gutter .masonry-col.w25{
+	width:23%;
+}
+
+.four-col.with-gutter .masonry-col.w50{
+	width:46%;
+}
+
+.four-col.with-gutter .masonry-col.w75{
+	width:69%;
+}
+
+
+/* 12.2.5 Five Column No Gutter		 			 */
+/* ----------------------------------------------*/
+.five-col .grid-sizer{
+	width:20%;
+}
+
+.five-col .gutter-sizer{
+	width:0;
+}
+
+.five-col .masonry-col.w20{
+	width:20%;
+}
+
+.five-col .masonry-col.w40{
+	width:40%;
+}
+
+.five-col .masonry-col.w60{
+	width:60%;
+}
+
+.five-col .masonry-col.w80{
+	width:80%;
+}
+
+
+/* 12.2.6 Five Column With Gutter		 	     */
+/* ----------------------------------------------*/
+.five-col.with-gutter .grid-sizer{
+	width:18%;
+}
+
+.five-col.with-gutter .gutter-sizer{
+	width:2.5%;
+}
+
+.five-col.with-gutter .masonry-col{
+	margin-bottom:25px;
+}
+
+.five-col.with-gutter .masonry-col.w20{
+	width:18%;
+}
+
+.five-col.with-gutter .masonry-col.w40{
+	width:36%;
+}
+
+.five-col.with-gutter .masonry-col.w60{
+	width:54%;
+}
+
+.five-col.with-gutter .masonry-col.w80{
+	width:72%;
+}
+
+
+/*===============================================*/
+/* 13. OTHER CUSTOM STYLE						 */
+/*===============================================*/
+
+/* -------------------------------------------*/
+/* 13.1 Interest Place Title	  			  */
+/* -------------------------------------------*/
+#interest-place-title{
+	margin-bottom:70px;
+}
+
+/* -------------------------------------------*/
+/* 13.2 Bridesmaid / Groomsmen Name & Duty	  */
+/* -------------------------------------------*/
+.bridesmaid-name, .groomsmen-name{
+	color:#FFF;  
+	font-weight:400; 
+	font-size:26px;
+}
+
+.bridesmaid-duty, .groomsmen-duty{
+	color:#FFF; 
+	font-size:16px;
+}
+
+/* -------------------------------------------*/
+/* 13.3 Accomodation List			  		  */
+/* -------------------------------------------*/
+#accomodation-list{
+	margin:30px 0 80px 0;
+}
+
+
+/*===============================================*/
+/* 14. PLUGIN CUSTOM							 */
+/*===============================================*/
+ 
+/* -------------------------------------------*/
+/* 14.1 Owl Carousel 						  */
+/* -------------------------------------------*/
+.owl-carousel .item{
+	padding:0 15px
+}
+
+.owl-theme .owl-controls .owl-page span{
+	display: block;
+	width: 8px;
+	height: 8px;
+	margin: 5px 7px;
+	opacity: 1;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+	background: #333333;
+}
+
+.owl-theme .owl-controls .owl-page.active span,
+.owl-theme .owl-controls.clickable .owl-page:hover span{
+	background: #f08080;
+}
+
+/* -------------------------------------------*/
+/* 14.2 MAGNIFIC POPUP 						  */
+/* -------------------------------------------*/
+.mfp-bg{
+	z-index:2000;
+	-webkit-transform: translateZ(0);
+}
+
+.mfp-title{
+	font-size:16px;
+}
+
+.mfp-wrap {
+  	z-index: 2001;
+}
+
+.mfp-content {
+  	z-index: 2003;
+}
+  
+.mfp-preloader {
+  	z-index: 2002; 
+}
+
+button.mfp-close, button.mfp-arrow {
+  	z-index: 2003;
+}
+
+/*===============================================*/
+/* 99. MEDIA SCREEN		 						 */
+/*===============================================*/
+@media screen and (max-width: 1366px) {
+/*===============================================*/
+/* 01. GENERAL			 						 */
+/*===============================================*/	
+p{
+	font-size:21px;
+	line-height:40px;
+	margin-bottom:40px;
+}
+
+/*===============================================*/
+/* 07. PAGE							 		 	 */
+/*===============================================*/
+
+/* 07.1  BLURB								 	 */
+/* ----------------------------------------------*/
+.blurb{
+	padding:0 100px;
+}
+}
+
+@media screen and (max-width: 1200px) {
+/*===============================================*/
+/* 02. NAV BAR				 					 */
+/*===============================================*/
+#nav-bar{
+	padding: 25px 50px;	
+}
+	
+/*===============================================*/
+/* 06. MAIN-SLIDER					 		 	 */
+/*===============================================*/
+
+/* 06.5.2 Inner Wrapper 						 */
+/* ----------------------------------------------*/
+.slide-title-inner-wrapper{
+	width:100%; 
+}
+
+/*===============================================*/
+/* 07. PAGE							 		 	 */
+/*===============================================*/
+
+/* 07.1  BLURB								 	 */
+/* ----------------------------------------------*/
+.blurb{
+	padding:0 30px;
+}
+
+/* 07.8 FEATURE LIST							 */
+/* ----------------------------------------------*/
+.feature-wrapper{
+	padding:0 0px;
+}
+
+/* 07.9 EVENT									 */
+/* ----------------------------------------------*/
+.event-wrapper{
+	padding-right:30px
+}
+
+/* 07.10 TIMELINE STORY							 */
+/* ----------------------------------------------*/
+.story-date{
+	float:none;
+}
+
+.arrow-right {
+	display:none;
+	float:none;
+}
+
+.arrow-left {
+	display:none;
+	float:none;
+}
+}
+
+@media screen and (max-width: 991px) {	
+/*===============================================*/
+/* 04. NAV MENU			 						 */
+/*===============================================*/
+
+/* ----------------------------------------------*/
+/* 04.1	Parent Menu								 */
+/* ----------------------------------------------*/
+#top-nav-menu { display: none;  }
+#top-nav-menu.open { display: block }
+
+#top-nav-menu, #top-nav-menu ul{
+	-webkit-overflow-scrolling : touch;
+}
+
+#top-nav-menu{
+	position:absolute;
+	background-color:#FFF;
+	width:100%;
+	top:100%;
+	left:0;
+	padding:24px 0;
+	height:400px;
+	overflow:auto;
+}
+
+#top-nav-menu li{
+	position:relative;
+	display:block;
+	margin-right:0;
+	padding:0;
+}
+
+#top-nav-menu li a{
+	display:block;
+	padding:15px 50px !important;
+}
+
+/* ----------------------------------------------*/
+/* 04.2 Child Menu								 */
+/* ----------------------------------------------*/
+#top-nav-menu ul{
+	display:block;
+	width:100%;
+	left:0;
+	position:relative;
+	top:0;
+	padding:0;
+}
+
+#top-nav-menu ul li{
+	padding:0;
+}
+
+#top-nav-menu ul li a{
+	padding:0;
+}   
+
+#top-nav-menu > li:last-child ul{
+	left:0;
+}
+
+#top-nav-menu li > ul li a:before{ 
+	content: '-';
+	padding-right:10px;
+} 
+
+/* ----------------------------------------------*/
+/* 04.3 Child Arrow								 */
+/* ----------------------------------------------*/
+#top-nav-menu li > ul li a:after { 
+	content: '';
+} 
+
+/* ----------------------------------------------*/
+/* 04.4 More Child								 */
+/* ----------------------------------------------*/
+#top-nav-menu ul ul{
+	display:block;
+	width:100%;
+	top:0;
+	left:0;
+	padding-top:0;
+}
+
+#top-nav-menu ul ul li a:before{ 
+	content: '- -';
+	padding-right:10px;
+} 
+
+#top-nav-menu ul ul ul li a:before{ 
+	content: '- - -';
+	padding-right:10px;
+} 
+
+/* ----------------------------------------------*/
+/* 04.5 Mobile Navigation						 */
+/* ----------------------------------------------*/
+#mobile-nav{
+	display:block;
+	position:relative;
+	float:right;
+	font-size:24px;
+	z-index:1000;
+}
+
+/*===============================================*/
+/* 06. MAIN-SLIDER					 		 	 */
+/*===============================================*/
+
+/* 06.2.1 Main Slider Flexslider Control Nav & Paging */
+/* ----------------------------------------------*/
+#main-slider.flexslider:hover .flex-prev { opacity:0.4;  left: 20px; }
+#main-slider.flexslider:hover .flex-next { opacity:0.4; right: 20px; }
+#main-slider.flexslider .flex-direction-nav .flex-prev { opacity:0.4; left: 20px; }
+#main-slider.flexslider .flex-direction-nav .flex-next { opacity:0.4; right: 20px; }
+
+
+/*===============================================*/
+/* 07. PAGE							 		 	 */
+/*===============================================*/
+
+/* 07.1 BLURB								 	 */
+/* ----------------------------------------------*/
+.blurb{
+	padding:0 10px;
+}
+
+/* 07.3 SECTION PADDING						 	 */
+/* ----------------------------------------------*/
+.section-padding{
+	padding:150px 0;
+}
+
+/* 07.8 FEATURE LIST							 */
+/* ----------------------------------------------*/
+.feature-wrapper{
+	text-align:center
+}
+
+.feature-wrapper .icon-and-title{
+	margin-left:0;
+}
+
+.feature-wrapper .the-icon{
+	position:relative;
+	left:0
+}
+
+/* 07.9 EVENT									 */
+/* ----------------------------------------------*/
+.event-wrapper{
+	padding-right:0;
+	text-align:center;
+	margin-bottom:80px
+}
+
+.event-location{
+	position:relative; 
+	margin-left:0;
+}
+
+.location-icon{
+	position:relative; 
+	left:0; 
+}
+
+.event-desc{
+	font-size:20px; 
+	line-height:38px
+}
+
+/* 07.10 TIMELINE STORY							 */
+/* ----------------------------------------------*/
+.story-row.row {
+    display: block;
+	padding:20px 0
+}
+
+.story-row.row [class*="col-"] {
+    display: block;
+	text-align:center;
+}
+
+.story-date-wrapper{
+	margin-bottom:30px;
+}
+
+.story-date{
+	float:none;
+	position:absolute;	
+	top:-80px;
+	left:0;
+	right:0;
+	margin:auto;
+}
+
+.story-date .month-year{
+	font-size:16px; 
+}
+
+.arrow-right {
+	display:none;
+	float:none;
+}
+
+.arrow-left {
+	display:none;
+	float:none;
+}
+
+.vertical-line{
+	display:none;
+}
+
+/*-----------------------------------------------*/
+/* 07.12 Popup Template						 	 */
+/*-----------------------------------------------*/
+#popup-template{
+	width:90%;
+}
+}
+
+@media screen and (max-width: 768px) {
+/*===============================================*/
+/* 01. GENERAL			 						 */
+/*===============================================*/		
+h1, .h1{
+	font-size:54px;
+	line-height:62px;	
+}
+
+.font-oswald{
+	letter-spacing:2px;
+}
+
+h2, .h2{
+	font-size:48px;
+	margin-bottom:30px;
+}
+
+h3, .h3{
+	font-size:36px;
+	line-height:48px;
+	margin-bottom:30px;
+}
+
+p{
+	font-size:18px;
+	line-height:36px;
+	margin-bottom:40px;
+}
+
+/*===============================================*/
+/* 02. NAV BAR				 					 */
+/*===============================================*/
+#nav-bar{
+	padding:25px;
+}
+
+#nav-bar{
+	position:fixed;
+	top:0;
+	width:100%;
+	z-index:1500;
+	display:block;
+	/*-webkit-transform: translateZ(0);*/
+}
+
+/*===============================================*/
+/* 04. NAV MENU			 						 */
+/*===============================================*/
+
+/* ----------------------------------------------*/
+/* 04.1	Parent Menu								 */
+/* ----------------------------------------------*/
+#top-nav-menu li a{
+	padding:15px 25px !important;
+}
+
+/*===============================================*/
+/* 05. SIDE NAV MENU			 				 */
+/*===============================================*/
+
+/* 05.1 Sidebar 								 */
+/* ----------------------------------------------*/
+.sb-slidebar{
+	width:100%;
+}
+
+/*===============================================*/
+/* 06. MAIN-SLIDER					 		 	 */
+/*===============================================*/
+
+/* 06.5.3 Title Wrapper */
+/* ----------------------------------------------*/
+.slide-desc{
+	margin-top:20px;
+}
+
+.slide-desc #getting-married-text{
+	display:block;
+}
+
+.slide-desc #dash{
+	display:none;
+}
+
+.slide-desc #wedding-date{
+	display:block;
+}
+
+/*===============================================*/
+/* 07. PAGE							 		 	 */
+/*===============================================*/
+
+/* 07.2  IMAGE WRAPPER						 	 */
+/* ----------------------------------------------*/
+.image-wrapper{
+	margin:12px 0 12px 0;
+}
+
+/* 07.3  SECTION PADDING						 */
+/* ----------------------------------------------*/
+.section-padding{
+	padding:110px 0;
+}
+
+/* 07.7 MAP										 */
+/* ----------------------------------------------*/
+#map-canvas{
+	height:450px; 
+}
+
+
+/* 07.11 COUNTDOWN							 	 */
+/* ----------------------------------------------*/
+#countdown{
+	width:100%; 
+}
+
+}
+
+@media screen and (max-width: 768px) and (orientation : landscape) {
+/*===============================================*/
+/* 04. NAV MENU			 						 */
+/*===============================================*/
+
+/* ----------------------------------------------*/
+/* 04.1	Parent Menu								 */
+/* ----------------------------------------------*/
+#top-nav-menu{
+	height:200px;
+}
+}
+
+
+@media screen and (max-width: 480px) {	
+/*===============================================*/
+/* 12.2 MASONRY GALLERY							 */
+/*===============================================*/
+.masonry-col, .grid-sizer{
+	width:100% !important;
+	margin-bottom:5% !important;
+}
+
+/*===============================================*/
+/* 07. PAGE							 		 	 */
+/*===============================================*/
+/* 07.3  SECTION PADDING						 */
+/* ----------------------------------------------*/
+.section-padding{
+	padding:90px 0;
+}
+
+/* 07.5 IMAGE & VIDEO DIVIDER					 */
+/* ----------------------------------------------*/
+.image-divider.fixed-height,
+.video-divider.fixed-height {
+	height:425px;
+}
+
+/* 07.11 COUNTDOWN							 	 */
+/* ----------------------------------------------*/
+#countdown{
+	width:100%; 
+}
+
+.countdown-section{
+	border-right: 1px solid #CCC;
+	padding:4px 0;		
+}
+
+.countdown-amount {
+	width:40px;
+	font-size:30px;	
+	line-height:24px
+}
+
+.countdown-period {
+	display:block;
+	text-align:center;
+	font-size:13px;    
+}
+
+/*-----------------------------------------------*/
+/* 07.12 Popup Template						 */
+/*-----------------------------------------------*/
+#popup-template #the-content{
+	padding-right:30px;
+	padding-left:30px;
+	text-align:center;
+}
+}

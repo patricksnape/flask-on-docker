@@ -1,0 +1,28 @@
+{% macro nav_header(hide_first=False) -%}
+    <header id="nav-header">
+        <nav id="nav-bar" class="sticky-nav animation fadeInDown {{ "hide-first" if hide_first else "" }}">
+
+            <!-- LOGO -->
+            <div id="logo-wrapper">
+                {% import 'macros/logo.jinja2' as logo %}
+                {{ logo.logo() }}
+            </div>
+            <!-- END of LOGO -->
+
+            <!-- MENU ICON -->
+            <div id="menu-wrapper">
+                <!-- MENU ICON -->
+                <div id="menu-icon">
+                    <a href="#" class="sb-toggle-right">
+                        <i class="de-icon-menu"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- RESET FLOAT -->
+            <div class="clearboth"></div>
+
+        </nav>
+
+    </header>
+{%- endmacro %}

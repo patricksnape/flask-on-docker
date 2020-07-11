@@ -1,0 +1,251 @@
+/*===============================================*/
+/* 00. PRELOADER		 						 */
+/*===============================================*/
+#preloader #heart-on-center{
+	color:#de5ca2; 
+}
+
+/*===============================================*/
+/* 01. GENERAL			 						 */
+/*===============================================*/
+h1 a:hover, h2 a:hover, h3 a:hover, 
+h4 a:hover, h5 a:hover, h6 a:hover{
+	color:#de5ca2;
+}
+
+a.reverse{
+	color:#de5ca2;
+}
+
+a:hover{
+	color:#de5ca2;
+}
+
+.theme-color{
+	color:#de5ca2;
+}
+
+/*===============================================*/
+/* 03. LOGO		 						 		 */
+/*===============================================*/
+#and-icon, .and-icon{
+	color:#de5ca2;
+}
+
+
+/*===============================================*/
+/* 04. NAV MENU			 						 */
+/*===============================================*/
+
+/* ----------------------------------------------*/
+/* 04.1	Parent Menu								 */
+/* ----------------------------------------------*/
+#top-nav-menu > li a:hover,
+#top-nav-menu li a.active{
+	color:#de5ca2;
+}
+
+
+
+/* ----------------------------------------------*/
+/* 04.2 Child Menu								 */
+/* ----------------------------------------------*/
+#top-nav-menu ul li a:hover{
+	color:#de5ca2;
+}
+
+/*===============================================*/
+/* 05. SIDE NAV MENU			 				 */
+/*===============================================*/
+/* 05.2 Sidebar Header 							 */
+/* ----------------------------------------------*/
+#close-button:hover i{
+	color:#de5ca2;
+}
+
+/* 05.3 Parent Menu 							 */
+/* ----------------------------------------------*/
+#side-nav-menu > li a:hover,
+#side-nav-menu > li a.active{
+	color:#de5ca2;
+}
+
+#main-slider .flex-control-nav li a.flex-active,
+#main-slider .flex-control-nav li a:hover {
+	background-color:#de5ca2;
+}
+
+#main-slider .flex-direction-nav a:hover {
+	color:#de5ca2;
+}
+
+/* 07.6 HEART DIVIDER							 */
+/* ----------------------------------------------*/
+.pink-heart{
+	color:#de5ca2; 
+}
+
+/* 07.7 MAP										 */
+/* ----------------------------------------------*/
+.big-circle{
+	background-color: rgba(222, 92, 162, 0.8); 	
+}
+
+#arrow-up-mobile a:hover{
+	background-color:#de5ca2; 
+	color:#FFF;
+}
+
+/* 07.10 TIMELINE STORY							 */
+/* ----------------------------------------------*/
+.story-date{
+	background-color:#de5ca2; 
+}
+
+/*------------------------------------------------*/
+/* 08.2 Shape / Color							  */
+/*------------------------------------------------*/
+
+/* 08.2.1 Default								  */
+/*------------------------------------------------*/
+.de-icon{
+	color:#de5ca2;
+}
+
+.de-icon.square, .de-icon.circle, .de-icon.rounded{
+	background-color:#de5ca2;
+}
+
+.de-icon.outline{
+	color:#de5ca2;
+}
+
+a:hover .de-icon.reverse{
+	color:#de5ca2;
+}
+
+a:hover .de-icon.reverse.square, a:hover .de-icon.reverse.circle, a:hover .de-icon.reverse.rounded, a:hover .de-icon.reverse.outline{
+	background-color:#de5ca2;
+	border-color: #de5ca2;
+}
+
+
+/* 08.2.3 Light-1						 		 */
+/*------------------------------------------------*/
+.de-icon.light-1.square, .de-icon.light-1.circle, .de-icon.light-1.rounded{
+	color:#de5ca2;
+}
+
+a:hover .de-icon.light-1	{
+	color:#de5ca2;
+}
+
+a:hover .de-icon.light-1.square, a:hover .de-icon.light-1.circle, a:hover .de-icon.light-1.rounded, a:hover .de-icon.light-1.outline{
+	background-color:#de5ca2;
+	border-color: #de5ca2;
+}
+
+/* 08.2.4 Light-1 Reverse						  */
+/*------------------------------------------------*/
+.de-icon.light-1.reverse{
+	color:#de5ca2;
+}
+
+.de-icon.light-1.reverse.square, .de-icon.light-1.reverse.circle, .de-icon.light-1.reverse.rounded{
+	background-color:#de5ca2;
+	border:1px solid #de5ca2;
+}
+
+.de-icon.light-1.reverse.outline{
+	color:#de5ca2;
+	border:1px solid #de5ca2;
+}
+
+a:hover .de-icon.light-1.reverse.square, a:hover .de-icon.light-1.reverse.circle, a:hover .de-icon.light-1.reverse.rounded, a:hover .de-icon.light-1.reverse.outline{
+	color:#de5ca2;
+}
+
+/*===============================================*/
+/* 10. BUTTON									 */
+/*===============================================*/
+
+/* ----------------------------------------------*/
+/* 10.1 Color			 					 	 */
+/* ----------------------------------------------*/
+
+/* 10.1.1 Default		 					 	 */
+/* ----------------------------------------------*/
+
+a.de-button, span.de-button, input[type=submit]{ 
+	background-color:#de5ca2;
+	border:solid 1px #de5ca2;
+}
+
+a.de-button.outline, span.de-button.outline, input[type=submit].outline{
+	border:solid 1px #de5ca2;
+	color:#de5ca2;
+}
+
+a.de-button.reverse:hover, input[type=submit].reverse:hover{
+	background-color:#de5ca2;
+	border-color: #de5ca2;
+}
+
+
+/* 10.1.3 Light-1		 					 	 */
+/* ----------------------------------------------*/
+
+a.de-button.light-1, span.de-button.light-1, input[type=submit].light-1{	
+	color:#de5ca2;
+}
+
+a.de-button.light-1:hover, input[type=submit].light-1:hover{
+	background-color:#de5ca2;
+	border-color: #de5ca2;
+}
+
+
+/* 10.1.4 Light-1 Reverse	 					 */
+/* ----------------------------------------------*/
+a.de-button.reverse.light-1, span.de-button.reverse.light-1, input[type=submit].reverse.light-1{
+	background-color:#de5ca2; 
+	border-color: #de5ca2;
+}
+
+a.de-button.reverse.outline.light-1, span.de-button.reverse.outline.light, input[type=submit].reverse.outline.light{
+	border:solid 1px #de5ca2;
+	color:#de5ca2;
+}
+
+
+/*-----------------------------------------------*/
+/* 11.5 Button									 */
+/*-----------------------------------------------*/
+form .btn-primary:hover,
+form .btn-primary:focus,
+form .btn-primary.focus,
+form .btn-primary:active,
+form .btn-primary.active,
+.open > .dropdown-toggle.btn-primary {
+	background-color:#de5ca2; 
+	border-color:#de5ca2;
+}
+
+/*-----------------------------------------------*/
+/* 11.8 Message									 */
+/*-----------------------------------------------*/
+.message .bg-danger{
+	background-color:#de5ca2; 
+}
+
+/*===============================================*/
+/* 14. PLUGIN CUSTOM							 */
+/*===============================================*/
+ 
+/* -------------------------------------------*/
+/* 14.1 Owl Carousel 						  */
+/* -------------------------------------------*/
+.owl-theme .owl-controls .owl-page.active span,
+.owl-theme .owl-controls.clickable .owl-page:hover span{
+	background: #de5ca2;
+}

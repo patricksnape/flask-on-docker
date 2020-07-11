@@ -1,0 +1,53 @@
+{% macro main_slider(image_urls=('http://placehold.it/1920x1080',), slider_speed=5000) -%}
+    <section id="main-slider" class="flexslider fullscreen slider-fade data-speed={{ slider_speed }}">
+
+        <!-- MAIN SLIDER TITLE OUTER WRAPPER -->
+        <div class="slide-title-outer-wrapper">
+
+            <!-- MAIN SLIDER TITLE INNER WRAPPER -->
+            <div class="slide-title-inner-wrapper">
+
+                <!-- TITLE -->
+                <div class="slide-title align-middle">
+
+                    <div class="container">
+                        <div class="row">
+                            {{ caller() }}
+                        </div>
+                    </div>
+
+                    <!-- DOWN ARROW -->
+                    <div id="slide-arrow">
+                        <div class="bounceloop">
+                            <a href="#page-content" class="animation delay-5s fadeIn smooth-scroll"><i
+                                    class="de-icon-down-open-big"></i></a>
+                        </div>
+                    </div>
+                    <!-- DOWN ARROW -->
+
+                </div>
+
+            </div><!-- END of MAIN SLIDER TITLE INNER WRAPPER -->
+
+        </div> <!-- END of MAIN SLIDER TITLE OUTER WRAPPER -->
+
+
+        <!-- MAIN SLIDER IMAGES -->
+        <ul class="slides">
+            {%- for image_url in image_urls -%}
+                <li>
+                    <!-- SLIDE IMAGE -->
+                    <div data-stellar-ratio="0.5" class="slide-image"
+                         style="background-image:url({{ image_url }});"
+                         data-mobile-image-position="50% center" data-tablet-image-position="center center">
+                    </div>
+
+                    <!-- SLIDE OVERLAY -->
+                    <div class="slide-overlay" style="opacity:0.3"></div>
+                </li>
+            {% endfor -%}
+
+        </ul><!-- END of MAIN SLIDER IMAGES -->
+
+    </section>
+{%- endmacro %}

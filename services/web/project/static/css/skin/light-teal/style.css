@@ -1,0 +1,251 @@
+/*===============================================*/
+/* 00. PRELOADER		 						 */
+/*===============================================*/
+#preloader #heart-on-center{
+	color:#18A7B5; 
+}
+
+/*===============================================*/
+/* 01. GENERAL			 						 */
+/*===============================================*/
+h1 a:hover, h2 a:hover, h3 a:hover, 
+h4 a:hover, h5 a:hover, h6 a:hover{
+	color:#18A7B5;
+}
+
+a.reverse{
+	color:#18A7B5;
+}
+
+a:hover{
+	color:#18A7B5;
+}
+
+.theme-color{
+	color:#18A7B5;
+}
+
+/*===============================================*/
+/* 03. LOGO		 						 		 */
+/*===============================================*/
+#and-icon, .and-icon{
+	color:#18A7B5;
+}
+
+
+/*===============================================*/
+/* 04. NAV MENU			 						 */
+/*===============================================*/
+
+/* ----------------------------------------------*/
+/* 04.1	Parent Menu								 */
+/* ----------------------------------------------*/
+#top-nav-menu > li a:hover,
+#top-nav-menu li a.active{
+	color:#18A7B5;
+}
+
+
+
+/* ----------------------------------------------*/
+/* 04.2 Child Menu								 */
+/* ----------------------------------------------*/
+#top-nav-menu ul li a:hover{
+	color:#18A7B5;
+}
+
+/*===============================================*/
+/* 05. SIDE NAV MENU			 				 */
+/*===============================================*/
+/* 05.2 Sidebar Header 							 */
+/* ----------------------------------------------*/
+#close-button:hover i{
+	color:#18A7B5;
+}
+
+/* 05.3 Parent Menu 							 */
+/* ----------------------------------------------*/
+#side-nav-menu > li a:hover,
+#side-nav-menu > li a.active{
+	color:#18A7B5;
+}
+
+#main-slider .flex-control-nav li a.flex-active,
+#main-slider .flex-control-nav li a:hover {
+	background-color:#18A7B5;
+}
+
+#main-slider .flex-direction-nav a:hover {
+	color:#18A7B5;
+}
+
+/* 07.6 HEART DIVIDER							 */
+/* ----------------------------------------------*/
+.pink-heart{
+	color:#18A7B5; 
+}
+
+/* 07.7 MAP										 */
+/* ----------------------------------------------*/
+.big-circle{
+	background-color: rgba(24, 167, 181, 0.8); 	
+}
+
+#arrow-up-mobile a:hover{
+	background-color:#18A7B5;
+	color:#FFF;
+}
+
+/* 07.10 TIMELINE STORY							 */
+/* ----------------------------------------------*/
+.story-date{
+	background-color:#18A7B5; 
+}
+
+/*------------------------------------------------*/
+/* 08.2 Shape / Color							  */
+/*------------------------------------------------*/
+
+/* 08.2.1 Default								  */
+/*------------------------------------------------*/
+.de-icon{
+	color:#18A7B5;
+}
+
+.de-icon.square, .de-icon.circle, .de-icon.rounded{
+	background-color:#18A7B5;
+}
+
+.de-icon.outline{
+	color:#18A7B5;
+}
+
+a:hover .de-icon.reverse{
+	color:#18A7B5;
+}
+
+a:hover .de-icon.reverse.square, a:hover .de-icon.reverse.circle, a:hover .de-icon.reverse.rounded, a:hover .de-icon.reverse.outline{
+	background-color:#18A7B5;
+	border-color: #18A7B5;
+}
+
+
+/* 08.2.3 Light-1						 		 */
+/*------------------------------------------------*/
+.de-icon.light-1.square, .de-icon.light-1.circle, .de-icon.light-1.rounded{
+	color:#18A7B5;
+}
+
+a:hover .de-icon.light-1	{
+	color:#18A7B5;
+}
+
+a:hover .de-icon.light-1.square, a:hover .de-icon.light-1.circle, a:hover .de-icon.light-1.rounded, a:hover .de-icon.light-1.outline{
+	background-color:#18A7B5;
+	border-color: #18A7B5;
+}
+
+/* 08.2.4 Light-1 Reverse						  */
+/*------------------------------------------------*/
+.de-icon.light-1.reverse{
+	color:#18A7B5;
+}
+
+.de-icon.light-1.reverse.square, .de-icon.light-1.reverse.circle, .de-icon.light-1.reverse.rounded{
+	background-color:#18A7B5;
+	border:1px solid #18A7B5;
+}
+
+.de-icon.light-1.reverse.outline{
+	color:#18A7B5;
+	border:1px solid #18A7B5;
+}
+
+a:hover .de-icon.light-1.reverse.square, a:hover .de-icon.light-1.reverse.circle, a:hover .de-icon.light-1.reverse.rounded, a:hover .de-icon.light-1.reverse.outline{
+	color:#18A7B5;
+}
+
+/*===============================================*/
+/* 10. BUTTON									 */
+/*===============================================*/
+
+/* ----------------------------------------------*/
+/* 10.1 Color			 					 	 */
+/* ----------------------------------------------*/
+
+/* 10.1.1 Default		 					 	 */
+/* ----------------------------------------------*/
+
+a.de-button, span.de-button, input[type=submit]{ 
+	background-color:#18A7B5;
+	border:solid 1px #18A7B5;
+}
+
+a.de-button.outline, span.de-button.outline, input[type=submit].outline{
+	border:solid 1px #18A7B5;
+	color:#18A7B5;
+}
+
+a.de-button.reverse:hover, input[type=submit].reverse:hover{
+	background-color:#18A7B5;
+	border-color: #18A7B5;
+}
+
+
+/* 10.1.3 Light-1		 					 	 */
+/* ----------------------------------------------*/
+
+a.de-button.light-1, span.de-button.light-1, input[type=submit].light-1{	
+	color:#18A7B5;
+}
+
+a.de-button.light-1:hover, input[type=submit].light-1:hover{
+	background-color:#18A7B5;
+	border-color: #18A7B5;
+}
+
+
+/* 10.1.4 Light-1 Reverse	 					 */
+/* ----------------------------------------------*/
+a.de-button.reverse.light-1, span.de-button.reverse.light-1, input[type=submit].reverse.light-1{
+	background-color:#18A7B5; 
+	border-color: #18A7B5;
+}
+
+a.de-button.reverse.outline.light-1, span.de-button.reverse.outline.light, input[type=submit].reverse.outline.light{
+	border:solid 1px #18A7B5;
+	color:#18A7B5;
+}
+
+
+/*-----------------------------------------------*/
+/* 11.5 Button									 */
+/*-----------------------------------------------*/
+form .btn-primary:hover,
+form .btn-primary:focus,
+form .btn-primary.focus,
+form .btn-primary:active,
+form .btn-primary.active,
+.open > .dropdown-toggle.btn-primary {
+	background-color:#18A7B5; 
+	border-color:#18A7B5;
+}
+
+/*-----------------------------------------------*/
+/* 11.8 Message									 */
+/*-----------------------------------------------*/
+.message .bg-danger{
+	background-color:#18A7B5; 
+}
+
+/*===============================================*/
+/* 14. PLUGIN CUSTOM							 */
+/*===============================================*/
+ 
+/* -------------------------------------------*/
+/* 14.1 Owl Carousel 						  */
+/* -------------------------------------------*/
+.owl-theme .owl-controls .owl-page.active span,
+.owl-theme .owl-controls.clickable .owl-page:hover span{
+	background: #18A7B5;
+}

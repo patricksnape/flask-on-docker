@@ -1,0 +1,108 @@
+{% extends "layout.html" %}
+{% block title %}Home{% endblock %}
+{% block main_title_body %}
+<div class="col-md-12">
+
+    <div class="heart-divider animation delay-2s fadeInUp">
+        <i class="de-icon-heart white-heart"></i>
+        <i class="de-icon-heart pink-heart"></i>
+    </div>
+    <h1 class="font-oswald animation delay-3s fadeInUp">
+        FRANZISKA &amp; PATRICK
+    </h1>
+    <div class="slide-desc animation delay-4s fadeInUp">
+        <span id="getting-married-text">We are Getting Married</span>
+        <span id="dash">&nbsp;-&nbsp;</span>
+        <span id="wedding-date">August 28, 2021</span>
+    </div>
+
+</div>
+{% endblock %}
+
+{% block main_page_content %}
+{% import 'macros/image_divider.jinja2' as image_divider %}
+
+<!-- THE STORY -->
+<section id="the-story" class="section-padding">
+    <div class="container">
+
+        <!-- TITLE AND BLURB -->
+        <div class="row">
+            <div class="col-md-offset-1 col-md-10 text-center">
+                <h2 class="animation fadeInUp">The <span class="theme-color">Story</span></h2>
+                <div class="blurb animation fadeInUp">
+                    <p>It start in this beautiful New York City. We met in a small restaurant and keep contact
+                        from that night. A happy chatting always with us every day and every night. One day we
+                        decided to met again at that restaurant. It was our first date, a date that we will
+                        never forget it, a date that freeze everything, a very nervous date, with a full of
+                        happiness. </p>
+                </div>
+            </div>
+        </div> <!-- END of TITLE AND BLURB -->
+
+        <!-- COUPLE PHOTO -->
+        <div class="row image-wrapper">
+
+            <div class="col-md-12">
+                <img src="http://placehold.it/1200x800" alt="" class="hover-animation image-zoom-in fullwidth">
+            </div>
+
+        </div><!-- END of COUPLE PHOTO -->
+
+
+        <!-- OTHER BLURB -->
+        <div class="row">
+            <div class="col-md-offset-1 col-md-10 text-center">
+                <div class="blurb animation fadeInUp" style="margin-top:30px">
+                    <p>Our new story start from here, when we had a trip to the beach. A nice beach with a warm
+                        sand, blue sea and a nice sky. We enjoy our time together, wait for sunrise and sunset.
+                        And then a romantic wedding proposal fill this moment. A happy smile, hug, kiss,
+                        beautiful sky, the orange sunrise and sound of the waves complete this great
+                        moment. </p>
+                    <p class="lead no-margin">And today... <span
+                            class="theme-color">We are Getting Married</span></p>
+                </div>
+            </div>
+        </div> <!-- END of OTHER BLURB -->
+
+    </div>
+</section>
+<!-- END of THE STORY -->
+
+
+<!-- IMAGE DIVIDER -->
+{{ image_divider.image_divider('http://placehold.it/1920x1080') }}
+<!-- END of IMAGE DIVIDER -->
+
+
+<!-- RSVP -->
+<section id="rsvp-section" class="section-padding">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-md-offset-1 col-md-10 text-center">
+                <h3 class="animation fadeInUp">Join <span class="theme-color"> Our Happiness</span></h3>
+                <div class="blurb animation fadeInUp">
+                    <p>Because you have shared in our lives and supported our love, we request the pleasure of
+                        your company to join our celebration of love, friendship, laughter, and family, on <span
+                                class="bold400">Saturday, August 19, 2017</span>, 4:30 in the afternoon, at
+                        <span class="bold400">Foxegan Pavillion</span>, 204 Moggent Borntio Road, Brooklyn, New
+                        York City. Fabulous food, fun, and festivities to follow.</p>
+                </div>
+                <a href="rsvp-1.html" class="de-button outline rounded medium reverse animation fadeInUp">
+                    RSVP
+                </a>
+                <a href="the-wedding.html" class="de-button outline rounded medium reverse animation fadeInUp">
+                    The Wedding
+                </a>
+            </div>
+
+        </div>
+    </div>
+</section><!-- END of RSVP -->
+{% endblock %}
+
+{% block footer_content %}
+{% import 'macros/footer.jinja2' as footer %}
+{{ footer.footer('THANK YOU') }}
+{% endblock %}
