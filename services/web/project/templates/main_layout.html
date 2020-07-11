@@ -1,78 +1,55 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <meta name="description" content="Wedding website for the Snapes">
-    <meta name="author" content="www.snapewedding.com">
-    <title>{% block title %}Wedding Template{% endblock %}</title>
-    {% block css_links %}
+{% extends "base_layout.html" %}
+{% block css_links %}
+<!-- Favicon -->
+<link rel="icon" href="{{ url_for('static', filename='images/favicon.jpg') }}"/>
+<!-- Bootstrap -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+      integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"
+      media="screen"/>
+<!-- Flexslider -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flexslider/2.7.2/flexslider.min.css"
+      integrity="sha512-c7jR/kCnu09ZrAKsWXsI/x9HCO9kkpHw4Ftqhofqs+I2hNxalK5RGwo/IAhW3iqCHIw55wBSSCFlm8JP0sw2Zw=="
+      crossorigin="anonymous"/>
+<!-- Animate -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.0/animate.compat.min.css"
+      integrity="sha512-uUsJnYcswxI6Vy2g88USOAD351ljY8pWr98HTXVSxQ4/uT43nzlGk91EAsvO5fOzw9QtBPFaw9tgZPSrxvM3RA=="
+      crossorigin="anonymous"/>
+<!-- Magnific Popup -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css"
+      integrity="sha512-+EoPw+Fiwh6eSeRK7zwIKG2MA8i3rV/DGa3tdttQGgWyatG/SkncT53KHQaS5Jh9MNOT3dmFL0FjTY08And/Cw=="
+      crossorigin="anonymous"/>
+<!-- Owl Carousel -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.min.css"
+      integrity="sha512-X/RSQYxFb/tvuz6aNRTfKXDnQzmnzoawgEQ4X8nZNftzs8KFFH23p/BA6D2k0QCM4R0sY1DEy9MIY9b3fwi+bg=="
+      crossorigin="anonymous"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.theme.min.css"
+      integrity="sha512-f28cvdA4Bq3dC9X9wNmSx21rjWI+5piIW/uoc2LuQ67asKxfQjUow2MkcCNcfJiaLrHcGbed1wzYe3dlY4w9gA=="
+      crossorigin="anonymous"/>
+<!-- Slidebars -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slidebars/0.10.2/slidebars.min.css"
+      integrity="sha512-6Xw8T7E2rzf0K8r/1FMqy0Y4Azhi2+6PBFzMBWoJ0n+Raa8krT22vM69efvhflLwiIdecs6bI4clIkb3hM54nQ=="
+      crossorigin="anonymous" media="screen"/>
+<!-- Font -->
+<link href='https://fonts.googleapis.com/css?family=Oswald:300' rel='stylesheet' type='text/css'/>
+<link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,300,700,100' rel='stylesheet' type='text/css'/>
 
-    <!-- Favicon -->
-    <link rel="icon" href="{{ url_for('static', filename='images/favicon.jpg') }}"/>
-    <!-- Bootstrap -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
-          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"
-          media="screen"/>
-    <!-- Flexslider -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flexslider/2.7.2/flexslider.min.css"
-          integrity="sha512-c7jR/kCnu09ZrAKsWXsI/x9HCO9kkpHw4Ftqhofqs+I2hNxalK5RGwo/IAhW3iqCHIw55wBSSCFlm8JP0sw2Zw=="
-          crossorigin="anonymous"/>
-    <!-- Animate -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.0/animate.compat.min.css"
-          integrity="sha512-uUsJnYcswxI6Vy2g88USOAD351ljY8pWr98HTXVSxQ4/uT43nzlGk91EAsvO5fOzw9QtBPFaw9tgZPSrxvM3RA=="
-          crossorigin="anonymous"/>
-    <!-- Magnific Popup -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css"
-          integrity="sha512-+EoPw+Fiwh6eSeRK7zwIKG2MA8i3rV/DGa3tdttQGgWyatG/SkncT53KHQaS5Jh9MNOT3dmFL0FjTY08And/Cw=="
-          crossorigin="anonymous"/>
-    <!-- Owl Carousel -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.min.css"
-          integrity="sha512-X/RSQYxFb/tvuz6aNRTfKXDnQzmnzoawgEQ4X8nZNftzs8KFFH23p/BA6D2k0QCM4R0sY1DEy9MIY9b3fwi+bg=="
-          crossorigin="anonymous"/>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.theme.min.css"
-          integrity="sha512-f28cvdA4Bq3dC9X9wNmSx21rjWI+5piIW/uoc2LuQ67asKxfQjUow2MkcCNcfJiaLrHcGbed1wzYe3dlY4w9gA=="
-          crossorigin="anonymous"/>
-    <!-- Slidebars -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slidebars/0.10.2/slidebars.min.css"
-          integrity="sha512-6Xw8T7E2rzf0K8r/1FMqy0Y4Azhi2+6PBFzMBWoJ0n+Raa8krT22vM69efvhflLwiIdecs6bI4clIkb3hM54nQ=="
-          crossorigin="anonymous" media="screen"/>
-    <!-- Font -->
-    <link href='https://fonts.googleapis.com/css?family=Oswald:300' rel='stylesheet' type='text/css'/>
-    <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,300,700,100' rel='stylesheet' type='text/css'/>
+<!-- Unable to find CDN -->
+<!-- Countdown -->
+<link rel="stylesheet" href="{{ url_for('static', filename='css/countdown/jquery.countdown.css') }}"
+      type="text/css"/>
 
-    <!-- Unable to find CDN -->
-    <!-- Countdown -->
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/countdown/jquery.countdown.css') }}"
-          type="text/css"/>
+<!-- Theme CSS -->
+<link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet" media="screen"/>
+<!-- Pace -->
+<link rel="stylesheet" href="{{ url_for('static', filename='css/preloader/preloader.css') }}" media="screen"/>
+<!-- Icon -->
+<link rel="stylesheet" href="{{ url_for('static', filename='css/fonts/fontello/css/fontello.css') }}"
+      media="screen"/>
 
-    <!-- Theme CSS -->
-    <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet" media="screen"/>
-    <!-- Pace -->
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/preloader/preloader.css') }}" media="screen"/>
-    <!-- Icon -->
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/fonts/fontello/css/fontello.css') }}"
-          media="screen"/>
-
-    {% endblock %}
-</head>
-
-<body>
-<!--PRELOADER-->
-<div id="preloader">
-
-    <div class="alignment">
-        <div class="v-align center-middle">
-
-            <div id="heart-on-center" class="spinner-animation"><i class="de-icon-heart"></i></div>
-
-        </div>
-    </div>
-
-</div>
-<!--END of PRELOADER-->
+{% endblock %}
 
 <!-- SIDE NAVBAR -->
+{% block navbar_content %}
 <nav class="sb-slidebar sb-right sb-style-push">
 
     <div id="side-navbar-header">
@@ -104,37 +81,38 @@
     </ul>
 
 </nav>
+{% endblock %}
 <!-- END of SIDE NAVBAR -->
 
 <!-- SLIDEBAR CONTENT WRAPPER -->
-<div id="sb-site">
+{% block page_content %}
 
-    <!-- NAVIGATION -->
-    {% import 'macros/nav_header.jinja2' as nav_header %}
-    {{ nav_header.nav_header(hide_first=request.path == "/") }}
-    <!-- END of NAVIGATION -->
+<!-- NAVIGATION -->
+{% import 'macros/nav_header.jinja2' as nav_header %}
+{{ nav_header.nav_header(hide_first=request.path == "/") }}
+<!-- END of NAVIGATION -->
 
-    <!-- MAIN SLIDER -->
-    {% import 'macros/main_slider.jinja2' as main_slider %}
-    {% call main_slider.main_slider() %}
-    {% block main_title_body %}{% endblock %}
-    {% endcall %}
-    <!-- END of MAIN SLIDER -->
+<!-- MAIN SLIDER -->
+{% import 'macros/main_slider.jinja2' as main_slider %}
+{% call main_slider.main_slider() %}
+{% block main_title_body %}{% endblock %}
+{% endcall %}
+<!-- END of MAIN SLIDER -->
 
-    <!-- START PAGE CONTENT -->
-    <section id="page-content">
-        {% block main_page_content %}{% endblock %}
-    </section>
-    <!-- END of PAGE CONTENT -->
+<!-- START PAGE CONTENT -->
+<section id="page-content">
+    {% block main_page_content %}{% endblock %}
+</section>
+<!-- END of PAGE CONTENT -->
 
-    <!-- FOOTER SECTION -->
-    {% block footer_content %}
-    {% import 'macros/footer.jinja2' as footer %}
-    {{ footer.footer() }}
-    {% endblock %}
-    <!-- END of FOOTER SECTION -->
+<!-- FOOTER SECTION -->
+{% block footer_content %}
+{% import 'macros/footer.jinja2' as footer %}
+{{ footer.footer() }}
+{% endblock %}
+<!-- END of FOOTER SECTION -->
 
-</div>
+{% endblock %}
 <!-- END of SLIDEBAR CONTENT WRAPPER -->
 
 
@@ -200,5 +178,3 @@
 <script type="text/javascript" src="{{ url_for('static', filename='js/side-navbar.js') }}"></script>
 
 {% endblock %}
-</body>
-</html>

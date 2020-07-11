@@ -8,17 +8,6 @@
 /*----------------------
 	Script Guide
 ------------------------
-01. BROWSER AGENT FUNCTION
-	01.1 Check CHROME (Mobile / Tablet)
-	01.2 Check IOS
-	01.3 Check FIREFOX
-	01.4 Check IE (< IE10)
-	01.5 Check IE11
-	01.6 Check IE11 (Not Windows Phone)
-	01.7 Check IE10
-	01.8 Check IE9
-	01.9 Check Safari/Chrome Mac
-
 02. OTHER FUNCTION AND CLASS
 	02.1 Fullscreen Class
 	02.2 Hide All Animation Class
@@ -27,7 +16,6 @@
 03. PRELOAD
 	03.1 Navigation Menu
 		03.1.1 Waypoint Sticky Navbar
-		03.1.2 Waypoint OnePage Nav - Active Class
 	03.2 Gallery - Masonry
 	03.3 Stellar Parallax
 	03.4 Waypoint Animate CSS
@@ -35,7 +23,6 @@
 
 04. MENU
 	04.1 Menu Active Class (Multipage)
-	04.2 Top Menu Smooth Scroll (Onepage)
 	04.3 Mobile Menu
 	04.4 Double Tap Drop Down Menu
 
@@ -81,89 +68,6 @@
 
 	$(document).ready(function() {
 
-	// 01. BROWSER AGENT FUNCTION
-	//=============================================================================================================================================
-	//=============================================================================================================================================
-	//=============================================================================================================================================
-
-	// 01.1 Check Chrome (Mobile / Tablet)
-	//================================================================================
-	var isChromeMobile = function isChromeMobile() {
-		if (device.tablet() || device.mobile()) {
-			if (window.navigator.userAgent.indexOf("Chrome") > 0 || window.navigator.userAgent.indexOf("CriOS") > 0){
-				return 1;
-			}
-		}
-	}
-
-	// 01.2 Check IOS
-	//================================================================================
-	var isIOS = function isIOS() {
-		if (window.navigator.userAgent.indexOf("iPhone") > 0 || window.navigator.userAgent.indexOf("iPad") > 0 || window.navigator.userAgent.indexOf("iPod") > 0){
-			return 1;
-		}
-	}
-
-	// 01.3 Check FIREFOX
-	//================================================================================
-	var is_firefox = function is_firefox() {
-		if (navigator.userAgent.toLowerCase().indexOf('firefox') > -1){
-			return 1;
-		}
-	}
-
-	// 01.4 Check IE (< IE10)
-	//================================================================================
-	var isIE = function isIE() {
- 		if (window.navigator.userAgent.indexOf("MSIE ") > 0 || !!navigator.userAgent.match(/Trident\/7\./)) {
-   		 	return 1;
-		}
-	}
-
-	// 01.5 Check IE11
-	//================================================================================
-	var isIE11 = function isIE11() {
- 		if (!!navigator.userAgent.match(/Trident\/7\./)) {
-   		 	return 1;
-		}
-	}
-
-	// 01.6 Check IE11 (Not Windows Phone)
-	//================================================================================
-	var isIE11desktop = function isIE11desktop() {
- 		if (!!navigator.userAgent.match(/Trident\/7\./) && window.navigator.userAgent.indexOf("Windows Phone") < 0) {
-   		 	return 1;
-		}
-	}
-
-	// 01.7 Check IE10
-	//================================================================================
-	var isIE10 = function isIE10() {
- 		if (window.navigator.userAgent.indexOf("MSIE 10.0") > 0) {
-   		 	return 1;
-		}
-	}
-
-	// 01.8 Check IE9
-	//================================================================================
-	var isIE9 = function isIE9() {
- 		if (window.navigator.userAgent.indexOf("MSIE 9.0") > 0) {
-   		 	return 1;
-		}
-	}
-
-	// 01.9 Check Safari/Chrome Mac
-	//================================================================================
-	var isSafari = function isSafari() {
-	 	if (navigator.userAgent.indexOf('Safari') != -1 && navigator.userAgent.indexOf('Mac') != -1) {
-   		 	return 1;
-		}
-	}
-
-
-
-
-
 	// 02. OTHER FUNCTION AND CLASS
 	//=============================================================================================================================================
 	//=============================================================================================================================================
@@ -196,7 +100,7 @@
 	// 02.2 Hide All Animation Class
 	//================================================================================
 	// Waypoint will animate it later (03.2 Waypoint Animate CSS)
-	if( !device.tablet() && !device.mobile() && !isIE9() ) {
+	if( !device.tablet() && !device.mobile() ) {
 		$('.animation').css({
 			visibility: 'hidden'
 		});
@@ -320,7 +224,7 @@
 
 		// 03.3 Stellar Parallax
 		//================================================================================
-	 	if( !device.tablet() && !device.mobile() && !isIE9() && !isIE10() && !isSafari() ) {
+	 	if( !device.tablet() && !device.mobile() ) {
 			$(".image-divider").css("background-attachment","fixed");
 		 	$(window).stellar({
 			 	horizontalScrolling: false,
@@ -330,7 +234,7 @@
 
 		// 03.4 Waypoint Animate CSS
 		//================================================================================
-		if( !device.tablet() && !device.mobile() && !isIE9() ) {
+		if( !device.tablet() && !device.mobile() ) {
 			$('.animation').each(function(){
         		var _this = this;
         		var animation_waypoint = new Waypoint({
@@ -421,7 +325,7 @@
 
 	// 05.2.1 Hide Video Loader on Mobile
 	//----------------------------------------------------------------------------------
-	if (device.tablet() || device.mobile() || isIE11()){
+	if (device.tablet() || device.mobile()){
 		$(".loader").hide();
 	}
 
@@ -488,7 +392,7 @@
 			closest_video = js_control.siblings(".slide-image").children("video");
 
 			//Set Sibling Video to Pause
-			if (!isIOS()){
+			if (!device.ios()){
 
 				if ($(this).find("i").hasClass("de-icon-play")){
 					$(this).parents("li").siblings().find("video").get(0).pause();
@@ -508,7 +412,7 @@
 		}
 
 		//If Pause then Play
-		if (!isIOS()){
+		if (!device.ios()){
 			if ($(this).find("i").hasClass("de-icon-play")){
 				$(this).find("i").removeClass("de-icon-play").addClass("de-icon-pause");
 				closest_video.css("visibility","visible").get(0).play();
@@ -528,60 +432,6 @@
 		}
 	});
 
-
-
-	// 05.3 HTML Audio
-	//================================================================================
-
-	var audio_play_attr = $("#html-audio").attr('autoplay');
-	var audio_icon = $("#mute-html-audio i");
-
-	// 05.3.1 Set Mute Icon for Mobile or Not Autoplay Audio
-	//----------------------------------------------------------------------------------
-	if (device.tablet() || device.mobile() || typeof audio_play_attr === typeof undefined || audio_play_attr === false){
-		var audioElm = document.getElementById('html-audio');
-
-		if 	(audioElm != null){
-			if (isIOS()){
-				audioElm.pause();
-			}
-			else
-			{
-				audioElm.muted = true;
-			}
-		}
-
-		audio_icon.removeClass("de-icon-volume-up").addClass("de-icon-volume-off");
-	}
-
-	// 05.3.2 On toggle mute button
-	//----------------------------------------------------------------------------------
-	 $("#mute-html-audio").on( "click", function(e){
-		e.preventDefault();
-		var audioElm = document.getElementById('html-audio');
-
-		if (audio_icon.hasClass("de-icon-volume-up")){
-			audio_icon.removeClass("de-icon-volume-up").addClass("de-icon-volume-off");
-			if (isIOS()){
-				audioElm.pause();
-			}
-			else
-			{
-				audioElm.muted = true;
-			}
-		}
-		else
-		{
-			audio_icon.removeClass("de-icon-volume-off").addClass("de-icon-volume-up");
-			audioElm.play();
-			audioElm.muted = false;
-		}
-	});
-
-
-
-
-
 	// 06. ELEMENT
 	//=============================================================================================================================================
 	//=============================================================================================================================================
@@ -592,9 +442,7 @@
 	var photo_item = $('.photo-item');
 
 	if( device.tablet() || device.mobile() ) {
-		if (!isIE11desktop()){
-			photo_item.find(".hover-animation").css("transition","none");
-		 }
+		photo_item.find(".hover-animation").css("transition","none");
 	 }
 
 	 photo_item.on( "touchstart touchend", function(e) {
@@ -707,18 +555,8 @@
 	// 06.6 Icon
 	//================================================================================
 	if( device.tablet() || device.mobile() ) {
-		if (!isIE11desktop()){
-			$(".de-icon, .de-icon i").css("transition","none");
-		 }
+		$(".de-icon, .de-icon i").css("transition","none");
 	 }
-
-	// 06.7 SoundCloud Button
-	//================================================================================
-	$("#soundcloud-button").on( "click", function(e){
-		e.preventDefault();
-		$("#soundcloud-track").toggleClass( "open-window" );
-
-	});
 
 
 	// 06.8 Image Divider Video
@@ -772,7 +610,7 @@
 		var first_click = 1;
 
 		//Set Sibling Video to Pause
-		if (!isIOS()){
+		if (!device.ios()){
 			if ($(this).find("i").hasClass("de-icon-play")){
 				// Pause other video divider
 				$(".image-divider .play-pause").not(this).each(function(){
@@ -791,7 +629,7 @@
 		}
 
 		//If Pause then Play
-		if (!isIOS()){
+		if (!device.ios()){
 			if ($(this).find("i").hasClass("de-icon-play")){
 				$(this).find("i").removeClass("de-icon-play").addClass("de-icon-pause");
 				closest_video.css("visibility","visible").get(0).play();

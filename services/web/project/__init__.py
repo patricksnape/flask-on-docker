@@ -2,11 +2,12 @@ from flask import (
     Flask,
     render_template_string,
     render_template,
+    redirect,
 )
 from flask_menu import Menu, register_menu
 from flask_sqlalchemy import SQLAlchemy
 from flask_user import UserManager, login_required
-
+from flask_login import current_user
 from project.database import BaseModel
 from project.database.users import User
 from project.mail.mailgun import MailGunEmailAdapter
@@ -19,41 +20,38 @@ user_manager = UserManager(app, db, User)
 user_manager.email_adapter = MailGunEmailAdapter(app)
 
 
+def user_is_authenticated():
+    db_manager = user_manager.db_manager
+    return user_manager.call_or_get(current_user.is_authenticated) and db_manager.user_has_confirmed_email(current_user)
+
+
 # The Home page is accessible to anyone
 @app.route("/")
+def landing():
+    if user_is_authenticated():
+        return redirect("/home")
+    else:
+        return render_template("landing.html")
+
+
+@app.route("/home")
+@login_required
 @register_menu(app, ".home", "Home")
-def index():
+def home():
     return render_template("index.html")
 
 
 @app.route("/subpage.html")
 @register_menu(app, ".page", "Page With Subpages")  # Note this is a fake page used only for the hierarchy
 @register_menu(app, ".page.subpage", "Subpage")
+@login_required
 def subpage():
-    return render_template("layout.html")
+    return render_template("index.html")
 
 
 @app.route("/subpage2.html")
 @register_menu(app, ".page", "Page With Subpages")  # Note this is a fake page used only for the hierarchy
 @register_menu(app, ".page.subpage2", "Subpage 2")
+@login_required
 def subpage2():
-    return render_template("layout.html")
-
-
-# The Members page is only accessible to authenticated users
-@app.route("/members")
-@login_required  # Use of @login_required decorator
-def member_page():
-    return render_template_string(
-        """
-            {% extends "flask_user_layout.html" %}
-            {% block content %}
-                <h2>{%trans%}Members page{%endtrans%}</h2>
-                <p><a href={{ url_for('user.register') }}>{%trans%}Register{%endtrans%}</a></p>
-                <p><a href={{ url_for('user.login') }}>{%trans%}Sign in{%endtrans%}</a></p>
-                <p><a href={{ url_for('home_page') }}>{%trans%}Home Page{%endtrans%}</a> (accessible to anyone)</p>
-                <p><a href={{ url_for('member_page') }}>{%trans%}Member Page{%endtrans%}</a> (login_required: member@example.com / password)</p>
-                <p><a href={{ url_for('user.logout') }}>{%trans%}Sign out{%endtrans%}</a></p>
-            {% endblock %}
-            """
-    )
+    return render_template("index.html")

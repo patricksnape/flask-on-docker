@@ -1,13 +1,13 @@
 @charset "utf-8";
 
-/*=========================================================== 
+/*===========================================================
 	- Template Name: STORY - Responsive HTML Wedding Template
 	- Author: DoubleEight
 	- Version: 1.00
 	- Website: www.dethemes.com
-============================================================= */	
+============================================================= */
 
-/*---------------------- 
+/*----------------------
 	Stylesheet Guide
 ------------------------
 00. PRELOADER
@@ -17,20 +17,20 @@
 02. NAV BAR
 
 03. LOGO
-	
+
 04. NAV MENU
 	04.1 Parent Menu
 	04.2 Child Menu
 	04.3 Child Arrow
 	04.4 More Child
 	04.5 Mobile Navigation
-	
+
 05. SIDE NAV MENU
 	05.1 Sidebar
 	05.2 Sidebar Header
 	05.3 Parent Menu
 	05.4 Child Menu
-	05.5 Child Have Child Arrow Icon	
+	05.5 Child Have Child Arrow Icon
 	05.6 More Child Menu
 
 06. MAIN-SLIDER
@@ -52,7 +52,7 @@
 		06.9.1 Zoom
 		06.9.2 Left-Right
 	06.10 Video Audio Control
-	
+
 07. PAGE ELEMENT
 	07.1 Blurb
 	07.2 Image Wrapper
@@ -72,42 +72,42 @@
 08. ICON
 	08.1 Size
 	08.2 Shape / Color
-		08.2.1 Default	
-		08.2.2 Default Reverse	
-		08.2.3 Light-1	
+		08.2.1 Default
+		08.2.2 Default Reverse
+		08.2.3 Light-1
 		08.2.4 Light-1 Reverse
-		08.2.5 Light-2	
+		08.2.5 Light-2
 		08.2.6 Light-2 Reverse
 		08.2.7 Circle, Rounded, Square
-	08.3 Effect Zoom 
+	08.3 Effect Zoom
 	08.4 Effect Rotate
 	08.5 Effect Square/Rounded To Circle
-	
+
 09. PHOTO ITEM
 	09.1 Image
 	09.2 Layer
 		09.2.1 Layer : Second Image
-		09.2.2 Layer : Black Overlay 
+		09.2.2 Layer : Black Overlay
 		09.2.3 Layer : Photo Caption
-		09.2.4 Layer : Icon / Button Link  
+		09.2.4 Layer : Icon / Button Link
 	09.3 on Hover Animation
 		09.3.1 on Hover Animation Duration
-		09.3.2 on Hover Animation Delay	
-		09.3.3 on Hover Zoom In	
+		09.3.2 on Hover Animation Delay
+		09.3.3 on Hover Zoom In
 		09.3.4 on Hover Zoom In and Rotate
 		09.3.5 on Hover Fade Out
-		
+
 10. BUTTON
 	10.1 Color
 		10.1.1 Default
-		10.1.2 Reverse	
+		10.1.2 Reverse
 		10.1.3 Light-1
 		10.1.4 Light-1 Reverse
 		10.1.5 Light-2
 		10.1.6 Light-2 Reverse
 	10.2 Size
 	10.1 Rounded
-	
+
 11. FORM
 	11.1 Form Group
 	11.2 Form Control
@@ -117,12 +117,12 @@
 	11.6 Checkbox and Radio(Custom)
 	11.7 Select Option
 	11.8 Message
-	11.9 Validation		
-	
-12. GALLERY	
+	11.9 Validation
+
+12. GALLERY
 	12.1 Full Gallery
 	12.2 Masonry Gallery
-	
+
 13. OTHER CUSTOM STYLE
 	13.1 Interest Place Title
 	13.2 Bridesmaid / Groomsmen Name & Duty
@@ -131,7 +131,7 @@
 14. PLUGIN CUSTOM
 	14.1 Owl Carousel
 	14.2 Magnific Popup
-	
+
 99. MEDIA SCREEN
 	- @media screen and (max-width: 1366px)
 	- @media screen and (max-width: 1200px)
@@ -187,7 +187,7 @@ h1 a, h2 a, h3 a, h4 a, h5 a, h6 a{
 	color:#363636;
 }
 
-h1 a:hover, h2 a:hover, h3 a:hover, 
+h1 a:hover, h2 a:hover, h3 a:hover,
 h4 a:hover, h5 a:hover, h6 a:hover{
 	color:#f08080;
 }
@@ -206,7 +206,7 @@ h4, h5, h6
 
 h1, .h1{
 	font-size:84px;
-	line-height:100px;	
+	line-height:100px;
 }
 
 h2, .h2{
@@ -239,7 +239,7 @@ h6, .h6{
 h1.inline, h2.inline, h3.inline,
 h4.inline, h5.inline, h6.inline{
 	display:inline;
-	vertical-align:middle; 
+	vertical-align:middle;
 }
 
 p{
@@ -329,9 +329,9 @@ img.with-border{
 #nav-bar{
 	background-color: rgba(255, 255, 255, 1);
 	padding: 25px 80px;
-	position:absolute;  
-	z-index:2000; 
-	width:100%;	
+	position:absolute;
+	z-index:2000;
+	width:100%;
 }
 
 #nav-bar.hide-first{
@@ -389,7 +389,7 @@ img.with-border{
 /* ----------------------------------------------*/
 #top-nav-menu{
 	position:relative;
-	list-style-type:none; 
+	list-style-type:none;
 	padding:0;
 	font-family: 'Roboto Slab', sans-serif;
 	font-size:16px;
@@ -428,7 +428,7 @@ img.with-border{
 #top-nav-menu ul{
 	position:absolute;
 	display:none;
-	width:220px;	
+	width:220px;
 	left:-10px;
 	list-style-type:none;
 	padding:30px 4px 16px 4px;
@@ -455,7 +455,7 @@ img.with-border{
 	width:100%;
 	background-color:#FFF;
 	padding:12px 24px;
-}   
+}
 
 #top-nav-menu ul li a:hover{
 	color:#f08080;
@@ -465,15 +465,15 @@ img.with-border{
 /* ----------------------------------------------*/
 /* 04.3 Child Arrow								 */
 /* ----------------------------------------------*/
-#top-nav-menu li > ul li a:after { 
+#top-nav-menu li > ul li a:after {
 	font-family: "fontello";
-	content: '\e918'; 
+	content: '\e918';
 	position:absolute;
 	right:15px;
-} 
+}
 
-#top-nav-menu li > ul li a:only-child:after { 
-	content: ''; 
+#top-nav-menu li > ul li a:only-child:after {
+	content: '';
 }
 
 /* ----------------------------------------------*/
@@ -517,7 +517,7 @@ img.with-border{
 /* ----------------------------------------------*/
 #side-navbar-header{
 	position:relative;
-	width:100%; 
+	width:100%;
 	display:block;
 	text-align:center;
 	padding:70px 0 0 0;
@@ -540,7 +540,7 @@ img.with-border{
 /* ----------------------------------------------*/
 #side-nav-menu{
 	position:relative;
-	list-style-type:none; 
+	list-style-type:none;
 	margin: 20px 35px 100px 35px;
 	margin-bottom:100px;
 	padding:0;
@@ -597,20 +597,20 @@ img.with-border{
 
 /* 05.5 Child Have Child Arrow Icon			 	 */
 /* ----------------------------------------------*/
-#side-nav-menu ul li a:after { 
-	content: '+'; 
+#side-nav-menu ul li a:after {
+	content: '+';
 	position:absolute;
 	right:15px;
-} 
+}
 
-#side-nav-menu li a.minus:after { 
-	content: '-'; 
+#side-nav-menu li a.minus:after {
+	content: '-';
 	position:absolute;
 	right:15px;
-} 
+}
 
-#side-nav-menu li a:only-child:after { 
-	content: ''; 
+#side-nav-menu li a:only-child:after {
+	content: '';
 }
 
 /* 05.6 More Child Menu 						 */
@@ -633,10 +633,10 @@ img.with-border{
 /* 06. MAIN-SLIDER					 		 	 */
 /*===============================================*/
 #main-slider {
-	margin:0; 
+	margin:0;
 	padding:0;
 	position:relative;
-	overflow:hidden;	
+	overflow:hidden;
 }
 
 /* ----------------------------------------------*/
@@ -652,8 +652,8 @@ img.with-border{
 /* ----------------------------------------------*/
 /* 06.2 Main Slider Flexslider			  		 */
 /* ----------------------------------------------*/
-#main-slider.flexslider { 
-	border: none; 
+#main-slider.flexslider {
+	border: none;
 }
 
 #main-slider .slides,
@@ -683,13 +683,13 @@ img.with-border{
 	 width:28px;
 	 z-index:4;
 	 height:auto;
-	 
+
 }
 
 #main-slider .flex-control-nav li{
 	display:block;
 	margin:7px 0;
-	
+
 }
 
 #main-slider .flex-control-nav li a{
@@ -727,16 +727,16 @@ img.with-border{
 	position:relative;
 	height:inherit;
 	width:100%;
-	background-size:cover; 
+	background-size:cover;
 	background-position:50% 50%;
 	background-color:#FFF;
-	-webkit-transform: translateZ(0);	
+	-webkit-transform: translateZ(0);
 }
 
 #main-slider .slide-image video{
-	position:absolute; 
-	margin:auto; 
-	top:0; 
+	position:absolute;
+	margin:auto;
+	top:0;
 	left:0;
 }
 
@@ -748,10 +748,10 @@ img.with-border{
 /* 06.4 Main Slider Slide-Video			  		 */
 /* ----------------------------------------------*/
 #main-slider .slide-video{
-	height: inherit; 
+	height: inherit;
 	width:100%;
-	position:relative;	
-	
+	position:relative;
+
 }
 
 
@@ -763,11 +763,11 @@ img.with-border{
 /* 06.5.1 outer Wrapper */
 /* ----------------------------------------------*/
 .slide-title-outer-wrapper{
-	position:absolute; 
-	width:100%; 
+	position:absolute;
+	width:100%;
 	/*height:inherit;*/
-	height:100%; 
-	left:0; 
+	height:100%;
+	left:0;
 	z-index:3;
 	overflow:hidden;
 }
@@ -775,17 +775,17 @@ img.with-border{
 /* 06.5.2 Inner Wrapper */
 /* ----------------------------------------------*/
 .slide-title-inner-wrapper{
-	width:1170px; 
-	height:inherit; 
-	margin:0 auto; 
+	width:1170px;
+	height:inherit;
+	margin:0 auto;
 	display: table;
 }
 
 /* 06.5.3 Title Wrapper */
 /* ----------------------------------------------*/
-.slide-title{ 
+.slide-title{
 	display: table-cell;
-	text-align:center;	
+	text-align:center;
     color:#FFF;
 }
 
@@ -805,10 +805,10 @@ img.with-border{
 /* 06.5.4 Slide Arrow */
 /* ----------------------------------------------*/
 #slide-arrow{
-	position:absolute; 
-	left:0; 
-	right:0; 
-	bottom:30px; 
+	position:absolute;
+	left:0;
+	right:0;
+	bottom:30px;
 	margin:auto;
 	z-index:2000;
 	text-align:center;
@@ -821,17 +821,17 @@ img.with-border{
 }
 
 @-webkit-keyframes bounce {
- 0%, 20%, 50%, 80%, 100% {-webkit-transform: translateY(0);} 
+ 0%, 20%, 50%, 80%, 100% {-webkit-transform: translateY(0);}
  40% {-webkit-transform: translateY(-15px);}
  60% {-webkit-transform: translateY(-7px);}
 }
- 
+
 @-moz-keyframes bounce {
  0%, 20%, 50%, 80%, 100% {-moz-transform: translateY(0);}
  40% {-moz-transform: translateY(-15px);}
  60% {-moz-transform: translateY(-7px);}
 }
- 
+
 @-o-keyframes bounce {
  0%, 20%, 50%, 80%, 100% {-o-transform: translateY(0);}
  40% {-o-transform: translateY(-15px);}
@@ -874,10 +874,10 @@ img.with-border{
 .slide-overlay{
 	position:absolute;
 	top:0;
-	display:block; 
-	width:inherit; 
-	height:inherit; 
-	background-color:#000; 
+	display:block;
+	width:inherit;
+	height:inherit;
+	background-color:#000;
 	opacity:0.3;
 	-webkit-transform: translateZ(0);
 }
@@ -889,9 +889,9 @@ img.with-border{
 	position:absolute;
 	top:0;
 	display:block;
-	width:inherit; 
-	height:inherit; 
-	color:#fff;	
+	width:inherit;
+	height:inherit;
+	color:#fff;
 }
 
 .use-animation{
@@ -901,10 +901,10 @@ img.with-border{
 /* ----------------------------------------------*/
 /* 06.8 Hack Flexslider Fade for Firefox & IE11	 */
 /* ----------------------------------------------*/
-.flexslider .slides.css-fade > li { 
-  	-webkit-transition: opacity 1s ease; 
+.flexslider .slides.css-fade > li {
+  	-webkit-transition: opacity 1s ease;
 	-moz-transition: opacity 1s ease;
- 	transition: opacity 1s ease; 
+ 	transition: opacity 1s ease;
 }
 
 
@@ -996,24 +996,24 @@ img.with-border{
 	right:20px;
 	width:200px;
 	opacity:0;
-	-webkit-transition: all 0.5s; 
+	-webkit-transition: all 0.5s;
 		-ms-transition: all 0.5s;
 		 -o-transition: all 0.5s;
 			transition: all 0.5s;
-	-webkit-transform: scale(0); 
+	-webkit-transform: scale(0);
 		-ms-transform: scale(0);
-		 -o-transform: scale(0);  
-			transform: scale(0);			
-	 transform-origin: bottom right;	
-	 
+		 -o-transform: scale(0);
+			transform: scale(0);
+	 transform-origin: bottom right;
+
 }
 
 #soundcloud-track.open-window{
 	opacity:1;
-	-webkit-transform: scale(1); 
+	-webkit-transform: scale(1);
 		-ms-transform: scale(1);
-		 -o-transform: scale(1);  
-			transform: scale(1);		
+		 -o-transform: scale(1);
+			transform: scale(1);
 }
 
 
@@ -1050,7 +1050,7 @@ img.with-border{
 }
 
 .v-align{
-	display:table-cell;	
+	display:table-cell;
 }
 
 .center-middle{
@@ -1083,7 +1083,7 @@ img.with-border{
 	background-repeat:no-repeat;
 	color:#FFF;
 	overflow:hidden;
-	-webkit-backface-visibility: hidden;	
+	-webkit-backface-visibility: hidden;
 }
 
 .image-divider.mobile{
@@ -1091,9 +1091,9 @@ img.with-border{
 }
 
 .image-divider video{
-	position:absolute; 
-	margin:auto; 
-	top:0; 
+	position:absolute;
+	margin:auto;
+	top:0;
 	left:0;
 }
 
@@ -1114,12 +1114,12 @@ img.with-border{
 
 .image-divider .divider-overlay,
 .video-divider .divider-overlay{
-	position:absolute; 
-	top:0; 
-	display:block; 
-	width:100%; 
-	height:100%; 
-	background-color:#000; 
+	position:absolute;
+	top:0;
+	display:block;
+	width:100%;
+	height:100%;
+	background-color:#000;
 	opacity:0.3
 }
 
@@ -1140,32 +1140,32 @@ img.with-border{
 /* 07.6 HEART DIVIDER							 */
 /* ----------------------------------------------*/
 .heart-divider{
-	/*height:100%; 
+	/*height:100%;
 	width:100%;*/
-	margin:0 auto; 
+	margin:0 auto;
 	margin-top:20px;
 	margin-bottom:20px;
 	text-align:center;
 }
 
 .pink-heart{
-	color:#f08080; 
-	font-size:30px; 
+	color:#f08080;
+	font-size:30px;
 	margin-left:-26px;
-	position:relative; 
+	position:relative;
 	z-index:2
 }
 
 .white-heart{
-	color:#FFF; 
-	font-size:30px; 
+	color:#FFF;
+	font-size:30px;
 	position:relative;
 	z-index:3
 }
 
 .grey-heart{
 	color: #e1dddd;
-	font-size:30px; 
+	font-size:30px;
 	position:relative;
 	z-index:3
 }
@@ -1173,22 +1173,22 @@ img.with-border{
 /* 07.7 MAP										 */
 /* ----------------------------------------------*/
 #map-canvas{
-	height:750px; 
+	height:750px;
 	width:100%;
 }
 
 .main-icon-wrapper{
-	height:175px; 
-	width:175px; 
+	height:175px;
+	width:175px;
 	position:relative;
 }
 
 .big-circle{
 	position:relative;
-	height:175px; 
-	width:175px; 
-	border-radius:50%; 
-	background-color: rgba(240, 128, 128, 0.8); 	
+	height:175px;
+	width:175px;
+	border-radius:50%;
+	background-color: rgba(240, 128, 128, 0.8);
 }
 
 .main-icon-text{
@@ -1214,15 +1214,15 @@ img.with-border{
 }
 
 @-webkit-keyframes scale-animation {
- 0%{-webkit-transform: scale(1, 1);} 
+ 0%{-webkit-transform: scale(1, 1);}
  50% {-webkit-transform: scale(0.85, 0.85);}
 }
- 
+
 @-moz-keyframes scale-animation {
  0% {-moz-transform: scale(1, 1);}
  50% {-moz-transform: scale(0.85, 0.85);}
 }
- 
+
 @-o-keyframes scale-animation {
  0%{-o-transform: scale(1, 1);}
  50% {-o-transform: scale(0.85, 0.85);}
@@ -1240,9 +1240,9 @@ img.with-border{
 }
 
 #arrow-up-mobile{
-	position:absolute; 
-	bottom:10px; 
-	left:10px; 
+	position:absolute;
+	bottom:10px;
+	left:10px;
 	z-index:2000;
 }
 
@@ -1268,20 +1268,20 @@ img.with-border{
 }
 
 .icon-and-title{
-	position:relative; 
-	margin-bottom:18px; 
+	position:relative;
+	margin-bottom:18px;
 	margin-left:68px
 }
 
 .the-icon{
-	position:absolute; 
-	color:#333333; 
-	left:-78px; 
+	position:absolute;
+	color:#333333;
+	left:-78px;
 	font-size:42px;
 }
 
 .the-feature{
-	font-size:16px; 
+	font-size:16px;
 	line-height:30px;
 }
 
@@ -1293,20 +1293,20 @@ img.with-border{
 }
 
 .event-location{
-	position:relative; 
-	margin-bottom:18px; 
+	position:relative;
+	margin-bottom:18px;
 	margin-left:40px
 }
 
 .location-icon{
-	color:#333333; 
-	position:absolute; 
-	left:-55px; 
+	color:#333333;
+	position:absolute;
+	left:-55px;
 	font-size:36px
 }
 
 .event-desc{
-	font-size:20px; 
+	font-size:20px;
 	line-height:38px
 }
 
@@ -1334,7 +1334,7 @@ img.with-border{
 }
 
 .story-desc p{
-	font-size:16px; 
+	font-size:16px;
 	line-height:30px
 }
 
@@ -1346,16 +1346,16 @@ img.with-border{
 .story-date{
 	float:left;
 	margin:0 auto;
-	height:100px; 
-	width:100px; 
-	background-color:#f08080; 
-	color:#FFF;	
+	height:100px;
+	width:100px;
+	background-color:#f08080;
+	color:#FFF;
 	border-radius:50%;
 }
 
 .story-date .date-only{
 	font-family: 'Roboto Slab', serif;
-	font-size:40px; 
+	font-size:40px;
 	line-height:22px;
 	padding-top:28px;
 	font-weight:400;
@@ -1368,8 +1368,8 @@ img.with-border{
 }
 
 .arrow-right {
-	width: 0; 
-	height: 0; 
+	width: 0;
+	height: 0;
 	border-top: 13px solid transparent;
 	border-bottom: 13px solid transparent;
 	border-left: 13px solid #e1dddd;
@@ -1378,25 +1378,25 @@ img.with-border{
 }
 
 .arrow-left {
-	width: 0; 
-	height: 0; 
+	width: 0;
+	height: 0;
 	border-top: 13px solid transparent;
-	border-bottom: 13px solid transparent; 
-	border-right:13px solid #e1dddd; 
+	border-bottom: 13px solid transparent;
+	border-right:13px solid #e1dddd;
 	float:left;
 	margin-right:20px;
 	margin-top:40px;
 }
 
 .vertical-line{
-	position:absolute; 
-	height:100%; 
-	width:1px; 
-	margin:auto; 
-	top:0; 
-	bottom:0; 
-	left:0; 
-	right:0; 
+	position:absolute;
+	height:100%;
+	width:1px;
+	margin:auto;
+	top:0;
+	bottom:0;
+	left:0;
+	right:0;
 	border-left:1px solid #e1dddd;
 }
 
@@ -1410,8 +1410,8 @@ img.with-border{
 #countdown{
 	margin-top:20px;;
 	text-align:center;
-	width:80%; 
-	margin:0 auto; 
+	width:80%;
+	margin:0 auto;
 }
 
 .countdown-section:last-child{
@@ -1420,7 +1420,7 @@ img.with-border{
 
 .countdown-section{
 	border-right: 2px solid #CCC;
-	padding:10px 0;		
+	padding:10px 0;
 }
 
 .is-countdown {
@@ -1429,18 +1429,18 @@ img.with-border{
 }
 
 .countdown-amount {
-	font-weight:400;	
+	font-weight:400;
 	width:85px;
 	display:block;
 	/*font-size:30px;*/
 	margin:0 auto;
-	font-size: 42px;	
+	font-size: 42px;
 }
 
 .countdown-period {
 	display:block;
 	text-align:center;
-	font-size:20px;    
+	font-size:20px;
 }
 
 /*-----------------------------------------------*/
@@ -1448,7 +1448,7 @@ img.with-border{
 /*-----------------------------------------------*/
 #popup-template{
 	width:900px;
-	margin:30px auto; 
+	margin:30px auto;
 	background-color:#FFF;
 }
 
@@ -1459,10 +1459,10 @@ img.with-border{
 }
 
 #popup-template-title-wrapper{
-	position:absolute; 
-	bottom:50px; 
-	color:#FFF; 
-	text-align:center; 
+	position:absolute;
+	bottom:50px;
+	color:#FFF;
+	text-align:center;
 	padding:0 50px;
 	margin:0 auto;
 	width:100%;
@@ -1478,7 +1478,7 @@ img.with-border{
 }
 
 #popup-template #the-content #socialnetwork-icon{
-	text-align:center; 
+	text-align:center;
 	margin-bottom:40px;
 }
 
@@ -1503,12 +1503,12 @@ img.with-border{
 /* 07.14 Loader Animation					 	 */
 /*-----------------------------------------------*/
 .loader {
-  position:absolute; 
-  left:0; 
-  right:0; 
-  top:0; 
-  bottom:0; 
-  margin: auto; 
+  position:absolute;
+  left:0;
+  right:0;
+  top:0;
+  bottom:0;
+  margin: auto;
   width:100px;
   height:100px;
 }
@@ -1518,12 +1518,12 @@ img.with-border{
 	width:100px;
 	height:100px;
 	float:left;
-	
+
 	-webkit-animation-name: rotateThis;
 	-webkit-animation-duration:1s;
 	-webkit-animation-iteration-count:infinite;
 	-webkit-animation-timing-function:linear;
-	
+
 	-moz-transform:scale(0.3);
 	-o-transform:scale(0.3);
 }
@@ -1536,12 +1536,12 @@ img.with-border{
 	position:absolute;
 	top:35px;
 	left:45px;
-	
+
 	border-radius: 50px;
 	-moz-border-radius-bottomleft:50px;
 	-moz-border-radius-bottomright:50px;
 	-moz-border-radius-topleft:50px;
-	-moz-border-radius-topright:50px;	
+	-moz-border-radius-topright:50px;
 }
 
 @-webkit-keyframes rotateThis {
@@ -1613,9 +1613,9 @@ img.with-border{
 	line-height: 60px;
 	font-size:35px;*/
 	text-align: center;
-	vertical-align: middle;	
+	vertical-align: middle;
 	margin:8px 0px;
-	
+
 	-webkit-transition: 0.3s all ease;
 	-moz-transition: 0.3s all ease;
 	-o-transition: 0.3s all ease;
@@ -1635,7 +1635,7 @@ img.with-border{
 }
 
 /*.de-icon.float{
-	float:left; 
+	float:left;
 	margin-right:15px
 }*/
 
@@ -1653,7 +1653,7 @@ img.with-border{
 /*------------------------------------------------*/
 .de-icon.large-size{
 	font-size:45px;
-	margin:15px 0;	
+	margin:15px 0;
 }
 
 .de-icon.large-size.circle,
@@ -1661,13 +1661,13 @@ img.with-border{
 .de-icon.large-size.rounded{
 	width: 100px;
 	height: 100px;
-	line-height: 94px;	
+	line-height: 94px;
 }
 
 .de-icon.medium-size{
 	/*font-size:24px;*/
 	font-size:30px;
-	margin:10px 0;	
+	margin:10px 0;
 }
 
 .de-icon.medium-size.circle,
@@ -1681,7 +1681,7 @@ img.with-border{
 .de-icon.small-size{
 	/*font-size:18px;	*/
 	font-size:20px;
-	margin:5px 0;	
+	margin:5px 0;
 }
 
 .de-icon.small-size.circle,
@@ -1689,11 +1689,11 @@ img.with-border{
 .de-icon.small-size.rounded{
 	width: 40px;
 	height: 40px;
-	line-height: 34px;	
+	line-height: 34px;
 }
 
 .de-icon.very-small-size{
-	font-size:11px;	
+	font-size:11px;
 }
 
 .de-icon.very-small-size.circle,
@@ -1897,7 +1897,7 @@ a:hover .de-icon.light-2.reverse.square, a:hover .de-icon.light-2.reverse.circle
 	   -moz-transform: scale(1);
 	     -o-transform: scale(1);
 	    -ms-transform: scale(1);
-	        transform: scale(1);	
+	        transform: scale(1);
 }
 
 a:hover .de-icon.effect1{
@@ -1905,7 +1905,7 @@ a:hover .de-icon.effect1{
 	   -moz-transform: scale(1.2);
 	     -o-transform: scale(1.2);
 	    -ms-transform: scale(1.2);
-	        transform: scale(1.2);	
+	        transform: scale(1.2);
 }
 
 /*------------------------------------------------*/
@@ -1917,7 +1917,7 @@ a:hover .de-icon.effect1{
 	   -moz-transform: rotate(0deg);
 	     -o-transform: rotate(0deg);
 	    -ms-transform: rotate(0deg);
-	        transform: rotate(0deg);	
+	        transform: rotate(0deg);
 }
 
 a:hover .de-icon.effect2 i{
@@ -1925,7 +1925,7 @@ a:hover .de-icon.effect2 i{
 	   -moz-transform: rotate(360deg);
 	     -o-transform: rotate(360deg);
 	    -ms-transform: rotate(360deg);
-	        transform: rotate(360deg);	
+	        transform: rotate(360deg);
 }
 
 /*------------------------------------------------*/
@@ -1947,7 +1947,7 @@ a:hover .de-icon.effect3{
 }
 
 .photo-item.frame-border {
-	background-color:#FFF; 
+	background-color:#FFF;
 	border:18px solid #FFF;
 }
 
@@ -1963,10 +1963,10 @@ a:hover .de-icon.effect3{
 /* 09.2 Layer 								 	 */
 /* ----------------------------------------------*/
 .photo-item .layer {
-	position: absolute; 
+	position: absolute;
 	margin: auto;
-	top: 0; 
-	right: 0; 
+	top: 0;
+	right: 0;
 	bottom: 0;
 	left: 0;
 	width:100%;
@@ -1975,19 +1975,19 @@ a:hover .de-icon.effect3{
 
 .photo-item .layer.wh100{
 	width:100%;
-	height:100%; 
+	height:100%;
 }
 
 .photo-item .layer.wh95{
 	width:95%;
-	height:95%; 
+	height:95%;
 }
 
 
 /* 09.2.1 Layer : Second Image   				 */
 /* ----------------------------------------------*/
 .photo-item .layer.second-image{
-	opacity: 0; 
+	opacity: 0;
 }
 
 
@@ -1995,32 +1995,32 @@ a:hover .de-icon.effect3{
 /* ----------------------------------------------*/
 .photo-item .layer.opacity-black-overlay{
 	background-color: rgba(54, 54, 54, 0.4);
-	opacity: 0.3; 
+	opacity: 0.3;
 }
 
 .photo-item .layer.hidden-black-overlay{
 	background-color: rgba(54, 54, 54, 0.4);
-	opacity: 0; 
+	opacity: 0;
 }
 
 /* 09.2.3 Layer : Photo Caption  				 */
 /* ----------------------------------------------*/
 .photo-item .layer.photo-caption{
-	opacity: 1; 
+	opacity: 1;
 }
 
 .photo-item .layer.hidden-photo-caption{
-	opacity: 0; 
+	opacity: 0;
 }
 
 .photo-item .layer.border-photo-caption{
 	opacity: 1;
-	border:1px solid #FFF; 
+	border:1px solid #FFF;
 }
 
 .photo-item .layer.hidden-border-photo-caption{
 	opacity: 0;
-	border:1px solid #FFF; 
+	border:1px solid #FFF;
 }
 
 
@@ -2035,34 +2035,34 @@ a:hover .de-icon.effect3{
 }
 
 .photo-item:hover .layer.hover-animation.fade-in{
-	opacity: 1; 
+	opacity: 1;
 }
 
 .photo-item:hover .layer.hover-animation.half-fade-in{
-	opacity: 0.3; 
+	opacity: 0.3;
 }
 
 .photo-item:hover .layer.hover-animation.fade-out{
-	opacity: 0; 
+	opacity: 0;
 }
 
 /* ----------------------------------------------*/
 /* 09.3 on Hover Animation					 	*/
 /* ----------------------------------------------*/
 .photo-item img.hover-animation, .photo-item:hover img.hover-animation{
-	-webkit-transition: all 0.5s; 
+	-webkit-transition: all 0.5s;
 		-ms-transition: all 0.5s;
 		 -o-transition: all 0.5s;
 			transition: all 0.5s;
-	/*The transition will be disabled on script.js for tablet/mobile*/		
+	/*The transition will be disabled on script.js for tablet/mobile*/
 }
 
 .photo-item .layer.hover-animation, .photo-item:hover .layer.hover-animation {
-	-webkit-transition: all 0.5s; 
+	-webkit-transition: all 0.5s;
 		-ms-transition: all 0.5s;
 		 -o-transition: all 0.5s;
 			transition: all 0.5s;
-	/*The transition will be disabled on script.js for tablet/mobile*/	
+	/*The transition will be disabled on script.js for tablet/mobile*/
 }
 
 /* 09.3.1 on Hover Animation Duration		 	 */
@@ -2123,10 +2123,10 @@ a:hover .de-icon.effect3{
 /* 09.3.3 on Hover Zoom In					 	 */
 /* ----------------------------------------------*/
 .photo-item:hover img.hover-animation.image-zoom-in {
-	-webkit-transform: scale(1.1); 
+	-webkit-transform: scale(1.1);
 		-ms-transform: scale(1.1);
-		 -o-transform: scale(1.1);  
-			transform: scale(1.1);		
+		 -o-transform: scale(1.1);
+			transform: scale(1.1);
 }
 
 /* 09.3.4 on Hover Zoom In and Rotate	 	 	*/
@@ -2134,8 +2134,8 @@ a:hover .de-icon.effect3{
 .photo-item:hover img.hover-animation.image-zoom-rotate {
 	-webkit-transform: rotate(7deg) scale(1.1);
 		-ms-transform: rotate(7deg) scale(1.1);
-		 -o-transform: rotate(7deg) scale(1.1);  
-			transform: rotate(7deg) scale(1.1);			
+		 -o-transform: rotate(7deg) scale(1.1);
+			transform: rotate(7deg) scale(1.1);
 }
 
 /* 09.3.5 on Hover Fade Out				 		 */
@@ -2158,10 +2158,10 @@ a:hover .de-icon.effect3{
 /* ----------------------------------------------*/
 
 a.de-button, span.de-button, input[type=submit]{
-	display:inline-block; 	
-	margin:0 auto; 
+	display:inline-block;
+	margin:0 auto;
 	margin-top:20px;
-	margin-right:10px; 
+	margin-right:10px;
 	background-color:#f08080;
 	color:#FFF;
 	font-family: 'Roboto Slab', serif;
@@ -2171,7 +2171,7 @@ a.de-button, span.de-button, input[type=submit]{
 }
 
 a.de-button.outline, span.de-button.outline, input[type=submit].outline{
-	background-color:transparent; 
+	background-color:transparent;
 	border:solid 1px #f08080;
 	color:#f08080;
 }
@@ -2187,13 +2187,13 @@ a.de-button:hover, input[type=submit]:hover{
 /* ----------------------------------------------*/
 
 a.de-button.reverse, span.de-button.reverse, input[type=submit].reverse{
-	background-color:#444444; 
+	background-color:#444444;
 	border-color: #444444;
 	color:#FFF;
 }
 
 a.de-button.outline.reverse, span.de-button.outline.reverse, input[type=submit].outline.reverse{
-	background-color:transparent; 
+	background-color:transparent;
 	border:solid 1px #444444;
 	color:#444444;
 }
@@ -2209,14 +2209,14 @@ a.de-button.reverse:hover, input[type=submit].reverse:hover{
 /* 10.1.3 Light-1		 					 	 */
 /* ----------------------------------------------*/
 
-a.de-button.light-1, span.de-button.light-1, input[type=submit].light-1{	
+a.de-button.light-1, span.de-button.light-1, input[type=submit].light-1{
 	background-color:#FFF;
 	color:#f08080;
 	border:solid 1px #FFF;
 }
 
 a.de-button.outline.light-1, span.de-button.outline.light-1, input[type=submit].outline.light-1{
-	background-color:transparent; 
+	background-color:transparent;
 	border:solid 1px #FFF;
 	color:#FFF;
 }
@@ -2232,13 +2232,13 @@ a.de-button.light-1:hover, input[type=submit].light-1:hover{
 /* 10.1.4 Light-1 Reverse	 					 */
 /* ----------------------------------------------*/
 a.de-button.reverse.light-1, span.de-button.reverse.light-1, input[type=submit].reverse.light-1{
-	background-color:#f08080; 
+	background-color:#f08080;
 	border-color: #f08080;
 	color:#FFF;
 }
 
 a.de-button.reverse.outline.light-1, span.de-button.reverse.outline.light, input[type=submit].reverse.outline.light{
-	background-color:transparent; 
+	background-color:transparent;
 	border:solid 1px #f08080;
 	color:#f08080;
 }
@@ -2253,14 +2253,14 @@ a.de-button.reverse.light-1:hover, input[type=submit].reverse.light-1:hover{
 
 /* 10.1.5 Light-2			 					 */
 /* ----------------------------------------------*/
-a.de-button.light-2, span.de-button.light-2, input[type=submit].light-2{	
+a.de-button.light-2, span.de-button.light-2, input[type=submit].light-2{
 	background-color:#FFF;
 	color:#444444;
 	border:solid 1px #FFF;
 }
 
 a.de-button.outline.light-2, span.de-button.outline.light-2, input[type=submit].outline.light-2{
-	background-color:transparent; 
+	background-color:transparent;
 	border:solid 1px #FFF;
 	color:#FFF;
 }
@@ -2276,13 +2276,13 @@ a.de-button.light-2:hover, input[type=submit].light-2:hover{
 /* 10.1.6 Light-2 Reverse	 					 */
 /* ----------------------------------------------*/
 a.de-button.reverse.light-2, span.de-button.reverse.light-2, input[type=submit].reverse.light-2{
-	background-color:#444444; 
+	background-color:#444444;
 	border-color: #444444;
 	color:#FFF;
 }
 
 a.de-button.reverse.outline.light-2, span.de-button.reverse.outline.light, input[type=submit].reverse.outline.light{
-	background-color:transparent; 
+	background-color:transparent;
 	border:solid 1px #444444;
 	color:#444444;
 }
@@ -2299,18 +2299,18 @@ a.de-button.reverse.light-2:hover, input[type=submit].reverse.light-2:hover{
 /* 10.2 Size			 					 	 */
 /* ----------------------------------------------*/
 a.de-button.small, span.de-button.small, input[type=submit].small{
-	padding:10px 48px; 
-	font-size:16px; 
+	padding:10px 48px;
+	font-size:16px;
 }
 
 a.de-button.medium, span.de-button.medium, input[type=submit].medium{
-	padding:16px 54px; 
-	font-size:20px; 
+	padding:16px 54px;
+	font-size:20px;
 }
 
 a.de-button.large, span.de-button.large, input[type=submit].large{
-	padding:18px 60px; 
-	font-size:24px; 
+	padding:18px 60px;
+	font-size:24px;
 }
 
 
@@ -2319,7 +2319,7 @@ a.de-button.large, span.de-button.large, input[type=submit].large{
 /* ----------------------------------------------*/
 a.de-button.small.rounded, span.de-button.small.rounded, input[type=submit].small.rounded{
 	border-radius:1px
-} 
+}
 
 a.de-button.medium.rounded, span.de-button.medium.rounded, input[type=submit].medium.rounded{
 	border-radius:2px;
@@ -2346,6 +2346,10 @@ a.de-button.large.rounded, span.de-button.large.rounded, input[type=submit].larg
 
 .form-group.submit-wrapper{
 	margin-top:30px;
+}
+
+.form-group > p.help-block {
+	color: red;
 }
 
 /*-----------------------------------------------*/
@@ -2389,10 +2393,10 @@ form label{
 /*-----------------------------------------------*/
 /* 11.5 Button									 */
 /*-----------------------------------------------*/
-form .btn-primary 
+form .btn-primary
 {
     padding: 12px 18px;
-    margin: 0 15px 5px 15px; 
+    margin: 0 15px 5px 15px;
     border-radius: 0;
 	font-family: 'Roboto Slab', serif;
 	color:#6a6a6a;
@@ -2407,7 +2411,7 @@ form .btn-primary.focus,
 form .btn-primary:active,
 form .btn-primary.active,
 .open > .dropdown-toggle.btn-primary {
-	background-color:#f08080; 
+	background-color:#f08080;
 	border-color:#f08080;
 	color:#FFF;
  	border-color: #cccccc;
@@ -2418,7 +2422,7 @@ form .btn-primary.active,
 /*-----------------------------------------------*/
 .ajax-checkbox .btn input[type=checkbox],
 .ajax-radio .btn input[type=radio]{
-	display:none;	
+	display:none;
 }
 
 .ajax-checkbox .btn.custom-option-icon, .ajax-checkbox .btn.no-icon,
@@ -2481,7 +2485,7 @@ option{
 }
 
 .message .bg-danger{
-	background-color:#f08080; 
+	background-color:#f08080;
 }
 
 .message .bg-success{
@@ -2693,13 +2697,13 @@ form .has-error .btn-primary{
 /* 13.2 Bridesmaid / Groomsmen Name & Duty	  */
 /* -------------------------------------------*/
 .bridesmaid-name, .groomsmen-name{
-	color:#FFF;  
-	font-weight:400; 
+	color:#FFF;
+	font-weight:400;
 	font-size:26px;
 }
 
 .bridesmaid-duty, .groomsmen-duty{
-	color:#FFF; 
+	color:#FFF;
 	font-size:16px;
 }
 
@@ -2714,7 +2718,7 @@ form .has-error .btn-primary{
 /*===============================================*/
 /* 14. PLUGIN CUSTOM							 */
 /*===============================================*/
- 
+
 /* -------------------------------------------*/
 /* 14.1 Owl Carousel 						  */
 /* -------------------------------------------*/
@@ -2758,9 +2762,9 @@ form .has-error .btn-primary{
 .mfp-content {
   	z-index: 2003;
 }
-  
+
 .mfp-preloader {
-  	z-index: 2002; 
+  	z-index: 2002;
 }
 
 button.mfp-close, button.mfp-arrow {
@@ -2773,7 +2777,7 @@ button.mfp-close, button.mfp-arrow {
 @media screen and (max-width: 1366px) {
 /*===============================================*/
 /* 01. GENERAL			 						 */
-/*===============================================*/	
+/*===============================================*/
 p{
 	font-size:21px;
 	line-height:40px;
@@ -2796,9 +2800,9 @@ p{
 /* 02. NAV BAR				 					 */
 /*===============================================*/
 #nav-bar{
-	padding: 25px 50px;	
+	padding: 25px 50px;
 }
-	
+
 /*===============================================*/
 /* 06. MAIN-SLIDER					 		 	 */
 /*===============================================*/
@@ -2806,7 +2810,7 @@ p{
 /* 06.5.2 Inner Wrapper 						 */
 /* ----------------------------------------------*/
 .slide-title-inner-wrapper{
-	width:100%; 
+	width:100%;
 }
 
 /*===============================================*/
@@ -2848,7 +2852,7 @@ p{
 }
 }
 
-@media screen and (max-width: 991px) {	
+@media screen and (max-width: 991px) {
 /*===============================================*/
 /* 04. NAV MENU			 						 */
 /*===============================================*/
@@ -2904,23 +2908,23 @@ p{
 
 #top-nav-menu ul li a{
 	padding:0;
-}   
+}
 
 #top-nav-menu > li:last-child ul{
 	left:0;
 }
 
-#top-nav-menu li > ul li a:before{ 
+#top-nav-menu li > ul li a:before{
 	content: '-';
 	padding-right:10px;
-} 
+}
 
 /* ----------------------------------------------*/
 /* 04.3 Child Arrow								 */
 /* ----------------------------------------------*/
-#top-nav-menu li > ul li a:after { 
+#top-nav-menu li > ul li a:after {
 	content: '';
-} 
+}
 
 /* ----------------------------------------------*/
 /* 04.4 More Child								 */
@@ -2933,15 +2937,15 @@ p{
 	padding-top:0;
 }
 
-#top-nav-menu ul ul li a:before{ 
+#top-nav-menu ul ul li a:before{
 	content: '- -';
 	padding-right:10px;
-} 
+}
 
-#top-nav-menu ul ul ul li a:before{ 
+#top-nav-menu ul ul ul li a:before{
 	content: '- - -';
 	padding-right:10px;
-} 
+}
 
 /* ----------------------------------------------*/
 /* 04.5 Mobile Navigation						 */
@@ -3006,17 +3010,17 @@ p{
 }
 
 .event-location{
-	position:relative; 
+	position:relative;
 	margin-left:0;
 }
 
 .location-icon{
-	position:relative; 
-	left:0; 
+	position:relative;
+	left:0;
 }
 
 .event-desc{
-	font-size:20px; 
+	font-size:20px;
 	line-height:38px
 }
 
@@ -3038,7 +3042,7 @@ p{
 
 .story-date{
 	float:none;
-	position:absolute;	
+	position:absolute;
 	top:-80px;
 	left:0;
 	right:0;
@@ -3046,7 +3050,7 @@ p{
 }
 
 .story-date .month-year{
-	font-size:16px; 
+	font-size:16px;
 }
 
 .arrow-right {
@@ -3074,10 +3078,10 @@ p{
 @media screen and (max-width: 768px) {
 /*===============================================*/
 /* 01. GENERAL			 						 */
-/*===============================================*/		
+/*===============================================*/
 h1, .h1{
 	font-size:54px;
-	line-height:62px;	
+	line-height:62px;
 }
 
 .font-oswald{
@@ -3179,14 +3183,14 @@ p{
 /* 07.7 MAP										 */
 /* ----------------------------------------------*/
 #map-canvas{
-	height:450px; 
+	height:450px;
 }
 
 
 /* 07.11 COUNTDOWN							 	 */
 /* ----------------------------------------------*/
 #countdown{
-	width:100%; 
+	width:100%;
 }
 
 }
@@ -3205,7 +3209,7 @@ p{
 }
 
 
-@media screen and (max-width: 480px) {	
+@media screen and (max-width: 480px) {
 /*===============================================*/
 /* 12.2 MASONRY GALLERY							 */
 /*===============================================*/
@@ -3233,24 +3237,24 @@ p{
 /* 07.11 COUNTDOWN							 	 */
 /* ----------------------------------------------*/
 #countdown{
-	width:100%; 
+	width:100%;
 }
 
 .countdown-section{
 	border-right: 1px solid #CCC;
-	padding:4px 0;		
+	padding:4px 0;
 }
 
 .countdown-amount {
 	width:40px;
-	font-size:30px;	
+	font-size:30px;
 	line-height:24px
 }
 
 .countdown-period {
 	display:block;
 	text-align:center;
-	font-size:13px;    
+	font-size:13px;
 }
 
 /*-----------------------------------------------*/

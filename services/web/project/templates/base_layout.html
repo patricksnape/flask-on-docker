@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta name="description" content="Wedding website for the Snapes">
+    <meta name="author" content="www.snapewedding.com">
+    <title>{% block title %}Wedding Template{% endblock %}</title>
+    {% block css_links %}{% endblock %}
+</head>
+
+<body>
+
+{% include 'preloader.html' %}
+
+{% block navbar_content %}{% endblock %}
+
+<div id="sb-site">
+    {% block page_content %}{% endblock %}
+</div>
+
+{% block js_scripts %}{% endblock %}
+</body>
+</html>
