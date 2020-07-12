@@ -39,7 +39,7 @@ class WeddingUserManager(UserManager):
         )
 
     def forgot_password_view(self):
-        if self.user_is_authenticated:
+        if self.user_is_authenticated():
             return redirect(self.USER_AFTER_LOGIN_ENDPOINT)
         else:
             return super().forgot_password_view()
@@ -51,7 +51,7 @@ class WeddingUserManager(UserManager):
         # those values respect the flow we actually take here
         assert not self.USER_REQUIRE_INVITATION
 
-        if self.user_is_authenticated:
+        if self.user_is_authenticated():
             return redirect(self.USER_AFTER_LOGIN_ENDPOINT)
 
         try:
