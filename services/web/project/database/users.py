@@ -1,6 +1,10 @@
+from __future__ import annotations
+
+from typing import Optional
+
 from flask_user import UserMixin
 from sqlalchemy import Column, Integer, ForeignKey, String, DateTime, Boolean
-from sqlalchemy.orm import relationship
+from sqlalchemy.orm import relationship, Session
 
 from project.database import BaseModel
 
@@ -18,6 +22,17 @@ class User(BaseModel, UserMixin):
     party_id = Column(Integer, ForeignKey("party.id"), index=True)
 
     roles = relationship("Role", secondary="user_roles")
+
+    @classmethod
+    def get_by_guest_code(cls, guest_code: str, session: Session) -> Optional[User]:
+        from project.database.party import Party
+
+        return (
+            session.query(User)
+            .join(Party, Party.id == User.party_id)
+            .filter(Party.guest_code == guest_code.upper())
+            .one_or_none()
+        )
 
 
 class Role(BaseModel):

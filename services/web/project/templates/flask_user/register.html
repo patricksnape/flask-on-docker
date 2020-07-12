@@ -1,0 +1,97 @@
+{% extends "login_layout.html" %}
+
+{% block title %}Register{% endblock %}
+
+{% block page_content %}
+{% from 'macros/form_errors.jinja2' import form_errors as form_errors %}
+
+<section id="page-content">
+    <section class="section-padding">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-md-offset-1 col-md-10 text-center">
+                    <h3 class="animation fadeInUp">Register With Your Guest Code</h3>
+                    <div class="blurb animation fadeInUp">
+                        <p>
+                            To ensure that we can contact you, please choose an email and password to login to the
+                            wedding website with. The Guest Code can be found by either scanning the QR code or
+                            manually entering the Guest Code provided in your invitation.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="col-md-offset-3 col-md-6 text-center">
+                    <form action="" method="POST" class="form" role="form">
+                        {{ form.hidden_tag() }}
+
+                        {# Guest Code field #}
+                        {% set guest_code_value = request.args.get('guest_code', '') %}
+                        <div class="form-group">
+                            <label>
+                                <div class="input-group {% if form.guest_code.errors %}has-error{% endif %}">
+                                    <div class="input-group-addon"><i class="de-icon-key-1"></i></div>
+                                    {{ form.guest_code(class_='form-control', tabindex=220,
+                                    value=guest_code_value, maxlength="6", placeholder='Guest Code') }}
+                                </div>
+                            </label>
+                            {{ form_errors(form.guest_code) }}
+                        </div>
+
+                        {# Email field #}
+                        <div class="form-group">
+                            <label>
+                                <div class="input-group {% if form.email.errors %}has-error{% endif %}">
+                                    <div class="input-group-addon"><i class="de-icon-mail"></i></div>
+                                    {{ form.email(class_='form-control ajax-input', placeholder='Email',
+                                    tabindex=210) }}
+                                </div>
+                            </label>
+                            {{ form_errors(form.email) }}
+                        </div>
+
+                        {# Password field #}
+                        <div class="form-group">
+                            <label>
+                                <div class="input-group {% if form.password.errors %}has-error{% endif %}">
+                                    <div class="input-group-addon"><i class="de-icon-lock"></i></div>
+                                    {{ form.password(class_='form-control ajax-input', placeholder='Password',
+                                    tabindex=230) }}
+                                </div>
+                            </label>
+                            {{ form_errors(form.password) }}
+                        </div>
+
+                        <div class="form-group">
+                            <label>
+                                <div class="input-group {% if form.retype_password.errors %}has-error{% endif %}">
+                                    <div class="input-group-addon"><i class="de-icon-lock"></i></div>
+                                    {{ form.retype_password(class_='form-control ajax-input',
+                                    placeholder='Retype Password', tabindex=240) }}
+                                </div>
+                            </label>
+                            {{ form_errors(form.retype_password) }}
+                        </div>
+
+                        {# Submit button #}
+                        <input type="submit" class="de-button outline rounded small reverse animation fadeInUp"
+                               value="Register" tabindex=280>
+                    </form>
+
+                    {%- with messages = get_flashed_messages(with_categories=true) -%}
+                    {% if messages %}
+                    {% for category, message in messages %}
+                    {% if category=='error' %}
+                    {% set category='danger' %}
+                    {% endif %}
+                    <div class="alert alert-{{category}}">{{ message|safe }}</div>
+                    {% endfor %}
+                    {% endif %}
+                    {%- endwith %}
+                </div>
+
+            </div>
+        </div>
+    </section>
+</section>
+{% endblock %}

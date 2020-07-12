@@ -1,35 +1,8 @@
-{% extends "base_layout.html" %}
+{% extends "login_layout.html" %}
 
 {% block title %}Welcome{% endblock %}
-{% block css_links %}
-
-<!-- Favicon -->
-<link rel="icon" href="{{ url_for('static', filename='images/favicon.jpg') }}"/>
-<!-- Bootstrap -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
-      integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"
-      media="screen"/>
-<!-- Animate -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.0/animate.compat.min.css"
-      integrity="sha512-uUsJnYcswxI6Vy2g88USOAD351ljY8pWr98HTXVSxQ4/uT43nzlGk91EAsvO5fOzw9QtBPFaw9tgZPSrxvM3RA=="
-      crossorigin="anonymous"/>
-<!-- Font -->
-<link href='https://fonts.googleapis.com/css?family=Oswald:300' rel='stylesheet' type='text/css'/>
-<link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,300,700,100' rel='stylesheet' type='text/css'/>
-
-<!-- Theme CSS -->
-<link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet" media="screen"/>
-<!-- Pace -->
-<link rel="stylesheet" href="{{ url_for('static', filename='css/preloader/preloader.css') }}" media="screen"/>
-<!-- Icon -->
-<link rel="stylesheet" href="{{ url_for('static', filename='css/fonts/fontello/css/fontello.css') }}"
-      media="screen"/>
-
-{% endblock %}
-
 
 {% block page_content %}
-
 <section id="page-content">
     <section class="section-padding">
         <div class="container">
@@ -56,34 +29,4 @@
         </div>
     </section>
 </section>
-
-{% endblock %}
-
-
-{% block js_scripts %}
-<!-- jQuery -->
-<script src="https://code.jquery.com/jquery-1.12.4.min.js"
-        integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
-<!-- Pace -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/pace/0.7.8/pace.min.js"
-        integrity="sha512-t3TewtT7K7yfZo5EbAuiM01BMqlU2+JFbKirm0qCZMhywEbHZWWcPiOq+srWn8PdJ+afwX9am5iqnHmfV9+ITA=="
-        crossorigin="anonymous"></script>
-<!-- Bootstrap -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
-        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
-        crossorigin="anonymous"></script>
-<!-- Device JS -->
-<script src="https://unpkg.com/current-device/umd/current-device.min.js"></script>
-<!-- Waypoint -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js"
-        integrity="sha512-CEiA+78TpP9KAIPzqBvxUv8hy41jyI3f2uHi7DGp/Y/Ka973qgSdybNegWFciqh6GrN2UePx2KkflnQUbUhNIA=="
-        crossorigin="anonymous"></script>
-<!-- Stellar -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/stellar.js/0.6.2/jquery.stellar.min.js"
-        integrity="sha512-PNXCBnFH9wShbV+mYnrfo0Gf3iSREgBWmYAoMIfc+Z83vVq3Nu4yxBk6j+BZ40ZIhtW3WlTQdBvW3AYLAnlgpA=="
-        crossorigin="anonymous"></script>
-
-<!-- Custom Core Script -->
-<script type="text/javascript" src="{{ url_for('static', filename='js/landing.js') }}"></script>
-
 {% endblock %}

@@ -2352,6 +2352,10 @@ a.de-button.large.rounded, span.de-button.large.rounded, input[type=submit].larg
 	color: red;
 }
 
+form .forgot-password {
+	font-size: medium;
+}
+
 /*-----------------------------------------------*/
 /* 11.2 Form Control							 */
 /*-----------------------------------------------*/
