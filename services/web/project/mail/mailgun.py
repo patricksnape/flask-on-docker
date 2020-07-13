@@ -22,10 +22,11 @@ class MailGunEmailAdapter(EmailAdapterInterface):
         sender_email: Optional[str],
         sender_name: Optional[str],
     ) -> None:
-        sender = f'"{sender_name or sender_email}" {sender_email}>'
-
+        # TODO: sender_name is unused as it needs to be propagated through the MailGun API
         if not current_app.testing:
-            message = Message(subject, sender=sender, recipients=[recipient], html=html_message, body=text_message)
+            message = Message(
+                subject, sender=sender_email, recipients=[recipient], html=html_message, body=text_message
+            )
 
             # Send email message
             self.mail.send(message)
