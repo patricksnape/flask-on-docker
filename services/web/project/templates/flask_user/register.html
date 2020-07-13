@@ -1,6 +1,6 @@
 {% extends "login_layout.html" %}
 
-{% block title %}Register{% endblock %}
+{% block title %}{%trans%}Register{%endtrans%}{% endblock %}
 
 {% block page_content %}
 {% from 'macros/form_errors.jinja2' import form_errors as form_errors %}
@@ -12,12 +12,14 @@
             <div class="row">
 
                 <div class="col-md-offset-1 col-md-10 text-center">
-                    <h3 class="animation fadeInUp">Register With Your Guest Code</h3>
+                    <h3 class="animation fadeInUp">{%trans%}Register With Your Guest Code{%endtrans%}</h3>
                     <div class="blurb animation fadeInUp">
                         <p>
+                            {%trans%}
                             To ensure that we can contact you, please choose an email and password to login to the
                             wedding website with. The Guest Code can be found by either scanning the QR code or
                             manually entering the Guest Code provided in your invitation.
+                            {%endtrans%}
                         </p>
                     </div>
                 </div>
@@ -33,7 +35,7 @@
                                 <div class="input-group {% if form.guest_code.errors %}has-error{% endif %}">
                                     <div class="input-group-addon"><i class="de-icon-key-1"></i></div>
                                     {{ form.guest_code(class_='form-control', tabindex=210,
-                                    value=guest_code_value, maxlength="6", placeholder='Guest Code') }}
+                                    value=guest_code_value, maxlength="6", placeholder=form.guest_code.label.text) }}
                                 </div>
                             </label>
                             {{ form_errors(form.guest_code) }}
@@ -44,7 +46,7 @@
                             <label>
                                 <div class="input-group {% if form.email.errors %}has-error{% endif %}">
                                     <div class="input-group-addon"><i class="de-icon-mail"></i></div>
-                                    {{ form.email(class_='form-control ajax-input', placeholder='Email',
+                                    {{ form.email(class_='form-control ajax-input', placeholder=form.email.label.text,
                                     tabindex=220) }}
                                 </div>
                             </label>
@@ -56,8 +58,8 @@
                             <label>
                                 <div class="input-group {% if form.password.errors %}has-error{% endif %}">
                                     <div class="input-group-addon"><i class="de-icon-lock"></i></div>
-                                    {{ form.password(class_='form-control ajax-input', placeholder='Password',
-                                    tabindex=230) }}
+                                    {{ form.password(class_='form-control ajax-input',
+                                    placeholder=form.password.label.text, tabindex=230) }}
                                 </div>
                             </label>
                             {{ form_errors(form.password) }}
@@ -68,7 +70,7 @@
                                 <div class="input-group {% if form.retype_password.errors %}has-error{% endif %}">
                                     <div class="input-group-addon"><i class="de-icon-lock"></i></div>
                                     {{ form.retype_password(class_='form-control ajax-input',
-                                    placeholder='Retype Password', tabindex=240) }}
+                                    placeholder=form.retype_password.label.text, tabindex=240) }}
                                 </div>
                             </label>
                             {{ form_errors(form.retype_password) }}
@@ -76,7 +78,7 @@
 
                         {# Submit button #}
                         <input type="submit" class="de-button outline rounded small reverse animation fadeInUp"
-                               value="Register" tabindex=280>
+                               value="{{ form.submit.label.text }}" tabindex=280>
                     </form>
 
                     {{ display_flashes() }}

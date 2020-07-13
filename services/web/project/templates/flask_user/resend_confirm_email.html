@@ -1,6 +1,6 @@
 {% extends "login_layout.html" %}
 
-{% block title %}{%trans%}Forgot Password{%endtrans%}{% endblock %}
+{% block title %}{%trans%}Resend Confirmation Email{%endtrans%}{% endblock %}
 
 {% block page_content %}
 {% from 'macros/form_errors.jinja2' import form_errors as form_errors %}
@@ -11,7 +11,7 @@
             <div class="row">
 
                 <div class="col-md-offset-3 col-md-6 text-center">
-                    <h3 class="animation fadeInUp">{%trans%}Forgot Password{%endtrans%}</h3>
+                    <h3 class="animation fadeInUp">{%trans%}Resend Confirmation Email{%endtrans%}</h3>
                     <form action="" method="POST" class="form" role="form">
                         {{ form.hidden_tag() }}
 

@@ -1,6 +1,6 @@
 {% extends "login_layout.html" %}
 
-{% block title %}Login{% endblock %}
+{% block title %}{%trans%}Login{%endtrans%}{% endblock %}
 
 {% block page_content %}
 {% from 'macros/form_errors.jinja2' import form_errors as form_errors %}
@@ -12,7 +12,7 @@
             <div class="row">
 
                 <div class="col-md-offset-3 col-md-6 text-center">
-                    <h3 class="animation fadeInUp">Login</h3>
+                    <h3 class="animation fadeInUp">{%trans%}Login{%endtrans%}</h3>
 
                     <form action="" method="POST" class="form" role="form">
                         {{ form.hidden_tag() }}
@@ -22,7 +22,7 @@
                             <label>
                                 <div class="input-group {% if form.email.errors %}has-error{% endif %}">
                                     <div class="input-group-addon"><i class="de-icon-mail"></i></div>
-                                    {{ form.email(class_='form-control ajax-input', placeholder='Email',
+                                    {{ form.email(class_='form-control ajax-input', placeholder=form.email.label.text,
                                     tabindex=110) }}
                                 </div>
                             </label>
@@ -34,8 +34,8 @@
                             <label>
                                 <div class="input-group {% if form.password.errors %}has-error{% endif %}">
                                     <div class="input-group-addon"><i class="de-icon-lock"></i></div>
-                                    {{ form.password(class_='form-control ajax-input', placeholder='Password',
-                                    tabindex=120) }}
+                                    {{ form.password(class_='form-control ajax-input',
+                                    placeholder=form.password.label.text, tabindex=120) }}
                                 </div>
                             </label>
                             {{ form_errors(form.password) }}
@@ -48,7 +48,7 @@
                                     <label class="option-label">
                                         {{ login_form.remember_me(class_='option-label', type='checkbox', tabindex=130)
                                         }}
-                                        Remember Me
+                                        {{ form.remember_me.label.text }}
                                     </label>
                                 </div>
                             </div>
@@ -56,11 +56,11 @@
 
                         {# Submit button #}
                         <input type="submit" class="de-button outline rounded small reverse animation fadeInUp"
-                               value="Login" tabindex=180>
+                               value="{{ form.submit.label.text }}" tabindex=180>
 
                         <div class="forgot-password">
                             <a href="{{ url_for('user.forgot_password') }}" tabindex='195'>
-                                Forgot your Password?</a>
+                                {%trans%}Forgot your Password?{%endtrans%}</a>
                         </div>
                     </form>
 

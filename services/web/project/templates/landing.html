@@ -1,6 +1,6 @@
 {% extends "login_layout.html" %}
 
-{% block title %}Welcome{% endblock %}
+{% block title %}{%trans%}Welcome{%endtrans%}{% endblock %}
 
 {% block page_content %}
 <section id="page-content">
@@ -18,10 +18,10 @@
                             York City. Fabulous food, fun, and festivities to follow.</p>
                     </div>
                     <a href="{{ url_for('user.login') }}" class="de-button outline rounded medium reverse animation fadeInUp">
-                        Login
+                        {%trans%}Login{%endtrans%}
                     </a>
                     <a href="{{ url_for('user.register') }}" class="de-button outline rounded medium reverse animation fadeInUp">
-                        Guest Code
+                       {%trans%}Guest Code{%endtrans%}
                     </a>
                 </div>
 
