@@ -1,0 +1,51 @@
+{% extends "main_layout.html" %}
+
+{% block title %}{%trans%}RSVP{%endtrans%}{% endblock %}
+{% block main_title_body %}
+<div class="col-md-12">
+
+    <div class="heart-divider animation delay-2s fadeInUp">
+        <i class="de-icon-heart white-heart"></i>
+        <i class="de-icon-heart pink-heart"></i>
+    </div>
+    <h1 class="font-oswald animation delay-3s fadeInUp">
+        FRANZISKA &amp; PATRICK
+    </h1>
+    <div class="slide-desc animation delay-4s fadeInUp">
+        <span id="getting-married-text">{%trans%}We are Getting Married{%endtrans%}</span>
+        <span id="dash">&nbsp;-&nbsp;</span>
+        <span id="wedding-date">August 28, 2021</span>
+    </div>
+
+</div>
+{% endblock %}
+
+{% block main_page_content %}
+{% import 'macros/image_divider.jinja2' as image_divider %}
+
+<!-- THE STORY -->
+<section id="the-story" class="section-padding">
+    <div class="container">
+
+        <!-- TITLE AND BLURB -->
+        <div class="row">
+            <div class="col-md-offset-1 col-md-10 text-center">
+                <h2 class="animation fadeInUp">RSVP</h2>
+                <div class="blurb animation fadeInUp">
+                    <p>
+                        {% for guest in guests %}
+                            {{ guest.first_name }} {{ guest.last_name }}
+                        {% endfor %}
+                    </p>
+                </div>
+            </div>
+        </div>
+        <!-- END of TITLE AND BLURB -->
+    </div>
+</section>
+{% endblock %}
+
+{% block footer_content %}
+{% import 'macros/footer.jinja2' as footer %}
+{{ footer.footer('THANK YOU') }}
+{% endblock %}

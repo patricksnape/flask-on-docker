@@ -11,6 +11,7 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_user import login_required
 
 from project.database import BaseModel
+from project.database.party import Party
 from project.database.users import User
 from project.mail.mailgun import MailGunEmailAdapter
 from project.user_flow.user_manager import WeddingUserManager
@@ -53,7 +54,15 @@ def home():
     return render_template("index.html")
 
 
-@app.route("/subpage.html")
+@app.route("/rsvp")
+@register_menu(app, ".rsvp", "RSVP")
+@login_required
+def rsvp():
+    party = db.session.query(Party).get(current_user.party_id)
+    return render_template("rsvp.html", user=current_user, guests=party.guests)
+
+
+@app.route("/subpage")
 @register_menu(app, ".page", "Page With Subpages")  # Note this is a fake page used only for the hierarchy
 @register_menu(app, ".page.subpage", "Subpage")
 @login_required
@@ -61,7 +70,7 @@ def subpage():
     return render_template("index.html")
 
 
-@app.route("/subpage2.html")
+@app.route("/subpage2")
 @register_menu(app, ".page", "Page With Subpages")  # Note this is a fake page used only for the hierarchy
 @register_menu(app, ".page.subpage2", "Subpage 2")
 @login_required
