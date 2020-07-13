@@ -4,6 +4,7 @@
 
 {% block page_content %}
 {% from 'macros/form_errors.jinja2' import form_errors as form_errors %}
+{% from 'macros/display_flashes.jinja2' import display_flashes as display_flashes %}
 
 <section id="page-content">
     <section class="section-padding">
@@ -63,16 +64,7 @@
                         </div>
                     </form>
 
-                    {%- with messages = get_flashed_messages(with_categories=true) -%}
-                        {% if messages %}
-                            {% for category, message in messages %}
-                                {% if category=='error' %}
-                                    {% set category='danger' %}
-                                {% endif %}
-                                <div class="alert alert-{{category}}">{{ message|safe }}</div>
-                            {% endfor %}
-                        {% endif %}
-                    {%- endwith %}
+                    {{ display_flashes() }}
                 </div>
 
             </div>
