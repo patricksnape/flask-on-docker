@@ -2,6 +2,7 @@ from __future__ import annotations
 
 from typing import Optional
 
+from flask import current_app
 from flask_user import UserMixin
 from sqlalchemy import Column, Integer, ForeignKey, String, DateTime, Boolean
 from sqlalchemy.orm import relationship, Session
@@ -33,6 +34,24 @@ class User(BaseModel, UserMixin):
             .filter(Party.guest_code == guest_code.upper())
             .one_or_none()
         )
+
+    @classmethod
+    def get_user_by_token(cls, token, expiration_in_seconds=None):
+        # I had to override this due to a bug in the implementation when no
+        # user exists
+        user_manager = current_app.user_manager
+        data_items = user_manager.verify_token(token, expiration_in_seconds)
+
+        token_is_valid = False
+        user = None
+        if data_items:
+            user_id, password_ends_with = data_items
+            user = user_manager.db_manager.get_user_by_id(user_id)
+            if user is not None:  # FIX HERE
+                user_password = "" if user_manager.USER_ENABLE_AUTH0 else user.password[-8:]
+                token_is_valid = user and user_password == password_ends_with
+
+        return user if token_is_valid else None
 
 
 class Role(BaseModel):
