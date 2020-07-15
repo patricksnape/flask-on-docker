@@ -1,6 +1,12 @@
 {% extends "main_layout.html" %}
 
 {% block title %}{%trans%}RSVP{%endtrans%}{% endblock %}
+
+{% block css_links %}
+{{ super() }}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/rsvp.css') }}" media="screen"/>
+{% endblock %}
+
 {% block main_title_body %}
 <div class="col-md-12">
 
@@ -23,21 +29,25 @@
 {% from 'macros/form_errors.jinja2' import form_errors as form_errors %}
 
 <!-- THE STORY -->
-<section class="section-padding">
+<section id="information" class="section-padding">
     <div class="container">
 
         <!-- TITLE AND BLURB -->
         <div class="row">
             <div class="col-md-offset-1 col-md-10 text-center">
-                <h2 class="animation fadeInUp">{%trans%}Please Join Us{%endtrans%}</h2>
-                <div class="blurb animation fadeInUp">
+                <h2 class="animation delay-1s fadeInUp">{%trans%}Please Join Us{%endtrans%}</h2>
+                <div class="blurb animation delay-2s fadeInUp">
                     <p>
                         {%trans%}Dear{%endtrans%}
                         {% for guest in guests[:-1] %}
+                        <span class="theme-color guest-name">
                         {{ guest.first_name | capitalize() }}{{ "," if not loop.last }}
+                        </span>
                         {% endfor %}
                         {% if guests | length > 1 %} {%trans%}and{%endtrans%} {% endif %}
+                        <span class="theme-color guest-name">
                         {{ guests[-1].first_name | capitalize() }}
+                        </span>
                     </p>
                     <p>
                         {%trans%}
@@ -61,32 +71,57 @@
                         </span>
                     </h4>
                 </div>
+
+                <div class="blurb animation delay-3s fadeInUp">
+                    <div class="bounceloop">
+                        <a href="#rsvp-form" class="smooth-scroll"><i class="de-icon-down-open-big"></i></a>
+                    </div>
+                </div>
             </div>
         </div>
 </section>
 
 {{ image_divider.image_divider('http://placehold.it/1920x1080') }}
 
-<section class="section-padding">
+<section id="rsvp-form" class="section-padding">
     <div class="container">
         <div class="row">
 
-            <div class="col-md-offset-1 col-md-10 text-center">
+            <div class="col-md-offset-2 col-md-8 text-center">
                 <h2 class="animation fadeInUp">Will you Attend?</h2>
                 <form action="" method="POST" class="form" role="form">
                     {{ form.hidden_tag() }}
 
                     {# Attending field #}
                     <div class="form-group">
-                        <div id="input-radio-inline-custom-icon" class="ajax-input ajax-radio"
+                        <div id="attending-radio" class="ajax-input ajax-radio"
                              data-output-label="attending">
                             <div data-toggle="buttons">
                                 {% for subfield in form.attending %}
-                                <label class="btn btn-primary custom-option-icon {% if subfield.checked %}active-icon active{% endif %}">
-                                    {{ subfield }} {{subfield.label}}
+                                <label class="btn btn-primary custom-option-icon {% if subfield.checked %}active-icon active{% endif %} {% if form.attending.errors %}has-error{% endif %}">
+                                    {{ subfield }} {{subfield.label.text}}
                                 </label>
                                 {%endfor%}
                             </div>
+                        </div>
+                        {{ form_errors(form.attending) }}
+                    </div>
+
+                    <div id="attending-content">
+                        {# Guests Attending field #}
+                        <div class="form-group text-left">
+                            <label>Please select all guests that can attend</label>
+                            <div id="guests-attending-checkboxes" class="ajax-input ajax-checkbox">
+                                {% for subfield in form.guests_attending %}
+                                    <div class="checkbox {% if subfield.data == -1 %}hidden-checkbox{% endif %}">
+                                        <label class="option-label">
+                                            {{ subfield }}
+                                            {{ subfield.label.text }}
+                                        </label>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                            {{ form_errors(form.guests_attending) }}
                         </div>
                     </div>
 
@@ -105,4 +140,29 @@
 {% block footer_content %}
 {% import 'macros/footer.jinja2' as footer %}
 {{ footer.footer('THANK YOU') }}
+{% endblock %}
+
+{% block js_scripts %}
+{{ super() }}
+{# Not sure of a better way to have this conditional JavaScript happen as I can't render the template with an anchor #}
+<script>
+    (function ($) {
+        $(document).ready(function () {
+
+            {%if form.errors %}
+            Pace.on('done', function () {
+                setTimeout(function () {
+                    document.getElementById("rsvp-form").scrollIntoView({behavior: "smooth"});
+                }, 500);
+            });
+            {% endif %}
+
+            {% if not attending and not form.errors %}
+            $('#attending-content').hide();
+            {% endif %}
+        });
+    })(jQuery);
+</script>
+
+<script type="text/javascript" src="{{ url_for('static', filename='js/rsvp/rsvp.js') }}"></script>
 {% endblock %}

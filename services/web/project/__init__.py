@@ -13,7 +13,6 @@ from flask_user import login_required
 
 from project.database import BaseModel
 from project.database.party import Party
-from project.database.rsvp import RSVP
 from project.database.users import User
 from project.mail.mailgun import MailGunEmailAdapter
 from project.rsvp.forms import RSVPForm
@@ -62,25 +61,29 @@ def home():
 @login_required
 def rsvp():
     party = db.session.query(Party).get(current_user.party_id)
-    rsvp_state = db.session.query(RSVP).get(current_user.party_id)
-    if rsvp_state is None:
-        # Default is to create an RSVP where they currently say NO
-        rsvp_state = RSVP(party_id=party.id, attending=False)
-        db.session.add(rsvp_state)
-        db.session.commit()
+    guests = party.guests
 
-    # if request.method == "GET":
-    # # Can be used for updating the form with multiple object states
-    # # As long as the attributes don't overlap
-    #     form.process(obj=rsvp_state)
-    form = RSVPForm(request.form, obj=rsvp_state)
+    any_guest_confirmed = any(g.attending for g in guests)
+    form = RSVPForm(request.form)
+    form.guests_attending.choices = [(g.id, g.full_name) for g in guests]
+
+    if request.method == "GET":
+        form.guests_attending.default = [g.id for g in guests if g.attending is not False]
+        if any(g.attending is not None for g in guests):
+            form.attending.default = any_guest_confirmed
+        form.process()
 
     if form.validate_on_submit():
-        rsvp_state.attending = form.attending.data
+        guests_attending = form.guests_attending.data
+        for guest in guests:
+            # The "in" is a linear search but the number of guests is always < 3
+            guest.attending = guest.id in guests_attending and form.attending.data
+
+        db.session.add_all(guests)
         db.session.commit()
         return redirect("rsvp")
 
-    return render_template("rsvp.html", guests=party.guests, form=form)
+    return render_template("rsvp.html", guests=guests, form=form, attending=any_guest_confirmed)
 
 
 @app.route("/subpage")

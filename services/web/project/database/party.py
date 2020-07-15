@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from sqlalchemy import Column, Integer, ForeignKey, String
+from sqlalchemy import Column, Integer, ForeignKey, String, Boolean
 from sqlalchemy.orm import relationship
 
 from project.database import BaseModel
@@ -22,6 +22,7 @@ class Guest(BaseModel):
     party_id = Column(Integer, ForeignKey("party.id"), nullable=False, index=True)
     first_name = Column(String, nullable=False)
     last_name = Column(String, nullable=False)
+    attending = Column(Boolean, nullable=True)
 
     @property
     def full_name(self) -> str:
