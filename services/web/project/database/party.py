@@ -22,3 +22,7 @@ class Guest(BaseModel):
     party_id = Column(Integer, ForeignKey("party.id"), nullable=False, index=True)
     first_name = Column(String, nullable=False)
     last_name = Column(String, nullable=False)
+
+    @property
+    def full_name(self) -> str:
+        return f"{self.first_name} {self.last_name}".title()

@@ -9,12 +9,10 @@
         <i class="de-icon-heart pink-heart"></i>
     </div>
     <h1 class="font-oswald animation delay-3s fadeInUp">
-        FRANZISKA &amp; PATRICK
+        RSVP
     </h1>
     <div class="slide-desc animation delay-4s fadeInUp">
-        <span id="getting-married-text">{%trans%}We are Getting Married{%endtrans%}</span>
-        <span id="dash">&nbsp;-&nbsp;</span>
-        <span id="wedding-date">August 28, 2021</span>
+        We cordially invite you to join us in our celebration
     </div>
 
 </div>
@@ -22,25 +20,84 @@
 
 {% block main_page_content %}
 {% import 'macros/image_divider.jinja2' as image_divider %}
+{% from 'macros/form_errors.jinja2' import form_errors as form_errors %}
 
 <!-- THE STORY -->
-<section id="the-story" class="section-padding">
+<section class="section-padding">
     <div class="container">
 
         <!-- TITLE AND BLURB -->
         <div class="row">
             <div class="col-md-offset-1 col-md-10 text-center">
-                <h2 class="animation fadeInUp">RSVP</h2>
+                <h2 class="animation fadeInUp">{%trans%}Please Join Us{%endtrans%}</h2>
                 <div class="blurb animation fadeInUp">
                     <p>
-                        {% for guest in guests %}
-                            {{ guest.first_name }} {{ guest.last_name }}
+                        {%trans%}Dear{%endtrans%}
+                        {% for guest in guests[:-1] %}
+                        {{ guest.first_name | capitalize() }}{{ "," if not loop.last }}
                         {% endfor %}
+                        {% if guests | length > 1 %} {%trans%}and{%endtrans%} {% endif %}
+                        {{ guests[-1].first_name | capitalize() }}
                     </p>
+                    <p>
+                        {%trans%}
+                        We would love for you to join us on this special day. We understand that for many of you
+                        the wedding is a destination wedding and therefore we have tried to provide as much information
+                        as possible to clarify any concerns you may have. Due to the limited number of
+                        accommodation providers in the local area we have attempted to pre-book accomodation
+                        for as many guests as possible. Due to this, we require significant notice if travel
+                        plans change.
+                        {%endtrans%}
+                    </p>
+                    <p>
+                        {%trans%}
+                        Due to this, please let us know if you are able to attend by
+                        {%endtrans%}
+                    </p>
+
+                    <h4 class="animation fadeInUp">
+                        <span class="theme-color">
+                            {%trans%}February 1st 2021{%endtrans%}
+                        </span>
+                    </h4>
                 </div>
             </div>
         </div>
-        <!-- END of TITLE AND BLURB -->
+</section>
+
+{{ image_divider.image_divider('http://placehold.it/1920x1080') }}
+
+<section class="section-padding">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-md-offset-1 col-md-10 text-center">
+                <h2 class="animation fadeInUp">Will you Attend?</h2>
+                <form action="" method="POST" class="form" role="form">
+                    {{ form.hidden_tag() }}
+
+                    {# Attending field #}
+                    <div class="form-group">
+                        <div id="input-radio-inline-custom-icon" class="ajax-input ajax-radio"
+                             data-output-label="attending">
+                            <div data-toggle="buttons">
+                                {% for subfield in form.attending %}
+                                <label class="btn btn-primary custom-option-icon {% if subfield.checked %}active-icon active{% endif %}">
+                                    {{ subfield }} {{subfield.label}}
+                                </label>
+                                {%endfor%}
+                            </div>
+                        </div>
+                    </div>
+
+                    {# Submit button #}
+                    <input type="submit" class="de-button outline rounded small reverse animation fadeInUp"
+                           value="{{ form.submit.label.text }}" tabindex=90>
+
+                </form>
+            </div>
+
+        </div>
     </div>
 </section>
 {% endblock %}

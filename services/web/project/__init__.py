@@ -4,6 +4,7 @@ from flask import (
     Flask,
     render_template,
     redirect,
+    request,
 )
 from flask_login import current_user
 from flask_menu import Menu, register_menu
@@ -12,8 +13,10 @@ from flask_user import login_required
 
 from project.database import BaseModel
 from project.database.party import Party
+from project.database.rsvp import RSVP
 from project.database.users import User
 from project.mail.mailgun import MailGunEmailAdapter
+from project.rsvp.forms import RSVPForm
 from project.user_flow.user_manager import WeddingUserManager
 
 app = Flask(__name__)
@@ -54,12 +57,30 @@ def home():
     return render_template("index.html")
 
 
-@app.route("/rsvp")
+@app.route("/rsvp", methods=["GET", "POST"])
 @register_menu(app, ".rsvp", "RSVP")
 @login_required
 def rsvp():
     party = db.session.query(Party).get(current_user.party_id)
-    return render_template("rsvp.html", user=current_user, guests=party.guests)
+    rsvp_state = db.session.query(RSVP).get(current_user.party_id)
+    if rsvp_state is None:
+        # Default is to create an RSVP where they currently say NO
+        rsvp_state = RSVP(party_id=party.id, attending=False)
+        db.session.add(rsvp_state)
+        db.session.commit()
+
+    # if request.method == "GET":
+    # # Can be used for updating the form with multiple object states
+    # # As long as the attributes don't overlap
+    #     form.process(obj=rsvp_state)
+    form = RSVPForm(request.form, obj=rsvp_state)
+
+    if form.validate_on_submit():
+        rsvp_state.attending = form.attending.data
+        db.session.commit()
+        return redirect("rsvp")
+
+    return render_template("rsvp.html", guests=party.guests, form=form)
 
 
 @app.route("/subpage")
