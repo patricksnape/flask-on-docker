@@ -123,6 +123,15 @@
                             </div>
                             {{ form_errors(form.guests_attending) }}
                         </div>
+
+                        {# Check-in field #}
+                        <div class="form-group text-left">
+                            {{ form.accommodation_check_in.label }}
+                            <div id="check-in-date" class="ajax-input ajax-input">
+                                {{ form.accommodation_check_in }}
+                            </div>
+                            {{ form_errors(form.accommodation_check_in) }}
+                        </div>
                     </div>
 
                     {# Submit button #}

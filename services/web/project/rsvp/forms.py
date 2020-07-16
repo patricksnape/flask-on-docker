@@ -1,6 +1,8 @@
 from flask_wtf import FlaskForm
 from wtforms import SubmitField, RadioField, validators, SelectMultipleField, widgets
+from wtforms_components import DateField, DateRange
 
+from project.config import Config
 from project.translations.utils import lazy_gettext as _
 
 
@@ -17,6 +19,15 @@ class RSVPForm(FlaskForm):
         validators=[validators.InputRequired(_("Please select whether you are able to attend or not"))],
     )
     guests_attending = MultiCheckboxField(_("Guests Attending"), coerce=int)
+
+    accommodation_check_in = DateField(
+        _("Check In Date"),
+        format="%Y-%m-%d",
+        validators=[
+            validators.DataRequired(message=_("You must provide a check-in date")),
+            DateRange(min=Config.BOOKING_MIN_DATE, max=Config.WEDDING_DATE),
+        ],
+    )
 
     submit = SubmitField(_("Submit"))
 
