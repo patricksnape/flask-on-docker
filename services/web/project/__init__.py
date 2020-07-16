@@ -15,7 +15,7 @@ from project.database import BaseModel
 from project.database.party import Party
 from project.database.users import User
 from project.mail.mailgun import MailGunEmailAdapter
-from project.rsvp.forms import RSVPForm
+from project.rsvp.forms import RSVPForm, RSVPState
 from project.user_flow.user_manager import WeddingUserManager
 
 app = Flask(__name__)
@@ -60,30 +60,16 @@ def home():
 @register_menu(app, ".rsvp", "RSVP")
 @login_required
 def rsvp():
-    party = db.session.query(Party).get(current_user.party_id)
-    guests = party.guests
-
-    any_guest_confirmed = any(g.attending for g in guests)
-    form = RSVPForm(request.form)
-    form.guests_attending.choices = [(g.id, g.full_name) for g in guests]
-
-    if request.method == "GET":
-        form.guests_attending.default = [g.id for g in guests if g.attending is not False]
-        if any(g.attending is not None for g in guests):
-            form.attending.default = any_guest_confirmed
-        form.process()
+    db_state = RSVPState.init_from_party_id(current_user.party_id, db.session)
+    form = RSVPForm()
+    form.guests_attending.choices = db_state.guest_choices
+    form.process(formdata=request.form or None, obj=db_state)
 
     if form.validate_on_submit():
-        guests_attending = form.guests_attending.data
-        for guest in guests:
-            # The "in" is a linear search but the number of guests is always < 4
-            guest.attending = guest.id in guests_attending and form.attending.data
-
-        db.session.add_all(guests)
-        db.session.commit()
+        db_state.update_db_with_form_data(form, db.session)
         return redirect("rsvp")
 
-    return render_template("rsvp.html", guests=guests, form=form, attending=any_guest_confirmed)
+    return render_template("rsvp.html", guests=db_state.guests, form=form, attending=db_state.attending)
 
 
 @app.route("/subpage")
