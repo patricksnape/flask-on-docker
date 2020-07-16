@@ -1,5 +1,5 @@
 import os
-
+from datetime import datetime, timedelta
 
 basedir = os.path.abspath(os.path.dirname(__file__))
 
@@ -27,3 +27,8 @@ class Config(object):
     USER_AFTER_LOGIN_ENDPOINT = "home"
     USER_AFTER_REGISTER_ENDPOINT = "home"
     USER_SHOW_EMAIL_DOES_NOT_EXIST = True
+
+    WEDDING_DATE = datetime.strptime("Aug 28 2021", "%b %d %Y").date()
+    BOOKING_MIN_DATE = WEDDING_DATE - timedelta(days=7)
+    BOOKING_MAX_DATE = WEDDING_DATE + timedelta(days=7)
+    RSVP_DEADLINE = datetime.strptime("Feb 1 2021", "%b %d %Y").date()
