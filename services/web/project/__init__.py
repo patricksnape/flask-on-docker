@@ -76,7 +76,7 @@ def rsvp():
     if form.validate_on_submit():
         guests_attending = form.guests_attending.data
         for guest in guests:
-            # The "in" is a linear search but the number of guests is always < 3
+            # The "in" is a linear search but the number of guests is always < 4
             guest.attending = guest.id in guests_attending and form.attending.data
 
         db.session.add_all(guests)
