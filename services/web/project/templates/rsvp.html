@@ -132,6 +132,15 @@
                             </div>
                             {{ form_errors(form.accommodation_check_in) }}
                         </div>
+
+                        {# Check-out field #}
+                        <div class="form-group text-left">
+                            {{ form.accommodation_check_out.label }}
+                            <div id="check-out-date" class="ajax-input ajax-input">
+                                {{ form.accommodation_check_out }}
+                            </div>
+                            {{ form_errors(form.accommodation_check_out) }}
+                        </div>
                     </div>
 
                     {# Submit button #}

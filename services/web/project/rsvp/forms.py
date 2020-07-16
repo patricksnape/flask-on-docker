@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
-from datetime import date
+from datetime import date, timedelta
 from functools import cached_property
 from typing import List, TYPE_CHECKING, Tuple, Optional, cast
 
@@ -63,8 +63,12 @@ class RSVPState:
         return cast(List[Guest], self.party.guests)
 
     @property
-    def accommodation_check_in(self) -> date:
-        return self.booking.check_in
+    def accommodation_check_in(self) -> Optional[date]:
+        return self.booking.check_in if self.booking is not None else None
+
+    @property
+    def accommodation_check_out(self) -> Optional[date]:
+        return self.booking.check_out if self.booking is not None else None
 
     @cached_property
     def guest_choices(self) -> List[Tuple[int, str]]:
@@ -92,15 +96,31 @@ class RSVPForm(FlaskForm):
     guests_attending = MultiCheckboxField(_("Guests Attending"), coerce=int)
 
     accommodation_check_in = DateField(
-        _("Check In Date"),
+        _("Check-In Date"),
         format="%Y-%m-%d",
         validators=[
             validators.DataRequired(message=_("You must provide a check-in date")),
             DateRange(min=Config.BOOKING_MIN_DATE, max=Config.WEDDING_DATE),
         ],
     )
+    accommodation_check_out = DateField(
+        _("Check-Out Date"),
+        format="%Y-%m-%d",
+        validators=[
+            validators.DataRequired(message=_("You must provide a check-out date")),
+            DateRange(min=Config.WEDDING_DATE + timedelta(days=1), max=Config.BOOKING_MAX_DATE),
+        ],
+    )
 
     submit = SubmitField(_("Submit"))
+
+    @property
+    def check_out_date(self) -> date:
+        return self.accommodation_check_out.data
+
+    @property
+    def check_in_date(self) -> date:
+        return self.accommodation_check_in.data
 
     @property
     def n_guests_attending(self) -> int:
@@ -114,6 +134,10 @@ class RSVPForm(FlaskForm):
         success = super().validate(extra_validators)
         if self.attending_selected and self.n_guests_attending == 0:
             self.guests_attending.errors.append(_("Please select at least one guest as attending or select 'No' above"))
+            success = False
+
+        if self.check_out_date <= self.check_in_date:
+            self.accommodation_check_out.errors.append(_("Please ensure the check-out date is after the check-in date"))
             success = False
 
         return success
