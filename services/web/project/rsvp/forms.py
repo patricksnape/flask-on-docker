@@ -10,6 +10,7 @@ from wtforms import SubmitField, RadioField, validators, SelectMultipleField, wi
 from wtforms_components import DateField, DateRange
 
 from project.config import Config
+from project.database import BaseModel
 from project.database.booking import Booking
 from project.database.party import Party, Guest
 from project.translations.utils import lazy_gettext as _
@@ -26,7 +27,7 @@ class MultiCheckboxField(SelectMultipleField):
 @dataclass
 class RSVPState:
     party: Party
-    booking: Booking
+    booking: Optional[Booking]
 
     @classmethod
     def init_from_party_id(cls, party_id: int, session: Session) -> RSVPState:
@@ -36,14 +37,20 @@ class RSVPState:
         return cls(party=party, booking=booking)
 
     def update_db_with_form_data(self, form: RSVPForm, session: Session) -> None:
+        to_update: List[BaseModel] = []
+
         guests_attending = form.guests_attending.data
         for guest in self.guests:
             # The "in" is a linear search but the number of guests is always < 4
             guest.attending = guest.id in guests_attending and form.attending.data
+            to_update.append(guest)
 
-        self.booking.check_in = form.accommodation_check_in.data
+        if self.booking is not None:
+            self.booking.check_in = form.accommodation_check_in.data
+            self.booking.check_out = form.accommodation_check_out.data
+            to_update.append(self.booking)
 
-        session.add_all(self.guests + [self.booking])
+        session.add_all(to_update)
         session.commit()
 
     @cached_property
