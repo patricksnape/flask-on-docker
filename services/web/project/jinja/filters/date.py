@@ -1,10 +1,10 @@
 from datetime import date
 
-from babel.dates import format_date
+from babel.dates import format_date as babel_format_date
 
-from project import app
+from . import filters_blueprint
 
 
-@app.template_filter()
+@filters_blueprint.app_template_filter()
 def format_date(value: date, format: str = "long") -> str:
-    return format_date(value, format)
+    return babel_format_date(value, format=format)
