@@ -47,14 +47,14 @@ def redirect_authenticated(view_function):
 @app.route("/")
 @redirect_authenticated
 def landing():
-    return render_template("landing.html")
+    return render_template("landing.html.jinja2")
 
 
 @app.route("/home")
 @login_required
 @register_menu(app, ".home", "Home")
 def home():
-    return render_template("index.html")
+    return render_template("index.html.jinja2")
 
 
 @app.route("/rsvp", methods=["GET", "POST"])
@@ -70,7 +70,7 @@ def rsvp():
         return redirect("rsvp")
 
     return render_template(
-        "rsvp.html", booking=db_state.booking, guests=db_state.guests, form=form, attending=db_state.attending
+        "rsvp.html.jinja2", booking=db_state.booking, guests=db_state.guests, form=form, attending=db_state.attending
     )
 
 
