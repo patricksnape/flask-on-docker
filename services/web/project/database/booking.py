@@ -1,15 +1,10 @@
 from __future__ import annotations
 
-from typing import TYPE_CHECKING
-
-from sqlalchemy import Boolean, Column, Integer, ForeignKey, Date
-from sqlalchemy.orm import relationship
+from sqlalchemy import Boolean, Column, Date, ForeignKey, Integer
+from sqlalchemy.orm import Session, lazyload, relationship
 
 from project.database import BaseModel
-
-if TYPE_CHECKING:
-    # noinspection PyUnresolvedReferences
-    from project.database.accommodation import Room
+from project.database.accommodation import Room
 
 
 class Booking(BaseModel):
@@ -30,3 +25,22 @@ class Booking(BaseModel):
     @property
     def total_cost(self) -> float:
         return self.n_nights * self.room.price_per_night
+
+    @classmethod
+    def get_preload(cls, party_id: int, session: Session) -> Booking:
+        """
+        Get the booking for the given party ID an preload the room and accommodation associated
+        with the booking to avoid extra calls to the database (via SQL joins).
+
+        Args:
+            party_id : The primary key
+            session : The session to use for querying the database
+
+        Returns:
+            The booking object associated with the given primary key whereby the
+                booking.room
+                booking.room.accommodation
+
+            attributes are preloaded for faster access.
+        """
+        return session.query(Booking).options(lazyload(Booking.room).joinedload(Room.accommodation)).get(party_id)
