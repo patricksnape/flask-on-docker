@@ -16,7 +16,7 @@ class Accommodation(BaseModel):
     latitude = Column(Float, nullable=False)
     longitude = Column(Float, nullable=False)
 
-    rooms = relationship("Room", backref="accommodation", uselist=True)
+    rooms = relationship("Room", back_populates="accommodation", uselist=True)
 
     @property
     def n_rooms(self) -> int:
@@ -32,3 +32,5 @@ class Room(BaseModel):
     accommodation_id = Column(Integer, ForeignKey("accommodation.id"), nullable=False, index=True)
     name = Column(String, nullable=True)
     price_per_night = Column(Float, nullable=False)
+
+    accommodation = relationship("Accommodation", back_populates="rooms")
