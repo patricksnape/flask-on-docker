@@ -1,5 +1,8 @@
 from datetime import datetime, timedelta
+from random import randint
+from typing import Optional, List
 
+from faker import Faker
 from flask.cli import FlaskGroup
 
 from project import app, db, user_manager
@@ -7,8 +10,73 @@ from project.database.accomodation import Accommodation, Room
 from project.database.booking import Booking
 from project.database.party import Party, Guest
 from project.database.users import User
+from project.token.token import get_token
+from loguru import logger
 
+fake = Faker()
 cli = FlaskGroup(app)
+
+
+def _add_accommodation(n_rooms: int = 2) -> List[Room]:
+    assert n_rooms > 0
+
+    lat, long = fake.local_latlng(country_code="DE", coords_only=True)
+    accommodation = Accommodation(
+        name=fake.city(),
+        website=fake.domain_name(),
+        latitude=lat,
+        longitude=long,
+        address=fake.address().replace("\n", ", "),
+    )
+    logger.info(f"{accommodation}")
+    db.session.add(accommodation)
+    db.session.flush()
+
+    rooms = []
+    for _ in range(n_rooms):
+        room = Room(accomodation_id=accommodation.id, name=fake.city(), price_per_night=randint(50, 200))
+        rooms.append(room)
+        logger.info(f"{room}")
+    db.session.add_all(rooms)
+
+    return rooms
+
+
+def _add_party(n_guests: int = 2, create_user: bool = False, add_booking_to_room: Optional[Room] = None):
+    assert n_guests > 0
+
+    party = Party(guest_code=get_token())
+    logger.info(f"{party}")
+    db.session.add(party)
+    db.session.flush()
+
+    guests = []
+    for _ in range(n_guests):
+        guest = Guest(party_id=party.id, first_name=fake.first_name(), last_name=fake.last_name())
+        guests.append(guest)
+        logger.info(f"{guest}")
+    db.session.add_all(guests)
+
+    if create_user:
+        first_guest = guests[0]
+        user = User(
+            email=f"{first_guest.first_name}@test.com",
+            email_confirmed_at=datetime.utcnow(),
+            password=user_manager.hash_password("password"),
+            party_id=party.id,
+        )
+        logger.info(f"{user}")
+        db.session.add(user)
+
+    if add_booking_to_room is not None:
+        booking = Booking(
+            party_id=party.id,
+            room_id=add_booking_to_room.id,
+            check_in=fake.date_between_dates(app.config["BOOKING_MIN_DATE"], app.config["WEDDING_DATE"]),
+            check_out=fake.date_between_dates(app.config["WEDDING_DATE"], app.config["BOOKING_MAX_DATE"]),
+        )
+        logger.info(f"{booking}")
+        db.session.add(booking)
 
 
 @cli.command("create_db")
@@ -20,66 +88,20 @@ def create_db() -> None:
 
 @cli.command("seed_db")
 def seed_db() -> None:
-    accommodation = Accommodation(
-        name="Empire State Building", website="google.com", google_maps_place_id="ChIJaXQRs6lZwokRY6EFpJnhNNE"
-    )
-    db.session.add(accommodation)
-    db.session.flush()
+    rooms = _add_accommodation(n_rooms=2)
 
-    room_1 = Room(accomodation_id=accommodation.id, name="Penthouse", price_per_night=75)
-    db.session.add(room_1)
-    db.session.flush()
+    # Registered Party with booking
+    logger.info("**** Registered Party with booking ****")
+    _add_party(n_guests=2, create_user=True, add_booking_to_room=rooms[0])
 
-    room_2 = Room(accomodation_id=accommodation.id, price_per_night=23)
-    db.session.add(room_2)
-    db.session.flush()
+    # Unregistered Party with booking\
+    logger.info("**** Unregistered Party with booking ****")
+    _add_party(n_guests=2, create_user=False, add_booking_to_room=rooms[1])
 
-    registered_party = Party(guest_code="ABCD12")
-    db.session.add(registered_party)
-    db.session.flush()
+    # Registered Party without booking
+    logger.info("**** Registered Party without booking ****")
+    _add_party(n_guests=3, create_user=True)
 
-    registered_guest_1 = Guest(party_id=registered_party.id, first_name="Paul", last_name="Smith")
-    registered_guest_2 = Guest(party_id=registered_party.id, first_name="Jan", last_name="Smith")
-
-    user = User(
-        email="paul@test.com",
-        email_confirmed_at=datetime.utcnow(),
-        password=user_manager.hash_password("password"),
-        party_id=registered_party.id,
-    )
-
-    registered_booking = Booking(
-        party_id=registered_party.id,
-        room_id=room_1.id,
-        check_in=app.config["WEDDING_DATE"] - timedelta(days=3),
-        check_out=app.config["WEDDING_DATE"] + timedelta(days=2),
-    )
-
-    unregistered_party = Party(guest_code="123456")
-    db.session.add(unregistered_party)
-    db.session.flush()
-
-    unregistered_guest_1 = Guest(party_id=unregistered_party.id, first_name="Tom", last_name="Jones")
-    unregistered_guest_2 = Guest(party_id=unregistered_party.id, first_name="Tina", last_name="Jones")
-
-    unregistered_booking = Booking(
-        party_id=unregistered_party.id,
-        room_id=room_2.id,
-        check_in=app.config["WEDDING_DATE"] - timedelta(days=1),
-        check_out=app.config["WEDDING_DATE"] + timedelta(days=4),
-    )
-
-    db.session.add_all(
-        [
-            registered_guest_1,
-            registered_guest_2,
-            user,
-            registered_booking,
-            unregistered_guest_1,
-            unregistered_guest_2,
-            unregistered_booking,
-        ]
-    )
     db.session.commit()
 
 
