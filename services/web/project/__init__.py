@@ -1,11 +1,6 @@
 from functools import wraps
 
-from flask import (
-    Flask,
-    render_template,
-    redirect,
-    request,
-)
+from flask import Flask, redirect, render_template, request
 from flask_login import current_user
 from flask_menu import Menu, register_menu
 from flask_sqlalchemy import SQLAlchemy
@@ -14,6 +9,8 @@ from flask_user import login_required
 from project.database import BaseModel
 from project.database.party import Party
 from project.database.users import User
+from project.jinja.autoescape import select_jinja_autoescape
+from project.jinja.filters import filters_blueprint
 from project.mail.mailgun import MailGunEmailAdapter
 from project.rsvp.forms import RSVPForm
 from project.rsvp.rsvp import RSVPState
@@ -21,6 +18,9 @@ from project.user_flow.user_manager import WeddingUserManager
 
 app = Flask(__name__)
 app.config.from_object("project.config.Config")
+app.jinja_env.autoescape = select_jinja_autoescape
+app.register_blueprint(filters_blueprint)
+
 db = SQLAlchemy(app, model_class=BaseModel)
 menu = Menu(app)
 user_manager = WeddingUserManager(app, db, User)
@@ -58,7 +58,8 @@ def home():
 
 
 @app.route("/rsvp", methods=["GET", "POST"])
-@register_menu(app, ".rsvp", "RSVP")
+@register_menu(app, ".rsvp", "Attending")  # Note this is a fake page used only for the hierarchy
+@register_menu(app, ".rsvp.rsvp", "RSVP")
 @login_required
 def rsvp():
     db_state = RSVPState.init_from_party_id(current_user.party_id, db.session)
@@ -73,17 +74,13 @@ def rsvp():
     )
 
 
-@app.route("/subpage")
-@register_menu(app, ".page", "Page With Subpages")  # Note this is a fake page used only for the hierarchy
-@register_menu(app, ".page.subpage", "Subpage")
+@app.route("/accommodation")
+@register_menu(app, ".rsvp", "Attending")  # Note this is a fake page used only for the hierarchy
+@register_menu(app, ".rsvp.accommodation", "Accommodation")
 @login_required
-def subpage():
-    return render_template("index.html")
+def accommodation():
+    from project.database.accommodation import Room
+    from project.database.booking import Booking
 
-
-@app.route("/subpage2")
-@register_menu(app, ".page", "Page With Subpages")  # Note this is a fake page used only for the hierarchy
-@register_menu(app, ".page.subpage2", "Subpage 2")
-@login_required
-def subpage2():
-    return render_template("index.html")
+    booking = Booking.get_preload(current_user.party_id, db.session)
+    return render_template("accommodation.html.jinja2", booking=booking)

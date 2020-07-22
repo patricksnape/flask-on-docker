@@ -1,0 +1,106 @@
+{% extends "main_layout.html" %}
+
+{% block title %}{% trans %}Home{% endtrans %}{% endblock %}
+{% block main_title_body %}
+    <div class="col-md-12">
+
+        <div class="heart-divider animation delay-2s fadeInUp">
+            <i class="de-icon-heart white-heart"></i>
+            <i class="de-icon-heart pink-heart"></i>
+        </div>
+        <h1 class="font-oswald animation delay-3s fadeInUp">
+            Accommodation
+        </h1>
+        <div class="slide-desc animation delay-4s fadeInUp">
+            <span>{% trans %}Enjoy your visit to the Rheinland-Pfalz{% endtrans %}</span>
+        </div>
+
+    </div>
+{% endblock %}
+
+{% block main_page_content %}
+    {% import 'macros/image_divider.jinja2' as image_divider %}
+
+    <section class="section-padding">
+        <div class="container">
+            {% if booking %}
+                <!-- TITLE AND BLURB -->
+                <div class="row">
+                    <div class="col-md-offset-1 col-md-10 text-center">
+                        <h2 class="animation fadeInUp">Your <span class="theme-color">Accommodation</span></h2>
+                        <div class="blurb animation fadeInUp">
+                            <p>It start in this beautiful New York City. We met in a small restaurant and keep contact
+                                from that night. A happy chatting always with us every day and every night. One day we
+                                decided to met again at that restaurant. It was our first date, a date that we will
+                                never forget it, a date that freeze everything, a very nervous date, with a full of
+                                happiness. </p>
+                        </div>
+                    </div>
+                </div>
+                <!-- END of TITLE AND BLURB -->
+
+                <!-- COUPLE PHOTO -->
+                <div class="row image-wrapper">
+
+                    <div class="col-md-12">
+                        <img src="http://placehold.it/1200x800" alt="" class="hover-animation image-zoom-in fullwidth">
+                    </div>
+
+                </div>
+                <!-- END of COUPLE PHOTO -->
+
+
+                <!-- OTHER BLURB -->
+                <div class="row">
+                    <div class="col-md-offset-1 col-md-10 text-center">
+                        <div class="blurb animation fadeInUp" style="margin-top:30px">
+                            <p>Our new story start from here, when we had a trip to the beach. A nice beach with a warm
+                                sand, blue sea and a nice sky. We enjoy our time together, wait for sunrise and sunset.
+                                And then a romantic wedding proposal fill this moment. A happy smile, hug, kiss,
+                                beautiful sky, the orange sunrise and sound of the waves complete this great
+                                moment. </p>
+                            <p class="lead no-margin">And today... <span
+                                    class="theme-color">We are Getting Married</span></p>
+                        </div>
+                    </div>
+                </div>
+                <!-- END of OTHER BLURB -->
+            {% else %}
+                <div class="row">
+                    <div class="col-md-offset-1 col-md-10 text-center">
+                        <h2 class="animation fadeInUp">Your <span class="theme-color">Own Accommodation</span></h2>
+                        <div class="blurb animation fadeInUp">
+                            <p>
+                                {% trans %}
+                                    According to our records you are arranging your own accommodation for the wedding.
+                                    We hope you have a wonderful time at the wedding and whether you are visiting or you
+                                    live in the local area we hope you enjoy all that the Rheinland-Pfalz has to offer
+                                    over the weekend.
+                                    We can't wait to spend our special day with you.
+                                {% endtrans %}
+                            </p>
+                            <p>
+                                {% trans %}
+                                    If your circumstances change and you need help arranging accommodation, please
+                                    contact us before
+                                {% endtrans %}
+                                {{ config.RSVP_DEADLINE | format_date }}
+                                {% trans %}
+                                    by clicking the email icon below
+                                {% endtrans %}
+                            </p>
+                            <p>
+                                <a href="javascript:" data-email="accommodation"></a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+    </section>
+{% endblock %}
+
+{% block footer_content %}
+    {% import 'macros/footer.jinja2' as footer %}
+    {{ footer.footer('ENJOY') }}
+{% endblock %}
