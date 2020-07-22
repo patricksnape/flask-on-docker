@@ -29,6 +29,7 @@ class Config(object):
     USER_SHOW_EMAIL_DOES_NOT_EXIST = True
 
     WEDDING_DATE = datetime.strptime("Aug 28 2021", "%b %d %Y").date()
-    BOOKING_MIN_DATE = WEDDING_DATE - timedelta(days=7)
-    BOOKING_MAX_DATE = WEDDING_DATE + timedelta(days=7)
+    BOOKING_MAX_N_DAYS = 7
+    BOOKING_MIN_DATE = WEDDING_DATE - timedelta(days=BOOKING_MAX_N_DAYS)
+    BOOKING_MAX_DATE = WEDDING_DATE + timedelta(days=BOOKING_MAX_N_DAYS)
     RSVP_DEADLINE = datetime.strptime("Feb 1 2021", "%b %d %Y").date()
