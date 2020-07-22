@@ -10,7 +10,7 @@ from project.database.accommodation import Accommodation, Room
 from project.database.booking import Booking
 from project.database.party import Party, Guest
 from project.database.users import User
-from project.token.token import get_token
+from project.guest.token import get_token
 from loguru import logger
 
 fake = Faker()
