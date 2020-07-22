@@ -1,7 +1,9 @@
+from __future__ import annotations
+
 from dataclasses import dataclass
 from datetime import date
 from functools import cached_property
-from typing import List, Optional, Tuple, cast
+from typing import List, Optional, Tuple, Union, cast
 
 from flask import Request
 from flask_wtf import FlaskForm
@@ -25,7 +27,7 @@ class RSVPState:
 
         return cls(party=party, booking=booking)
 
-    def update_db_with_form_data(self, form: RSVPForm, session: Session) -> None:
+    def update_db_with_form_data(self, form: Union[RSVPForm, RSVPFormWithAccommodation], session: Session) -> None:
         to_update: List[BaseModel] = []
 
         guests_attending = form.guests_attending.data
