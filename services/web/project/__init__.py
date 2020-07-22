@@ -84,3 +84,7 @@ def accommodation():
 
     booking = Booking.get_preload(current_user.party_id, db.session)
     return render_template("accommodation.html.jinja2", booking=booking)
+
+
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=5000, debug=True)
