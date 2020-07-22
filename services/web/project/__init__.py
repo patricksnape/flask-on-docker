@@ -61,9 +61,7 @@ def home():
 @login_required
 def rsvp():
     db_state = RSVPState.init_from_party_id(current_user.party_id, db.session)
-    form = RSVPForm()
-    form.guests_attending.choices = db_state.guest_choices
-    form.process(formdata=request.form or None, obj=db_state)
+    form = db_state.build_form(request=request)
 
     if form.validate_on_submit():
         db_state.update_db_with_form_data(form, db.session)

@@ -3,20 +3,21 @@ from __future__ import annotations
 from dataclasses import dataclass
 from datetime import date, timedelta
 from functools import cached_property
-from typing import List, TYPE_CHECKING, Tuple, Optional, cast
+from typing import List, Optional, TYPE_CHECKING, Tuple, cast
 
 from flask_wtf import FlaskForm
-from wtforms import SubmitField, RadioField, validators, SelectMultipleField, widgets
+from wtforms import RadioField, SelectMultipleField, SubmitField, validators, widgets
 from wtforms_components import DateField, DateRange
 
 from project.config import Config
 from project.database import BaseModel
 from project.database.booking import Booking
-from project.database.party import Party, Guest
+from project.database.party import Guest, Party
 from project.translations.utils import lazy_gettext as _
 
 if TYPE_CHECKING:
     from sqlalchemy.orm import Session
+    from flask import Request
 
 
 class MultiCheckboxField(SelectMultipleField):
@@ -92,6 +93,15 @@ class RSVPState:
         # So it's a bad name but it has to match the name below
         return self.attending_guest_ids
 
+    def build_form(self, request: Optional[Request] = None) -> FlaskForm:
+        # This will build the form correctly (including setting up any dynamic fields)
+        # as well as ensuring the correct form is created
+        form = RSVPForm() if self.booking is None else RSVPFormWithAccommodation()
+        form.guests_attending.choices = self.guest_choices
+        form.process(formdata=request.form or None if request else None, obj=self)
+
+        return form
+
 
 class RSVPForm(FlaskForm):
     attending = RadioField(
@@ -102,6 +112,26 @@ class RSVPForm(FlaskForm):
     )
     guests_attending = MultiCheckboxField(_("Guests Attending"), coerce=int)
 
+    submit = SubmitField(_("Submit"))
+
+    @property
+    def n_guests_attending(self) -> int:
+        return len(self.guests_attending.data)
+
+    @property
+    def attending_selected(self) -> bool:
+        return self.attending.data
+
+    def validate(self, extra_validators=None):
+        success = super().validate(extra_validators)
+        if self.attending_selected and self.n_guests_attending == 0:
+            self.guests_attending.errors.append(_("Please select at least one guest as attending or select 'No' above"))
+            success = False
+
+        return success
+
+
+class RSVPFormWithAccommodation(RSVPForm):
     accommodation_check_in = DateField(
         _("Check-In Date"),
         format="%Y-%m-%d",
@@ -119,8 +149,6 @@ class RSVPForm(FlaskForm):
         ],
     )
 
-    submit = SubmitField(_("Submit"))
-
     @property
     def check_out_date(self) -> date:
         return self.accommodation_check_out.data
@@ -129,19 +157,8 @@ class RSVPForm(FlaskForm):
     def check_in_date(self) -> date:
         return self.accommodation_check_in.data
 
-    @property
-    def n_guests_attending(self) -> int:
-        return len(self.guests_attending.data)
-
-    @property
-    def attending_selected(self) -> bool:
-        return self.attending.data
-
     def validate(self, extra_validators=None):
         success = super().validate(extra_validators)
-        if self.attending_selected and self.n_guests_attending == 0:
-            self.guests_attending.errors.append(_("Please select at least one guest as attending or select 'No' above"))
-            success = False
 
         if self.check_out_date <= self.check_in_date:
             self.accommodation_check_out.errors.append(_("Please ensure the check-out date is after the check-in date"))
