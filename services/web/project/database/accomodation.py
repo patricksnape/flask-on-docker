@@ -12,7 +12,9 @@ class Accommodation(BaseModel):
     id = Column(Integer, primary_key=True)
     name = Column(String, nullable=False)
     website = Column(String, nullable=True)
-    google_maps_place_id = Column(String, nullable=False)
+    address = Column(String, nullable=False)
+    latitude = Column(Float, nullable=False)
+    longitude = Column(Float, nullable=False)
 
     rooms = relationship("Room", backref="accommodation", uselist=True)
 
