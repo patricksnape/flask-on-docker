@@ -16,6 +16,10 @@ RUN pip install --upgrade pip
 COPY ./requirements.txt /usr/src/app/requirements.txt
 RUN pip install -r requirements.txt
 
+# install dev-only dependencies
+COPY ./requirements-dev.txt /usr/src/app/requirements-dev.txt
+RUN pip install -r requirements-dev.txt
+
 # copy project
 COPY . /usr/src/app/
 
