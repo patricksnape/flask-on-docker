@@ -21,12 +21,14 @@ class Config(object):
     USER_ENABLE_USERNAME = False
     USER_EMAIL_SENDER_NAME = USER_APP_NAME
     USER_EMAIL_SENDER_EMAIL = f"mailgun@{MAILGUN_DOMAIN}"
-    USER_LOGIN_URL = "/login"
-    USER_FORGOT_PASSWORD_URL = "/forgot-password"
-    USER_REGISTER_URL = "/register"
     USER_AFTER_LOGIN_ENDPOINT = "home"
     USER_AFTER_REGISTER_ENDPOINT = "home"
     USER_SHOW_EMAIL_DOES_NOT_EXIST = True
+
+    USER_FORGOT_PASSWORD_TEMPLATE = "flask_user/forgot_password.html.jinja2"
+    USER_LOGIN_TEMPLATE = "flask_user/login.html.jinja2"
+    USER_REGISTER_TEMPLATE = "flask_user/register.html.jinja2"
+    USER_RESEND_CONFIRM_EMAIL_TEMPLATE = "flask_user/resend_confirm_email.html.jinja2"
 
     WEDDING_DATE = datetime.strptime("Aug 28 2021", "%b %d %Y").date()
     BOOKING_MAX_N_DAYS = 7
