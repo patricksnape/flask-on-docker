@@ -108,13 +108,13 @@
                     </div>
 
                     <div id="attending-content">
-                        <h4>Guests</h4>
+                        <h4>{%trans%}Guests{%endtrans%}</h4>
                         {# Guests Attending field #}
-                        <div class="form-group text-left">
-                            <label>Please select all guests that can attend</label>
+                        <div class="form-group">
+                            <label>{%trans%}Please select all guests that can attend{%endtrans%}</label>
                             <div id="guests-attending-checkboxes" class="ajax-input ajax-checkbox">
                                 {% for subfield in form.guests_attending %}
-                                    <div class="checkbox {% if subfield.data == -1 %}hidden-checkbox{% endif %}">
+                                    <div class="checkbox">
                                         <label class="option-label">
                                             {{ subfield }}
                                             {{ subfield.label.text }}
@@ -127,33 +127,46 @@
 
                         <h4>Accommodation</h4>
 
-                        {% if form.accommodation_check_in %}
-                            {# Only check for a single field to determine which form we are rendering #}
-
+                        {% if booking %}
                             {# Check-in field #}
-                            <div class="form-group text-left">
+                            <div class="form-group">
                                 {{ form.accommodation_check_in.label }}
-                                <div id="check-in-date" class="ajax-input ajax-input">
+                                <div id="check-in-date" class="ajax-input">
                                     {{ form.accommodation_check_in }}
                                 </div>
                                 {{ form_errors(form.accommodation_check_in) }}
                             </div>
 
                             {# Check-out field #}
-                            <div class="form-group text-left">
+                            <div class="form-group">
                                 {{ form.accommodation_check_out.label }}
-                                <div id="check-out-date" class="ajax-input ajax-input">
+                                <div id="check-out-date" class="ajax-input">
                                     {{ form.accommodation_check_out }}
                                 </div>
                                 {{ form_errors(form.accommodation_check_out) }}
+                            </div>
+
+                            {# Accepted Price field #}
+                            <div class="form-group">
+                                <div id="accept-price-checkbox" class="ajax-input ajax-checkbox">
+                                    <label>{%trans%}Price Per Night{%endtrans%}</label>
+                                    <div class="checkbox">
+                                        <label class="option-label">
+                                            {{ form.accommodation_price_accepted }}
+                                            {{ form.accommodation_price_accepted.label.text }} €{{ '%0.2f' | format(booking.room.price_per_night) }}
+                                        </label>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     {% else %}
                         <div>
                             <p>
+                                {%trans%}
                                 According to our records you are providing your own accommodation.
                                 If you would like to discuss accommodation options with us then please email us by
                                 clicking the email icon below
+                                {%endtrans%}
                             </p>
                             <p>
                                 <a href="javascript:" data-email="accommodation"></a>

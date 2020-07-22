@@ -39,6 +39,7 @@ class RSVPState:
         if self.booking is not None:
             self.booking.check_in = form.accommodation_check_in.data
             self.booking.check_out = form.accommodation_check_out.data
+            self.booking.accepted = form.accommodation_price_accepted.data
             to_update.append(self.booking)
 
         session.add_all(to_update)
@@ -67,6 +68,10 @@ class RSVPState:
     @property
     def accommodation_check_out(self) -> Optional[date]:
         return self.booking.check_out if self.booking is not None else None
+
+    @property
+    def accommodation_price_accepted(self) -> Optional[date]:
+        return self.booking.accepted if self.booking is not None else None
 
     @cached_property
     def guest_choices(self) -> List[Tuple[int, str]]:

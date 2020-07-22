@@ -19,6 +19,7 @@ class Booking(BaseModel):
     room_id = Column(Integer, ForeignKey("rooms.id"), nullable=False, unique=True, index=True)
     check_in = Column(Date, nullable=False)
     check_out = Column(Date, nullable=False)
+    accepted = Column(Boolean, nullable=True)
 
     room = relationship("Room")
 

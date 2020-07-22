@@ -3,7 +3,7 @@ from __future__ import annotations
 from datetime import date, timedelta
 
 from flask_wtf import FlaskForm
-from wtforms import RadioField, SelectMultipleField, SubmitField, validators, widgets
+from wtforms import BooleanField, RadioField, SelectMultipleField, SubmitField, validators, widgets
 from wtforms_components import DateField, DateRange
 
 from project.config import Config
@@ -60,6 +60,7 @@ class RSVPFormWithAccommodation(RSVPForm):
             DateRange(min=Config.WEDDING_DATE + timedelta(days=1), max=Config.BOOKING_MAX_DATE),
         ],
     )
+    accommodation_price_accepted = BooleanField(_("I accept the price per night of "), default=True)
 
     @property
     def check_out_date(self) -> date:

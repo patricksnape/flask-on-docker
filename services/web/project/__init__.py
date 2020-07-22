@@ -68,7 +68,9 @@ def rsvp():
         db_state.update_db_with_form_data(form, db.session)
         return redirect("rsvp")
 
-    return render_template("rsvp.html", guests=db_state.guests, form=form, attending=db_state.attending)
+    return render_template(
+        "rsvp.html", booking=db_state.booking, guests=db_state.guests, form=form, attending=db_state.attending
+    )
 
 
 @app.route("/subpage")
