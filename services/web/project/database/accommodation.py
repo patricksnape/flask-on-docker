@@ -29,6 +29,6 @@ class Room(BaseModel):
     __tablename__ = "rooms"
 
     id = Column(Integer, primary_key=True)
-    accomodation_id = Column(Integer, ForeignKey("accommodation.id"), nullable=False, index=True)
+    accommodation_id = Column(Integer, ForeignKey("accommodation.id"), nullable=False, index=True)
     name = Column(String, nullable=True)
     price_per_night = Column(Float, nullable=False)

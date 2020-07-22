@@ -6,7 +6,7 @@ from faker import Faker
 from flask.cli import FlaskGroup
 
 from project import app, db, user_manager
-from project.database.accomodation import Accommodation, Room
+from project.database.accommodation import Accommodation, Room
 from project.database.booking import Booking
 from project.database.party import Party, Guest
 from project.database.users import User
@@ -34,7 +34,7 @@ def _add_accommodation(n_rooms: int = 2) -> List[Room]:
 
     rooms = []
     for _ in range(n_rooms):
-        room = Room(accomodation_id=accommodation.id, name=fake.city(), price_per_night=randint(50, 200))
+        room = Room(accommodation_id=accommodation.id, name=fake.city(), price_per_night=randint(50, 200))
         rooms.append(room)
         logger.info(f"{room}")
     db.session.add_all(rooms)

@@ -2,14 +2,14 @@ from __future__ import annotations
 
 from typing import TYPE_CHECKING
 
-from sqlalchemy import Column, Integer, ForeignKey, Date
+from sqlalchemy import Boolean, Column, Integer, ForeignKey, Date
 from sqlalchemy.orm import relationship
 
 from project.database import BaseModel
 
 if TYPE_CHECKING:
     # noinspection PyUnresolvedReferences
-    from project.database.accomodation import Room
+    from project.database.accommodation import Room
 
 
 class Booking(BaseModel):
