@@ -15,7 +15,8 @@ from project.database import BaseModel
 from project.database.party import Party
 from project.database.users import User
 from project.mail.mailgun import MailGunEmailAdapter
-from project.rsvp.forms import RSVPForm, RSVPState
+from project.rsvp.forms import RSVPForm
+from project.rsvp.rsvp import RSVPState
 from project.user_flow.user_manager import WeddingUserManager
 
 app = Flask(__name__)
