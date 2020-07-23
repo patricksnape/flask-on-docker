@@ -1,0 +1,26 @@
+{% macro inline_calendar(date) -%}
+    <div class="calendar-container">
+        <div class="calendar">
+            <div class="calendar__picture">
+                <h2>{{ date | format_date(format='dd MMMM') }}</h2>
+            </div>
+            <div class="calendar__date">
+                {# Localize the days of the week #}
+                <div class="calendar__day">M</div>
+                <div class="calendar__day">T</div>
+                <div class="calendar__day">W</div>
+                <div class="calendar__day">T</div>
+                <div class="calendar__day">F</div>
+                <div class="calendar__day">S</div>
+                <div class="calendar__day">S</div>
+                {# calendar_matrix is a custom global method I added that exposes Python's calendar.monthcalendar method #}
+                {% for row in calendar_matrix(date) %}
+                    {% for entry in row %}
+                        {% set entry = entry if entry != 0 else '' %}
+                        <div class="calendar__number {{ 'calendar__number--current' if entry == date.day else '' }}">{{ entry }}</div>
+                    {% endfor %}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{%- endmacro %}
