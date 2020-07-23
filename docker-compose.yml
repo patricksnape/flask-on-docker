@@ -38,7 +38,7 @@ services:
     depends_on:
       - db_create
   web:
-    build: ./services/web
+    image: wedding-python
     command: python manage.py run -h 0.0.0.0
     volumes:
       - ./services/web/:/usr/src/app/
