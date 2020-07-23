@@ -15,6 +15,8 @@ class Config(object):
     MAILGUN_DOMAIN = os.getenv("MAILGUN_DOMAIN", "sandboxf49773835c1049949b8632754c0d3e1f.mailgun.org")
     MAILGUN_API_KEY = os.getenv("MAILGUN_API_KEY", "")
 
+    GOOGLE_MAPS_API_TOKEN = os.getenv("GOOGLE_MAPS_API_TOKEN", "")
+
     # Flask-User settings
     USER_APP_NAME = "Snape Wedding"
     USER_ENABLE_EMAIL = True
