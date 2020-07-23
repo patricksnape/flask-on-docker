@@ -10,7 +10,7 @@ from project.database import BaseModel
 from project.database.party import Party
 from project.database.users import User
 from project.jinja.autoescape import select_jinja_autoescape
-from project.jinja.filters import filters_blueprint
+from project.jinja.filters import custom_jinja_blueprint
 from project.mail.mailgun import MailGunEmailAdapter
 from project.rsvp.forms import RSVPForm
 from project.rsvp.rsvp import RSVPState
@@ -19,7 +19,7 @@ from project.user_flow.user_manager import WeddingUserManager
 app = Flask(__name__)
 app.config.from_object("project.config.Config")
 app.jinja_env.autoescape = select_jinja_autoescape
-app.register_blueprint(filters_blueprint)
+app.register_blueprint(custom_jinja_blueprint)
 
 db = SQLAlchemy(app, model_class=BaseModel)
 menu = Menu(app)
