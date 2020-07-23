@@ -81,7 +81,6 @@ def _add_party(n_guests: int = 2, create_user: bool = False, add_booking_to_room
 
 @cli.command("create_db")
 def create_db() -> None:
-    db.drop_all()
     db.create_all()
     db.session.commit()
 

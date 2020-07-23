@@ -1,6 +1,42 @@
 version: '3.7'
 
 services:
+  db:
+    image: postgres:12-alpine
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_USER=hello_flask
+      - POSTGRES_PASSWORD=hello_flask_pass
+      - POSTGRES_DB=hello_flask_dev
+  # This service simply builds the base image for the project used by both the webserver
+  # and the DB setup commands
+  web_python_image:
+    build: ./services/web
+    image: wedding-python
+    env_file:
+      - ./.env.dev
+  db_create:
+    image: wedding-python
+    entrypoint: /usr/src/app/wait_for_db.sh
+    command: python manage.py create_db
+    volumes:
+      - ./services/web/:/usr/src/app/
+    env_file:
+      - ./.env.dev
+    depends_on:
+      - db
+      - web_python_image
+  db_seed:
+    image: wedding-python
+    entrypoint: /usr/src/app/wait_for_db.sh
+    command: python manage.py seed_db
+    volumes:
+      - ./services/web/:/usr/src/app/
+    env_file:
+      - ./.env.dev
+    depends_on:
+      - db_create
   web:
     build: ./services/web
     command: python manage.py run -h 0.0.0.0
@@ -13,12 +49,4 @@ services:
     environment:
       MAILGUN_API_KEY: ${MAILGUN_API_KEY}
     depends_on:
-      - db
-  db:
-    image: postgres:12-alpine
-    ports:
-      - 5432:5432
-    environment:
-      - POSTGRES_USER=hello_flask
-      - POSTGRES_PASSWORD=hello_flask_pass
-      - POSTGRES_DB=hello_flask_dev
+      - db_create
