@@ -1,6 +1,10 @@
 {% extends "main_layout.html.jinja2" %}
 
 {% block title %}{% trans %}Home{% endtrans %}{% endblock %}
+{% block css_links %}
+    {{ super() }}
+    <link href="{{ url_for('static', filename='css/inline-calendar.css') }}" rel="stylesheet"/>
+{% endblock %}
 {% block main_title_body %}
     <div class="col-md-12">
 
@@ -20,6 +24,7 @@
 
 {% block main_page_content %}
     {% import 'macros/image_divider.jinja2' as image_divider %}
+    {% from 'macros/inline_calendar.jinja2' import inline_calendar %}
 
     {% if booking %}
         <!-- ACCOMMODATION EXPLANATION -->
@@ -72,23 +77,30 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-offset-1 col-md-10 text-center">
-                        <h2 class="animation fadeInUp">Your stay at
+                        <h2 class="animation fadeInUp">
+                            Your stay at
                             <span class="theme-color">{{ booking.room.accommodation.name }}</span>
                         </h2>
-                        <h3 class="animation fadeInUp">3 Nights for $20</h3>
-                        <h4 class="animation fadeInUp">www.google.com</h4>
+                        <h3 class="animation fadeInUp">
+                            {{ booking.n_nights }}
+                            nights for
+                            €{{ '%0.2f' | format(booking.total_cost) }}
+                        </h3>
                         <div class="blurb animation fadeInUp">
                             <p>
                                 Fusce tincidunt enim ac luctus viverra. In malesuada diam nisi, vitae ultricies erat
                                 placerat eu. Aliquam a est purus. Sed non tristique.
                             </p>
+                            <p>
+                                Please visit
+                                <a class="with-underline" href="{{ booking.room.accommodation.website }}">{{ booking.room.accommodation.website }}</a>
+                                for more information
+                            </p>
                         </div>
                     </div>
                 </div>
 
-                <!-- ROW-1 -->
                 <div class="feature-row-wrapper row">
-
                     <!-- ITEM-1 -->
                     <div class="col-md-4">
                         <div class="feature-wrapper">
@@ -97,16 +109,11 @@
                                     <i class="de-icon-calendar"></i>
                                 </div>
                                 <div class="bold400">
-                                    <a href="#">Check-In</a>
+                                    Check-In
                                 </div>
                             </div>
-                            <p class="the-feature animation fadeInUp">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing
-                                elit. Pellentesque mattis egestas ullamcorper. Duis tincidunt vulputate nibh, vitae
-                                sodales
-                                mauris tincidunt id. Integer sit amet facilisis lectus.
-                            </p>
-
+                            {{ inline_calendar(booking.check_in) }}
+                            <p class="the-feature animation fadeInUp"></p>
                         </div>
                     </div>
                     <!-- End of ITEM-1 -->
@@ -120,16 +127,12 @@
                                     <i class="de-icon-euro"></i>
                                 </div>
                                 <div class="bold400">
-                                    <a href="#">Price Per Night</a>
+                                    Price Per Night
                                 </div>
                             </div>
-                            <p class="the-feature animation fadeInUp">
-                                Aliquam semper, mauris tristique fermentum rutrum,
-                                sem
-                                augue aliquet elit, rutrum ultrices tortor tellus ut nunc. Vestibulum tincidunt mi at
-                                ante
-                                laoreet condimentum ac a ante.
-                            </p>
+                            <div id="price-per-night">
+                                €{{ '%0.2f' | format(booking.room.price_per_night) }}
+                            </div>
 
                         </div>
                     </div>
@@ -144,45 +147,16 @@
                                     <i class="de-icon-calendar"></i>
                                 </div>
                                 <div class="bold400">
-                                    <a href="#">Check-Out</a>
+                                    Check-Out
                                 </div>
                             </div>
-                            <p class="the-feature animation fadeInUp">
-                                Morbi luctus sem at vulputate dictum. Donec in
-                                diam et
-                                augue gravida molestie ut et eros. Phasellus euismod vestibulum turpis, eget blandit
-                                velit.
-                                Maecenas a aliquam nisl, in bibendum ipsum.
-                            </p>
-
+                            {{ inline_calendar(booking.check_out) }}
+                            <p class="the-feature animation fadeInUp"></p>
                         </div>
                     </div>
                     <!-- End of ITEM-3 -->
 
                 </div>
-                <!-- END of ROW-1 -->
-
-                <!-- ROW-2 -->
-                <div class="feature-row-wrapper row">
-
-                    <!-- ITEM-1 -->
-                    <div class="col-md-12">
-                        <div class="feature-wrapper">
-                            <div class="icon-and-title animation fadeInUp">
-                                <div class="the-icon">
-                                    <i class="de-icon-location-2"></i>
-                                </div>
-                                <div class="bold400">
-                                    <a href="#">Location</a>
-                                </div>
-                            </div>
-                            <div id="map-canvas"></div>
-                        </div>
-                    </div>
-                    <!-- End of ITEM-1 -->
-
-                </div>
-                <!-- END of ROW-2 -->
             </div>
 
         </section>
@@ -224,12 +198,18 @@
 {% endblock %}
 
 {% block footer_content %}
-    {% import 'macros/footer.jinja2' as footer %}
-    {{ footer.footer('ENJOY') }}
+    <footer style="position:relative">
+        <div id="map-canvas"></div>
+        <div id="arrow-up-mobile">
+            <a href="#main-slider" class="animation fadeInUp smooth-scroll">
+                <i class="de-icon-up-open-big"></i>
+            </a>
+        </div>
+    </footer>
 {% endblock %}
 
 {% block js_scripts %}
-    {{  super() }}
+    {{ super() }}
 
     <script src="https://maps.googleapis.com/maps/api/js?key={{ config.GOOGLE_MAPS_API_TOKEN }}"></script>
     <script type="text/javascript" src={{ url_for('static', filename='js/markerlabel/markerwithlabel.js') }}></script>

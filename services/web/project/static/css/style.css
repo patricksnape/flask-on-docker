@@ -1259,6 +1259,13 @@ img.with-border{
 
 /* 07.8 FEATURE LIST							 */
 /* ----------------------------------------------*/
+#price-per-night {
+	font-size: 100px;
+	height: 375px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
 .feature-row-wrapper{
 	margin-top:30px;
 }
@@ -1268,15 +1275,14 @@ img.with-border{
 }
 
 .icon-and-title{
-	position:relative;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 	margin-bottom:18px;
-	margin-left:68px
 }
 
 .the-icon{
-	position:absolute;
 	color:#333333;
-	left:-78px;
 	font-size:42px;
 }
 
