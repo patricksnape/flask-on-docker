@@ -37,3 +37,9 @@ class Config(object):
     BOOKING_MIN_DATE = WEDDING_DATE - timedelta(days=BOOKING_MAX_N_DAYS)
     BOOKING_MAX_DATE = WEDDING_DATE + timedelta(days=BOOKING_MAX_N_DAYS)
     RSVP_DEADLINE = datetime.strptime("Feb 1 2021", "%b %d %Y").date()
+
+    HOUSE_LAT_LONG = (49.374088, 8.158309)
+    HOUSE_ADDRESS = "Kurpfalzstrasse 152, 67435 Neustadt an der Weinstrasse"
+    RESTAURANT_LAT_LONG = (49.3870215, 8.1601126)
+    RESTAURANT_ADDRESS = "Deidesheimer Strasse 12, 67435 Neustadt an der Weinstrasse"
+    MAP_CENTER_LAT_LONG = (49.379178, 8.164718)
