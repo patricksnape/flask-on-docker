@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+from typing import Tuple
+
 from sqlalchemy import Column, Integer, String, Float, ForeignKey
 from sqlalchemy.orm import relationship
 
@@ -23,6 +25,10 @@ class Accommodation(BaseModel):
         # TODO: Have to ignore type until relationship issues are fixed
         #       https://github.com/dropbox/sqlalchemy-stubs/issues/107
         return len(self.rooms)  # type: ignore
+
+    @property
+    def lat_long(self) -> Tuple[float, float]:
+        return self.latitude, self.longitude
 
 
 class Room(BaseModel):
