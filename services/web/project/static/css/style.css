@@ -1177,28 +1177,53 @@ img.with-border{
 	width:100%;
 }
 
-.main-icon-wrapper{
-	height:175px;
-	width:175px;
+.theme-circle {
 	position:relative;
-}
-
-.big-circle{
-	position:relative;
-	height:175px;
-	width:175px;
 	border-radius:50%;
 	background-color: rgba(240, 128, 128, 0.8);
 }
 
-.main-icon-text{
+.white-circle {
+	position:relative;
+	border-radius:50%;
+	background-color: white;
+}
+
+.marker-icon {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: #333333;
+}
+
+.marker-icon-inverse {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: white;
+}
+
+.marker-175-text {
 	position:absolute;
 	font-size:20px;
 	line-height:24px;
 	font-family: 'Roboto Slab', serif;
 	color:#FFF;
 	text-align:center;
-	top:60px;
+	top:75px;
+	left:0;
+	right:0;
+	margin: auto;
+}
+
+.marker-75-text {
+	position:absolute;
+	font-size:20px;
+	line-height:24px;
+	font-family: 'Roboto Slab', serif;
+	color:#FFF;
+	text-align:center;
+	top:25px;
 	left:0;
 	right:0;
 	margin: auto;

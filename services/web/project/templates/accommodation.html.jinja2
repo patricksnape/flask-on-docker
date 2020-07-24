@@ -93,7 +93,8 @@
                             </p>
                             <p>
                                 Please visit
-                                <a class="with-underline" href="{{ booking.room.accommodation.website }}">{{ booking.room.accommodation.website }}</a>
+                                <a class="with-underline"
+                                   href="{{ booking.room.accommodation.website }}">{{ booking.room.accommodation.website }}</a>
                                 for more information
                             </p>
                         </div>
@@ -199,7 +200,26 @@
 
 {% block footer_content %}
     <footer style="position:relative">
-        <div id="map-canvas"></div>
+        <div id="map-canvas" data-map-center="{{ config.MAP_CENTER_LAT_LONG | join(',') }}"></div>
+        <div id="map-markers" style="display: none">
+            <div data-map-lat-long="{{ config.HOUSE_LAT_LONG | join(',') }}" data-map-marker-size="75">
+                <div class="marker marker-icon white-circle animation fadeIn">
+                    <i class="de-icon-heart" style="font-size: 24px"></i>
+                </div>
+            </div>
+            <div data-map-lat-long="{{ config.RESTAURANT_LAT_LONG | join(',') }}" data-map-marker-size="75">
+                <div class="marker marker-icon white-circle animation fadeIn">
+                    <i class="de-icon-glass" style="font-size: 24px"></i>
+                </div>
+            </div>
+            <div data-map-lat-long="{{ booking.room.accommodation.lat_long | join(',') }}" data-map-marker-size="100">
+                <div class="marker marker-icon-inverse theme-circle animation fadeIn scale-animation">
+                    <i class="de-icon-home" style="font-size: 32px"></i>
+                </div>
+            </div>
+
+        </div>
+
         <div id="arrow-up-mobile">
             <a href="#main-slider" class="animation fadeInUp smooth-scroll">
                 <i class="de-icon-up-open-big"></i>
