@@ -1177,6 +1177,25 @@ img.with-border{
 	width:100%;
 }
 
+#reset-map-mobile{
+	position:absolute;
+	bottom: 5px;
+	left:75px;
+	z-index:3000;
+	line-height: 32px;
+}
+
+#reset-map-mobile .de-icon.icon-size{
+	font-size:30px;
+	margin:10px 0;
+}
+
+#reset-map-mobile .de-icon.icon-size.circle {
+	width: 50px;
+	height: 50px;
+	line-height: 45px;
+}
+
 .theme-circle {
 	position:relative;
 	border-radius:50%;
@@ -1196,6 +1215,10 @@ img.with-border{
 	color: #333333;
 }
 
+.marker-and-label {
+	display: none;
+}
+
 .marker-icon-inverse {
 	display: flex;
 	align-items: center;
@@ -1203,39 +1226,14 @@ img.with-border{
 	color: white;
 }
 
-.marker-175-text {
-	position:absolute;
-	font-size:20px;
-	line-height:24px;
-	font-family: 'Roboto Slab', serif;
-	color:#FFF;
-	text-align:center;
-	top:75px;
-	left:0;
-	right:0;
-	margin: auto;
-}
-
-.marker-75-text {
-	position:absolute;
-	font-size:20px;
-	line-height:24px;
-	font-family: 'Roboto Slab', serif;
-	color:#FFF;
-	text-align:center;
-	top:25px;
-	left:0;
-	right:0;
-	margin: auto;
-}
-
-.info-window-wrapper{
+.marker-label-content {
 	padding:5px;
 }
 
 .info-window-desc{
 	font-size:16px;
 	line-height:30px;
+	text-align: center;
 }
 
 @-webkit-keyframes scale-animation {

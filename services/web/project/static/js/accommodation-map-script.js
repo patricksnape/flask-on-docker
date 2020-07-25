@@ -47,14 +47,34 @@
         return [center_lat, center_long];
     }
 
-    function map_fit_bounds(map, lat_longs) {
+    function map_compute_bounds(map, lat_longs) {
         let bounds = new google.maps.LatLngBounds();
         if (lat_longs.length > 0) {
             for (let i = 0; i < lat_longs.length; i++) {
                 bounds.extend(new google.maps.LatLng(lat_longs[i][0], lat_longs[i][1]));
             }
-            map.fitBounds(bounds);
         }
+        return bounds;
+    }
+
+    function get_zoom_by_bounds(map, bounds) {
+        let MAX_ZOOM = map.mapTypes.get(map.getMapTypeId()).maxZoom || 21;
+        let MIN_ZOOM = map.mapTypes.get(map.getMapTypeId()).minZoom || 0;
+
+        let ne = map.getProjection().fromLatLngToPoint(bounds.getNorthEast());
+        let sw = map.getProjection().fromLatLngToPoint(bounds.getSouthWest());
+
+        let worldCoordWidth = Math.abs(ne.x - sw.x);
+        let worldCoordHeight = Math.abs(ne.y - sw.y);
+
+        let FIT_PAD = 40;
+
+        for (let zoom = MAX_ZOOM; zoom >= MIN_ZOOM; --zoom) {
+            if (worldCoordWidth * (1 << zoom) + 2 * FIT_PAD < $(map.getDiv()).width() &&
+                worldCoordHeight * (1 << zoom) + 2 * FIT_PAD < $(map.getDiv()).height())
+                return zoom;
+        }
+        return 0;
     }
 
     //INITIALIZE MAP
@@ -109,27 +129,21 @@
         let info_window = new google.maps.InfoWindow({
             maxWidth: 300,
         });
-        info_window.set('closed', true);
-
-        let contentString1 = '' +
-            '<div class="info-window-wrapper">' +
-            '<h5>Wedding Ceremony</h5>' +
-            '<div class="info-window-desc">Lorem ipsum dolor sit amet, consectetur.<br/><a href="#" class="with-underline">Click Here</a></div>' +
-            '</div>';
-
 
         // Add markers for each element found
         let lat_longs = [];
         let first_marker = null;
-        $("#map-markers div[data-map-lat-long]").each(function () {
-            let that = this;
-            let size = parseFloat(that.getAttribute('data-map-marker-size'));
-            let lat_long = parse_lat_long(that.getAttribute('data-map-lat-long'));
+        $("#map-markers .marker-and-label").each(function () {
+            let marker_div = $(this).children('div[data-map-lat-long]')[0];
+            let label_div = $(this).children('.marker-label-content')[0];
+
+            let size = parseFloat(marker_div.getAttribute('data-map-marker-size'));
+            let lat_long = parse_lat_long(marker_div.getAttribute('data-map-lat-long'));
             lat_longs.push(lat_long);
 
-            let marker_circle = $($(that).children('.marker')[0]);
-            marker_circle.width(size);
-            marker_circle.height(size);
+            let marker_circle_div = $($(marker_div).children('.marker')[0]);
+            marker_circle_div.width(size);
+            marker_circle_div.height(size);
 
             let marker = new MarkerWithLabel({
                 position: new google.maps.LatLng(lat_long[0], lat_long[1]),
@@ -137,7 +151,7 @@
                 raiseOnDrag: false,
                 icon: ' ',
                 map: map,
-                labelContent: that,
+                labelContent: marker_div,
                 labelAnchor: new google.maps.Point(size / 2, size / 2),
                 labelClass: "labels"
             });
@@ -148,14 +162,8 @@
 
             google.maps.event.addListener(marker, 'click', function () {
                 info_window.set("pixelOffset", new google.maps.Size(0, -size / 4));
-                info_window.setContent(contentString1);
-                if (info_window.get('closed')) {
-                    info_window.open(map, marker);
-                    info_window.set('closed', false);
-                } else {
-                    info_window.close();
-                    info_window.set('closed', true);
-                }
+                info_window.setContent(label_div);
+                info_window.open(map, marker);
             });
         });
 
@@ -164,7 +172,8 @@
         map.setCenter(new google.maps.LatLng(center_lat_long[0], center_lat_long[1]));
 
         // Set the zoom level automatically to fit all the markers inside
-        map_fit_bounds(map, lat_longs);
+        let bounds = map_compute_bounds(map, lat_longs);
+        map.fitBounds(bounds);
 
         google.maps.event.addListener(map, 'bounds_changed', function () {
             if (is_windowresize) {
@@ -177,6 +186,12 @@
                 }
             }
             is_windowresize = false;
+        });
+
+        $("#reset-map-mobile").click(function () {
+            map.panTo(new google.maps.LatLng(center_lat_long[0], center_lat_long[1]));
+            map.setZoom(get_zoom_by_bounds(map, bounds));
+            info_window.close()
         });
     }
 

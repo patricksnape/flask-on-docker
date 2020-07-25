@@ -202,28 +202,99 @@
     <footer style="position:relative">
         <div id="map-canvas"></div>
         <div id="map-markers" style="display: none">
-            <div data-map-lat-long="{{ config.HOUSE_LAT_LONG | join(',') }}" data-map-marker-size="75">
-                <div class="marker marker-icon white-circle animation fadeIn">
-                    <i class="de-icon-heart" style="font-size: 24px"></i>
+            <div class="marker-and-label">
+                <div data-map-lat-long="{{ config.HOUSE_LAT_LONG | join(',') }}" data-map-marker-size="75">
+                    <div class="marker marker-icon white-circle animation fadeIn">
+                        <i class="de-icon-heart" style="font-size: 24px"></i>
+                    </div>
                 </div>
-            </div>
-            <div data-map-lat-long="{{ config.RESTAURANT_LAT_LONG | join(',') }}" data-map-marker-size="75">
-                <div class="marker marker-icon white-circle animation fadeIn">
-                    <i class="de-icon-glass" style="font-size: 24px"></i>
-                </div>
-            </div>
-            <div data-map-lat-long="{{ booking.room.accommodation.lat_long | join(',') }}" data-map-marker-size="100">
-                <div class="marker marker-icon-inverse theme-circle animation fadeIn scale-animation">
-                    <i class="de-icon-home" style="font-size: 32px"></i>
+
+                <div class="marker-label-content">
+                    <h5>Wedding Ceremony</h5>
+                    <div class="info-window-desc">
+                        The wedding ceremony will be conducted at the Rapp family residence
+                        <br/>
+                        <br/>
+                        <div class="theme-color">
+                            Kurpfalzstraße 152<br/>
+                            67435 Neustadt an der Weinstraße
+                        </div>
+                        <br/>
+                        <a href="https://www.google.com/maps/dir/Current+Location/{{ config.HOUSE_LAT_LONG | join(',') }}"
+                           class="with-underline" target="_blank">
+                            Directions
+                        </a>
+                    </div>
                 </div>
             </div>
 
+            <div class="marker-and-label">
+                <div data-map-lat-long="{{ config.RESTAURANT_LAT_LONG | join(',') }}" data-map-marker-size="75">
+                    <div class="marker marker-icon white-circle animation fadeIn">
+                        <i class="de-icon-glass" style="font-size: 24px"></i>
+                    </div>
+                </div>
+
+                <div class="marker-label-content">
+                    <h5>Dinner and Dancing</h5>
+                    <div class="info-window-desc">
+                        The evening reception will take place at Tafel Und Wein
+                        <br/>
+                        <br/>
+                        <div class="theme-color">
+                            Deidesheimer Strasse 12<br/>
+                            67435 Königsbach
+                        </div>
+                        <br/>
+                        <a href="https://www.google.com/maps/dir/Current+Location/{{ config.RESTAURANT_LAT_LONG | join(',') }}"
+                           class="with-underline" target="_blank">
+                            Directions
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="marker-and-label">
+                <div data-map-lat-long="{{ booking.room.accommodation.lat_long | join(',') }}"
+                     data-map-marker-size="100">
+                    <div class="marker marker-icon-inverse theme-circle animation fadeIn scale-animation">
+                        <i class="de-icon-home" style="font-size: 32px"></i>
+                    </div>
+                </div>
+
+                <div class="marker-label-content">
+                    <h5>Your Accommodation</h5>
+                    <div class="info-window-desc">
+                        You will be staying at {{ booking.room.accommodation.name }} from
+                        {{ booking.check_in | format_date(format='short') }}
+                        to {{ booking.check_out | format_date(format='short') }}.
+                        <br/>
+                        <br/>
+                        <div class="theme-color">
+                            {{ booking.room.accommodation.address }}
+                        </div>
+                        <br/>
+                        <a href="https://www.google.com/maps/dir/Current+Location/{{ booking.room.accommodation.lat_long | join(',') }}"
+                           class="with-underline" target="_blank">
+                            Directions
+                        </a>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <div id="arrow-up-mobile">
             <a href="#main-slider" class="animation fadeInUp smooth-scroll">
                 <i class="de-icon-up-open-big"></i>
             </a>
+        </div>
+        <div id="reset-map-mobile">
+            <a>
+                <div class="de-icon inline icon-size circle outline reverse effect1 effect2 animation fadeInUp">
+                <i class="de-icon-cw"></i>
+            </div>
+            </a>
+
         </div>
     </footer>
 {% endblock %}
