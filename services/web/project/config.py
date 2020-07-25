@@ -42,4 +42,3 @@ class Config(object):
     HOUSE_ADDRESS = "Kurpfalzstrasse 152, 67435 Neustadt an der Weinstrasse"
     RESTAURANT_LAT_LONG = (49.3870215, 8.1601126)
     RESTAURANT_ADDRESS = "Deidesheimer Strasse 12, 67435 Neustadt an der Weinstrasse"
-    MAP_CENTER_LAT_LONG = (49.379178, 8.164718)

@@ -8,11 +8,6 @@
         is_windowresize = true;
     });
 
-    // function create_marker_div() {
-    //     '<div id="house-marker" class="main-icon-wrapper"><div class="big-circle scale-animation"></div><div class="main-icon-text">Ceremony</div></div>'
-    // '<div id="taxi-marker" class="de-icon circle medium-size animation fadeIn" style="background-color:rgba(255, 255, 255, 0.8); color:#333333; font-size:24px;"><i class="de-icon-taxi"></i></div>'
-    // }
-
     function parse_lat_long(lat_long) {
         lat_long = lat_long.split(',');
         lat_long[0] = parseFloat(lat_long[0]);
@@ -20,6 +15,47 @@
         return lat_long
     }
 
+    function center_of_lat_longs(lat_longs) {
+        let num_coords = lat_longs.length;
+        let X = 0.0;
+        let Y = 0.0;
+        let Z = 0.0;
+
+        for (let i = 0; i < num_coords; i++) {
+            let lat = lat_longs[i][0] * Math.PI / 180;
+            let lon = lat_longs[i][1] * Math.PI / 180;
+            let a = Math.cos(lat) * Math.cos(lon);
+            let b = Math.cos(lat) * Math.sin(lon);
+            let c = Math.sin(lat);
+
+            X += a;
+            Y += b;
+            Z += c;
+        }
+
+        X /= num_coords;
+        Y /= num_coords;
+        Z /= num_coords;
+
+        let lon = Math.atan2(Y, X);
+        let hyp = Math.sqrt(X * X + Y * Y);
+        let lat = Math.atan2(Z, hyp);
+
+        let center_lat = lat * 180 / Math.PI;
+        let center_long = lon * 180 / Math.PI;
+
+        return [center_lat, center_long];
+    }
+
+    function map_fit_bounds(map, lat_longs) {
+        let bounds = new google.maps.LatLngBounds();
+        if (lat_longs.length > 0) {
+            for (let i = 0; i < lat_longs.length; i++) {
+                bounds.extend(new google.maps.LatLng(lat_longs[i][0], lat_longs[i][1]));
+            }
+            map.fitBounds(bounds);
+        }
+    }
 
     //INITIALIZE MAP
     function initialize() {
@@ -52,17 +88,11 @@
         // as well as the name to be displayed on the map type control.
         let styledMap = new google.maps.StyledMapType(styles, {name: "Styled Map"});
 
-        // House: 49.374088, 8.158309 ()
-        // Tafel und Wein:  49.3870215,8.1601126 ()
-        // Middle of map between house and tafel und wein ()
         //DEFINE MAP OPTIONS
         //=======================================================================================
         let canvas_elem = document.getElementById('map-canvas');
-        let map_center = parse_lat_long(canvas_elem.getAttribute('data-map-center'));
         const mapOptions = {
-            zoom: 14,
             mapTypeId: google.maps.MapTypeId.ROADMAP,
-            center: new google.maps.LatLng(map_center[0], map_center[1]),
             zoomControl: true,
             mapTypeControl: true,
             streetViewControl: true,
@@ -88,12 +118,14 @@
             '</div>';
 
 
-        //ADD NEW MARKER WITH LABEL
-        //=======================================================================================
-        $("#map-markers div[data-map-lat-long]").each(function() {
+        // Add markers for each element found
+        let lat_longs = [];
+        let first_marker = null;
+        $("#map-markers div[data-map-lat-long]").each(function () {
             let that = this;
             let size = parseFloat(that.getAttribute('data-map-marker-size'));
             let lat_long = parse_lat_long(that.getAttribute('data-map-lat-long'));
+            lat_longs.push(lat_long);
 
             let marker_circle = $($(that).children('.marker')[0]);
             marker_circle.width(size);
@@ -110,6 +142,10 @@
                 labelClass: "labels"
             });
 
+            if (first_marker === null) {
+                first_marker = marker;
+            }
+
             google.maps.event.addListener(marker, 'click', function () {
                 info_window.set("pixelOffset", new google.maps.Size(0, -size / 4));
                 info_window.setContent(contentString1);
@@ -123,19 +159,27 @@
             });
         });
 
-        //ON BOUND EVENTS AND WINDOW RESIZE
-        //=======================================================================================
+        // Set the map center based on the markers
+        const center_lat_long = center_of_lat_longs(lat_longs);
+        map.setCenter(new google.maps.LatLng(center_lat_long[0], center_lat_long[1]));
+
+        // Set the zoom level automatically to fit all the markers inside
+        map_fit_bounds(map, lat_longs);
+
         google.maps.event.addListener(map, 'bounds_changed', function () {
             if (is_windowresize) {
-                window.setTimeout(function () {
-                    map.panTo(marker1.getPosition());
-                }, 500);
+                if (first_marker !== null) {
+                    window.setTimeout(function () {
+                            map.panTo(first_marker.getPosition());
+                        },
+                        500
+                    );
+                }
             }
             is_windowresize = false;
         });
     }
 
-    // LOAD GMAP
     google.maps.event.addDomListener(window, 'load', initialize);
 
 })(jQuery);

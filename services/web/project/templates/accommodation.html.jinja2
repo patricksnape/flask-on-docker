@@ -200,7 +200,7 @@
 
 {% block footer_content %}
     <footer style="position:relative">
-        <div id="map-canvas" data-map-center="{{ config.MAP_CENTER_LAT_LONG | join(',') }}"></div>
+        <div id="map-canvas"></div>
         <div id="map-markers" style="display: none">
             <div data-map-lat-long="{{ config.HOUSE_LAT_LONG | join(',') }}" data-map-marker-size="75">
                 <div class="marker marker-icon white-circle animation fadeIn">
