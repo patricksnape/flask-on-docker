@@ -14,6 +14,14 @@ class Party(BaseModel):
 
     guests = relationship("Guest", backref="party", uselist=True)
 
+    @property
+    def has_rsvpd(self):
+        return all(g.attending is not None for g in self.guests)
+
+    @property
+    def is_attending(self):
+        return any(g.attending is True for g in self.guests)
+
 
 class Guest(BaseModel):
     __tablename__ = "guests"
