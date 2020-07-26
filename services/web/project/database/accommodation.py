@@ -17,6 +17,7 @@ class Accommodation(BaseModel):
     address = Column(String, nullable=False)
     latitude = Column(Float, nullable=False)
     longitude = Column(Float, nullable=False)
+    description = Column(String, nullable=True)
 
     rooms = relationship("Room", back_populates="accommodation", uselist=True)
 

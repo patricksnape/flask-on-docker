@@ -27,6 +27,7 @@ def _add_accommodation(n_rooms: int = 2) -> List[Room]:
         latitude=lat,
         longitude=long,
         address=fake.address().replace("\n", ", "),
+        description=fake.paragraph(),
     )
     logger.info(f"{accommodation}")
     db.session.add(accommodation)
