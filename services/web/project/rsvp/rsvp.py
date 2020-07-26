@@ -9,9 +9,9 @@ from flask import Request
 from flask_wtf import FlaskForm
 from sqlalchemy.orm.session import Session
 
-from project import BaseModel, Party, RSVPForm
+from project import BaseModel, RSVPForm
 from project.database.booking import Booking
-from project.database.party import Guest
+from project.database.party import Guest, Party
 from project.rsvp.forms import RSVPFormWithAccommodation
 
 
@@ -70,8 +70,14 @@ class RSVPState:
         return self.booking.check_out if self.booking is not None else None
 
     @property
-    def accommodation_price_accepted(self) -> Optional[date]:
-        return self.booking.accepted if self.booking is not None else None
+    def accommodation_price_accepted(self) -> bool:
+        if self.booking is None:
+            return False
+        elif self.booking.accepted is None:
+            # Default is True if the RSVP is uncompleted
+            return True
+        else:
+            return self.booking.accepted
 
     @cached_property
     def guest_choices(self) -> List[Tuple[int, str]]:
