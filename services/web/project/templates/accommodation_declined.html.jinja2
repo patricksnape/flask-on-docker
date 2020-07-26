@@ -1,0 +1,46 @@
+{% extends "main_layout.html.jinja2" %}
+
+{% block title %}{% trans %}Accommodation{% endtrans %}{% endblock %}
+{% block main_title_body %}
+    <div class="col-md-12">
+
+        <div class="heart-divider animation delay-2s fadeInUp">
+            <i class="de-icon-heart white-heart"></i>
+            <i class="de-icon-heart pink-heart"></i>
+        </div>
+        <h1 class="font-oswald animation delay-3s fadeInUp">
+            Accommodation
+        </h1>
+        <div class="slide-desc animation delay-4s fadeInUp">
+            <span>{% trans %}Enjoy your weekend{% endtrans %}</span>
+        </div>
+
+    </div>
+{% endblock %}
+
+{% block main_page_content %}
+    <section class="section-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-offset-1 col-md-10 text-center">
+                    <h2 class="animation fadeInUp">{% trans %}Sorry You Can't Make It{% endtrans %}</h2>
+                    <div class="blurb animation fadeInUp">
+                        <p>
+                            {% trans %}
+                                We are sorry you can't make the event. We understand that a destination wedding is
+                                both expensive and difficult to plan in advance. We look forward to spending time
+                                together with you in the future as Husband and Wife!
+                            {% endtrans %}
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}
+
+{% block footer_content %}
+    {% import 'macros/footer.jinja2' as footer %}
+    {{ footer.footer('WITH LOVE') }}
+{% endblock %}

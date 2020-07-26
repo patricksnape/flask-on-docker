@@ -7,7 +7,6 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_user import login_required
 
 from project.database import BaseModel
-from project.database.party import Party
 from project.database.users import User
 from project.jinja.autoescape import select_jinja_autoescape
 from project.jinja.filters import custom_jinja_blueprint
@@ -81,9 +80,17 @@ def rsvp():
 def accommodation():
     from project.database.accommodation import Room
     from project.database.booking import Booking
+    from project.database.party import Party
 
     booking = Booking.get_preload(current_user.party_id, db.session)
-    return render_template("accommodation.html.jinja2", booking=booking)
+    party: Party = db.session.query(Party).get(current_user.party_id)
+
+    if booking is None:
+        return render_template("accommodation_no_booking.html.jinja2")
+    elif party.has_rsvpd and not party.is_attending:
+        return render_template("accommodation_declined.html.jinja2")
+    else:
+        return render_template("accommodation_accepted.html.jinja2", booking=booking, party=party)
 
 
 if __name__ == "__main__":

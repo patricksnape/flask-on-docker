@@ -1,10 +1,6 @@
 {% extends "main_layout.html.jinja2" %}
 
-{% block title %}{% trans %}Home{% endtrans %}{% endblock %}
-{% block css_links %}
-    {{ super() }}
-    <link href="{{ url_for('static', filename='css/inline-calendar.css') }}" rel="stylesheet"/>
-{% endblock %}
+{% block title %}{% trans %}Accommodation{% endtrans %}{% endblock %}
 {% block main_title_body %}
     <div class="col-md-12">
 
@@ -23,286 +19,41 @@
 {% endblock %}
 
 {% block main_page_content %}
-    {% import 'macros/image_divider.jinja2' as image_divider %}
-    {% from 'macros/inline_calendar.jinja2' import inline_calendar %}
-
-    {% if booking %}
-        <!-- ACCOMMODATION EXPLANATION -->
-        <section class="section-padding">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-offset-1 col-md-10 text-center">
-                        <h2 class="animation fadeInUp">{% trans %}Pre-booked{% endtrans %} <span
-                                class="theme-color">{% trans %}Accommodation{% endtrans %}</span></h2>
-                        <div class="blurb animation fadeInUp">
-                            <p>
-                                {% trans %}
-                                    Due to the limited number of accommodation providers in the local region, we have
-                                    pre-booked accommodation for you. We have done our best to negotiate fair rates for
-                                    accommodation that is mostly within walking distance of the venues.
-                                {% endtrans %}
-                            </p>
-                            <p>
-                                {% trans wedding_date=config.WEDDING_DATE | format_date %}
-                                    As many of the available accommodations are small Bed and Breakfast providers they
-                                    prefer longer stays. For this reason we have pre-booked everyone for the long
-                                    weekend including a stay on Sunday night. The weekend of {{ wedding_date }} is a
-                                    Bank holiday in the UK. If you require a different check-in or check-out date please
-                                    indicate this in your RSVP.
-                                {% endtrans %}
-                            </p>
-                            <p>
-                                {% trans %}
-                                    If for some reason you are unhappy with your accommodation please contact us
-                                    by clicking the email icon below and we will do our best to help you arrange
-                                    alternative accommodation
-                                {% endtrans %}
-                            </p>
-                            <p>
-                                <a href="javascript:" data-email="accommodation"></a>
-                            </p>
-                        </div>
+    <section class="section-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-offset-1 col-md-10 text-center">
+                    <h2 class="animation fadeInUp">{% trans %}Your Own{% endtrans %}
+                        <span class="theme-color">{% trans %}Accommodation{% endtrans %}</span>
+                    </h2>
+                    <div class="blurb animation fadeInUp">
+                        <p>
+                            {% trans %}
+                                According to our records you are arranging your own accommodation for the wedding.
+                                We hope you have a wonderful time at the wedding and whether you are visiting or you
+                                live in the local area we hope you enjoy all that the Rheinland-Pfalz has to offer
+                                over the weekend.
+                                We can't wait to spend our special day with you.
+                            {% endtrans %}
+                        </p>
+                        <p>
+                            {% trans rsvp_deadline=config.RSVP_DEADLINE | format_date %}
+                                If your circumstances change and you need help arranging accommodation, please
+                                contact us before {{ rsvp_deadline }} by clicking the email icon below
+                            {% endtrans %}
+                        </p>
+                        <p>
+                            <a href="javascript:" data-email="accommodation"></a>
+                        </p>
                     </div>
                 </div>
             </div>
-        </section>
-        <!-- END OF ACCOMMODATION EXPLANATION -->
-
-        <!-- IMAGE DIVIDER -->
-        {{ image_divider.image_divider('http://placehold.it/1920x1080') }}
-        <!-- END of IMAGE DIVIDER -->
-
-        <!-- ACCOMMODATION INFORMATION -->
-        <section class="section-padding">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-offset-1 col-md-10 text-center">
-                        <h2 class="animation fadeInUp">
-                            Your stay at
-                            <span class="theme-color">{{ booking.room.accommodation.name }}</span>
-                        </h2>
-                        <h3 class="animation fadeInUp">
-                            {{ booking.n_nights }}
-                            nights for
-                            €{{ '%0.2f' | format(booking.total_cost) }}
-                        </h3>
-                        <div class="blurb animation fadeInUp">
-                            <p>
-                                Fusce tincidunt enim ac luctus viverra. In malesuada diam nisi, vitae ultricies erat
-                                placerat eu. Aliquam a est purus. Sed non tristique.
-                            </p>
-                            <p>
-                                Please visit
-                                <a class="with-underline"
-                                   href="{{ booking.room.accommodation.website }}">{{ booking.room.accommodation.website }}</a>
-                                for more information
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="feature-row-wrapper row">
-                    <!-- ITEM-1 -->
-                    <div class="col-md-4">
-                        <div class="feature-wrapper">
-                            <div class="icon-and-title animation fadeInUp">
-                                <div class="the-icon">
-                                    <i class="de-icon-calendar"></i>
-                                </div>
-                                <div class="bold400">
-                                    Check-In
-                                </div>
-                            </div>
-                            {{ inline_calendar(booking.check_in) }}
-                            <p class="the-feature animation fadeInUp"></p>
-                        </div>
-                    </div>
-                    <!-- End of ITEM-1 -->
-
-
-                    <!-- ITEM-2 -->
-                    <div class="col-md-4">
-                        <div class="feature-wrapper">
-                            <div class="icon-and-title animation fadeInUp">
-                                <div class="the-icon">
-                                    <i class="de-icon-euro"></i>
-                                </div>
-                                <div class="bold400">
-                                    Price Per Night
-                                </div>
-                            </div>
-                            <div id="price-per-night">
-                                €{{ '%0.2f' | format(booking.room.price_per_night) }}
-                            </div>
-
-                        </div>
-                    </div>
-                    <!-- End of ITEM-2 -->
-
-
-                    <!-- ITEM-3 -->
-                    <div class="col-md-4">
-                        <div class="feature-wrapper">
-                            <div class="icon-and-title animation fadeInUp">
-                                <div class="the-icon">
-                                    <i class="de-icon-calendar"></i>
-                                </div>
-                                <div class="bold400">
-                                    Check-Out
-                                </div>
-                            </div>
-                            {{ inline_calendar(booking.check_out) }}
-                            <p class="the-feature animation fadeInUp"></p>
-                        </div>
-                    </div>
-                    <!-- End of ITEM-3 -->
-
-                </div>
-            </div>
-
-        </section>
-        <!-- END OF ACCOMMODATION INFORMATION -->
-    {% else %}
-        <section class="section-padding">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-offset-1 col-md-10 text-center">
-                        <h2 class="animation fadeInUp">{% trans %}Your{% endtrans %}
-                            <span class="theme-color">{% trans %}Own Accommodation{% endtrans %}</span>
-                        </h2>
-                        <div class="blurb animation fadeInUp">
-                            <p>
-                                {% trans %}
-                                    According to our records you are arranging your own accommodation for the wedding.
-                                    We hope you have a wonderful time at the wedding and whether you are visiting or you
-                                    live in the local area we hope you enjoy all that the Rheinland-Pfalz has to offer
-                                    over the weekend.
-                                    We can't wait to spend our special day with you.
-                                {% endtrans %}
-                            </p>
-                            <p>
-                                {% trans rsvp_deadline=config.RSVP_DEADLINE | format_date %}
-                                    If your circumstances change and you need help arranging accommodation, please
-                                    contact us before {{ rsvp_deadline }} by clicking the email icon below
-                                {% endtrans %}
-                            </p>
-                            <p>
-                                <a href="javascript:" data-email="accommodation"></a>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    {% endif %}
+        </div>
+    </section>
 
 {% endblock %}
 
 {% block footer_content %}
-    <footer style="position:relative">
-        <div id="map-canvas"></div>
-        <div id="map-markers" style="display: none">
-            <div class="marker-and-label">
-                <div data-map-lat-long="{{ config.HOUSE_LAT_LONG | join(',') }}" data-map-marker-size="75">
-                    <div class="marker marker-icon white-circle animation fadeIn">
-                        <i class="de-icon-heart" style="font-size: 24px"></i>
-                    </div>
-                </div>
-
-                <div class="marker-label-content">
-                    <h5>Wedding Ceremony</h5>
-                    <div class="info-window-desc">
-                        The wedding ceremony will be conducted at the Rapp family residence
-                        <br/>
-                        <br/>
-                        <div class="theme-color">
-                            Kurpfalzstraße 152<br/>
-                            67435 Neustadt an der Weinstraße
-                        </div>
-                        <br/>
-                        <a href="https://www.google.com/maps/dir/Current+Location/{{ config.HOUSE_LAT_LONG | join(',') }}"
-                           class="with-underline" target="_blank">
-                            Directions
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="marker-and-label">
-                <div data-map-lat-long="{{ config.RESTAURANT_LAT_LONG | join(',') }}" data-map-marker-size="75">
-                    <div class="marker marker-icon white-circle animation fadeIn">
-                        <i class="de-icon-glass" style="font-size: 24px"></i>
-                    </div>
-                </div>
-
-                <div class="marker-label-content">
-                    <h5>Dinner and Dancing</h5>
-                    <div class="info-window-desc">
-                        The evening reception will take place at Tafel Und Wein
-                        <br/>
-                        <br/>
-                        <div class="theme-color">
-                            Deidesheimer Strasse 12<br/>
-                            67435 Königsbach
-                        </div>
-                        <br/>
-                        <a href="https://www.google.com/maps/dir/Current+Location/{{ config.RESTAURANT_LAT_LONG | join(',') }}"
-                           class="with-underline" target="_blank">
-                            Directions
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="marker-and-label">
-                <div data-map-lat-long="{{ booking.room.accommodation.lat_long | join(',') }}"
-                     data-map-marker-size="100">
-                    <div class="marker marker-icon-inverse theme-circle animation fadeIn scale-animation">
-                        <i class="de-icon-home" style="font-size: 32px"></i>
-                    </div>
-                </div>
-
-                <div class="marker-label-content">
-                    <h5>Your Accommodation</h5>
-                    <div class="info-window-desc">
-                        You will be staying at {{ booking.room.accommodation.name }} from
-                        {{ booking.check_in | format_date(format='short') }}
-                        to {{ booking.check_out | format_date(format='short') }}.
-                        <br/>
-                        <br/>
-                        <div class="theme-color">
-                            {{ booking.room.accommodation.address }}
-                        </div>
-                        <br/>
-                        <a href="https://www.google.com/maps/dir/Current+Location/{{ booking.room.accommodation.lat_long | join(',') }}"
-                           class="with-underline" target="_blank">
-                            Directions
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div id="arrow-up-mobile">
-            <a href="#main-slider" class="animation fadeInUp smooth-scroll">
-                <i class="de-icon-up-open-big"></i>
-            </a>
-        </div>
-        <div id="reset-map-mobile">
-            <a>
-                <div class="de-icon inline icon-size circle outline reverse effect1 effect2 animation fadeInUp">
-                <i class="de-icon-cw"></i>
-            </div>
-            </a>
-
-        </div>
-    </footer>
-{% endblock %}
-
-{% block js_scripts %}
-    {{ super() }}
-
-    <script src="https://maps.googleapis.com/maps/api/js?key={{ config.GOOGLE_MAPS_API_TOKEN }}"></script>
-    <script type="text/javascript" src={{ url_for('static', filename='js/markerlabel/markerwithlabel.js') }}></script>
-    <script type="text/javascript" src={{ url_for('static', filename='js/accommodation-map-script.js') }}></script>
+    {% import 'macros/footer.jinja2' as footer %}
+    {{ footer.footer('ENJOY') }}
 {% endblock %}
