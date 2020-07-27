@@ -66,7 +66,12 @@ def rsvp():
 
     if form.validate_on_submit():
         db_state.update_db_with_form_data(form, db.session)
-        return redirect("rsvp")
+        # Re-fetch state from the DB
+        db_state = RSVPState.init_from_party_id(current_user.party_id, db.session)
+        if not db_state.party.is_attending:
+            return render_template("rsvp_declined.html.jinja2")
+        else:
+            return render_template("rsvp_accepted.html.jinja2", booking=db_state.booking)
 
     return render_template(
         "rsvp.html.jinja2", booking=db_state.booking, guests=db_state.guests, form=form, attending=db_state.attending

@@ -1,0 +1,54 @@
+{% extends "main_layout.html.jinja2" %}
+
+{% block title %}{% trans %}RSVP{% endtrans %}{% endblock %}
+{% block main_title_body %}
+    <div class="col-md-12">
+
+        <div class="heart-divider animation delay-2s fadeInUp">
+            <i class="de-icon-heart white-heart"></i>
+            <i class="de-icon-heart pink-heart"></i>
+        </div>
+        <h1 class="font-oswald animation delay-3s fadeInUp">
+            RSVP
+        </h1>
+        <div class="slide-desc animation delay-4s fadeInUp">
+            <span>{% trans %}Thanks For Responding{% endtrans %}</span>
+        </div>
+
+    </div>
+{% endblock %}
+
+{% block main_page_content %}
+    <section class="section-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-offset-1 col-md-10 text-center">
+                    <h2 class="animation fadeInUp">{% trans %}Glad You Can Make It{% endtrans %}</h2>
+                    <div class="blurb animation fadeInUp">
+                        <p>
+                            We are very happy that you can make it to our special day. You can revisit the
+                            <a href="{{ url_for('rsvp') }}" class="with-underline">RSVP page</a> to edit your
+                            response any time before {{ config.RSVP_DEADLINE | format_date }}.
+
+                            Don't forget to visit the
+                            <a href="{{ url_for('accommodation') }}" class="with-underline">Accommodation page</a>
+                            to review your accommodation plans if necessary.
+                        </p>
+                        {% if booking and not booking.accepted %}
+                            <div class="alert alert-danger" role="alert">
+                                Note you did not accept the price for your accommodation. We will be in contact with
+                                you ASAP to discuss options.
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}
+
+{% block footer_content %}
+    {% import 'macros/footer.jinja2' as footer %}
+    {{ footer.footer('EXCITED') }}
+{% endblock %}
