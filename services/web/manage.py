@@ -9,12 +9,27 @@ from project import app, db, user_manager
 from project.database.accommodation import Accommodation, Room
 from project.database.booking import Booking
 from project.database.party import Party, Guest
-from project.database.users import User
+from project.database.users import Role, User, UserRoles
 from project.guest.token import get_token
 from loguru import logger
 
 fake = Faker()
 cli = FlaskGroup(app)
+
+
+def _add_admin_user() -> None:
+    role = Role(name="admin")
+    db.session.add(role)
+    db.session.flush()
+
+    user = User(
+        email="admin@test.com", email_confirmed_at=datetime.utcnow(), password=user_manager.hash_password("password"),
+    )
+    db.session.add(user)
+    db.session.flush()
+
+    user_role = UserRoles(user_id=user.id, role_id=role.id)
+    db.session.add(user_role)
 
 
 def _add_accommodation(n_rooms: int = 2) -> List[Room]:
@@ -43,7 +58,7 @@ def _add_accommodation(n_rooms: int = 2) -> List[Room]:
     return rooms
 
 
-def _add_party(n_guests: int = 2, create_user: bool = False, add_booking_to_room: Optional[Room] = None):
+def _add_party(n_guests: int = 2, create_user: bool = False, add_booking_to_room: Optional[Room] = None) -> None:
     assert n_guests > 0
 
     party = Party(guest_code=get_token())
@@ -101,6 +116,9 @@ def seed_db() -> None:
     # Registered Party without booking
     logger.info("**** Registered Party without booking ****")
     _add_party(n_guests=3, create_user=True)
+
+    # Create admin user
+    _add_admin_user()
 
     db.session.commit()
 

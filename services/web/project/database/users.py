@@ -20,7 +20,7 @@ class User(BaseModel, UserMixin):
     email_confirmed_at = Column(DateTime)
     password = Column(String, nullable=False)
 
-    party_id = Column(Integer, ForeignKey("party.id"), index=True)
+    party_id = Column(Integer, ForeignKey("party.id"), index=True, nullable=True)
 
     roles = relationship("Role", secondary="user_roles")
 

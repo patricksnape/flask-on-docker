@@ -4,7 +4,7 @@ from flask import Flask, redirect, render_template, request
 from flask_login import current_user
 from flask_menu import Menu, register_menu
 from flask_sqlalchemy import SQLAlchemy
-from flask_user import login_required
+from flask_user import login_required, roles_accepted
 
 from project.database import BaseModel
 from project.database.users import User
@@ -26,8 +26,27 @@ user_manager = WeddingUserManager(app, db, User)
 user_manager.email_adapter = MailGunEmailAdapter(app)
 
 
+def admin_view(subpage_name: str):
+    def is_admin():
+        return current_user.has_roles("admin")
+
+    # Helper decorator that combines the various other decorators required to create an admin view
+    def decorator(func):
+        # Note this is a fake page used only for the hierarchy
+        @register_menu(app, ".admin", "Admin", visible_when=is_admin)
+        @register_menu(app, f".admin.{subpage_name.replace(' ', '_')}", subpage_name.title(), visible_when=is_admin)
+        @roles_accepted("admin")
+        @wraps(func)
+        def wrapper(*args, **kwargs):
+            return func(*args, **kwargs)
+
+        return wrapper
+
+    return decorator
+
+
 def redirect_authenticated(view_function):
-    @wraps(view_function)  # Tells debuggers that is is a function wrapper
+    @wraps(view_function)
     def decorator(*args, **kwargs):
         # User must be logged in with a confirmed email address
         is_authenticated = user_manager.call_or_get(
@@ -61,6 +80,10 @@ def home():
 @register_menu(app, ".rsvp.rsvp", "RSVP")
 @login_required
 def rsvp():
+    if current_user.party_id is None:
+        # Only the case for the admin user
+        return render_template("rsvp_declined.html.jinja2")
+
     db_state = RSVPState.init_from_party_id(current_user.party_id, db.session)
     form = db_state.build_form(request=request)
 
@@ -96,6 +119,12 @@ def accommodation():
         return render_template("accommodation_declined.html.jinja2")
     else:
         return render_template("accommodation_accepted.html.jinja2", booking=booking, party=party)
+
+
+@app.route("/admin/overview")
+@admin_view("overview")
+def admin_overview():
+    return render_template("index.html.jinja2")
 
 
 if __name__ == "__main__":

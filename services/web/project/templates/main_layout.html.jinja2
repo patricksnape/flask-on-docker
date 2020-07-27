@@ -1,180 +1,182 @@
 {% extends "base_layout.html.jinja2" %}
 {% block css_links %}
-<!-- Favicon -->
-<link rel="icon" href="{{ url_for('static', filename='images/favicon.jpg') }}"/>
-<!-- Bootstrap -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
-      integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"
-      media="screen"/>
-<!-- Flexslider -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flexslider/2.7.2/flexslider.min.css"
-      integrity="sha512-c7jR/kCnu09ZrAKsWXsI/x9HCO9kkpHw4Ftqhofqs+I2hNxalK5RGwo/IAhW3iqCHIw55wBSSCFlm8JP0sw2Zw=="
-      crossorigin="anonymous"/>
-<!-- Animate -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.0/animate.compat.min.css"
-      integrity="sha512-uUsJnYcswxI6Vy2g88USOAD351ljY8pWr98HTXVSxQ4/uT43nzlGk91EAsvO5fOzw9QtBPFaw9tgZPSrxvM3RA=="
-      crossorigin="anonymous"/>
-<!-- Magnific Popup -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css"
-      integrity="sha512-+EoPw+Fiwh6eSeRK7zwIKG2MA8i3rV/DGa3tdttQGgWyatG/SkncT53KHQaS5Jh9MNOT3dmFL0FjTY08And/Cw=="
-      crossorigin="anonymous"/>
-<!-- Owl Carousel -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.min.css"
-      integrity="sha512-X/RSQYxFb/tvuz6aNRTfKXDnQzmnzoawgEQ4X8nZNftzs8KFFH23p/BA6D2k0QCM4R0sY1DEy9MIY9b3fwi+bg=="
-      crossorigin="anonymous"/>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.theme.min.css"
-      integrity="sha512-f28cvdA4Bq3dC9X9wNmSx21rjWI+5piIW/uoc2LuQ67asKxfQjUow2MkcCNcfJiaLrHcGbed1wzYe3dlY4w9gA=="
-      crossorigin="anonymous"/>
-<!-- Slidebars -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slidebars/0.10.2/slidebars.min.css"
-      integrity="sha512-6Xw8T7E2rzf0K8r/1FMqy0Y4Azhi2+6PBFzMBWoJ0n+Raa8krT22vM69efvhflLwiIdecs6bI4clIkb3hM54nQ=="
-      crossorigin="anonymous" media="screen"/>
-<!-- Font -->
-<link href='https://fonts.googleapis.com/css?family=Oswald:300' rel='stylesheet' type='text/css'/>
-<link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,300,700,100' rel='stylesheet' type='text/css'/>
+    <!-- Favicon -->
+    <link rel="icon" href="{{ url_for('static', filename='images/favicon.jpg') }}"/>
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"
+          media="screen"/>
+    <!-- Flexslider -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flexslider/2.7.2/flexslider.min.css"
+          integrity="sha512-c7jR/kCnu09ZrAKsWXsI/x9HCO9kkpHw4Ftqhofqs+I2hNxalK5RGwo/IAhW3iqCHIw55wBSSCFlm8JP0sw2Zw=="
+          crossorigin="anonymous"/>
+    <!-- Animate -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.0/animate.compat.min.css"
+          integrity="sha512-uUsJnYcswxI6Vy2g88USOAD351ljY8pWr98HTXVSxQ4/uT43nzlGk91EAsvO5fOzw9QtBPFaw9tgZPSrxvM3RA=="
+          crossorigin="anonymous"/>
+    <!-- Magnific Popup -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css"
+          integrity="sha512-+EoPw+Fiwh6eSeRK7zwIKG2MA8i3rV/DGa3tdttQGgWyatG/SkncT53KHQaS5Jh9MNOT3dmFL0FjTY08And/Cw=="
+          crossorigin="anonymous"/>
+    <!-- Owl Carousel -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.min.css"
+          integrity="sha512-X/RSQYxFb/tvuz6aNRTfKXDnQzmnzoawgEQ4X8nZNftzs8KFFH23p/BA6D2k0QCM4R0sY1DEy9MIY9b3fwi+bg=="
+          crossorigin="anonymous"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.theme.min.css"
+          integrity="sha512-f28cvdA4Bq3dC9X9wNmSx21rjWI+5piIW/uoc2LuQ67asKxfQjUow2MkcCNcfJiaLrHcGbed1wzYe3dlY4w9gA=="
+          crossorigin="anonymous"/>
+    <!-- Slidebars -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slidebars/0.10.2/slidebars.min.css"
+          integrity="sha512-6Xw8T7E2rzf0K8r/1FMqy0Y4Azhi2+6PBFzMBWoJ0n+Raa8krT22vM69efvhflLwiIdecs6bI4clIkb3hM54nQ=="
+          crossorigin="anonymous" media="screen"/>
+    <!-- Font -->
+    <link href='https://fonts.googleapis.com/css?family=Oswald:300' rel='stylesheet' type='text/css'/>
+    <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,300,700,100' rel='stylesheet' type='text/css'/>
 
-<!-- Unable to find CDN -->
-<!-- Countdown -->
-<link rel="stylesheet" href="{{ url_for('static', filename='css/countdown/jquery.countdown.css') }}"
-      type="text/css"/>
+    <!-- Unable to find CDN -->
+    <!-- Countdown -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/countdown/jquery.countdown.css') }}"
+          type="text/css"/>
 
-<!-- Theme CSS -->
-<link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet" media="screen"/>
-<!-- Pace -->
-<link rel="stylesheet" href="{{ url_for('static', filename='css/preloader/preloader.css') }}" media="screen"/>
-<!-- Icon -->
-<link rel="stylesheet" href="{{ url_for('static', filename='css/fonts/fontello/css/fontello.css') }}"
-      media="screen"/>
+    <!-- Theme CSS -->
+    <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet" media="screen"/>
+    <!-- Pace -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/preloader/preloader.css') }}" media="screen"/>
+    <!-- Icon -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/fonts/fontello/css/fontello.css') }}"
+          media="screen"/>
 
 {% endblock %}
 
 <!-- SIDE NAVBAR -->
 {% block navbar_content %}
-<nav class="sb-slidebar sb-right sb-style-push">
+    <nav class="sb-slidebar sb-right sb-style-push">
 
-    <div id="side-navbar-header">
+        <div id="side-navbar-header">
 
-        <div id="close-inner-wrapper">
-            <a href="#" id="close-button"><i class="de-icon-cancel-2"></i></a>
+            <div id="close-inner-wrapper">
+                <a href="#" id="close-button"><i class="de-icon-cancel-2"></i></a>
+            </div>
+
+            <div id="logo-inner-wrapper">
+                {% import 'macros/logo.jinja2' as logo %}
+                {{ logo.logo() }}
+            </div>
+
         </div>
 
-        <div id="logo-inner-wrapper">
-            {% import 'macros/logo.jinja2' as logo %}
-            {{ logo.logo() }}
-        </div>
+        <ul id="side-nav-menu" class="main-menu">
+            {%- for item in current_menu.children recursive -%}
+                {%- if item.visible -%}
+                    <li>
+                        {%- if item.children -%}
+                            <a href="#">{{ item.text }}</a>
+                            <ul>
+                                {{ loop(item.children) }}
+                            </ul>
+                        {% else %}
+                            <a href="{{ item.url }}" {% if item.active %} class="active" {% endif %}>{{ item.text }}</a>
+                        {%- endif -%}
+                    </li>
+                {%- endif -%}
+            {%- endfor -%}
+        </ul>
 
-    </div>
-
-    <ul id="side-nav-menu" class="main-menu">
-        {%- for item in current_menu.children recursive -%}
-        <li>
-            {%- if item.children -%}
-            <a href="#">{{ item.text }}</a>
-            <ul>
-                {{ loop(item.children) }}
-            </ul>
-            {% else %}
-            <a href="{{ item.url }}" {% if item.active %} class="active" {% endif %}>{{ item.text }}</a>
-            {%- endif -%}
-        </li>
-        {%- endfor -%}
-    </ul>
-
-</nav>
+    </nav>
 {% endblock %}
 <!-- END of SIDE NAVBAR -->
 
 <!-- SLIDEBAR CONTENT WRAPPER -->
 {% block page_content %}
 
-<!-- NAVIGATION -->
-{% import 'macros/nav_header.jinja2' as nav_header %}
-{{ nav_header.nav_header(hide_first=request.path == "/") }}
-<!-- END of NAVIGATION -->
+    <!-- NAVIGATION -->
+    {% import 'macros/nav_header.jinja2' as nav_header %}
+    {{ nav_header.nav_header(hide_first=request.path == "/") }}
+    <!-- END of NAVIGATION -->
 
-<!-- MAIN SLIDER -->
-{% import 'macros/main_slider.jinja2' as main_slider %}
-{% call main_slider.main_slider() %}
-{% block main_title_body %}{% endblock %}
-{% endcall %}
-<!-- END of MAIN SLIDER -->
+    <!-- MAIN SLIDER -->
+    {% import 'macros/main_slider.jinja2' as main_slider %}
+    {% call main_slider.main_slider() %}
+        {% block main_title_body %}{% endblock %}
+    {% endcall %}
+    <!-- END of MAIN SLIDER -->
 
-<!-- START PAGE CONTENT -->
-<section id="page-content">
-    {% block main_page_content %}{% endblock %}
-</section>
-<!-- END of PAGE CONTENT -->
+    <!-- START PAGE CONTENT -->
+    <section id="page-content">
+        {% block main_page_content %}{% endblock %}
+    </section>
+    <!-- END of PAGE CONTENT -->
 
-<!-- FOOTER SECTION -->
-{% block footer_content %}
-{% import 'macros/footer.jinja2' as footer %}
-{{ footer.footer() }}
-{% endblock %}
-<!-- END of FOOTER SECTION -->
+    <!-- FOOTER SECTION -->
+    {% block footer_content %}
+        {% import 'macros/footer.jinja2' as footer %}
+        {{ footer.footer() }}
+    {% endblock %}
+    <!-- END of FOOTER SECTION -->
 
 {% endblock %}
 <!-- END of SLIDEBAR CONTENT WRAPPER -->
 
 
 {% block js_scripts %}
-<!-- jQuery -->
-<script src="https://code.jquery.com/jquery-1.12.4.min.js"
-        integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
-<!-- Pace -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/pace/0.7.8/pace.min.js"
-        integrity="sha512-t3TewtT7K7yfZo5EbAuiM01BMqlU2+JFbKirm0qCZMhywEbHZWWcPiOq+srWn8PdJ+afwX9am5iqnHmfV9+ITA=="
-        crossorigin="anonymous"></script>
-<!-- Bootstrap -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
-        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
-        crossorigin="anonymous"></script>
-<!-- Device JS -->
-<script src="https://unpkg.com/current-device/umd/current-device.min.js"></script>
-<!-- SmoothScroll -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-smooth-scroll/2.2.0/jquery.smooth-scroll.min.js"
-        integrity="sha512-0tWfLL+YANip9Uo2YUY4/SxvwDgPUuoSUcIXPFULXiXXgLKmiC/qCeDxnhl+mLobu6e/dSlyhGheCtzd9+RLCw=="
-        crossorigin="anonymous"></script>
-<!-- Flexslider -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/flexslider/2.7.2/jquery.flexslider-min.js"
-        integrity="sha512-BmoWLYENsSaAfQfHszJM7cLiy9Ml4I0n1YtBQKfx8PaYpZ3SoTXfj3YiDNn0GAdveOCNbK8WqQQYaSb0CMjTHQ=="
-        crossorigin="anonymous"></script>
-<!-- Waypoint -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js"
-        integrity="sha512-CEiA+78TpP9KAIPzqBvxUv8hy41jyI3f2uHi7DGp/Y/Ka973qgSdybNegWFciqh6GrN2UePx2KkflnQUbUhNIA=="
-        crossorigin="anonymous"></script>
-<!-- Stellar -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/stellar.js/0.6.2/jquery.stellar.min.js"
-        integrity="sha512-PNXCBnFH9wShbV+mYnrfo0Gf3iSREgBWmYAoMIfc+Z83vVq3Nu4yxBk6j+BZ40ZIhtW3WlTQdBvW3AYLAnlgpA=="
-        crossorigin="anonymous"></script>
-<!-- Masonry -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/masonry/4.2.2/masonry.pkgd.min.js"
-        integrity="sha512-JRlcvSZAXT8+5SQQAvklXGJuxXTouyq8oIMaYERZQasB8SBDHZaUbeASsJWpk0UUrf89DP3/aefPPrlMR1h1yQ=="
-        crossorigin="anonymous"></script>
-<!-- Magnific Popup -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"
-        integrity="sha512-IsNh5E3eYy3tr/JiX2Yx4vsCujtkhwl7SLqgnwLNgf04Hrt9BT9SXlLlZlWx+OK4ndzAoALhsMNcCmkggjZB1w=="
-        crossorigin="anonymous"></script>
-<!-- Owl Carousel -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.min.js"
-        integrity="sha512-9CWGXFSJ+/X0LWzSRCZFsOPhSfm6jbnL+Mpqo0o8Ke2SYr8rCTqb4/wGm+9n13HtDE1NQpAEOrMecDZw4FXQGg=="
-        crossorigin="anonymous"></script>
-<!-- Slidebars -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/slidebars/0.10.2/slidebars.js"
-        integrity="sha512-XkdPPGSxaFUoQJkVlznivoVtt/XmX7bzc7gd/kHN+5sdRsS0M+QRELOgbl0+kWszCuEdWb767owHo1pYIFueyg=="
-        crossorigin="anonymous"></script>
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"
+            integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+    <!-- Pace -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pace/0.7.8/pace.min.js"
+            integrity="sha512-t3TewtT7K7yfZo5EbAuiM01BMqlU2+JFbKirm0qCZMhywEbHZWWcPiOq+srWn8PdJ+afwX9am5iqnHmfV9+ITA=="
+            crossorigin="anonymous"></script>
+    <!-- Bootstrap -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+            crossorigin="anonymous"></script>
+    <!-- Device JS -->
+    <script src="https://unpkg.com/current-device/umd/current-device.min.js"></script>
+    <!-- SmoothScroll -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-smooth-scroll/2.2.0/jquery.smooth-scroll.min.js"
+            integrity="sha512-0tWfLL+YANip9Uo2YUY4/SxvwDgPUuoSUcIXPFULXiXXgLKmiC/qCeDxnhl+mLobu6e/dSlyhGheCtzd9+RLCw=="
+            crossorigin="anonymous"></script>
+    <!-- Flexslider -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flexslider/2.7.2/jquery.flexslider-min.js"
+            integrity="sha512-BmoWLYENsSaAfQfHszJM7cLiy9Ml4I0n1YtBQKfx8PaYpZ3SoTXfj3YiDNn0GAdveOCNbK8WqQQYaSb0CMjTHQ=="
+            crossorigin="anonymous"></script>
+    <!-- Waypoint -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js"
+            integrity="sha512-CEiA+78TpP9KAIPzqBvxUv8hy41jyI3f2uHi7DGp/Y/Ka973qgSdybNegWFciqh6GrN2UePx2KkflnQUbUhNIA=="
+            crossorigin="anonymous"></script>
+    <!-- Stellar -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/stellar.js/0.6.2/jquery.stellar.min.js"
+            integrity="sha512-PNXCBnFH9wShbV+mYnrfo0Gf3iSREgBWmYAoMIfc+Z83vVq3Nu4yxBk6j+BZ40ZIhtW3WlTQdBvW3AYLAnlgpA=="
+            crossorigin="anonymous"></script>
+    <!-- Masonry -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/masonry/4.2.2/masonry.pkgd.min.js"
+            integrity="sha512-JRlcvSZAXT8+5SQQAvklXGJuxXTouyq8oIMaYERZQasB8SBDHZaUbeASsJWpk0UUrf89DP3/aefPPrlMR1h1yQ=="
+            crossorigin="anonymous"></script>
+    <!-- Magnific Popup -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"
+            integrity="sha512-IsNh5E3eYy3tr/JiX2Yx4vsCujtkhwl7SLqgnwLNgf04Hrt9BT9SXlLlZlWx+OK4ndzAoALhsMNcCmkggjZB1w=="
+            crossorigin="anonymous"></script>
+    <!-- Owl Carousel -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.min.js"
+            integrity="sha512-9CWGXFSJ+/X0LWzSRCZFsOPhSfm6jbnL+Mpqo0o8Ke2SYr8rCTqb4/wGm+9n13HtDE1NQpAEOrMecDZw4FXQGg=="
+            crossorigin="anonymous"></script>
+    <!-- Slidebars -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slidebars/0.10.2/slidebars.js"
+            integrity="sha512-XkdPPGSxaFUoQJkVlznivoVtt/XmX7bzc7gd/kHN+5sdRsS0M+QRELOgbl0+kWszCuEdWb767owHo1pYIFueyg=="
+            crossorigin="anonymous"></script>
 
-<!-- Scripts not from CDN -->
-<!-- Countdown -->
-<script src="../static/js/countdown/jquery.plugin.min.js"></script>
-<script src="../static/js/countdown/jquery.countdown.min.js"></script>
-<!-- DoubleTapToGo -->
-<script src="https://cdn.jsdelivr.net/npm/jquery.ui.widget@1.10.3/jquery.ui.widget.js"
-        integrity="sha256-JWVTvlTW2PnGhHvs+9zaxmc7IbqNfe5Xlw5hRajWM18=" crossorigin="anonymous"></script>
-<script src="../static/js/jquery-doubletaptogo/jquery.dcd.doubletaptogo.min.js"></script>
+    <!-- Scripts not from CDN -->
+    <!-- Countdown -->
+    <script src="../static/js/countdown/jquery.plugin.min.js"></script>
+    <script src="../static/js/countdown/jquery.countdown.min.js"></script>
+    <!-- DoubleTapToGo -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery.ui.widget@1.10.3/jquery.ui.widget.js"
+            integrity="sha256-JWVTvlTW2PnGhHvs+9zaxmc7IbqNfe5Xlw5hRajWM18=" crossorigin="anonymous"></script>
+    <script src="../static/js/jquery-doubletaptogo/jquery.dcd.doubletaptogo.min.js"></script>
 
-<!-- Custom Core Script -->
-<script type="text/javascript" src="{{ url_for('static', filename='js/script.js') }}"></script>
-<script type="text/javascript" src="{{ url_for('static', filename='js/main-slider.js') }}"></script>
-<script type="text/javascript" src="{{ url_for('static', filename='js/side-navbar.js') }}"></script>
+    <!-- Custom Core Script -->
+    <script type="text/javascript" src="{{ url_for('static', filename='js/script.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/main-slider.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/side-navbar.js') }}"></script>
 
 {% endblock %}
