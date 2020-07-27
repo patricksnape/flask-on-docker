@@ -8,5 +8,12 @@
                 $('#attending-content').fadeOut();
             }
         });
+
+        $('#attending-radio .disabled').click(function (e) {
+            e.stopPropagation();
+            e.preventDefault();
+            e.stopImmediatePropagation();
+            return false;
+        });
     });
 })(jQuery);
