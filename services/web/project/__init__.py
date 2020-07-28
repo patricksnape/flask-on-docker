@@ -89,17 +89,22 @@ def rsvp():
     if current_user.has_roles("admin"):
         return abort(404)
 
-    db_state = RSVPState.init_from_party_id(current_user.party_id, db.session)
+    party_id = current_user.party_id
+    db_state = RSVPState.init_from_party_id(party_id, db.session)
     form = db_state.build_form(request=request)
 
     if form.validate_on_submit():
+        before_rsvp = db_state.to_frozen()
         db_state.update_db_with_form_data(form, db.session)
-        # Re-fetch state from the DB
-        db_state = RSVPState.init_from_party_id(current_user.party_id, db.session)
-        if not db_state.party.is_attending:
+
+        # Re-fetch state from the DB to make sure the data isn't stale
+        new_db_state = RSVPState.init_from_party_id(party_id, db.session)
+        RSVPChange.insert(party_id, before_rsvp, new_db_state.to_frozen(), db.session)
+
+        if not new_db_state.party.is_attending:
             return render_template("rsvp_declined.html.jinja2")
         else:
-            return render_template("rsvp_accepted.html.jinja2", booking=db_state.booking)
+            return render_template("rsvp_accepted.html.jinja2", booking=new_db_state.booking)
 
     return render_template(
         "rsvp.html.jinja2", booking=db_state.booking, guests=db_state.guests, form=form, attending=db_state.attending
