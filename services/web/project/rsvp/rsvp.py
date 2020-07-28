@@ -22,7 +22,7 @@ class RSVPState:
 
     @classmethod
     def init_from_party_id(cls, party_id: int, session: Session) -> RSVPState:
-        party = session.query(Party).get(party_id)
+        party = Party.get_preload(party_id, session)
         booking = session.query(Booking).get(party_id)
 
         return cls(party=party, booking=booking)
