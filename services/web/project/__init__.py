@@ -7,6 +7,7 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_user import login_required, roles_accepted
 
 from project.database import BaseModel
+from project.database.rsvp import RSVPChange
 from project.database.users import User
 from project.jinja.autoescape import select_jinja_autoescape
 from project.jinja.filters import custom_jinja_blueprint
@@ -85,9 +86,8 @@ def home():
 @register_menu(app, ".rsvp.rsvp", "RSVP")
 @login_required
 def rsvp():
-    if current_user.party_id is None:
-        # Only the case for the admin user
-        return render_template("rsvp_declined.html.jinja2")
+    if current_user.has_roles("admin"):
+        return abort(404)
 
     db_state = RSVPState.init_from_party_id(current_user.party_id, db.session)
     form = db_state.build_form(request=request)
