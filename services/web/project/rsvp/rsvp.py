@@ -23,7 +23,7 @@ class FrozenRSVPState:
     accepted: Optional[bool]
 
 
-@dataclass
+@dataclass(frozen=True)
 class RSVPState:
     party: Party
     booking: Optional[Booking]
@@ -121,3 +121,44 @@ class RSVPState:
             check_out=self.accommodation_check_out,
             accepted=self.accommodation_price_accepted,
         )
+
+
+@dataclass(frozen=True)
+class RSVPStatistics:
+    parties: Tuple[Party, ...]
+
+    @cached_property
+    def guests(self) -> Tuple[Guest, ...]:
+        return tuple(g for p in self.parties for g in p.guests)
+
+    @property
+    def n_parties(self) -> int:
+        return len(self.parties)
+
+    @cached_property
+    def n_parties_unresponded(self) -> int:
+        return len([p for p in self.parties if not p.has_rsvpd])
+
+    @cached_property
+    def n_parties_attending(self) -> int:
+        return len([p for p in self.parties if p.is_attending])
+
+    @cached_property
+    def n_parties_declined(self) -> int:
+        return len([p for p in self.parties if not p.is_attending and p.has_rsvpd])
+
+    @property
+    def n_guests(self) -> int:
+        return len(self.guests)
+
+    @cached_property
+    def n_guests_attending(self) -> int:
+        return len([g for g in self.guests if g.attending])
+
+    @cached_property
+    def n_guests_declined(self) -> int:
+        return len([g for g in self.guests if g.attending is False])
+
+    @cached_property
+    def n_guests_unresponded(self) -> int:
+        return len([g for g in self.guests if g.attending is None])
