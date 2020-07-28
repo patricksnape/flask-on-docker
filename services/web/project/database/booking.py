@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from sqlalchemy import Boolean, Column, Date, ForeignKey, Integer
-from sqlalchemy.orm import Session, lazyload, relationship
+from sqlalchemy.orm import Session, joinedload, relationship
 
 from project.database import BaseModel
 from project.database.accommodation import Room
@@ -43,4 +43,4 @@ class Booking(BaseModel):
 
             attributes are preloaded for faster access.
         """
-        return session.query(Booking).options(lazyload(Booking.room).joinedload(Room.accommodation)).get(party_id)
+        return session.query(Booking).options(joinedload(Booking.room).joinedload(Room.accommodation)).get(party_id)
