@@ -1,0 +1,49 @@
+{% extends "main_layout.html.jinja2" %}
+
+{% block title %}404{% endblock %}
+{% block main_title_body %}
+    <div class="col-md-12">
+
+        <div class="heart-divider animation delay-2s fadeInUp">
+            <i class="de-icon-heart white-heart"></i>
+            <i class="de-icon-heart pink-heart"></i>
+        </div>
+        <h1 class="font-oswald animation delay-3s fadeInUp">
+            Unknown Page
+        </h1>
+        <div class="slide-desc animation delay-4s fadeInUp">
+            <span>404</span>
+        </div>
+
+    </div>
+{% endblock %}
+
+{% block main_page_content %}
+    <section class="section-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-offset-1 col-md-10 text-center">
+                    <h2 class="animation fadeInUp">
+                        {% trans %}
+                            Try Again
+                        {% endtrans %}
+                    </h2>
+                    <div class="blurb animation fadeInUp">
+                        <p>
+                            {% trans %}
+                                Please try selecting a page from the navigation menu or return
+                            {% endtrans %}
+                            <a href="{{ url_for('home') }}" class="with-underline">home</a>.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}
+
+{% block footer_content %}
+    {% import 'macros/footer.jinja2' as footer %}
+    {{ footer.footer('SORRY') }}
+{% endblock %}

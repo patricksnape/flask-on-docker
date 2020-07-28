@@ -1,6 +1,6 @@
 from functools import wraps
 
-from flask import Flask, redirect, render_template, request
+from flask import Flask, abort, redirect, render_template, request
 from flask_login import current_user
 from flask_menu import Menu, register_menu
 from flask_sqlalchemy import SQLAlchemy
@@ -60,6 +60,11 @@ def redirect_authenticated(view_function):
         return view_function(*args, **kwargs)
 
     return decorator
+
+
+@app.errorhandler(404)
+def page_not_found(_):
+    return render_template("404.html.jinja2"), 404
 
 
 @app.route("/")
