@@ -16,6 +16,14 @@ from project.rsvp.forms import RSVPFormWithAccommodation
 
 
 @dataclass
+class FrozenRSVPState:
+    guest_ids: List[int]
+    check_in: Optional[date]
+    check_out: Optional[date]
+    accepted: Optional[bool]
+
+
+@dataclass
 class RSVPState:
     party: Party
     booking: Optional[Booking]
@@ -105,3 +113,11 @@ class RSVPState:
         form.process(formdata=request.form or None if request else None, obj=self)
 
         return form
+
+    def to_frozen(self) -> FrozenRSVPState:
+        return FrozenRSVPState(
+            guest_ids=self.attending_guest_ids,
+            check_in=self.accommodation_check_in,
+            check_out=self.accommodation_check_out,
+            accepted=self.accommodation_price_accepted,
+        )
