@@ -1,0 +1,105 @@
+{% extends "main_layout.html.jinja2" %}
+
+{% block title %}Admin - Party Information{% endblock %}
+{% block page_content %}
+
+    <!-- NAVIGATION -->
+    {% import 'macros/nav_header.jinja2' as nav_header %}
+    {{ nav_header.nav_header(False) }}
+    <!-- END of NAVIGATION -->
+
+    <!-- START PAGE CONTENT -->
+    <section id="page-content">
+        <section class="section-padding">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-offset-1 col-md-10">
+                        <h2 class="animation fadeInUp text-center">Admin - Party Information</h2>
+                        {% if not party.has_rsvpd %}
+                            <div class="alert alert-danger text-center" role="alert">
+                                Party has not completed their RSVP
+                            </div>
+                        {% endif %}
+
+                        <h4>Contact</h4>
+                        {% if not user %}
+                            <div class="alert alert-danger text-center" role="alert">
+                                Party has not created a login
+                            </div>
+                        {% else %}
+                            <div class="table-responsive">
+                                <table class="table table-bordered">
+                                    <tr>
+                                        <td>Email</td>
+                                        <td>{{ user.email }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Email Confirmed On</td>
+                                        <td>{{ user.email_confirmed_at | format_date if user.email_confirmed_at else 'Unconfirmed' }}</td>
+                                    </tr>
+                                </table>
+                            </div>
+                        {% endif %}
+
+                        <h4>Attendees</h4>
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Attending</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {%- for guest in party.guests -%}
+                                    <tr>
+                                        <td>{{ guest.full_name }}</td>
+                                        <td>
+                                            <i class="de-icon-{{ 'user-add-1' if guest.attending else ('user-delete' if guest.attending != None else 'question-circle-o') }}"></i>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <h4>Accommodation</h4>
+                        {% if not booking %}
+                            Party are providing their own accommodation
+                        {% else %}
+                            {% if not booking.accepted %}
+                                <div class="alert alert-danger text-center" role="alert">
+                                    Party has not accepted the price for their accommodation
+                                </div>
+                            {% endif %}
+                            <div class="table-responsive">
+                                <table class="table table-bordered">
+                                    <tr>
+                                        <td>Accommodation</td>
+                                        <td>{{ booking.room.accommodation.name }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Room</td>
+                                        <td>
+                                            {{ booking.room.name }}
+                                            @ €{{ '%0.2f' | format(booking.room.price_per_night) }}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Check-In</td>
+                                        <td>{{ booking.check_in | format_date }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Check-Out</td>
+                                        <td>{{ booking.check_out | format_date }}</td>
+                                    </tr>
+                                </table>
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+        </section>
+    </section>
+    <!-- END of PAGE CONTENT -->
+
+{% endblock %}

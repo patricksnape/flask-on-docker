@@ -13,7 +13,7 @@ from project.jinja.autoescape import select_jinja_autoescape
 from project.jinja.filters import custom_jinja_blueprint
 from project.mail.mailgun import MailGunEmailAdapter
 from project.rsvp.forms import RSVPForm
-from project.rsvp.rsvp import RSVPState
+from project.rsvp.rsvp import RSVPState, RSVPStatistics
 from project.user_flow.user_manager import WeddingUserManager
 
 app = Flask(__name__)
@@ -134,7 +134,25 @@ def accommodation():
 @app.route("/admin/overview")
 @admin_view("overview")
 def admin_overview():
-    return render_template("index.html.jinja2")
+    from project.database.party import Party
+
+    statistics = RSVPStatistics(tuple(Party.get_all_preloaded(db.session)))
+    return render_template("admin_overview.html.jinja2", statistics=statistics)
+
+
+@app.route("/admin/party/<int:party_id>")
+@roles_accepted("admin")
+def admin_party(party_id: int):
+    from project.database.party import Party
+    from project.database.booking import Booking
+
+    party = Party.get_preload(party_id, db.session)
+    if party is None:
+        return abort(404)
+    else:
+        booking: Booking = Booking.get_preload(party_id, db.session)
+        user = User.get_by_party_id(party_id, db.session)
+        return render_template("admin_party.html.jinja2", party=party, booking=booking, user=user)
 
 
 if __name__ == "__main__":

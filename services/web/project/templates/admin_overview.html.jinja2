@@ -1,0 +1,86 @@
+{% extends "main_layout.html.jinja2" %}
+
+{% block title %}Admin - Overview{% endblock %}
+{% block css_links %}
+    {{ super() }}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/admin_overview.css') }}" media="screen"/>
+{% endblock %}
+
+{% block page_content %}
+
+    <!-- NAVIGATION -->
+    {% import 'macros/nav_header.jinja2' as nav_header %}
+    {{ nav_header.nav_header(False) }}
+    <!-- END of NAVIGATION -->
+
+    <!-- START PAGE CONTENT -->
+    <section id="page-content">
+        <section class="section-padding">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-offset-1 col-md-10">
+                        <h2 class="animation fadeInUp text-center">Admin Overview</h2>
+
+                        <h4>Parties</h4>
+                        <div class="summary-container">
+                            <div class="summary-block">
+                                Attending<br/>{{ statistics.n_parties_attending }} / {{ statistics.n_parties }}
+                            </div>
+                            <div class="summary-block">
+                                Declined<br/>{{ statistics.n_parties_declined }} / {{ statistics.n_parties }}
+                            </div>
+                            <div class="summary-block">
+                                Unresponded<br/>
+                                {{ statistics.n_parties_unresponded }} / {{ statistics.n_parties }}
+                            </div>
+                        </div>
+                        <h4>Guests</h4>
+                        <div class="summary-container">
+                            <div class="summary-block">
+                                Attending<br/>{{ statistics.n_guests_attending }} / {{ statistics.n_guests }}
+                            </div>
+                            <div class="summary-block">
+                                Declined<br/>{{ statistics.n_guests_declined }} / {{ statistics.n_guests }}
+                            </div>
+                            <div class="summary-block">
+                                Unresponded<br/>
+                                {{ statistics.n_guests_unresponded }} / {{ statistics.n_guests }}
+                            </div>
+                        </div>
+
+
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead>
+                                <tr>
+                                    <th>Guest Names</th>
+                                    <th>Attending</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {%- for party in statistics.parties -%}
+                                    <tr>
+                                        <td>
+                                            <a href="{{ url_for('admin_party', party_id=party.id) }}">
+                                                {%- for guest in party.guests -%}
+                                                    {{ guest.full_name }}{{ "," if not loop.last }}
+                                                {% endfor %}
+                                            </a>
+                                        </td>
+                                        <td>
+                                            <i class="de-icon-{{ 'user-add-1' if party.is_attending else ('user-delete' if party.has_rsvpd else 'question-circle-o') }}"></i>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </section>
+    <!-- END of PAGE CONTENT -->
+
+{% endblock %}
