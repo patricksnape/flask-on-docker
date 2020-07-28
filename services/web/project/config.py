@@ -26,6 +26,7 @@ class Config(object):
     USER_AFTER_LOGIN_ENDPOINT = "home"
     USER_AFTER_REGISTER_ENDPOINT = "home"
     USER_SHOW_EMAIL_DOES_NOT_EXIST = True
+    USER_USER_SESSION_EXPIRATION = timedelta(days=1).total_seconds()
 
     USER_FORGOT_PASSWORD_TEMPLATE = "flask_user/forgot_password.html.jinja2"
     USER_LOGIN_TEMPLATE = "flask_user/login.html.jinja2"
