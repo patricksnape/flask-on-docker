@@ -4,8 +4,8 @@ from typing import Optional
 
 from flask import current_app
 from flask_user import UserMixin
-from sqlalchemy import Column, Integer, ForeignKey, String, DateTime, Boolean
-from sqlalchemy.orm import relationship, Session
+from sqlalchemy import Boolean, Column, DateTime, ForeignKey, Integer, String
+from sqlalchemy.orm import Session, relationship
 
 from project.database import BaseModel
 
@@ -34,6 +34,10 @@ class User(BaseModel, UserMixin):
             .filter(Party.guest_code == guest_code.upper())
             .one_or_none()
         )
+
+    @classmethod
+    def get_by_party_id(cls, party_id: int, session: Session) -> Optional[User]:
+        return session.query(User).filter_by(party_id=party_id).one_or_none()
 
     @classmethod
     def get_user_by_token(cls, token, expiration_in_seconds=None):
