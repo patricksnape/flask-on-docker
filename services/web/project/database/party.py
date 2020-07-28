@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+from typing import List
+
 from sqlalchemy import Boolean, Column, ForeignKey, Integer, String
 from sqlalchemy.orm import Session, joinedload, relationship
 
@@ -39,6 +41,10 @@ class Party(BaseModel):
             attribute is preloaded for faster access.
         """
         return session.query(cls).options(joinedload(Party.guests)).get(party_id)
+
+    @classmethod
+    def get_all_preloaded(cls, session: Session) -> List[Party]:
+        return session.query(cls).options(joinedload(Party.guests)).order_by(cls.id).all()
 
 
 class Guest(BaseModel):
