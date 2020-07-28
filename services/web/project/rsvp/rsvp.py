@@ -30,13 +30,16 @@ class RSVPState:
     def update_db_with_form_data(self, form: Union[RSVPForm, RSVPFormWithAccommodation], session: Session) -> None:
         to_update: List[BaseModel] = []
 
+        any_attending = False
         guests_attending = form.guests_attending.data
         for guest in self.guests:
             # The "in" is a linear search but the number of guests is always < 4
-            guest.attending = guest.id in guests_attending and form.attending.data
+            is_attending = guest.id in guests_attending and form.attending.data
+            any_attending |= is_attending
+            guest.attending = is_attending
             to_update.append(guest)
 
-        if self.booking is not None:
+        if self.booking is not None and any_attending:
             self.booking.check_in = form.accommodation_check_in.data
             self.booking.check_out = form.accommodation_check_out.data
             self.booking.accepted = form.accommodation_price_accepted.data
