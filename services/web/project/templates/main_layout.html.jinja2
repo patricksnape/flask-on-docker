@@ -167,12 +167,12 @@
 
     <!-- Scripts not from CDN -->
     <!-- Countdown -->
-    <script src="../static/js/countdown/jquery.plugin.min.js"></script>
-    <script src="../static/js/countdown/jquery.countdown.min.js"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/countdown/jquery.plugin.min.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/countdown/jquery.countdown.min.js') }}"></script>
     <!-- DoubleTapToGo -->
     <script src="https://cdn.jsdelivr.net/npm/jquery.ui.widget@1.10.3/jquery.ui.widget.js"
             integrity="sha256-JWVTvlTW2PnGhHvs+9zaxmc7IbqNfe5Xlw5hRajWM18=" crossorigin="anonymous"></script>
-    <script src="../static/js/jquery-doubletaptogo/jquery.dcd.doubletaptogo.min.js"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/jquery-doubletaptogo/jquery.dcd.doubletaptogo.min.js') }}"></script>
 
     <!-- Custom Core Script -->
     <script type="text/javascript" src="{{ url_for('static', filename='js/script.js') }}"></script>
