@@ -1,5 +1,6 @@
 from datetime import date, datetime
 import calendar
+from typing import List
 
 from babel.dates import format_date as babel_format_date
 
@@ -12,7 +13,7 @@ def format_date(value: date, format: str = "long") -> str:
 
 
 @custom_jinja_blueprint.app_template_global()
-def calendar_matrix(value: date) -> str:
+def calendar_matrix(value: date) -> List[List[int]]:
     return calendar.monthcalendar(value.year, value.month)
 
 
