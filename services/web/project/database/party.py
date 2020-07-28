@@ -1,7 +1,7 @@
 from __future__ import annotations
 
-from sqlalchemy import Column, Integer, ForeignKey, String, Boolean
-from sqlalchemy.orm import relationship
+from sqlalchemy import Boolean, Column, ForeignKey, Integer, String
+from sqlalchemy.orm import Session, joinedload, relationship
 
 from project.database import BaseModel
 
@@ -21,6 +21,24 @@ class Party(BaseModel):
     @property
     def is_attending(self):
         return any(g.attending is True for g in self.guests)
+
+    @classmethod
+    def get_preload(cls, party_id: int, session: Session) -> Party:
+        """
+        Get the party for the given ID and preload the guests associated with the party to avoid extra calls to the
+        database (via SQL joins).
+
+        Args:
+            party_id : The primary key
+            session : The session to use for querying the database
+
+        Returns:
+            The party object associated with the given primary key whereby the
+                party.guests
+
+            attribute is preloaded for faster access.
+        """
+        return session.query(cls).options(joinedload(Party.guests)).get(party_id)
 
 
 class Guest(BaseModel):
