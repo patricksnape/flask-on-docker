@@ -106,6 +106,11 @@ class RSVPChange(BaseModel):
 
     @classmethod
     def insert(cls, party_id: int, old: FrozenRSVPState, new: FrozenRSVPState, session: Session) -> RSVPChange:
+        # Get the most recent change if there is one
+        most_recent_state = (
+            session.query(cls).filter_by(party_id=party_id).order_by(cls.created_at.desc()).limit(1).one_or_none()
+        )
+
         state = cls(
             party_id=party_id,
             guest_ids_before=old.guest_ids,
@@ -118,11 +123,13 @@ class RSVPChange(BaseModel):
             accepted_after=new.accepted,
             reviewed=False,
         )
-        # Get the most recent change if there is one
-        most_recent_state = (
-            session.query(cls).filter_by(party_id=party_id).order_by(cls.created_at.desc()).limit(1).one_or_none()
-        )
+
         if state.different(most_recent_state):
+            # If the state is actually completely the same then we can just mark it as reviewed. Note this only
+            # happens for the first RSVP when the user doesn't change any values (and we can thus ignore needing
+            # to review the changes)
+            state.reviewed = state.is_empty()
+
             session.add(state)
             session.commit()
 
