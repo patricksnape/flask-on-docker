@@ -112,40 +112,46 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    {%- for change in rsvp_changes if not change.is_empty() -%}
+                                    {%- for change in rsvp_changes -%}
                                         <tr data-toggle="collapse"
                                             data-target="#changes-accordion-{{ loop.index }}"
                                             class="clickable collapse-row collapsed {{ 'info' if change.reviewed else 'success' }}">
                                             <td>{{ change.created_at | format_datetime }}</td>
                                             <td class="text-center">
-                                                <input class="changes-review-checkbox" type="checkbox" value="{{ change.id }}" {{ 'checked="true"' if change.reviewed }}>
+                                                <input class="changes-review-checkbox" type="checkbox"
+                                                       value="{{ change.id }}" {{ 'checked="true"' if change.reviewed }}>
                                             </td>
                                         </tr>
                                         <tr>
                                             <td colspan="2">
                                                 {% set changeset = change.changes() %}
+
                                                 <div id="changes-accordion-{{ loop.index }}" class="collapse">
-                                                    {% if changeset.guests %}
-                                                        Guests
-                                                        <ul>
-                                                            {%- for guest in changeset.guests -%}
-                                                                <li>{{ guest }}</li>
-                                                            {% endfor %}
-                                                        </ul>
-                                                    {% endif %}
-                                                    {% if changeset.has_accommodation_change %}
-                                                        Accommodation
-                                                        <ul>
-                                                            {% if changeset.check_in %}
-                                                                <li>{{ changeset.check_in }}</li>
-                                                            {% endif %}
-                                                            {% if changeset.check_out %}
-                                                                <li>{{ changeset.check_out }}</li>
-                                                            {% endif %}
-                                                            {% if changeset.accepted %}
-                                                                <li>{{ changeset.accepted }}</li>
-                                                            {% endif %}
-                                                        </ul>
+                                                    {% if changeset.is_empty() %}
+                                                        No changes
+                                                    {% else %}
+                                                        {% if changeset.guests %}
+                                                            Guests
+                                                            <ul>
+                                                                {%- for guest in changeset.guests -%}
+                                                                    <li>{{ guest }}</li>
+                                                                {% endfor %}
+                                                            </ul>
+                                                        {% endif %}
+                                                        {% if changeset.has_accommodation_change %}
+                                                            Accommodation
+                                                            <ul>
+                                                                {% if changeset.check_in %}
+                                                                    <li>{{ changeset.check_in }}</li>
+                                                                {% endif %}
+                                                                {% if changeset.check_out %}
+                                                                    <li>{{ changeset.check_out }}</li>
+                                                                {% endif %}
+                                                                {% if changeset.accepted %}
+                                                                    <li>{{ changeset.accepted }}</li>
+                                                                {% endif %}
+                                                            </ul>
+                                                        {% endif %}
                                                     {% endif %}
                                                 </div>
                                             </td>
