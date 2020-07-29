@@ -140,7 +140,6 @@ class RSVPChange(BaseModel):
         if self.guest_ids_before != self.guest_ids_after:
             guests = []
             changed_ids = set(self.guest_ids_before).symmetric_difference(self.guest_ids_after)
-            print(self.guest_ids_before, self.guest_ids_after, changed_ids)
             for guest in self.guests_before:
                 if guest.id in changed_ids:
                     # They were in before, but not in after (so they now declined)
