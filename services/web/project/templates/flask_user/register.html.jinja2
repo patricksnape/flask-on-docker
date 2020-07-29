@@ -35,7 +35,8 @@
                                 <div class="input-group {% if form.guest_code.errors %}has-error{% endif %}">
                                     <div class="input-group-addon"><i class="de-icon-key-1"></i></div>
                                     {{ form.guest_code(class_='form-control', tabindex=210,
-                                    value=guest_code_value, maxlength="6", placeholder=form.guest_code.label.text) }}
+                                    value=guest_code_value, maxlength="6", placeholder=form.guest_code.label.text,
+                                    readonly=guest_code_value != '' and not form.guest_code.errors) }}
                                 </div>
                             </label>
                             {{ form_errors(form.guest_code) }}
