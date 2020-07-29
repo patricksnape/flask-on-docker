@@ -73,14 +73,31 @@ class RSVPChange(BaseModel):
         viewonly=True,
     )
 
+    # Private class for the change-set
+    @dataclass(frozen=True)
+    class ChangeSet:
+        guests: Optional[List[str]]
+        check_in: Optional[str]
+        check_out: Optional[str]
+        accepted: Optional[str]
+
+        @property
+        def has_accommodation_change(self):
+            return self.check_in is not None or self.check_out is not None or self.accepted is not None
+
+        def is_empty(self) -> bool:
+            return all(getattr(self, x.name) is None for x in fields(self))
 
     @property
     def rsvp_declined(self):
         return not self.guest_ids_after
 
     @classmethod
-    def insert(cls, party_id: int, old: FrozenRSVPState, new: FrozenRSVPState, session: Session) -> RSVPChange:
+    def get_all_for_party_id(cls, party_id: int, session: Session) -> List[RSVPChange]:
+        return session.query(cls).filter_by(party_id=party_id).order_by(cls.created_at.desc()).all()
 
+    @classmethod
+    def insert(cls, party_id: int, old: FrozenRSVPState, new: FrozenRSVPState, session: Session) -> RSVPChange:
         state = cls(
             party_id=party_id,
             guest_ids_before=old.guest_ids,
