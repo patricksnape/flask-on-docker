@@ -8,6 +8,8 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_user import login_required, roles_accepted
 
 from project.database import BaseModel
+from project.database.booking import Booking
+from project.database.party import Party
 from project.database.rsvp import RSVPChange
 from project.database.users import User
 from project.jinja.autoescape import select_jinja_autoescape
@@ -117,10 +119,6 @@ def rsvp():
 @register_menu(app, ".rsvp.accommodation", "Accommodation")
 @login_required
 def accommodation():
-    from project.database.accommodation import Room
-    from project.database.booking import Booking
-    from project.database.party import Party
-
     booking = Booking.get_preload(current_user.party_id, db.session)
     party: Party = db.session.query(Party).get(current_user.party_id)
 
@@ -135,18 +133,16 @@ def accommodation():
 @app.route("/admin/overview")
 @admin_view("overview")
 def admin_overview():
-    from project.database.party import Party
-
     statistics = RSVPStatistics(tuple(Party.get_all_preloaded(db.session)))
-    return render_template("admin_overview.html.jinja2", statistics=statistics)
+    has_unreviewed_changes = set(RSVPChange.get_all_unreviewed_party_ids(db.session))
+    return render_template(
+        "admin_overview.html.jinja2", statistics=statistics, has_unreviewed_changes=has_unreviewed_changes
+    )
 
 
 @app.route("/admin/party/<int:party_id>")
 @roles_accepted("admin")
 def admin_party(party_id: int):
-    from project.database.party import Party
-    from project.database.booking import Booking
-
     party = Party.get_preload(party_id, db.session)
     if party is None:
         return abort(404)
@@ -162,8 +158,6 @@ def admin_party(party_id: int):
 @app.route("/admin/party/review_rsvp_changes/<int:change_id>", methods=["POST"])
 @roles_accepted("admin")
 def admin_rsvp_review_change(change_id: int):
-    from project.database.rsvp import RSVPChange
-
     change: Optional[RSVPChange] = db.session.query(RSVPChange).get(change_id)
     if change is None:
         return make_response(jsonify(success=False), 404)

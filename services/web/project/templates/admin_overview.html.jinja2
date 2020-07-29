@@ -48,18 +48,20 @@
                             </div>
                         </div>
 
-
+                        <h4>RSVPs</h4>
                         <div class="table-responsive">
                             <table class="table table-hover">
                                 <thead>
                                 <tr>
                                     <th>Guest Names</th>
                                     <th>Attending</th>
+                                    <th>Unreviewed Changes</th>
                                 </tr>
                                 </thead>
                                 <tbody>
                                 {%- for party in statistics.parties -%}
-                                    <tr>
+                                    {% set party_has_unreviewed = party.id in has_unreviewed_changes %}
+                                    <tr class="{{ 'warning' if party_has_unreviewed }}">
                                         <td>
                                             <a href="{{ url_for('admin_party', party_id=party.id) }}">
                                                 {%- for guest in party.guests -%}
@@ -69,6 +71,9 @@
                                         </td>
                                         <td>
                                             <i class="de-icon-{{ 'user-add-1' if party.is_attending else ('user-delete' if party.has_rsvpd else 'question-circle-o') }}"></i>
+                                        </td>
+                                        <td>
+                                            {{ 'Yes' if party_has_unreviewed else 'No' }}
                                         </td>
                                     </tr>
                                 {% endfor %}

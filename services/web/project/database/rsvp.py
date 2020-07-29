@@ -94,6 +94,13 @@ class RSVPChange(BaseModel):
         return not self.guest_ids_after
 
     @classmethod
+    def get_all_unreviewed_party_ids(cls, session: Session) -> List[int]:
+        return [
+            row[0]
+            for row in session.query(cls.party_id.distinct()).filter_by(reviewed=False).order_by(cls.party_id).all()
+        ]
+
+    @classmethod
     def get_all_for_party_id(cls, party_id: int, session: Session) -> List[RSVPChange]:
         return session.query(cls).filter_by(party_id=party_id).order_by(cls.created_at.desc()).all()
 
