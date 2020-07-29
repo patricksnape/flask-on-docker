@@ -1,6 +1,7 @@
 from __future__ import annotations
 
-from typing import Optional, TYPE_CHECKING
+from dataclasses import dataclass, fields
+from typing import List, Optional, TYPE_CHECKING
 
 from sqlalchemy import Boolean, Column, Date, DateTime, ForeignKey, Integer, and_, func, select
 from sqlalchemy.dialects.postgresql import ARRAY
@@ -8,7 +9,7 @@ from sqlalchemy.orm import relationship
 
 from project import BaseModel
 from project.database.booking import Booking
-from project.database.party import Party
+from project.database.party import Guest, Party
 
 if TYPE_CHECKING:
     from sqlalchemy.orm import Session
@@ -130,3 +131,40 @@ class RSVPChange(BaseModel):
                 return True
 
         return False
+
+    def is_empty(self) -> bool:
+        return self.changes().is_empty()
+
+    def changes(self) -> RSVPChange.ChangeSet:
+        guests = None
+        if self.guest_ids_before != self.guest_ids_after:
+            guests = []
+            changed_ids = set(self.guest_ids_before).symmetric_difference(self.guest_ids_after)
+            print(self.guest_ids_before, self.guest_ids_after, changed_ids)
+            for guest in self.guests_before:
+                if guest.id in changed_ids:
+                    # They were in before, but not in after (so they now declined)
+                    guests.append(f"{guest.full_name} is no longer attending")
+
+            for guest in self.guests_after:
+                if guest.id in changed_ids:
+                    # They were not in before, but now are (so they now accepted)
+                    guests.append(f"{guest.full_name} is now attending")
+
+        accepted = None
+        if self.accepted_before != self.accepted_after:
+            if self.accepted_before:
+                # Not equal so must now not be unaccepted
+                accepted = "The accommodation price was unaccepted"
+            else:
+                accepted = "The accommodation price was accepted"
+
+        check_in = None
+        if self.check_in_before != self.check_in_after:
+            check_in = f"Check-In changed from {self.check_in_before} to {self.check_in_after}"
+
+        check_out = None
+        if self.check_out_before != self.check_out_after:
+            check_out = f" Check-out changed from {self.check_out_before} to {self.check_out_after:}"
+
+        return RSVPChange.ChangeSet(guests=guests, check_in=check_in, check_out=check_out, accepted=accepted)
