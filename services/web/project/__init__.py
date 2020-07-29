@@ -1,6 +1,7 @@
 from functools import wraps
+from typing import Optional
 
-from flask import Flask, abort, redirect, render_template, request
+from flask import Flask, abort, jsonify, make_response, redirect, render_template, request
 from flask_login import current_user
 from flask_menu import Menu, register_menu
 from flask_sqlalchemy import SQLAlchemy
@@ -152,7 +153,26 @@ def admin_party(party_id: int):
     else:
         booking: Booking = Booking.get_preload(party_id, db.session)
         user = User.get_by_party_id(party_id, db.session)
-        return render_template("admin_party.html.jinja2", party=party, booking=booking, user=user)
+        rsvp_changes = RSVPChange.get_all_for_party_id(party_id, db.session)
+        return render_template(
+            "admin_party.html.jinja2", party=party, booking=booking, user=user, rsvp_changes=rsvp_changes
+        )
+
+
+@app.route("/admin/party/review_rsvp_changes/<int:change_id>", methods=["POST"])
+@roles_accepted("admin")
+def admin_rsvp_review_change(change_id: int):
+    from project.database.rsvp import RSVPChange
+
+    change: Optional[RSVPChange] = db.session.query(RSVPChange).get(change_id)
+    if change is None:
+        return make_response(jsonify(success=False), 404)
+    else:
+        is_reviewed = request.json["reviewed"]
+        change.reviewed = is_reviewed
+        db.session.commit()
+
+        return make_response(jsonify(success=True), 200)
 
 
 if __name__ == "__main__":
