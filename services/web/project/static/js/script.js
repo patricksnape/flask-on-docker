@@ -455,7 +455,7 @@
 
 	// 06.2 Countdown
 	//================================================================================
-	var theday = new Date(2021, 7, 19);
+	var theday = new Date(Date.parse($('#countdown').attr('data-countdown-date')));
 	$('#countdown').countdown({until: theday, format: 'WDHMS'});
 
 

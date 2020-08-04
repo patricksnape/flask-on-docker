@@ -1,113 +1,347 @@
 {% extends "main_layout.html.jinja2" %}
 
-{% block title %}{%trans%}Home{%endtrans%}{% endblock %}
+{% block title %}{% trans %}Home{% endtrans %}{% endblock %}
 {% block main_title_body %}
-<div class="col-md-12">
+    <div class="col-md-12">
 
-    <div class="heart-divider animation delay-2s fadeInUp">
-        <i class="de-icon-heart white-heart"></i>
-        <i class="de-icon-heart pink-heart"></i>
-    </div>
-    <h1 class="font-oswald animation delay-3s fadeInUp">
-        FRANZISKA &amp; PATRICK
-    </h1>
-    <div class="slide-desc animation delay-4s fadeInUp">
-        <span id="getting-married-text">{%trans%}We are Getting Married{%endtrans%}</span>
-        <span id="dash">&nbsp;-&nbsp;</span>
-        <span id="wedding-date">August 28, 2021</span>
-    </div>
+        <div class="heart-divider animation delay-2s fadeInUp">
+            <i class="de-icon-heart white-heart"></i>
+            <i class="de-icon-heart pink-heart"></i>
+        </div>
+        <h1 class="font-oswald animation delay-3s fadeInUp">
+            FRANZISKA &amp; PATRICK
+        </h1>
+        <div class="slide-desc animation delay-4s fadeInUp">
+            <span id="getting-married-text">{% trans %}We are Getting Married{% endtrans %}</span>
+            <span id="dash">&nbsp;-&nbsp;</span>
+            <span id="wedding-date">{{ config.WEDDING_DATETIME | format_date }}</span>
+        </div>
 
-</div>
+    </div>
 {% endblock %}
 
 {% block main_page_content %}
-{% import 'macros/image_divider.jinja2' as image_divider %}
+    {% import 'macros/image_divider.jinja2' as image_divider %}
 
-<!-- THE STORY -->
-<section id="the-story" class="section-padding">
-    <div class="container">
+    <!-- THE STORY -->
+    <section id="the-story" class="section-padding">
+        <div class="container">
 
-        <!-- TITLE AND BLURB -->
-        <div class="row">
-            <div class="col-md-offset-1 col-md-10 text-center">
-                <h2 class="animation fadeInUp">The <span class="theme-color">Story</span></h2>
-                <div class="blurb animation fadeInUp">
-                    <p>It start in this beautiful New York City. We met in a small restaurant and keep contact
-                        from that night. A happy chatting always with us every day and every night. One day we
-                        decided to met again at that restaurant. It was our first date, a date that we will
-                        never forget it, a date that freeze everything, a very nervous date, with a full of
-                        happiness. </p>
+            <!-- TITLE AND BLURB -->
+            <div class="row">
+                <div class="col-md-offset-1 col-md-10 text-center">
+                    <h2 class="animation fadeInUp">The <span class="theme-color">Story</span></h2>
+                    <div class="blurb animation fadeInUp">
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut massa risus, luctus vel tortor
+                            nec, sodales ullamcorper sapien. Aliquam sodales elit elit, id molestie augue vulputate ac.
+                            Phasellus iaculis mattis nisl eu vehicula. In tincidunt facilisis convalli fusce molestie
+                            viverra neque.
+                        </p>
+                    </div>
                 </div>
-            </div>
-        </div>
-        <!-- END of TITLE AND BLURB -->
+            </div> <!-- END of TITLE AND BLURB -->
 
-        <!-- COUPLE PHOTO -->
-        <div class="row image-wrapper">
+            <!-- COUPLE PHOTO -->
+            <div class="row image-wrapper">
 
-            <div class="col-md-12">
-                <img src="http://placehold.it/1200x800" alt="" class="hover-animation image-zoom-in fullwidth">
-            </div>
+                <!-- LEFT COLUMN -->
+                <div class="col-sm-6 col-md-offset-1 col-md-5 text-center">
 
-        </div>
-        <!-- END of COUPLE PHOTO -->
+                    <!--PHOTO-ITEM-->
+                    <div class="photo-item animation fadeInLeft">
 
+                        <!--HIS-PHOTO-->
+                        <img src="http://placehold.it/455x600" alt="" class="hover-animation image-zoom-in">
 
-        <!-- OTHER BLURB -->
-        <div class="row">
-            <div class="col-md-offset-1 col-md-10 text-center">
-                <div class="blurb animation fadeInUp" style="margin-top:30px">
-                    <p>Our new story start from here, when we had a trip to the beach. A nice beach with a warm
-                        sand, blue sea and a nice sky. We enjoy our time together, wait for sunrise and sunset.
-                        And then a romantic wedding proposal fill this moment. A happy smile, hug, kiss,
-                        beautiful sky, the orange sunrise and sound of the waves complete this great
-                        moment. </p>
-                    <p class="lead no-margin">And today... <span
-                            class="theme-color">We are Getting Married</span></p>
+                        <!--PHOTO OVERLAY-->
+                        <div class="layer wh100 hidden-black-overlay hover-animation fade-in">
+                        </div><!--END of PHOTO OVERLAY-->
+
+                        <!--ICON LINK-->
+                        <div class="layer wh100 hidden-link hover-animation delay1 fade-in">
+                            <div class="alignment">
+                                <div class="v-align center-middle">
+
+                                    <a href="his-story.html" class="de-button outline medium light-1 rounded">
+                                        Patrick's Story
+                                    </a>
+
+                                </div>
+                            </div>
+                        </div><!--END of ICON LINK-->
+
+                    </div><!--END of PHOTO-ITEM-->
+
                 </div>
-            </div>
-        </div>
-        <!-- END of OTHER BLURB -->
 
-    </div>
-</section>
-<!-- END of THE STORY -->
+                <!-- RIGHT COLUMN -->
+                <div class="col-sm-6 col-md-5 text-center">
 
+                    <!--PHOTO-ITEM-->
+                    <div class="photo-item animation fadeInRight">
 
-<!-- IMAGE DIVIDER -->
-{{ image_divider.image_divider('http://placehold.it/1920x1080') }}
-<!-- END of IMAGE DIVIDER -->
+                        <!--HER-PHOTO-->
+                        <img src="http://placehold.it/455x600" alt="" class="hover-animation image-zoom-in">
 
+                        <!--PHOTO OVERLAY-->
+                        <div class="layer wh100 hidden-black-overlay hover-animation fade-in">
+                        </div><!--END of PHOTO OVERLAY-->
 
-<!-- RSVP -->
-<section id="rsvp-section" class="section-padding">
-    <div class="container">
-        <div class="row">
+                        <!--ICON LINK-->
+                        <div class="layer wh100 hidden-link hover-animation delay1 fade-in">
+                            <div class="alignment">
+                                <div class="v-align center-middle">
 
-            <div class="col-md-offset-1 col-md-10 text-center">
-                <h3 class="animation fadeInUp">Join <span class="theme-color"> Our Happiness</span></h3>
-                <div class="blurb animation fadeInUp">
-                    <p>Because you have shared in our lives and supported our love, we request the pleasure of
-                        your company to join our celebration of love, friendship, laughter, and family, on <span
-                                class="bold400">Saturday, August 19, 2017</span>, 4:30 in the afternoon, at
-                        <span class="bold400">Foxegan Pavillion</span>, 204 Moggent Borntio Road, Brooklyn, New
-                        York City. Fabulous food, fun, and festivities to follow.</p>
+                                    <a href="her-story.html" class="de-button outline medium light-1 rounded">
+                                        Franziska's Story
+                                    </a>
+
+                                </div>
+                            </div>
+                        </div><!--END of ICON LINK-->
+
+                    </div><!--END of PHOTO-ITEM-->
+
                 </div>
-                <a href="rsvp-1.html" class="de-button outline rounded medium reverse animation fadeInUp">
-                    RSVP
-                </a>
-                <a href="the-wedding.html" class="de-button outline rounded medium reverse animation fadeInUp">
-                    The Wedding
-                </a>
-            </div>
+
+            </div><!-- END of COUPLE PHOTO -->
+
+
+            <!-- OTHER BLURB -->
+            <div class="row">
+                <div class="col-md-offset-1 col-md-10 text-center">
+                    <div class="blurb animation fadeInUp">
+                        <p>Curabitur et ullamcorper tortor. Cras rhoncus, justo eu eleifend molestie, urna mi eleifend
+                            est, vitae convallis sapien quam a lectus. Vestibulum at lectus enim. Suspendisse potenti.
+                            Aenean vel magna ut dui sollicitudin congue. Nam commodo nec velit sit amet mollis. </p>
+                    </div>
+                </div>
+            </div> <!-- END of OTHER BLURB -->
 
         </div>
-    </div>
-</section>
-<!-- END of RSVP -->
+    </section>
+    <!-- END of THE STORY -->
+
+
+    <!-- IMAGE DIVIDER -->
+    {{ image_divider.image_divider('http://placehold.it/1920x1080') }}
+    <!-- END of IMAGE DIVIDER -->
+
+
+    <!-- COUNTDOWN -->
+    <section id="countdown-section" class="section-padding">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-md-offset-1 col-md-10 text-center">
+                    <h3 class="animation fadeInUp">Join <span class="theme-color">Our Celebration</span></h3>
+                    <div class="blurb animation fadeInUp">
+                        <p>
+                            Our wedding will take place in Germany on {{ config.WEDDING_DATETIME | format_date }} at
+                            {{ config.WEDDING_DATETIME | format_datetime(format='HH:mm') }}. This is a bank holiday in
+                            the UK and we would love to spend the weekend celebrating with you. We sincerely hope you
+                            can make it and share this special day with us.
+                        </p>
+                    </div>
+                    <div id="countdown" class="animation fadeInUp"
+                         data-countdown-date="{{ config.WEDDING_DATETIME | format_datetime(format='yyyy-MM-ddTHH:mm:00') }}"></div>
+                </div>
+
+            </div>
+        </div>
+    </section><!-- END of COUNTDOWN -->
+
+
+    <!-- IMAGE DIVIDER -->
+    {{ image_divider.image_divider('http://placehold.it/1920x1080') }}
+    <!-- END of IMAGE DIVIDER -->
+
+
+    <!-- THE WEDDING -->
+    <section id="wedding-section" class="section-padding">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-md-offset-1 col-md-10 text-center">
+                    <h3 class="animation fadeInUp">The<span class="theme-color"> Wedding</span></h3>
+                    <div class="blurb animation fadeInUp">
+                        <p>
+                            Fusce tincidunt enim ac luctus viverra. In malesuada diam nisi, vitae ultricies erat
+                            placerat eu. Aliquam a est purus. Sed non tristique.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- ROW-1 -->
+            <div class="feature-row-wrapper row">
+
+                <!-- ITEM-1 -->
+                <div class="col-md-4">
+                    <div class="feature-wrapper">
+                        <div class="icon-and-title animation fadeInUp">
+                            <div class="the-icon">
+                                <i class="de-icon-location-2"></i>
+                            </div>
+                            <div class="bold400">
+                                <a href="#">Location</a>
+                            </div>
+                        </div>
+                        <p class="the-feature animation fadeInUp">Lorem ipsum dolor sit amet, consectetur adipiscing
+                            elit. Pellentesque mattis egestas ullamcorper. Duis tincidunt vulputate nibh, vitae sodales
+                            mauris tincidunt id. Integer sit amet facilisis lectus.</p>
+
+                    </div>
+                </div>
+                <!-- End of ITEM-1 -->
+
+
+                <!-- ITEM-2 -->
+                <div class="col-md-4">
+                    <div class="feature-wrapper">
+                        <div class="icon-and-title animation fadeInUp">
+                            <div class="the-icon">
+                                <i class="de-icon-bus"></i>
+                            </div>
+                            <div class="bold400">
+                                <a href="#">Accomodation</a>
+                            </div>
+                        </div>
+                        <p class="the-feature animation fadeInUp">Aliquam semper, mauris tristique fermentum rutrum, sem
+                            augue aliquet elit, rutrum ultrices tortor tellus ut nunc. Vestibulum tincidunt mi at ante
+                            laoreet condimentum ac a ante.</p>
+
+                    </div>
+                </div>
+                <!-- End of ITEM-2 -->
+
+
+                <!-- ITEM-3 -->
+                <div class="col-md-4">
+                    <div class="feature-wrapper">
+                        <div class="icon-and-title animation fadeInUp">
+                            <div class="the-icon">
+                                <i class="de-icon-gift"></i>
+                            </div>
+                            <div class="bold400">
+                                <a href="#">Gift Registry</a>
+                            </div>
+                        </div>
+                        <p class="the-feature animation fadeInUp">Morbi luctus sem at vulputate dictum. Donec in diam et
+                            augue gravida molestie ut et eros. Phasellus euismod vestibulum turpis, eget blandit velit.
+                            Maecenas a aliquam nisl, in bibendum ipsum. </p>
+
+                    </div>
+                </div>
+                <!-- End of ITEM-3 -->
+
+            </div>
+            <!-- END of ROW-1 -->
+
+
+            <!-- ROW-2 -->
+            <div class="feature-row-wrapper row">
+
+                <!-- ITEM-1 -->
+                <div class="col-md-4">
+                    <div class="feature-wrapper">
+                        <div class="icon-and-title animation fadeInUp">
+                            <div class="the-icon">
+                                <i class="de-icon-heart"></i>
+                            </div>
+                            <div class="bold400">
+                                <a href="#">Bridesmaid</a>
+                            </div>
+                        </div>
+                        <p class="the-feature animation fadeInUp">Duis tincidunt laoreet laoreet. Praesent id purus
+                            dictum, consectetur est eu, vehicula est. Vestibulum tempus orci eget nibh molestie
+                            condimentum. Cras ornare sollicitudin enim, eu molestie nibh.</p>
+
+                    </div>
+                </div>
+                <!-- End of ITEM-1 -->
+
+
+                <!-- ITEM-2 -->
+                <div class="col-md-4">
+                    <div class="feature-wrapper">
+                        <div class="icon-and-title animation fadeInUp">
+                            <div class="the-icon">
+                                <i class="de-icon-bell-1"></i>
+                            </div>
+                            <div class="bold400">
+                                <a href="#">Groomsmen</a>
+                            </div>
+                        </div>
+                        <p class="the-feature animation fadeInUp">Cras et finibus nisl. Maecenas dictum euismod nibh nec
+                            sagittis. In hac habitasse platea dictumst. Donec a leo ac dui fermentum volutpat. Maecenas
+                            elementum at turpis ac sollicitudin. </p>
+
+                    </div>
+                </div>
+                <!-- End of ITEM-2 -->
+
+
+                <!-- ITEM-3 -->
+                <div class="col-md-4">
+                    <div class="feature-wrapper">
+                        <div class="icon-and-title animation fadeInUp">
+                            <div class="the-icon">
+                                <i class="de-icon-mail-1"></i>
+                            </div>
+                            <div class="bold400">
+                                <a href="#">RSVP</a>
+                            </div>
+                        </div>
+                        <p class="the-feature animation fadeInUp">Interdum et malesuada fames ac ante ipsum primis in
+                            faucibus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus
+                            mus. Pellentesque ultricies imperdiet porttitor.</p>
+
+                    </div>
+                </div>
+                <!-- End of ITEM-3 -->
+
+            </div>
+            <!-- END of ROW-2 -->
+
+        </div>
+    </section><!-- END of THE WEDDING -->
+
+
+    <!-- IMAGE DIVIDER -->
+    {{ image_divider.image_divider('http://placehold.it/1920x1080') }}
+    <!-- END of IMAGE DIVIDER -->
+
+    <!-- RSVP -->
+    <section id="rsvp-section" class="section-padding">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-md-offset-1 col-md-10 text-center">
+                    <h3 class="animation fadeInUp">Will You <span class="theme-color">Attend?</span></h3>
+                    <div class="blurb animation fadeInUp">
+                        <p>
+                            We hope you can join us for our special day. It will be a fantastic celebration of the
+                            joining of our two families and we can't wait to have all of our friends together
+                            in one place. Please RSVP by
+                            <span class="theme-color">{{ config.RSVP_DEADLINE | format_date }}</span> with your
+                            availability.
+                        </p>
+                    </div>
+                    <a href="{{ url_for('rsvp') }}" class="de-button medium outline reverse animation fadeInUp">
+                        RSVP
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </section><!-- END of RSVP -->
+
 {% endblock %}
 
 {% block footer_content %}
-{% import 'macros/footer.jinja2' as footer %}
-{{ footer.footer('THANK YOU') }}
+    {% import 'macros/footer.jinja2' as footer %}
+    {{ footer.footer('FRANZISKA & PATRICK') }}
 {% endblock %}
