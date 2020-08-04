@@ -1,0 +1,84 @@
+{% extends "main_layout.html.jinja2" %}
+
+{% block title %}{% trans %}The Day{% endtrans %}{% endblock %}
+{% block main_title_body %}
+    <div class="col-md-12">
+
+        <div class="heart-divider animation delay-2s fadeInUp">
+            <i class="de-icon-heart white-heart"></i>
+            <i class="de-icon-heart pink-heart"></i>
+        </div>
+        <h1 class="font-oswald animation delay-3s fadeInUp">
+            The Day
+        </h1>
+        <div class="slide-desc animation delay-4s fadeInUp">
+            <span>{% trans %}What To Expect On The Day{% endtrans %}</span>
+        </div>
+
+    </div>
+{% endblock %}
+
+{% block main_page_content %}
+    {% import 'macros/timeline.jinja2' as timeline %}
+
+    <!-- STORY-->
+    <section id="timeline-story" class="section-padding">
+        <div class="container">
+
+            <!-- TITLE AND BLURB -->
+            <div class="row">
+                <div class="col-md-offset-1 col-md-10 text-center">
+                    <h3 class="animation fadeInUp">It Starts on <span class="theme-color">April 2014</span></h3>
+                    <div class="blurb animation fadeInUp">
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec laoreet orci nec metus
+                            dictum,
+                            lacinia eleifend justo placerat. Sed laoreet tristique magna, eu volutpat ipsum scelerisque
+                            nec. Phasellus sed metus facilisis, tempor erat vitae, convallis velit. Nulla quis risus
+                            lorem. Nullam quis vestibulum dolor, ut fringilla magna. Duis nec maximus ex.
+                        </p>
+                    </div>
+                </div>
+            </div> <!-- END of TITLE AND BLURB -->
+
+
+            <!-- TIMELINE -->
+            <div id="the-timeline">
+
+                {% call timeline.timeline_row(title='Our First Meeting', time='13:30') %}
+                    Vestibulum in ex id lectus fringilla mollis id ac mauris. Nulla ac condimentum purus, eget
+                    bibendum libero. Mauris hendrerit in sem vitae semper. Ut euismod nulla a eros sagittis, ac
+                    placerat enim vulputate. Donec pulvinar congue ex vitae pharetra. Etiam sit amet nisi a
+                    magna eleifend accumsan ac quis libero. Vestibulum ante ipsum primis in faucibus orci.
+                {% endcall %}
+
+                {% call timeline.timeline_row(title='Our Second Meeting', time='15:30') %}
+                    Vestibulum in ex id lectus fringilla mollis id ac mauris. Nulla ac condimentum purus, eget
+                    bibendum libero. Mauris hendrerit in sem vitae semper. Ut euismod nulla a eros sagittis, ac
+                    placerat enim vulputate. Donec pulvinar congue ex vitae pharetra. Etiam sit amet nisi a
+                    magna eleifend accumsan ac quis libero. Vestibulum ante ipsum primis in faucibus orci.
+                {% endcall %}
+
+            </div><!-- END of THE TIMELINE -->
+
+            <!-- OTHER BLURB -->
+            <div class="row">
+                <div class="col-md-offset-1 col-md-10 text-center">
+                    <div class="blurb animation fadeInUp">
+                        <p class="lead no-margin">And today... <span class="theme-color">We are Getting Married</span>
+                        </p>
+                    </div>
+                </div>
+            </div> <!-- END of OTHER BLURB -->
+
+
+        </div>
+    </section>
+    <!-- END of STORY -->
+
+{% endblock %}
+
+{% block footer_content %}
+    {% import 'macros/footer.jinja2' as footer %}
+    {{ footer.footer("CAN'T WAIT TO SEE YOU") }}
+{% endblock %}

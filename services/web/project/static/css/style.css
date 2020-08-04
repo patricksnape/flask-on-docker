@@ -1372,6 +1372,26 @@ img.with-border{
 	padding-top:20px;
 }
 
+.story-time {
+	float:left;
+	display: flex;
+	margin:0 auto;
+	height:100px;
+	width:100px;
+	background-color:#f08080;
+	color:#FFF;
+	border-radius:50%;
+	justify-content: center;
+	align-items: center;
+}
+
+.story-time .time-only{
+	font-family: 'Roboto Slab', serif;
+	font-size:40px;
+	line-height:22px;
+	font-weight:400;
+}
+
 .story-date{
 	float:left;
 	margin:0 auto;

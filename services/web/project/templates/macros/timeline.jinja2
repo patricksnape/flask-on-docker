@@ -1,0 +1,55 @@
+{% macro timeline_row(title, time, image_url="http://placehold.it/500x333") -%}
+    <div class="row story-row">
+        <div class="story-image col-sm-12 col-md-5 text-center">
+            <!--PHOTO-ITEM-->
+            <div class="photo-item animation delay1 fadeInLeft">
+
+                <!--PHOTO-->
+                <img src="{{ image_url }}" alt="" class="hover-animation image-zoom-in">
+
+                <!--PHOTO OVERLAY-->
+                <div class="layer wh100 hidden-black-overlay hover-animation fade-in">
+                </div>
+                <!--END of PHOTO OVERLAY-->
+
+                <!--ICON LINK-->
+                <div class="layer wh100 hidden-link hover-animation delay1 fade-in">
+                    <div class="alignment">
+                        <div class="v-align center-middle">
+
+                            <a href="{{ image_url }}" class="magnific-zoom" title="{{ title }}">
+                                <div class="de-icon circle light medium-size inline">
+                                    <i class="de-icon-zoom-in"></i>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <!--END of ICON LINK-->
+
+            </div>
+            <!--END of PHOTO-ITEM-->
+        </div>
+
+        <!-- Date -->
+        <div class="col-sm-12 col-md-2 text-center story-date-wrapper animation fadeIn">
+            <div class="arrow-left"></div>
+            <div class="story-time">
+                <div class="time-only">{{ time }}</div>
+            </div>
+            <div class="arrow-right"></div>
+            <div class="clearboth"></div>
+        </div>
+
+        <!-- Text -->
+        <div class="story-desc col-sm-12 col-md-5 animation delay1 fadeInRight">
+            <h5>{{ title }}</h5>
+            <p>
+                {{ caller() }}
+            </p>
+        </div>
+
+        <div class="vertical-line">
+        </div>
+    </div>
+{%- endmacro %}

@@ -92,6 +92,13 @@ def location_getting_there():
     return render_template("location/getting_there.html.jinja2")
 
 
+@app.route("/the-day")
+@login_required
+@register_menu(app, ".the_day", "The Day")
+def the_day():
+    return render_template("the_day/the_day.html.jinja2")
+
+
 @app.route("/rsvp", methods=["GET", "POST"])
 @register_menu(app, ".rsvp", "Attending")  # Note this is a fake page used only for the hierarchy
 @register_menu(app, ".rsvp.rsvp", "RSVP")
