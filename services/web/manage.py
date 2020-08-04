@@ -88,9 +88,9 @@ def _add_party(n_guests: int = 2, create_user: bool = False, add_booking_to_room
         booking = Booking(
             party_id=party.id,
             room_id=add_booking_to_room.id,
-            check_in=fake.date_between_dates(app.config["BOOKING_MIN_DATE"], app.config["WEDDING_DATE"]),
+            check_in=fake.date_between_dates(app.config["BOOKING_MIN_DATE"], app.config["WEDDING_DATETIME"].date()),
             check_out=fake.date_between_dates(
-                app.config["WEDDING_DATE"] + timedelta(days=1), app.config["BOOKING_MAX_DATE"]
+                app.config["WEDDING_DATETIME"].date() + timedelta(days=1), app.config["BOOKING_MAX_DATE"]
             ),
         )
         logger.info(f"{booking}")

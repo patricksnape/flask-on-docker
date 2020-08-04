@@ -49,7 +49,7 @@ class RSVPFormWithAccommodation(RSVPForm):
         format="%Y-%m-%d",
         validators=[
             validators.DataRequired(message=_("You must provide a check-in date")),
-            DateRange(min=Config.BOOKING_MIN_DATE, max=Config.WEDDING_DATE),
+            DateRange(min=Config.BOOKING_MIN_DATE, max=Config.WEDDING_DATETIME.date()),
         ],
     )
     accommodation_check_out = DateField(
@@ -57,7 +57,7 @@ class RSVPFormWithAccommodation(RSVPForm):
         format="%Y-%m-%d",
         validators=[
             validators.DataRequired(message=_("You must provide a check-out date")),
-            DateRange(min=Config.WEDDING_DATE + timedelta(days=1), max=Config.BOOKING_MAX_DATE),
+            DateRange(min=Config.WEDDING_DATETIME.date() + timedelta(days=1), max=Config.BOOKING_MAX_DATE),
         ],
     )
     accommodation_price_accepted = BooleanField(_("I accept the price per night of "), default=True)

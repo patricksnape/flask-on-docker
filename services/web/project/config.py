@@ -33,10 +33,10 @@ class Config(object):
     USER_REGISTER_TEMPLATE = "flask_user/register.html.jinja2"
     USER_RESEND_CONFIRM_EMAIL_TEMPLATE = "flask_user/resend_confirm_email.html.jinja2"
 
-    WEDDING_DATE = datetime.strptime("Aug 28 2021", "%b %d %Y").date()
+    WEDDING_DATETIME = datetime.strptime("Aug 28 2021 13:30", "%b %d %Y %H:%M")
     BOOKING_MAX_N_DAYS = 7
-    BOOKING_MIN_DATE = WEDDING_DATE - timedelta(days=BOOKING_MAX_N_DAYS)
-    BOOKING_MAX_DATE = WEDDING_DATE + timedelta(days=BOOKING_MAX_N_DAYS)
+    BOOKING_MIN_DATE = WEDDING_DATETIME.date() - timedelta(days=BOOKING_MAX_N_DAYS)
+    BOOKING_MAX_DATE = WEDDING_DATETIME.date() + timedelta(days=BOOKING_MAX_N_DAYS)
     RSVP_DEADLINE = datetime.strptime("Feb 1 2021", "%b %d %Y").date()
 
     HOUSE_LAT_LONG = (49.374088, 8.158309)
