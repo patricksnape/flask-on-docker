@@ -84,6 +84,14 @@ def home():
     return render_template("index.html.jinja2")
 
 
+@app.route("/getting-there")
+@login_required
+@register_menu(app, ".location", "Location")  # Note this is a fake page used only for the hierarchy
+@register_menu(app, ".location.getting_there", "Getting There")
+def location_getting_there():
+    return render_template("location/getting_there.html.jinja2")
+
+
 @app.route("/rsvp", methods=["GET", "POST"])
 @register_menu(app, ".rsvp", "Attending")  # Note this is a fake page used only for the hierarchy
 @register_menu(app, ".rsvp.rsvp", "RSVP")

@@ -1,0 +1,182 @@
+{% extends "main_layout.html.jinja2" %}
+
+{% block title %}{% trans %}Getting There{% endtrans %}{% endblock %}
+{% block main_title_body %}
+    <div class="col-md-12">
+
+        <div class="heart-divider animation delay-2s fadeInUp">
+            <i class="de-icon-heart white-heart"></i>
+            <i class="de-icon-heart pink-heart"></i>
+        </div>
+        <h1 class="font-oswald animation delay-3s fadeInUp">
+            Getting There
+        </h1>
+        <div class="slide-desc animation delay-4s fadeInUp">
+            <span id="getting-married-text">Planes, Trains and Automobiles</span>
+        </div>
+
+    </div>
+{% endblock %}
+
+{% block main_page_content %}
+    {% import 'macros/image_divider.jinja2' as image_divider %}
+
+    <!-- EVENTS -->
+    <section id="ceremony-party" class="section-padding">
+        <div class="container">
+            <div class="row">
+
+                <!-- CEREMONY -->
+                <div class="col-md-offset-1 col-md-5">
+                    <div class="event-wrapper">
+
+                        <!-- TITLE -->
+                        <h3 class="animation fadeInUp"><span class="theme-color">Ceremony</span></h3>
+
+                        <!-- LOCATION -->
+                        <div class="event-location animation fadeInUp">
+                            <div class="location-icon">
+                                <i class="de-icon-location"></i>
+                            </div>
+                            <div class="bold400">
+                                <a href="https://www.google.com/maps/dir/Current+Location/{{ config.HOUSE_ADDRESS }}"
+                                   class="with-underline" target="_blank">{{ config.HOUSE_ADDRESS }}</a>
+                            </div>
+                        </div>
+
+                        <!-- DESCRIPTION -->
+                        <p class="event-desc animation fadeInUp no-margin">
+                            The ceremony will take place at the Rapp family residence. We will begin the day here
+                            and enjoy some time in the sunshine.
+                        </p>
+
+                    </div>
+                </div>
+                <!-- END of CEREMONY -->
+
+
+                <!-- PARTY -->
+                <div class="col-md-5">
+                    <div class="event-wrapper">
+
+                        <!-- TITLE -->
+                        <h3 class="animation fadeInUp"><span class="theme-color">Party</span></h3>
+
+                        <!-- LOCATION -->
+                        <div class="event-location animation fadeInUp">
+                            <div class="location-icon">
+                                <i class="de-icon-location"></i>
+                            </div>
+                            <div class="bold400">
+                                <a href="https://www.google.com/maps/dir/Current+Location/{{ config.RESTAURANT_ADDRESS }}"
+                                   class="with-underline" target="_blank">{{ config.RESTAURANT_ADDRESS }}</a>
+                            </div>
+                        </div>
+
+                        <!-- DESCRIPTION -->
+                        <p class="event-desc animation fadeInUp no-margin">
+                            Dinner, drinks and dancing will take place at Tafel und Wein. We will spend the majority
+                            of the evening here until carriages at 00:00.
+                        </p>
+
+                    </div>
+                </div>
+                <!-- END of PARTY -->
+
+            </div>
+        </div>
+    </section>
+    <!-- END of EVENTS -->
+
+    <!-- IMAGE DIVIDER -->
+    {{ image_divider.image_divider('http://placehold.it/1920x1080') }}
+    <!-- END of IMAGE DIVIDER -->
+
+    <!-- DIRECTION -->
+    <section id="direction_by_car" class="section-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-offset-1 col-md-10 text-center">
+                    <h2 class="animation fadeInUp">Travelling By <span class="theme-color">Car</span></h2>
+                    <div class="blurb animation fadeInUp">
+                        <p>
+                            The nearest large town to the house is Neustadt an der Weinstrasse. You can also follow
+                            signs towards Mannheim which is the nearest city to the village. The main road
+                            going past the village is the A65. We suggest using your favourite mapping provider
+                            to take you to:
+                        </p>
+                        <p>
+                            <a href="https://www.google.com/maps/dir/Current+Location/{{ config.HOUSE_ADDRESS }}"
+                               class="with-underline" target="_blank">{{ config.HOUSE_ADDRESS }}</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- END of DIRECTION -->
+
+    <!-- IMAGE DIVIDER -->
+    {{ image_divider.image_divider('http://placehold.it/1920x1080') }}
+    <!-- END of IMAGE DIVIDER -->
+
+    <!-- DIRECTION -->
+    <section id="direction_by_air" class="section-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-offset-1 col-md-10 text-center">
+                    <h2 class="animation fadeInUp">Travelling By <span class="theme-color">Air</span></h2>
+                    <div class="blurb animation fadeInUp">
+                        <p>
+                            We suggest you fly into Frankfurt Airport (FRA) and avoid flying into
+                            Frankfurt-Hahn Airport (HHN) as this is a much longer journey by car. Once landing we
+                            recommend renting a car and then following the instructions to arrive by
+                            <a href="#direction_by_car" class="with-underline smooth-scroll">car</a>.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- END of DIRECTION -->
+
+    <!-- IMAGE DIVIDER -->
+    {{ image_divider.image_divider('http://placehold.it/1920x1080') }}
+    <!-- END of IMAGE DIVIDER -->
+
+    <!-- DIRECTION -->
+    <section id="direction_by_train" class="section-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-offset-1 col-md-10 text-center">
+                    <h2 class="animation fadeInUp">Travelling By <span class="theme-color">Train</span></h2>
+                    <div class="blurb animation fadeInUp">
+                        <p>
+                            The nearest train station to the house is
+                            <a href="https://goo.gl/maps/enqW2muCkCT8wyar9" class="with-underline" target="_blank">
+                                Mussbach
+                            </a>.
+                            You may be better off getting a train to
+                            <a href="https://goo.gl/maps/5gEEYMT2VE73iA248" class="with-underline" target="_blank">
+                                Neustadt (Weinstrasse)
+                            </a>
+                            and then taking a taxi if you do not have a car available. Note you will likely need to
+                            change at
+                            <a href="https://goo.gl/maps/Uo3SzLGVpHi8EKEV6" class="with-underline" target="_blank">
+                                Mannheim
+                            </a>
+                            in order to get into the local area.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- END of DIRECTION -->
+
+{% endblock %}
+
+{% block footer_content %}
+    {% import 'macros/footer.jinja2' as footer %}
+    {{ footer.footer('SEE YOU SOON') }}
+{% endblock %}
