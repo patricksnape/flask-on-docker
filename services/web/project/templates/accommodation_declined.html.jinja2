@@ -2,20 +2,23 @@
 
 {% block title %}{% trans %}Accommodation{% endtrans %}{% endblock %}
 {% block main_title_body %}
-    <div class="col-md-12">
+    {% import 'macros/main_slider.jinja2' as main_slider %}
+    {% call main_slider.main_slider() %}
+        <div class="col-md-12">
 
-        <div class="heart-divider animation delay-2s fadeInUp">
-            <i class="de-icon-heart white-heart"></i>
-            <i class="de-icon-heart pink-heart"></i>
-        </div>
-        <h1 class="font-oswald animation delay-3s fadeInUp">
-            Accommodation
-        </h1>
-        <div class="slide-desc animation delay-4s fadeInUp">
-            <span>{% trans %}Enjoy your weekend{% endtrans %}</span>
-        </div>
+            <div class="heart-divider animation delay-2s fadeInUp">
+                <i class="de-icon-heart white-heart"></i>
+                <i class="de-icon-heart pink-heart"></i>
+            </div>
+            <h1 class="font-oswald animation delay-3s fadeInUp">
+                Accommodation
+            </h1>
+            <div class="slide-desc animation delay-4s fadeInUp">
+                <span>{% trans %}Enjoy your weekend{% endtrans %}</span>
+            </div>
 
-    </div>
+        </div>
+    {% endcall %}
 {% endblock %}
 
 {% block main_page_content %}

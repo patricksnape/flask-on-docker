@@ -1,7 +1,9 @@
 {% extends "main_layout.html.jinja2" %}
 
 {% block title %}{% trans %}The Day{% endtrans %}{% endblock %}
-{% block main_title_body %}
+{% call main_slider.main_slider() %}
+        {% endblock %}
+    {% endcall %}
     <div class="col-md-12">
 
         <div class="heart-divider animation delay-2s fadeInUp">
