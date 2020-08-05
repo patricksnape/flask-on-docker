@@ -1,6 +1,6 @@
-{% macro timeline_row(title, time, image_url="http://placehold.it/500x333") -%}
+{% macro timeline_row(title, time, image_url="http://placehold.it/500x333", desc_align='right') -%}
     <div class="row story-row">
-        <div class="story-image col-sm-12 col-md-5 text-center">
+        <div class="story-image col-sm-12 col-md-5 {{ 'col-md-push-7' if desc_align == 'left' }} text-center">
             <!--PHOTO-ITEM-->
             <div class="photo-item animation delay1 fadeInLeft">
 
@@ -42,7 +42,7 @@
         </div>
 
         <!-- Text -->
-        <div class="story-desc col-sm-12 col-md-5 animation delay1 fadeInRight">
+        <div class="story-desc col-sm-12 col-md-5 {{ 'col-md-pull-7' if desc_align == 'left' }} animation delay1 fadeInRight">
             <h5>{{ title }}</h5>
             <p>
                 {{ caller() }}

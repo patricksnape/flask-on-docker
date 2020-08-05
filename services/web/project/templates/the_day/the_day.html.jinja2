@@ -28,14 +28,13 @@
             <!-- TITLE AND BLURB -->
             <div class="row">
                 <div class="col-md-offset-1 col-md-10 text-center">
-                    <h3 class="animation fadeInUp">It Starts on <span class="theme-color">April 2014</span></h3>
+                    <h3 class="animation fadeInUp">It Starts on <span class="theme-color">{{ config.WEDDING_DATETIME | format_date }}</span></h3>
                     <div class="blurb animation fadeInUp">
                         <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec laoreet orci nec metus
-                            dictum,
-                            lacinia eleifend justo placerat. Sed laoreet tristique magna, eu volutpat ipsum scelerisque
-                            nec. Phasellus sed metus facilisis, tempor erat vitae, convallis velit. Nulla quis risus
-                            lorem. Nullam quis vestibulum dolor, ut fringilla magna. Duis nec maximus ex.
+                            The day will take place in two separate venues. The first being the Rapp family residence
+                            for the ceremony and initial drinks. We will then transition to Tafel und Wein to enjoy
+                            dinner, drinks and dancing. Note that if you do not have a local accommodation we strongly
+                            suggest you pre-book taxis as the local village is not well supported otherwise.
                         </p>
                     </div>
                 </div>
@@ -45,27 +44,63 @@
             <!-- TIMELINE -->
             <div id="the-timeline">
 
-                {% call timeline.timeline_row(title='Our First Meeting', time='13:30') %}
-                    Vestibulum in ex id lectus fringilla mollis id ac mauris. Nulla ac condimentum purus, eget
-                    bibendum libero. Mauris hendrerit in sem vitae semper. Ut euismod nulla a eros sagittis, ac
-                    placerat enim vulputate. Donec pulvinar congue ex vitae pharetra. Etiam sit amet nisi a
-                    magna eleifend accumsan ac quis libero. Vestibulum ante ipsum primis in faucibus orci.
+                {% call timeline.timeline_row(title='Arrival', time=config.WEDDING_DATETIME | format_datetime(format='HH:mm')) %}
+                    Arrival at the Rapp family residence ({{ config.HOUSE_ADDRESS }}) prior to beginning the ceremony.
+                    Please arrive promptly at {{ config.WEDDING_DATETIME | format_datetime(format='HH:mm') }}
+                    to avoid delays.
                 {% endcall %}
 
-                {% call timeline.timeline_row(title='Our Second Meeting', time='15:30') %}
-                    Vestibulum in ex id lectus fringilla mollis id ac mauris. Nulla ac condimentum purus, eget
-                    bibendum libero. Mauris hendrerit in sem vitae semper. Ut euismod nulla a eros sagittis, ac
-                    placerat enim vulputate. Donec pulvinar congue ex vitae pharetra. Etiam sit amet nisi a
-                    magna eleifend accumsan ac quis libero. Vestibulum ante ipsum primis in faucibus orci.
+                {% call timeline.timeline_row(title='Wedding Ceremony', time='13:30', desc_align='left') %}
+                    All guests are to be seated in the garden to enjoy the wedding ceremony.
                 {% endcall %}
 
-            </div><!-- END of THE TIMELINE -->
+                {% call timeline.timeline_row(title='Sekt On The Terrace', time='14:00') %}
+                    Enjoy the stunning views of the local vineyards on the terrace and enjoy some local Sekt.
+                {% endcall %}
+
+                {% call timeline.timeline_row(title='Cafe und Kuchen', time='15:00', desc_align='left') %}
+                    Celebrating the new couple in German tradition with Cage and Kuchen (Coffee and Cake). The cutting
+                    of the cake will take place to begin this tradition.
+                {% endcall %}
+
+                {% call timeline.timeline_row(title='Travel to Tafel und Wein', time='16:30') %}
+                    Begin to move to the evening location ({{ config.RESTAURANT_ADDRESS }}) for dinner, drinks and
+                    dancing. Upon arrival guests will be served drinks and canapes.
+                {% endcall %}
+
+                {% call timeline.timeline_row(title='Speeches', time='17:15', desc_align='left') %}
+                    The wedding party thanks the guests for attending and speeches will commence over drinks.
+                {% endcall %}
+
+                {% call timeline.timeline_row(title='Dinner Is Served', time='18:00') %}
+                    Dinner is served inside Tafel und Wein and a selection of local wines are now available
+                {% endcall %}
+
+                {% call timeline.timeline_row(title='Dancing', time='20:30', desc_align='left') %}
+                    The band begins their first set and the couple invites everyone to join with their first dance
+                {% endcall %}
+
+                {% call timeline.timeline_row(title='Midnight Snack Appears', time='22:00') %}
+                    For those who are still hungry, look to the kitchen for a midnight snack!
+                {% endcall %}
+
+                {% call timeline.timeline_row(title='Carriages', time='00:00', desc_align='left') %}
+                    The evening is over and we invite you to leave quietly to your accommodation.
+
+                    Please pre-book taxis if your accommodation is not within the local area. For those with pre-booked
+                    accommodation you can expect walking distance to be under 20 minutes.
+                    <br/><br/>
+                    Find the best man to inquire about a potential after party...
+                {% endcall %}
+
+            </div>
+            <!-- END of THE TIMELINE -->
 
             <!-- OTHER BLURB -->
             <div class="row">
                 <div class="col-md-offset-1 col-md-10 text-center">
                     <div class="blurb animation fadeInUp">
-                        <p class="lead no-margin">And today... <span class="theme-color">We are Getting Married</span>
+                        <p class="lead no-margin">And Then... <span class="theme-color">We Are Finally Married!</span>
                         </p>
                     </div>
                 </div>
