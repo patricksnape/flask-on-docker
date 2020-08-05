@@ -1,6 +1,6 @@
-{% macro footer(message='') -%}
+{% macro footer(message='', image_url='https://unsplash.com/photos/O4irwJUtaOs/download?force=true&w=1920') -%}
     <footer>
-        <div class="image-divider fixed-height" style="background-image:url(http://placehold.it/1920x1080);"
+        <div class="image-divider fixed-height" style="background-image:url({{ image_url }});"
              data-stellar-background-ratio="0.5">
 
             <div class="divider-overlay"></div>
