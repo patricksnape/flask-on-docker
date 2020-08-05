@@ -3,7 +3,7 @@
 {% block title %}{% trans %}Home{% endtrans %}{% endblock %}
 {% block main_title_body %}
     {% import 'macros/main_slider.jinja2' as main_slider %}
-    {% call main_slider.main_slider() %}
+    {% call main_slider.main_slider(image_urls=('https://unsplash.com/photos/Q1E2X7WNjjA/download?force=true&w=1920',)) %}
 
         <div class="col-md-12">
 
@@ -34,94 +34,44 @@
             <!-- TITLE AND BLURB -->
             <div class="row">
                 <div class="col-md-offset-1 col-md-10 text-center">
-                    <h2 class="animation fadeInUp">The <span class="theme-color">Story</span></h2>
+                    <h2 class="animation fadeInUp">You Are <span class="theme-color">Invited</span></h2>
                     <div class="blurb animation fadeInUp">
                         <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut massa risus, luctus vel tortor
-                            nec, sodales ullamcorper sapien. Aliquam sodales elit elit, id molestie augue vulputate ac.
-                            Phasellus iaculis mattis nisl eu vehicula. In tincidunt facilisis convalli fusce molestie
-                            viverra neque.
+                            We couldn't think of any better way to enjoy our wedding than having you attend. We have
+                            friends all over the world and we are excited to use this as an opportunity to get
+                            everyone in the same place. We hope you can make it. We will be celebrating our wedding
+                            in Germany in the hometown of the Rapp family.
                         </p>
                     </div>
                 </div>
-            </div> <!-- END of TITLE AND BLURB -->
+            </div>
+            <!-- END of TITLE AND BLURB -->
 
             <!-- COUPLE PHOTO -->
             <div class="row image-wrapper">
 
-                <!-- LEFT COLUMN -->
-                <div class="col-sm-6 col-md-offset-1 col-md-5 text-center">
-
-                    <!--PHOTO-ITEM-->
-                    <div class="photo-item animation fadeInLeft">
-
-                        <!--HIS-PHOTO-->
-                        <img src="http://placehold.it/455x600" alt="" class="hover-animation image-zoom-in">
-
-                        <!--PHOTO OVERLAY-->
-                        <div class="layer wh100 hidden-black-overlay hover-animation fade-in">
-                        </div><!--END of PHOTO OVERLAY-->
-
-                        <!--ICON LINK-->
-                        <div class="layer wh100 hidden-link hover-animation delay1 fade-in">
-                            <div class="alignment">
-                                <div class="v-align center-middle">
-
-                                    <a href="his-story.html" class="de-button outline medium light-1 rounded">
-                                        Patrick's Story
-                                    </a>
-
-                                </div>
-                            </div>
-                        </div><!--END of ICON LINK-->
-
-                    </div><!--END of PHOTO-ITEM-->
-
+                <div class="col-md-12">
+                    <img src="https://snapewedding.sirv.com/home/fp_in_vineyard.jpg" alt="Couple Photo"
+                         class="hover-animation image-zoom-in fullwidth">
                 </div>
 
-                <!-- RIGHT COLUMN -->
-                <div class="col-sm-6 col-md-5 text-center">
-
-                    <!--PHOTO-ITEM-->
-                    <div class="photo-item animation fadeInRight">
-
-                        <!--HER-PHOTO-->
-                        <img src="http://placehold.it/455x600" alt="" class="hover-animation image-zoom-in">
-
-                        <!--PHOTO OVERLAY-->
-                        <div class="layer wh100 hidden-black-overlay hover-animation fade-in">
-                        </div><!--END of PHOTO OVERLAY-->
-
-                        <!--ICON LINK-->
-                        <div class="layer wh100 hidden-link hover-animation delay1 fade-in">
-                            <div class="alignment">
-                                <div class="v-align center-middle">
-
-                                    <a href="her-story.html" class="de-button outline medium light-1 rounded">
-                                        Franziska's Story
-                                    </a>
-
-                                </div>
-                            </div>
-                        </div><!--END of ICON LINK-->
-
-                    </div><!--END of PHOTO-ITEM-->
-
-                </div>
-
-            </div><!-- END of COUPLE PHOTO -->
-
+            </div>
+            <!-- END of COUPLE PHOTO -->
 
             <!-- OTHER BLURB -->
             <div class="row">
                 <div class="col-md-offset-1 col-md-10 text-center">
-                    <div class="blurb animation fadeInUp">
-                        <p>Curabitur et ullamcorper tortor. Cras rhoncus, justo eu eleifend molestie, urna mi eleifend
-                            est, vitae convallis sapien quam a lectus. Vestibulum at lectus enim. Suspendisse potenti.
-                            Aenean vel magna ut dui sollicitudin congue. Nam commodo nec velit sit amet mollis. </p>
+                    <div class="blurb animation fadeInUp" style="margin-top:30px">
+                        <p>
+                            We've lived all over the world including Vancouver, London, Dresden and Zurich and we can't
+                            wait to take the next step in our journey together.
+                        </p>
+                        <p class="lead no-margin">And soon... <span class="theme-color">We are Getting Married</span>
+                        </p>
                     </div>
                 </div>
-            </div> <!-- END of OTHER BLURB -->
+            </div>
+            <!-- END of OTHER BLURB -->
 
         </div>
     </section>
@@ -155,163 +105,6 @@
             </div>
         </div>
     </section><!-- END of COUNTDOWN -->
-
-
-    <!-- IMAGE DIVIDER -->
-    {{ image_divider.image_divider('http://placehold.it/1920x1080') }}
-    <!-- END of IMAGE DIVIDER -->
-
-
-    <!-- THE WEDDING -->
-    <section id="wedding-section" class="section-padding">
-        <div class="container">
-            <div class="row">
-
-                <div class="col-md-offset-1 col-md-10 text-center">
-                    <h3 class="animation fadeInUp">The<span class="theme-color"> Wedding</span></h3>
-                    <div class="blurb animation fadeInUp">
-                        <p>
-                            Fusce tincidunt enim ac luctus viverra. In malesuada diam nisi, vitae ultricies erat
-                            placerat eu. Aliquam a est purus. Sed non tristique.
-                        </p>
-                    </div>
-                </div>
-
-            </div>
-
-            <!-- ROW-1 -->
-            <div class="feature-row-wrapper row">
-
-                <!-- ITEM-1 -->
-                <div class="col-md-4">
-                    <div class="feature-wrapper">
-                        <div class="icon-and-title animation fadeInUp">
-                            <div class="the-icon">
-                                <i class="de-icon-location-2"></i>
-                            </div>
-                            <div class="bold400">
-                                <a href="#">Location</a>
-                            </div>
-                        </div>
-                        <p class="the-feature animation fadeInUp">Lorem ipsum dolor sit amet, consectetur adipiscing
-                            elit. Pellentesque mattis egestas ullamcorper. Duis tincidunt vulputate nibh, vitae sodales
-                            mauris tincidunt id. Integer sit amet facilisis lectus.</p>
-
-                    </div>
-                </div>
-                <!-- End of ITEM-1 -->
-
-
-                <!-- ITEM-2 -->
-                <div class="col-md-4">
-                    <div class="feature-wrapper">
-                        <div class="icon-and-title animation fadeInUp">
-                            <div class="the-icon">
-                                <i class="de-icon-bus"></i>
-                            </div>
-                            <div class="bold400">
-                                <a href="#">Accomodation</a>
-                            </div>
-                        </div>
-                        <p class="the-feature animation fadeInUp">Aliquam semper, mauris tristique fermentum rutrum, sem
-                            augue aliquet elit, rutrum ultrices tortor tellus ut nunc. Vestibulum tincidunt mi at ante
-                            laoreet condimentum ac a ante.</p>
-
-                    </div>
-                </div>
-                <!-- End of ITEM-2 -->
-
-
-                <!-- ITEM-3 -->
-                <div class="col-md-4">
-                    <div class="feature-wrapper">
-                        <div class="icon-and-title animation fadeInUp">
-                            <div class="the-icon">
-                                <i class="de-icon-gift"></i>
-                            </div>
-                            <div class="bold400">
-                                <a href="#">Gift Registry</a>
-                            </div>
-                        </div>
-                        <p class="the-feature animation fadeInUp">Morbi luctus sem at vulputate dictum. Donec in diam et
-                            augue gravida molestie ut et eros. Phasellus euismod vestibulum turpis, eget blandit velit.
-                            Maecenas a aliquam nisl, in bibendum ipsum. </p>
-
-                    </div>
-                </div>
-                <!-- End of ITEM-3 -->
-
-            </div>
-            <!-- END of ROW-1 -->
-
-
-            <!-- ROW-2 -->
-            <div class="feature-row-wrapper row">
-
-                <!-- ITEM-1 -->
-                <div class="col-md-4">
-                    <div class="feature-wrapper">
-                        <div class="icon-and-title animation fadeInUp">
-                            <div class="the-icon">
-                                <i class="de-icon-heart"></i>
-                            </div>
-                            <div class="bold400">
-                                <a href="#">Bridesmaid</a>
-                            </div>
-                        </div>
-                        <p class="the-feature animation fadeInUp">Duis tincidunt laoreet laoreet. Praesent id purus
-                            dictum, consectetur est eu, vehicula est. Vestibulum tempus orci eget nibh molestie
-                            condimentum. Cras ornare sollicitudin enim, eu molestie nibh.</p>
-
-                    </div>
-                </div>
-                <!-- End of ITEM-1 -->
-
-
-                <!-- ITEM-2 -->
-                <div class="col-md-4">
-                    <div class="feature-wrapper">
-                        <div class="icon-and-title animation fadeInUp">
-                            <div class="the-icon">
-                                <i class="de-icon-bell-1"></i>
-                            </div>
-                            <div class="bold400">
-                                <a href="#">Groomsmen</a>
-                            </div>
-                        </div>
-                        <p class="the-feature animation fadeInUp">Cras et finibus nisl. Maecenas dictum euismod nibh nec
-                            sagittis. In hac habitasse platea dictumst. Donec a leo ac dui fermentum volutpat. Maecenas
-                            elementum at turpis ac sollicitudin. </p>
-
-                    </div>
-                </div>
-                <!-- End of ITEM-2 -->
-
-
-                <!-- ITEM-3 -->
-                <div class="col-md-4">
-                    <div class="feature-wrapper">
-                        <div class="icon-and-title animation fadeInUp">
-                            <div class="the-icon">
-                                <i class="de-icon-mail-1"></i>
-                            </div>
-                            <div class="bold400">
-                                <a href="#">RSVP</a>
-                            </div>
-                        </div>
-                        <p class="the-feature animation fadeInUp">Interdum et malesuada fames ac ante ipsum primis in
-                            faucibus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus
-                            mus. Pellentesque ultricies imperdiet porttitor.</p>
-
-                    </div>
-                </div>
-                <!-- End of ITEM-3 -->
-
-            </div>
-            <!-- END of ROW-2 -->
-
-        </div>
-    </section><!-- END of THE WEDDING -->
 
 
     <!-- IMAGE DIVIDER -->
