@@ -3,7 +3,7 @@
 {% block title %}{% trans %}Accommodation{% endtrans %}{% endblock %}
 {% block main_title_body %}
     {% import 'macros/main_slider.jinja2' as main_slider %}
-    {% call main_slider.main_slider() %}
+    {% call main_slider.main_slider(image_urls=('https://unsplash.com/photos/2cNh00feVzw/download?force=true&w=1920',)) %}
         <div class="col-md-12">
 
             <div class="heart-divider animation delay-2s fadeInUp">

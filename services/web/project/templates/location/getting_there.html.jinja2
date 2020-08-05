@@ -3,7 +3,7 @@
 {% block title %}{% trans %}Getting There{% endtrans %}{% endblock %}
 {% block main_title_body %}
     {% import 'macros/main_slider.jinja2' as main_slider %}
-    {% call main_slider.main_slider() %}
+    {% call main_slider.main_slider(image_urls=('https://snapewedding.sirv.com/house/house_front_from_vineyard.JPG',)) %}
         <div class="col-md-12">
 
             <div class="heart-divider animation delay-2s fadeInUp">
@@ -92,7 +92,7 @@
     <!-- END of EVENTS -->
 
     <!-- IMAGE DIVIDER -->
-    {{ image_divider.image_divider('http://placehold.it/1920x1080') }}
+    {{ image_divider.image_divider('https://unsplash.com/photos/1XSIFHhH1Cg/download?force=true&w=1920') }}
     <!-- END of IMAGE DIVIDER -->
 
     <!-- DIRECTION -->
@@ -120,7 +120,7 @@
     <!-- END of DIRECTION -->
 
     <!-- IMAGE DIVIDER -->
-    {{ image_divider.image_divider('http://placehold.it/1920x1080') }}
+    {{ image_divider.image_divider('https://unsplash.com/photos/wizJlLStB7w/download?force=true&w=1920') }}
     <!-- END of IMAGE DIVIDER -->
 
     <!-- DIRECTION -->
@@ -144,7 +144,7 @@
     <!-- END of DIRECTION -->
 
     <!-- IMAGE DIVIDER -->
-    {{ image_divider.image_divider('http://placehold.it/1920x1080') }}
+    {{ image_divider.image_divider('https://unsplash.com/photos/7Z0YK8YUTfg/download?force=true&w=1920') }}
     <!-- END of IMAGE DIVIDER -->
 
     <!-- DIRECTION -->
@@ -181,5 +181,5 @@
 
 {% block footer_content %}
     {% import 'macros/footer.jinja2' as footer %}
-    {{ footer.footer('SEE YOU SOON') }}
+    {{ footer.footer('SEE YOU SOON', image_url='https://unsplash.com/photos/P8IJxF4FK30/download?force=true&w=1920') }}
 {% endblock %}
