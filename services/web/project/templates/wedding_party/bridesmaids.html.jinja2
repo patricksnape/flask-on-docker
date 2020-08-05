@@ -1,0 +1,60 @@
+{% extends "main_layout.html.jinja2" %}
+
+{% block title %}{% trans %}Bridesmaids{% endtrans %}{% endblock %}
+{% block main_title_body %}
+    {% import 'macros/main_slider.jinja2' as main_slider %}
+    {% call main_slider.main_slider(image_urls=('https://unsplash.com/photos/2cNh00feVzw/download?force=true&w=1920',)) %}
+        <div class="col-md-12">
+
+            <div class="heart-divider animation delay-2s fadeInUp">
+                <i class="de-icon-heart white-heart"></i>
+                <i class="de-icon-heart pink-heart"></i>
+            </div>
+            <h1 class="font-oswald animation delay-3s fadeInUp">
+                Bridesmaids
+            </h1>
+            <div class="slide-desc animation delay-4s fadeInUp">
+                <span>- {% trans %}Beautiful Women{% endtrans %} -</span>
+            </div>
+
+        </div>
+    {% endcall %}
+{% endblock %}
+
+{% block main_page_content %}
+    {% from 'macros/wedding_party.jinja2' import wedding_party_photo %}
+
+    <section class="section-padding">
+        <div class="container">
+            <!-- TITLE AND BLURB -->
+            <div class="row">
+                <div class="col-md-offset-1 col-md-10 text-center">
+                    <h2 class="animation fadeInUp"><span class="theme-color">So </span>Handsome</h2>
+                    <div class="blurb animation fadeInUp">
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut aliquam neque vitae neque
+                            aliquet, quis convallis magna tempor. Integer aliquet ex erat, ut tempus quam posuere ac.
+                            Sed finibus arcu quis erat vehicula, sed mattis est porttitor. Suspendisse potenti nulla
+                            eget congue est.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row image-wrapper">
+                {{ wedding_party_photo('Mckenzie', 'Maid of Honour') }}
+                {{ wedding_party_photo('Mckenzie', 'Maid of Honour') }}
+                {{ wedding_party_photo('Mckenzie', 'Maid of Honour') }}
+                {{ wedding_party_photo('Mckenzie', 'Maid of Honour') }}
+                {{ wedding_party_photo('Mckenzie', 'Maid of Honour') }}
+                {{ wedding_party_photo('Mckenzie', 'Maid of Honour') }}
+            </div>
+        </div>
+    </section>
+
+{% endblock %}
+
+{% block footer_content %}
+    {% import 'macros/footer.jinja2' as footer %}
+    {{ footer.footer('BEAUTIFUL') }}
+{% endblock %}

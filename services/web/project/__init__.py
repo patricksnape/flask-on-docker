@@ -92,6 +92,14 @@ def location_getting_there():
     return render_template("location/getting_there.html.jinja2")
 
 
+@app.route("/bridesmaids")
+@login_required
+@register_menu(app, ".wedding_party", "Wedding Party")  # Note this is a fake page used only for the hierarchy
+@register_menu(app, ".wedding_party.bridesmaids", "Bridesmaids")
+def wedding_party_bridesmaids():
+    return render_template("wedding_party/bridesmaids.html.jinja2")
+
+
 @app.route("/the-day")
 @login_required
 @register_menu(app, ".the_day", "The Day")

@@ -2753,13 +2753,13 @@ form .has-error.btn-primary{
 /* -------------------------------------------*/
 /* 13.2 Bridesmaid / Groomsmen Name & Duty	  */
 /* -------------------------------------------*/
-.bridesmaid-name, .groomsmen-name{
+.wedding-party-name {
 	color:#FFF;
 	font-weight:400;
 	font-size:26px;
 }
 
-.bridesmaid-duty, .groomsmen-duty{
+.wedding-party-duty{
 	color:#FFF;
 	font-size:16px;
 }

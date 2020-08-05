@@ -1,0 +1,30 @@
+{% macro wedding_party_photo(name, duty, image_url="http://placehold.it/600x400") -%}
+    <div class="col-md-6">
+        <!--PHOTO-ITEM-->
+        <div class="photo-item animation fadeIn">
+            <!--PHOTO-->
+            <img src="{{ image_url }}" alt="" class="hover-animation image-zoom-in">
+
+            <!--PHOTO OVERLAY-->
+            <div class="layer wh100 hidden-black-overlay hover-animation fade-in">
+            </div>
+            <!--END of PHOTO OVERLAY-->
+
+            <!--ICON LINK-->
+            <div class="layer wh100 hidden-link hover-animation delay1 fade-in">
+                <div class="alignment">
+                    <div class="v-align center-middle">
+                        <div>
+                            <i class="de-icon-heart white-heart"></i>
+                            <i class="de-icon-heart pink-heart"></i>
+                        </div>
+                        <div class="wedding-party-name">{{ name }}</div>
+                        <div class="wedding-party-duty">{{ duty }}</div>
+                    </div>
+                </div>
+            </div>
+            <!--END of ICON LINK-->
+        </div>
+        <!--END of PHOTO-ITEM-->
+    </div>
+{%- endmacro %}
