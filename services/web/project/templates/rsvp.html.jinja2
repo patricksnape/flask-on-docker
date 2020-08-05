@@ -9,7 +9,11 @@
 
 {% block main_title_body %}
     {% import 'macros/main_slider.jinja2' as main_slider %}
-    {% call main_slider.main_slider() %}
+    {% call main_slider.main_slider(image_urls=(
+        'https://unsplash.com/photos/aF1NPSnDQLw/download?force=true&w=1920',
+        'https://unsplash.com/photos/UErWoQEoMrc/download?force=true&w=1920'
+        )
+    ) %}
         <div class="col-md-12">
 
             <div class="heart-divider animation delay-2s fadeInUp">
@@ -59,8 +63,8 @@
                                 information
                                 as possible to clarify any concerns you may have. Due to the limited number of
                                 accommodation providers in the local area we have attempted to pre-book accommodation
-                                for as many guests as possible. Due to this, we require significant notice if travel
-                                plans change.
+                                for as many guests as possible. Therefore, we require significant notice if travel
+                                plans change and we have pre-booked your accommodation.
                             {% endtrans %}
                         </p>
                         <p>
@@ -85,7 +89,7 @@
             </div>
     </section>
 
-    {{ image_divider.image_divider('http://placehold.it/1920x1080') }}
+    {{ image_divider.image_divider('https://unsplash.com/photos/0AgtPoAARtE/download?force=true&w=1920') }}
 
     <section id="rsvp-form" class="section-padding">
         <div class="container">
