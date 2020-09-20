@@ -35,7 +35,7 @@ def generate_qr_code_pil_image(guest_code: str) -> PILImage:
     import qrcode
 
     qr = qrcode.QRCode(error_correction=qrcode.constants.ERROR_CORRECT_Q, border=3, box_size=14)
-    qr.add_data(f"https://www.snapewedding.com{user_manager.USER_REGISTER_URL}?guest_code={guest_code}")
+    qr.add_data(f"https://snapewedding.com{user_manager.USER_REGISTER_URL}?guest_code={guest_code}")
     qr.make(fit=True)
     image = qr.make_image(fill_color="black", back_color="white")
     assert image.size == (602, 602)
