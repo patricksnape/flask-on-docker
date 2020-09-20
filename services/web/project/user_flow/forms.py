@@ -9,7 +9,8 @@ from project.database.party import Party
 def guest_code_exists(form, field) -> None:
     user_manager = current_app.user_manager
     session = user_manager.db.session
-    if session.query(Party).filter_by(guest_code=field.data).one_or_none() is None:
+    guest_code = field.data
+    if Party.get_by_guest_code(guest_code, session) is None:
         raise ValidationError(_("Unknown Guest Code"))
 
 
