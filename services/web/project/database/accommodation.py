@@ -14,6 +14,7 @@ class Accommodation(BaseModel):
     id = Column(Integer, primary_key=True)
     name = Column(String, nullable=False)
     website = Column(String, nullable=True)
+    banner_url = Column(String, nullable=True)
     address = Column(String, nullable=False)
     latitude = Column(Float, nullable=False)
     longitude = Column(Float, nullable=False)
