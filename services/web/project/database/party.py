@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from typing import List
+from typing import List, Optional
 
 from sqlalchemy import Boolean, Column, ForeignKey, Integer, String
 from sqlalchemy.orm import Session, joinedload, relationship
@@ -23,6 +23,20 @@ class Party(BaseModel):
     @property
     def is_attending(self):
         return any(g.attending is True for g in self.guests)
+
+    @classmethod
+    def get_by_guest_code(cls, guest_code: str, session: Session) -> Optional[Party]:
+        """
+        Get the party for the given guest code.
+
+        Args:
+            guest_code : The guest code
+            session : The session to use for querying the database
+
+        Returns:
+            The party object associated with the given guest code or None
+        """
+        return session.query(cls).filter_by(guest_code=guest_code).one_or_none()
 
     @classmethod
     def get_preload(cls, party_id: int, session: Session) -> Party:
