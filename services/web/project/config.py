@@ -3,11 +3,12 @@ from datetime import datetime, timedelta
 
 basedir = os.path.abspath(os.path.dirname(__file__))
 
+env = os.environ
 
 class Config(object):
     SECRET_KEY = os.getenv("SECRET_KEY")
 
-    SQLALCHEMY_DATABASE_URI = os.getenv("DATABASE_URL", "sqlite://")
+    SQLALCHEMY_DATABASE_URI = f"postgresql://{env['POSTGRES_USER']}:{env['POSTGRES_PASSWORD']}@{env['SQL_HOST']}:{env['SQL_PORT']}/{env['POSTGRES_DB']}"
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     SQLALCHEMY_ECHO = False
 

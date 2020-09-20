@@ -5,16 +5,15 @@ services:
     image: postgres:12-alpine
     ports:
       - 5432:5432
-    environment:
-      - POSTGRES_USER=hello_flask
-      - POSTGRES_PASSWORD=hello_flask_pass
-      - POSTGRES_DB=hello_flask_dev
+    env_file:
+      - ./.env.dev.db
   # This service simply builds the base image for the project used by both the webserver
   # and the DB setup commands
   web_python_image:
     build: ./services/web
     image: wedding-python
     env_file:
+      - ./.env.dev.db
       - ./.env.dev
   db_create:
     image: wedding-python
@@ -23,6 +22,7 @@ services:
     volumes:
       - ./services/web/:/usr/src/app/
     env_file:
+      - ./.env.dev.db
       - ./.env.dev
     depends_on:
       - db
@@ -34,6 +34,7 @@ services:
     volumes:
       - ./services/web/:/usr/src/app/
     env_file:
+      - ./.env.dev.db
       - ./.env.dev
     depends_on:
       - db_create
@@ -45,6 +46,7 @@ services:
     ports:
       - 5000:5000
     env_file:
+      - ./.env.dev.db
       - ./.env.dev
     environment:
       MAILGUN_API_KEY: ${MAILGUN_API_KEY}

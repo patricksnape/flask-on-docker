@@ -11,7 +11,13 @@ services:
     expose:
       - 5000
     env_file:
+      - ./.env.prod.db
       - ./.env.prod
+    environment:
+      MAILGUN_API_KEY: ${MAILGUN_API_KEY}
+      GOOGLE_MAPS_API_TOKEN: ${GOOGLE_MAPS_API_TOKEN}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      SECRET_KEY: ${SECRET_KEY}
     depends_on:
       - db
   db:
@@ -20,6 +26,8 @@ services:
       - postgres_data:/var/lib/postgresql/data/
     env_file:
       - ./.env.prod.db
+    environment:
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
   nginx-proxy:
     container_name: nginx-proxy
     build: ./services/nginx
