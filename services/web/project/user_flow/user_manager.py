@@ -78,10 +78,13 @@ class WeddingUserManager(UserManager):
 
         # Process valid POST
         if register_form.validate_on_submit():
-            self.verify_guest_code_not_registered(register_form.guest_code.data)
+            guest_code = register_form.guest_code.data
+            self.verify_guest_code_not_registered(guest_code)
+            party = Party.get_by_guest_code(guest_code, self.db.session)
 
             user = self.db_manager.add_user()
             register_form.populate_obj(user)
+            user.party_id = party.id
             user_email = self.db_manager.add_user_email(user=user, is_primary=True)
             register_form.populate_obj(user_email)
 
