@@ -1,7 +1,11 @@
+import csv
+import os
 from datetime import datetime, timedelta
+from pathlib import Path
 from random import randint
 from typing import Optional, List
 
+import click
 from faker import Faker
 from flask.cli import FlaskGroup
 
@@ -22,8 +26,11 @@ def _add_admin_user() -> None:
     db.session.add(role)
     db.session.flush()
 
+    password = os.getenv("ADMIN_USER_PASSWORD") or "password"
     user = User(
-        email="admin@test.com", email_confirmed_at=datetime.utcnow(), password=user_manager.hash_password("password"),
+        email="admin@snapewedding.com",
+        email_confirmed_at=datetime.utcnow(),
+        password=user_manager.hash_password(password),
     )
     db.session.add(user)
     db.session.flush()
@@ -120,6 +127,40 @@ def seed_db() -> None:
     _add_party(n_guests=3, create_user=True)
 
     # Create admin user
+    _add_admin_user()
+
+    db.session.commit()
+
+
+@cli.command("seed_from_csv")
+@click.argument("csv_file_path", type=Path)
+def seed_from_csv(csv_file_path: Path) -> None:
+    with csv_file_path.open("rt") as csv_file:
+        csv_reader = csv.reader(csv_file, delimiter=";")
+        for (party_id, guests, room_id, check_in, check_out) in csv_reader:
+            guests = guests.split("&")
+
+            party = Party(id=int(party_id), guest_code=get_token())
+            db.session.add(party)
+            db.session.flush()
+            logger.info(f"{party}")
+
+            for guest in guests:
+                first_name, last_name = guest.split(",")
+                guest = Guest(party_id=party.id, first_name=first_name.strip(), last_name=last_name.strip())
+                logger.info(f"  {guest}")
+                db.session.add(guest)
+
+            if room_id != "-1":
+                check_in_date = datetime.strptime(check_in, "%d.%m.%Y")
+                check_out_date = datetime.strptime(check_out, "%d.%m.%Y")
+                booking = Booking(
+                    party_id=party.id, room_id=int(room_id), check_in=check_in_date, check_out=check_out_date,
+                )
+                logger.info(f"    {booking}")
+                db.session.add(booking)
+
+    logger.info(f"Adding admin user")
     _add_admin_user()
 
     db.session.commit()
