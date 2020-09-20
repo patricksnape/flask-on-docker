@@ -5,6 +5,7 @@ basedir = os.path.abspath(os.path.dirname(__file__))
 
 env = os.environ
 
+
 class Config(object):
     SECRET_KEY = os.getenv("SECRET_KEY")
 
@@ -13,6 +14,7 @@ class Config(object):
     SQLALCHEMY_ECHO = False
 
     # Flask-MailGun settings
+    MAILGUN_API_URL = os.getenv("MAILGUN_API_URL", "https://api.mailgun.net/v3")
     MAILGUN_DOMAIN = os.getenv("MAILGUN_DOMAIN", "sandboxf49773835c1049949b8632754c0d3e1f.mailgun.org")
     MAILGUN_API_KEY = os.getenv("MAILGUN_API_KEY", "")
 
