@@ -8,7 +8,6 @@ from random import randint
 from typing import List, Optional, Sized, TYPE_CHECKING
 
 import click
-from faker import Faker
 from flask.cli import FlaskGroup
 from loguru import logger
 
@@ -23,7 +22,6 @@ if TYPE_CHECKING:
     from PIL import Image as PILImage
 
 
-fake = Faker()
 cli = FlaskGroup(app)
 
 
@@ -130,6 +128,9 @@ def _add_admin_user() -> None:
 
 def _add_accommodation(n_rooms: int = 2) -> List[Room]:
     assert n_rooms > 0
+    from faker import Faker
+
+    fake = Faker()
 
     lat, long = fake.local_latlng(country_code="DE", coords_only=True)
     accommodation = Accommodation(
@@ -156,7 +157,9 @@ def _add_accommodation(n_rooms: int = 2) -> List[Room]:
 
 def _add_party(n_guests: int = 2, create_user: bool = False, add_booking_to_room: Optional[Room] = None) -> None:
     assert n_guests > 0
+    from faker import Faker
 
+    fake = Faker()
     party = Party(guest_code=get_token())
     logger.info(f"{party}")
     db.session.add(party)
