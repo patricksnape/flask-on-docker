@@ -1,24 +1,113 @@
+from __future__ import annotations
+
 import csv
 import os
 from datetime import datetime, timedelta
 from pathlib import Path
 from random import randint
-from typing import Optional, List
+from typing import List, Optional, Sized, TYPE_CHECKING
 
 import click
 from faker import Faker
 from flask.cli import FlaskGroup
+from loguru import logger
 
 from project import app, db, user_manager
 from project.database.accommodation import Accommodation, Room
 from project.database.booking import Booking
-from project.database.party import Party, Guest
+from project.database.party import Guest, Party
 from project.database.users import Role, User, UserRoles
 from project.guest.token import get_token
-from loguru import logger
+
+if TYPE_CHECKING:
+    from PIL import Image as PILImage
+
 
 fake = Faker()
 cli = FlaskGroup(app)
+
+
+def batch(iterable, n=1):
+    n_items = len(iterable)
+    for index in range(0, n_items, n):
+        yield iterable[index : min(index + n, n_items)]
+
+
+def generate_qr_code_pil_image(guest_code: str) -> PILImage:
+    import qrcode
+
+    qr = qrcode.QRCode(error_correction=qrcode.constants.ERROR_CORRECT_Q, border=3, box_size=14)
+    qr.add_data(f"https://www.snapewedding.com{user_manager.USER_REGISTER_URL}?guest_code={guest_code}")
+    qr.make(fit=True)
+    image = qr.make_image(fill_color="black", back_color="white")
+    assert image.size == (602, 602)
+    return image
+
+
+def one_inch_qr_codes_to_printable_pdf(
+    qr_code_images: Sized[PILImage],
+    out_dir: Path,
+    width: float = 8.3,
+    height: float = 11.7,
+    x_margin: float = 0.6732283,
+    y_margin: float = 0.405512,
+    x_spacing: float = 0.2,
+    y_spacing: float = 0,
+    max_n_rows: int = 11,
+    max_n_cols: int = 6,
+    dpi: float = 600,
+) -> None:
+    """
+    This is a helper method to generate a printable PDF that prints nicely using the paper I bought (Herma 10107).
+    Note that the default values come from the herma website but required some fudging to actually print with
+    my printer:
+
+        x_margin = 0.346457 + 0.11811 / 2.0 = 0.405512
+        y_margin = 0.6338583 + 0.11811 / 3.0 = 0.6732283
+
+    All the values are in inches in everything currently assumes the incoming QR code images are in the correct
+    number of pixels for a one inch QR code at 600 DPI (e.g. approximately 600x600).
+
+    Args:
+        qr_code_images: List of PIL images to create PDFs from
+        out_dir: Output directory to save PDF to
+        width: Width of the output page
+        height: Height of the output page
+        x_margin: Horizontal margin e.g. how far away from left edge to start pasting
+        y_margin: Vertical margin e.g. how far away from top edge to start pasting
+        x_spacing: Spacing between QR codes horizontally across the page
+        y_spacing: Spacing between QR codes vertically down the page
+        max_n_rows: Maximum number of rows down the page
+        max_n_cols: Maximum number of QR codes per row
+        dpi: DPI to generate printed page at
+    """
+    from PIL import Image as PILImage
+
+    assert dpi == 600, "Only DPI of 600 is supported"
+    width = int(width * dpi)
+    height = int(height * dpi)
+    x_margin = int(x_margin * dpi)
+    y_margin = int(y_margin * dpi)
+    x_spacing = int(x_spacing * dpi)
+    y_spacing = int(y_spacing * dpi)
+
+    qr_code_size = int(dpi)
+
+    row_index = 0
+    page_index = 0
+    page = PILImage.new("RGB", (width, height), "white")
+    for qr_code_row in batch(qr_code_images, n=max_n_cols):
+        y = y_margin + row_index * qr_code_size + row_index * y_spacing
+        for col_index, qr_code in enumerate(qr_code_row):
+            x = x_margin + col_index * qr_code_size + col_index * x_spacing
+            page.paste(qr_code, box=(x, y))
+        row_index += 1
+
+        if row_index == max_n_rows:
+            page.save(str(out_dir / f"page_{page_index}.pdf"), resolution=dpi)
+            page = PILImage.new("RGB", (width, height), "white")
+            row_index = 0
+            page_index += 1
 
 
 def _add_admin_user() -> None:
@@ -160,10 +249,30 @@ def seed_from_csv(csv_file_path: Path) -> None:
                 logger.info(f"    {booking}")
                 db.session.add(booking)
 
-    logger.info(f"Adding admin user")
+    logger.info("Adding admin user")
     _add_admin_user()
 
     db.session.commit()
+
+
+@cli.command("generate_qr_codes")
+def generate_qr_codes() -> None:
+    all_parties = db.session.query(Party).order_by(Party.id).all()
+
+    out_dir = Path("qr_codes")
+    out_dir.mkdir(exist_ok=True)
+
+    qr_code_images = []
+    for party in all_parties:
+        guest_names = ", ".join(g.full_name for g in party.guests)
+        logger.info(f"Generating QR code for party {party.id} with guests: {guest_names}")
+
+        guest_code = party.guest_code
+        image = generate_qr_code_pil_image(guest_code)
+        image.save(str(out_dir / f"{party.id:02d}.png"))
+        qr_code_images.append(image)
+
+    one_inch_qr_codes_to_printable_pdf(qr_code_images, out_dir)
 
 
 if __name__ == "__main__":
