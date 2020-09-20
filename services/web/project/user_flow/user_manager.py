@@ -9,7 +9,8 @@ from flask_user import UserManager, signals
 from flask_user.translation_utils import lazy_gettext as _
 from wtforms import ValidationError
 
-from project import User
+from project.database.users import User
+from project.database.party import Party
 from project.user_flow.forms import GuestCodeRegisterForm
 
 
@@ -115,8 +116,19 @@ class WeddingUserManager(UserManager):
             else:
                 return redirect(url_for("user.login") + "?next=" + quote(safe_reg_next_url))
 
-        self.verify_guest_code_not_registered(request.args.get("guest_code"))
+        guest_code = request.args.get("guest_code")
+        guests = None
+        if guest_code is not None:
+            self.verify_guest_code_not_registered(guest_code)
+            party = Party.get_by_guest_code(guest_code, self.db.session)
+            if party is not None:
+                guests = party.guests
+
         self.prepare_domain_translations()
         return render_template(
-            self.USER_REGISTER_TEMPLATE, form=register_form, login_form=login_form, register_form=register_form
+            self.USER_REGISTER_TEMPLATE,
+            form=register_form,
+            login_form=login_form,
+            register_form=register_form,
+            guests=guests,
         )

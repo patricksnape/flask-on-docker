@@ -1,92 +1,105 @@
 {% extends "login_layout.html.jinja2" %}
 
-{% block title %}{%trans%}Register{%endtrans%}{% endblock %}
+{% block title %}{% trans %}Register{% endtrans %}{% endblock %}
 
 {% block page_content %}
-{% from 'macros/form_errors.jinja2' import form_errors as form_errors %}
-{% from 'macros/display_flashes.jinja2' import display_flashes as display_flashes %}
+    {% from 'macros/form_errors.jinja2' import form_errors as form_errors %}
+    {% from 'macros/display_flashes.jinja2' import display_flashes as display_flashes %}
 
-<section id="page-content">
-    <section class="section-padding">
-        <div class="container">
-            <div class="row">
+    <section id="page-content">
+        <section class="section-padding">
+            <div class="container">
+                <div class="row">
 
-                <div class="col-md-offset-1 col-md-10 text-center">
-                    <h3 class="animation fadeInUp">{%trans%}Register With Your Guest Code{%endtrans%}</h3>
-                    <div class="blurb animation fadeInUp">
-                        <p>
-                            {%trans%}
-                            To ensure that we can contact you, please choose an email and password to login to the
-                            wedding website with. The Guest Code can be found by either scanning the QR code or
-                            manually entering the Guest Code provided in your invitation.
-                            {%endtrans%}
-                        </p>
+                    <div class="col-md-offset-1 col-md-10 text-center">
+                        <h3 class="animation fadeInUp">{% trans %}Register With Your Guest Code{% endtrans %}</h3>
+                        <div class="blurb animation fadeInUp">
+                            <p>
+                                {% trans %}
+                                    To ensure that we can contact you, please choose an email and password to login to
+                                    the
+                                    wedding website with. The Guest Code can be found by either scanning the QR code or
+                                    manually entering the Guest Code provided in your invitation.
+                                {% endtrans %}
+                            </p>
+                        </div>
                     </div>
-                </div>
 
-                <div class="col-md-offset-3 col-md-6 text-center">
-                    <form action="" method="POST" class="form" role="form">
-                        {{ form.hidden_tag() }}
+                    <div class="col-md-offset-3 col-md-6 text-center">
+                        <form action="" method="POST" class="form" role="form">
+                            {{ form.hidden_tag() }}
 
-                        {# Guest Code field #}
-                        {% set guest_code_value = request.args.get('guest_code', '') %}
-                        <div class="form-group">
-                            <label>
-                                <div class="input-group {% if form.guest_code.errors %}has-error{% endif %}">
-                                    <div class="input-group-addon"><i class="de-icon-key-1"></i></div>
-                                    {{ form.guest_code(class_='form-control', tabindex=210,
+                            {# Guest Code field #}
+                            {% set guest_code_value = request.args.get('guest_code', '') %}
+                            <div class="form-group">
+                                <label>
+                                    {% if guests %}
+                                        Welcome
+                                        {% for guest in guests[:-1] %}
+                                            <span class="theme-color guest-name">
+                                    {{ guest.first_name | capitalize() }}{{ "," if not loop.last }}
+                                    </span>
+                                        {% endfor %}
+                                        {% if guests | length > 1 %} {% trans %}and{% endtrans %} {% endif %}
+                                        <span class="theme-color guest-name">
+                                    {{ guests[-1].first_name | capitalize() }}
+                                </span>
+                                    {% endif %}
+                                    <div class="input-group {% if form.guest_code.errors %}has-error{% endif %}">
+                                        <div class="input-group-addon"><i class="de-icon-key-1"></i></div>
+                                        {{ form.guest_code(class_='form-control', tabindex=210,
                                     value=guest_code_value, maxlength="6", placeholder=form.guest_code.label.text,
                                     readonly=guest_code_value != '' and not form.guest_code.errors) }}
-                                </div>
-                            </label>
-                            {{ form_errors(form.guest_code) }}
-                        </div>
+                                    </div>
+                                </label>
+                                {{ form_errors(form.guest_code) }}
+                            </div>
 
-                        {# Email field #}
-                        <div class="form-group">
-                            <label>
-                                <div class="input-group {% if form.email.errors %}has-error{% endif %}">
-                                    <div class="input-group-addon"><i class="de-icon-mail"></i></div>
-                                    {{ form.email(class_='form-control ajax-input', placeholder=form.email.label.text,
+                            {# Email field #}
+                            <div class="form-group">
+                                <label>
+                                    <div class="input-group {% if form.email.errors %}has-error{% endif %}">
+                                        <div class="input-group-addon"><i class="de-icon-mail"></i></div>
+                                        {{ form.email(class_='form-control ajax-input', placeholder=form.email.label.text,
                                     tabindex=220) }}
-                                </div>
-                            </label>
-                            {{ form_errors(form.email) }}
-                        </div>
+                                    </div>
+                                </label>
+                                {{ form_errors(form.email) }}
+                            </div>
 
-                        {# Password field #}
-                        <div class="form-group">
-                            <label>
-                                <div class="input-group {% if form.password.errors %}has-error{% endif %}">
-                                    <div class="input-group-addon"><i class="de-icon-lock"></i></div>
-                                    {{ form.password(class_='form-control ajax-input',
+                            {# Password field #}
+                            <div class="form-group">
+                                <label>
+                                    <div class="input-group {% if form.password.errors %}has-error{% endif %}">
+                                        <div class="input-group-addon"><i class="de-icon-lock"></i></div>
+                                        {{ form.password(class_='form-control ajax-input',
                                     placeholder=form.password.label.text, tabindex=230) }}
-                                </div>
-                            </label>
-                            {{ form_errors(form.password) }}
-                        </div>
+                                    </div>
+                                </label>
+                                {{ form_errors(form.password) }}
+                            </div>
 
-                        <div class="form-group">
-                            <label>
-                                <div class="input-group {% if form.retype_password.errors %}has-error{% endif %}">
-                                    <div class="input-group-addon"><i class="de-icon-lock"></i></div>
-                                    {{ form.retype_password(class_='form-control ajax-input',
+                            <div class="form-group">
+                                <label>
+                                    <div class="input-group {% if form.retype_password.errors %}has-error{% endif %}">
+                                        <div class="input-group-addon"><i class="de-icon-lock"></i></div>
+                                        {{ form.retype_password(class_='form-control ajax-input',
                                     placeholder=form.retype_password.label.text, tabindex=240) }}
-                                </div>
-                            </label>
-                            {{ form_errors(form.retype_password) }}
-                        </div>
+                                    </div>
+                                </label>
+                                {{ form_errors(form.retype_password) }}
+                            </div>
 
-                        {# Submit button #}
-                        <input type="submit" class="de-button outline rounded small reverse animation fadeInUp"
-                               value="{{ form.submit.label.text }}" tabindex=280>
-                    </form>
+                            {# Submit button #}
+                            <input type="submit" class="de-button outline rounded small reverse animation fadeInUp"
+                                   value="{{ form.submit.label.text }}" tabindex=280>
+                        </form>
 
-                    {{ display_flashes() }}
+                        {{ display_flashes() }}
+                    </div>
+
                 </div>
-
             </div>
-        </div>
+        </section>
     </section>
-</section>
 {% endblock %}
