@@ -224,11 +224,9 @@
             $(document).ready(function () {
 
                 {%if form.errors %}
-                    Pace.on('done', function () {
-                        setTimeout(function () {
-                            document.getElementById("rsvp-form").scrollIntoView({behavior: "smooth"});
-                        }, 500);
-                    });
+                    setTimeout(function () {
+                        document.getElementById("rsvp-form").scrollIntoView({behavior: "smooth"});
+                    }, 500);
                 {% endif %}
 
                 {% if not attending and not form.errors %}

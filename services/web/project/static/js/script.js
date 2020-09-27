@@ -166,108 +166,98 @@
 	//=============================================================================================================================================
 	//=============================================================================================================================================
 	//=============================================================================================================================================
-	Pace.on('done', function () {
-		$('#preloader').fadeOut(500);
-	});
 
-	Pace.on('hide', function () {
+	// 03.1 Navigation Menu
+	//================================================================================
 
-		// 03.1 Navigation Menu
-		//================================================================================
+	// 03.1.1 Waypoint Sticky Navbar
+	//------------------------------------------------------------------------------
+	if ($("#nav-bar").hasClass("sticky-nav")){
 
-		// 03.1.1 Waypoint Sticky Navbar
-		//------------------------------------------------------------------------------
-		if ($("#nav-bar").hasClass("sticky-nav")){
+		var navbar_el = $("#nav-bar");
 
-			var navbar_el = $("#nav-bar");
+		var nav_header_waypoint = $('#nav-header').waypoint(function(direction) {
 
-			var nav_header_waypoint = $('#nav-header').waypoint(function(direction) {
-
-				if (direction === 'down') {
-					if( !device.tablet() && !device.mobile() ) {
-						navbar_el.addClass("stick-it animated fadeInDownBig");
-					}
-					else
-					{
-						navbar_el.addClass("stick-it");
-					}
+			if (direction === 'down') {
+				if( !device.tablet() && !device.mobile() ) {
+					navbar_el.addClass("stick-it animated fadeInDownBig");
 				}
-				else {
-					navbar_el.removeClass("stick-it animated fadeInDownBig");
+				else
+				{
+					navbar_el.addClass("stick-it");
 				}
-
-			}, {
-  				offset:'-100%'
-			});
-
-		}
-
-		// 03.2 Gallery - Masonry
-		//================================================================================
-		if ($("#masonry-gallery").length){
-			var $gallery = $('#masonry-gallery');
-
-			if (device.tablet() || device.mobile()) {
-				$gallery.masonry({
-					columnWidth: ".grid-sizer",
-					itemSelector: ".masonry-col",
-					gutter: ".gutter-sizer",
-					transitionDuration: 0,
-				});
 			}
-			else
-			{
-				$gallery.masonry({
-					columnWidth: ".grid-sizer",
-					itemSelector: ".masonry-col",
-					gutter: ".gutter-sizer",
-					transitionDuration: "1s",
-				});
+			else {
+				navbar_el.removeClass("stick-it animated fadeInDownBig");
 			}
-		}
 
-		// 03.3 Stellar Parallax
-		//================================================================================
-	 	if( !device.tablet() && !device.mobile() ) {
-			$(".image-divider").css("background-attachment","fixed");
-		 	$(window).stellar({
-			 	horizontalScrolling: false,
-				responsive: true,
-		 	});
-	 	}
-
-		// 03.4 Waypoint Animate CSS
-		//================================================================================
-		if( !device.tablet() && !device.mobile() ) {
-			$('.animation').each(function(){
-        		var _this = this;
-        		var animation_waypoint = new Waypoint({
-            		element: _this,
-            		handler: function (direction) {
-						$(this.element).css({ visibility: 'visible' }).addClass('animated');
-            		},
-            		offset: '95%'
-        		});
-        	});
-
-		}
-
-		// 03.5 Resize Background Video
-		//================================================================================
-		//Execute on load (function can be found on point 02.3)
-		video_resize("#main-slider .slide-image");
-		video_resize(".image-divider");
-
-		//Execute on window resize
-		$(window).resize(function() {
-			video_resize("#main-slider .slide-image");
-			video_resize(".image-divider");
+		}, {
+			offset:'-100%'
 		});
 
-	}); // END of Pace on Hide
+	}
 
+	// 03.2 Gallery - Masonry
+	//================================================================================
+	if ($("#masonry-gallery").length){
+		var $gallery = $('#masonry-gallery');
 
+		if (device.tablet() || device.mobile()) {
+			$gallery.masonry({
+				columnWidth: ".grid-sizer",
+				itemSelector: ".masonry-col",
+				gutter: ".gutter-sizer",
+				transitionDuration: 0,
+			});
+		}
+		else
+		{
+			$gallery.masonry({
+				columnWidth: ".grid-sizer",
+				itemSelector: ".masonry-col",
+				gutter: ".gutter-sizer",
+				transitionDuration: "1s",
+			});
+		}
+	}
 
+	// 03.3 Stellar Parallax
+	//================================================================================
+	if( !device.tablet() && !device.mobile() ) {
+		$(".image-divider").css("background-attachment","fixed");
+		$(window).stellar({
+			horizontalScrolling: false,
+			responsive: true,
+		});
+	}
+
+	// 03.4 Waypoint Animate CSS
+	//================================================================================
+	if( !device.tablet() && !device.mobile() ) {
+		$('.animation').each(function(){
+			var _this = this;
+			var animation_waypoint = new Waypoint({
+				element: _this,
+				handler: function (direction) {
+					$(this.element).css({ visibility: 'visible' }).addClass('animated');
+				},
+				offset: '95%'
+			});
+		});
+
+	}
+
+	// 03.5 Resize Background Video
+	//================================================================================
+	//Execute on load (function can be found on point 02.3)
+	video_resize("#main-slider .slide-image");
+	video_resize(".image-divider");
+
+	//Execute on window resize
+	$(window).resize(function() {
+		video_resize("#main-slider .slide-image");
+		video_resize(".image-divider");
+	});
 
 
 	// 04. MENU
