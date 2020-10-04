@@ -5,7 +5,7 @@ import os
 from datetime import datetime, timedelta
 from pathlib import Path
 from random import randint
-from typing import List, Optional, Sequence, Sized, TYPE_CHECKING
+from typing import List, Optional, Sequence, Sized, TYPE_CHECKING, TextIO
 
 import click
 from flask.cli import FlaskGroup
@@ -106,6 +106,9 @@ def one_inch_qr_codes_to_printable_pdf(
             page = PILImage.new("RGB", (width, height), "white")
             row_index = 0
             page_index += 1
+
+    # Make sure we save the final page no matter what
+    page.save(str(out_dir / f"page_{page_index}.pdf"), resolution=dpi)
 
 
 def _add_admin_user() -> None:
@@ -259,10 +262,11 @@ def seed_from_csv(csv_file_path: Path) -> None:
 
 
 @cli.command("generate_qr_codes")
-@click.option("--party-ids", nargs="*", type=int)
-def generate_qr_codes(party_ids: Optional[Sequence[int]]) -> None:
-    if party_ids is not None:
-        all_parties = db.session.query(Party).filter_by(Party.id.in_(party_ids)).order_by(Party.id).all()
+@click.option("--party-ids-file", type=click.File("rt"))
+def generate_qr_codes(party_ids_file: Optional[TextIO]) -> None:
+    if party_ids_file is not None:
+        party_ids = [int(pid.strip()) for pid in party_ids_file.readlines()]
+        all_parties = db.session.query(Party).filter(Party.id.in_(party_ids)).order_by(Party.id).all()
     else:
         all_parties = db.session.query(Party).order_by(Party.id).all()
 
