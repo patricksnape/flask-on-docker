@@ -84,6 +84,11 @@ def home():
     return render_template("index.html.jinja2")
 
 
+@app.route("/heartbeat")
+def heartbeat():
+    return jsonify({"success": True})
+
+
 @app.route("/getting-there")
 @login_required
 @register_menu(app, ".location", "Location")  # Note this is a fake page used only for the hierarchy
