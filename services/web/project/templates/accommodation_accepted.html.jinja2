@@ -7,7 +7,7 @@
 {% endblock %}
 {% block main_title_body %}
     {% import 'macros/main_slider.jinja2' as main_slider %}
-    {% call main_slider.main_slider() %}
+    {% call main_slider.main_slider(image_urls=(booking.room.accommodation.banner_url,)) %}
         <div class="col-md-12">
 
             <div class="heart-divider animation delay-2s fadeInUp">
@@ -71,7 +71,7 @@
     <!-- END OF ACCOMMODATION EXPLANATION -->
 
     <!-- IMAGE DIVIDER -->
-    {{ image_divider.image_divider('https://unsplash.com/photos/R-w5Q-4Mqm0/download?force=true&w=1920') }}
+    {{ image_divider.image_divider('https://ik.imagekit.io/snapewedding/accommodation/closeup_red_grapes_3530_mf_3rfg7oz.jpg') }}
     <!-- END of IMAGE DIVIDER -->
 
     <!-- ACCOMMODATION INFORMATION -->
