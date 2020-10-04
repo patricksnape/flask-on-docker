@@ -286,7 +286,7 @@ def generate_qr_codes(party_ids_file: Optional[TextIO]) -> None:
     qr_code_images = []
     for party in all_parties:
         guest_names = ", ".join(g.full_name for g in party.guests)
-        logger.info(f"Generating QR code for party {party.id} with guests: {guest_names}")
+        logger.info(f"Generating QR code for party {party.id} ({party.guest_code}) with guests: {guest_names}")
 
         guest_code = party.guest_code
         image = generate_qr_code_pil_image(guest_code)
