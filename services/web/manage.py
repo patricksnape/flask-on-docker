@@ -5,7 +5,7 @@ import os
 from datetime import datetime, timedelta
 from pathlib import Path
 from random import randint
-from typing import List, Optional, Sized, TYPE_CHECKING
+from typing import List, Optional, Sequence, Sized, TYPE_CHECKING
 
 import click
 from flask.cli import FlaskGroup
@@ -259,8 +259,12 @@ def seed_from_csv(csv_file_path: Path) -> None:
 
 
 @cli.command("generate_qr_codes")
-def generate_qr_codes() -> None:
-    all_parties = db.session.query(Party).order_by(Party.id).all()
+@click.option("--party-ids", nargs="*", type=int)
+def generate_qr_codes(party_ids: Optional[Sequence[int]]) -> None:
+    if party_ids is not None:
+        all_parties = db.session.query(Party).filter_by(Party.id.in_(party_ids)).order_by(Party.id).all()
+    else:
+        all_parties = db.session.query(Party).order_by(Party.id).all()
 
     out_dir = Path("qr_codes")
     out_dir.mkdir(exist_ok=True)
