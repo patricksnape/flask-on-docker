@@ -5,7 +5,7 @@ import os
 from datetime import datetime, timedelta
 from pathlib import Path
 from random import randint
-from typing import List, Optional, Sequence, Sized, TYPE_CHECKING, TextIO
+from typing import List, Optional, TYPE_CHECKING, TextIO
 
 import click
 from flask.cli import FlaskGroup
@@ -22,7 +22,7 @@ if TYPE_CHECKING:
     from PIL import Image as PILImage
 
 
-cli = FlaskGroup(app)
+cli = FlaskGroup()
 
 
 def batch(iterable, n=1):
@@ -43,7 +43,7 @@ def generate_qr_code_pil_image(guest_code: str) -> PILImage:
 
 
 def one_inch_qr_codes_to_printable_pdf(
-    qr_code_images: Sized[PILImage],
+    qr_code_images: List[PILImage],
     out_dir: Path,
     width: float = 8.3,
     height: float = 11.7,
@@ -233,15 +233,15 @@ def seed_from_csv(csv_file_path: Path) -> None:
     with csv_file_path.open("rt") as csv_file:
         csv_reader = csv.reader(csv_file, delimiter=";")
         for (party_id, guests, room_id, check_in, check_out) in csv_reader:
-            guests = guests.split("&")
+            split_guests = guests.split("&")
 
             party = Party(id=int(party_id), guest_code=get_token())
             db.session.add(party)
             db.session.flush()
             logger.info(f"{party}")
 
-            for guest in guests:
-                first_name, last_name = guest.split(",")
+            for guest_names in split_guests:
+                first_name, last_name = guest_names.split(",")
                 guest = Guest(party_id=party.id, first_name=first_name.strip(), last_name=last_name.strip())
                 logger.info(f"  {guest}")
                 db.session.add(guest)

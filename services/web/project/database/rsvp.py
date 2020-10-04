@@ -151,7 +151,10 @@ class RSVPChange(BaseModel):
 
     def changes(self) -> RSVPChange.ChangeSet:
         guests = None
-        if self.guest_ids_before != self.guest_ids_after:
+        if self.guest_ids_before != self.guest_ids_after and None not in {self.guest_ids_before, self.guest_ids_after}:
+            assert self.guest_ids_after is not None
+            assert self.guest_ids_before is not None
+
             guests = []
             changed_ids = set(self.guest_ids_before).symmetric_difference(self.guest_ids_after)
             for guest in self.guests_before:
