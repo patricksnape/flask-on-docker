@@ -27,17 +27,6 @@ services:
     depends_on:
       - db
       - web_python_image
-  db_seed:
-    image: wedding-python
-    entrypoint: /usr/src/app/wait_for_db.sh
-    command: python manage.py seed_db
-    volumes:
-      - ./services/web/:/usr/src/app/
-    env_file:
-      - ./.env.dev.db
-      - ./.env.dev
-    depends_on:
-      - db_create
   web:
     image: wedding-python
     command: python manage.py run -h 0.0.0.0
