@@ -229,7 +229,8 @@ def seed_db() -> None:
 
 @cli.command("seed_from_csv")
 @click.argument("csv_file_path", type=Path)
-def seed_from_csv(csv_file_path: Path) -> None:
+@click.option("--fake-users", is_flag=True)
+def seed_from_csv(csv_file_path: Path, fake_users: bool) -> None:
     with csv_file_path.open("rt") as csv_file:
         csv_reader = csv.reader(csv_file, delimiter=";")
         for (party_id, guests, room_id, check_in, check_out) in csv_reader:
@@ -245,6 +246,15 @@ def seed_from_csv(csv_file_path: Path) -> None:
                 guest = Guest(party_id=party.id, first_name=first_name.strip(), last_name=last_name.strip())
                 logger.info(f"  {guest}")
                 db.session.add(guest)
+
+            if fake_users:
+                user = User(
+                    email=f"{party.id}@test.com",
+                    email_confirmed_at=datetime.utcnow(),
+                    password=user_manager.hash_password("password"),
+                    party_id=party.id,
+                )
+                db.session.add(user)
 
             if room_id != "-1":
                 check_in_date = datetime.strptime(check_in, "%d.%m.%Y")
