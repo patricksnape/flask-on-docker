@@ -40,7 +40,7 @@ class Config(object):
     BOOKING_MAX_N_DAYS = 7
     BOOKING_MIN_DATE = WEDDING_DATETIME.date() - timedelta(days=BOOKING_MAX_N_DAYS)
     BOOKING_MAX_DATE = WEDDING_DATETIME.date() + timedelta(days=BOOKING_MAX_N_DAYS)
-    RSVP_DEADLINE = datetime.strptime("Feb 1 2021", "%b %d %Y").date()
+    RSVP_DEADLINE = datetime.strptime("May 1 2021", "%b %d %Y").date()
 
     HOUSE_LAT_LONG = (49.374088, 8.158309)
     HOUSE_ADDRESS = "Kurpfalzstrasse 152, 67435 Neustadt an der Weinstrasse"
